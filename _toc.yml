@@ -1,3 +1,9 @@
 # In _toc.yml
 - file: Abstract
 - file: Introduction
+- file: PriorWork
+- file: TaskDecoding
+- file: Pathology
+- file: DeepLearningImprovements
+- file: FeatureComparison
+- file: FutureWork
