@@ -3,3 +3,9 @@ title: "Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG
 logo: images/Rainbow_brain,_Aug_2014.png
 execute:
   execute_notebooks: "off"
+html:
+  comments:
+    hypothesis: true
+    utterances:
+      repo: "robintibor/eeg-deep-learning-phd-thesis"
+
