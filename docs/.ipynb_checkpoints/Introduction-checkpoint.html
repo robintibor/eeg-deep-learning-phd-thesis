@@ -44,41 +44,6 @@
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
-    <script kind="utterances">
-
-    var commentsRunWhenDOMLoaded = cb => {
-    if (document.readyState != 'loading') {
-        cb()
-    } else if (document.addEventListener) {
-        document.addEventListener('DOMContentLoaded', cb)
-    } else {
-        document.attachEvent('onreadystatechange', function() {
-        if (document.readyState == 'complete') cb()
-        })
-    }
-}
-
-var addUtterances = () => {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "https://utteranc.es/client.js";
-    script.async = "async";
-
-    script.setAttribute("repo", "robintibor/eeg-deep-learning-phd-thesis");
-    script.setAttribute("issue-term", "pathname");
-    script.setAttribute("theme", "github-light");
-    script.setAttribute("label", "💬 comment");
-    script.setAttribute("crossorigin", "anonymous");
-
-    sections = document.querySelectorAll("div.section");
-    if (sections !== null) {
-        section = sections[sections.length-1];
-        section.appendChild(script);
-    }
-}
-commentsRunWhenDOMLoaded(addUtterances);
-</script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
@@ -90,7 +55,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Prior Work" href="PriorWork.html" />
+    <link rel="next" title="Deep Learning for Decoding Task-Related Brain Activity from EEG" href="TaskDecoding.html" />
     <link rel="prev" title="Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)" href="Abstract.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -138,42 +103,8 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="PriorWork.html">
-   Prior Work
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="PriorWork.html#put-the-table">
-   Put the table
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="PriorWork.html#id2">
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="TaskDecoding.html">
-   Decoding Task-Related Brain Activity
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Pathology.html">
-   Decoding Pathology
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DeepLearningImprovements.html">
-   Deep Learning Improvements
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FeatureComparison.html">
-   Back to Features - a Comparison
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FutureWork.html">
-   Future Work
+   Deep Learning for Decoding Task-Related Brain Activity from EEG
   </a>
  </li>
 </ul>
@@ -268,88 +199,64 @@ commentsRunWhenDOMLoaded(addUtterances);
               <div>
                 
   <div class="section" id="introduction">
-<span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<div class="admonition-machine-learning-ml-can-extract-information-from-biological-signals-for-medical-applications admonition">
-<p class="admonition-title">Machine learning (ML) can extract information from biological signals for medical applications</p>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>AI on EEG</p>
 <ul class="simple">
-<li><p>ML can extract different information from biological signals then humans are able to</p></li>
-<li><p>Applications include assistive technology, diagnosis and scientific discovery</p>
-<ul>
-<li><p>Assistive technology requires to quickly extract of information about a persons intention</p></li>
-<li><p>Diagnosis requires to extract information about pathologies and combine it with human knowledge</p>
-<ul>
-<li><p>Early-warning requires to quickly extract information from large amounts of continously arriving signals</p></li>
+<li><p>many exciting possibilities</p></li>
+<li><p>automatic diagnosis, EEG etc.</p></li>
+<li><p>hard problems for humans on limited data</p></li>
 </ul>
-</li>
-<li><p>Scientific discovery requires understanding what novel information the ML model has extracted</p></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="admonition-brain-signals-are-interesting-for-medical-ml admonition">
-<p class="admonition-title">Brain signals are interesting for medical ML</p>
+<p>AI on physiological signals</p>
 <ul class="simple">
-<li><p>Brain signals can allow decoding intentions very early/quickly</p></li>
-<li><p>Allow a lot of diagnoses</p></li>
-<li><p>Also brain very complicated, and new things may be discovered</p></li>
+<li><p>Automated interpretation of physiological signals by machine-learning methods many exciting possibilities</p></li>
+<li><p>Get better</p></li>
+<li><p>Learn something new</p></li>
 </ul>
-</div>
-<div class="admonition-electroencephalography-eeg-has-useful-properties-for-ml-analysis admonition">
-<p class="admonition-title">Electroencephalography (EEG) has useful properties for ML analysis</p>
+<p>EEG</p>
 <ul class="simple">
-<li><p>Cheap to acquire, widely available</p></li>
-<li><p>No side effects</p></li>
+<li><p>Easy to acquire larger amounts of data</p></li>
 <li><p>Hard to interpret for humans</p></li>
-<li><p>Some applications limited by accuracies achieved so far</p>
-<ul>
-<li><p>BCI, diagnosis, scientific discovery</p></li>
+<li><p>Applications limited by currently achievable accuracies</p></li>
 </ul>
-</li>
-</ul>
-</div>
-<div class="admonition-deep-learning-is-an-interesting-approach-for-eeg admonition">
-<p class="admonition-title">Deep learning is an interesting approach for EEG</p>
+<p>Possible apps:</p>
 <ul class="simple">
-<li><p>Can exploit large data well</p></li>
-<li><p>Proven to work well on diversity of natural signals</p></li>
-<li><p>Flexible models/little inductive bias</p></li>
+<li><p>BCI - but limitation not necessarily clear</p></li>
+<li><p>Automatic diagnosis - limiation clearer</p></li>
 </ul>
-</div>
-<div class="admonition-deep-learning-is-a-challenging-approach-for-eeg admonition">
-<p class="admonition-title">Deep learning is a challenging approach for EEG</p>
+<p>Deep learning</p>
 <ul class="simple">
-<li><p>Unknown if it is really better than feature-based approaches</p></li>
-<li><p>Unknown how much information can really be extracted from EEG</p></li>
-<li><p>Limited understanding of EEG signal also limits understanding of DL EEG models</p></li>
+<li><p>Good on many signals</p></li>
+<li><p>Excels with large datasets</p></li>
 </ul>
+<p>Difficulties</p>
+<ul class="simple">
+<li><p>not known if really better and if EEG signals suitable for deep learning</p></li>
+<li><p>not known if we can extract info</p></li>
+</ul>
+<p>This Thesis</p>
+<ul class="simple">
+<li><p>Investigate Potential for deep learning</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
 </div>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="text-align:left head"><p>Chapter</p></th>
-<th class="text-align:right head"><p>Findings</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-align:left"><p><a class="reference internal" href="PriorWork.html#prior-work"><span class="std std-ref">Prior Work</span></a></p></td>
-<td class="text-align:right"><p>Prior to 2017, research did not clearly show how competitive deep learning is compared with well-optimized feature baselines</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="reference internal" href="TaskDecoding.html#task-related"><span class="std std-ref">Task-Related Decoding</span></a></p></td>
-<td class="text-align:right"><p>Deep learning can be at least as good as strong feature-based baselines for task-related decoding; deep networks also learn to extract known hand-engineered features</p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="reference internal" href="Pathology.html#pathology"><span class="std std-ref">Decoding Pathology</span></a></p></td>
-<td class="text-align:right"><p>Deep networks designed for task-related decoding can also decode pathology well</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="reference internal" href="DeepLearningImprovements.html#dl-improvements"><span class="std std-ref">Further Deep Learning Improvements</span></a></p></td>
-<td class="text-align:right"><p>Deep learning improvements from other domains partially carry over to EEG decoding</p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="reference internal" href="FeatureComparison.html#feature-comparison"><span class="std std-ref">Back to Features - a Comparison</span></a></p></td>
-<td class="text-align:right"><p>Well-optimized feature baselines remain competitive with deep learning</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="reference internal" href="FutureWork.html#future-work"><span class="std std-ref">Future Work</span></a></p></td>
-<td class="text-align:right"><p>Newer DL architectures such as transformers or invertible networks may allow better performance and better interpretability</p></td>
-</tr>
-</tbody>
-</table>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f1ff4157550&gt;]
+</pre></div>
+</div>
+<img alt="_images/Introduction_4_1.png" src="_images/Introduction_4_1.png" />
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -381,7 +288,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="Abstract.html" title="previous page">Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</a>
-    <a class='right-next' id="next-link" href="PriorWork.html" title="next page">Prior Work</a>
+    <a class='right-next' id="next-link" href="TaskDecoding.html" title="next page">Deep Learning for Decoding Task-Related Brain Activity from EEG</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
