@@ -1,10 +1,9 @@
 
 <!DOCTYPE html>
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>old, copied &#8212; Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</title>
     
   <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
@@ -25,7 +24,7 @@
     href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -80,7 +79,7 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -114,15 +113,12 @@ commentsRunWhenDOMLoaded(addUtterances);
   <h1 class="site-logo" id="site-title">Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</h1>
   
 </a>
-</div>
-
-<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
-
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <ul class="nav sidenav_l1">
+    <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="Abstract.html">
    Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)
@@ -138,15 +134,6 @@ commentsRunWhenDOMLoaded(addUtterances);
  <li class="toctree-l1">
   <a class="reference internal" href="PriorWork.html">
    Prior Work
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="PriorWork.html#put-the-table">
-   Put the table
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="PriorWork.html#id34">
   </a>
  </li>
  <li class="toctree-l1">
@@ -176,9 +163,7 @@ commentsRunWhenDOMLoaded(addUtterances);
  </li>
 </ul>
 
-</nav>
-
- <!-- To handle the deprecated key -->
+</nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
@@ -207,11 +192,11 @@ commentsRunWhenDOMLoaded(addUtterances);
             <i class="fas fa-arrow-up"></i>
         </button>
         
-        <div class="dropdown-buttons-trigger">
+        
+<div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
 
-    
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         
@@ -223,8 +208,8 @@ commentsRunWhenDOMLoaded(addUtterances);
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
-    
 </div>
+
         <!-- Source interaction buttons -->
 
 
@@ -257,6 +242,32 @@ commentsRunWhenDOMLoaded(addUtterances);
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   old, copied
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visulization-table-with-empty-papers">
+     visulization table with empty papers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#layer-stuff">
+   layer stuff
+  </a>
+ </li>
+</ul>
+
+        </nav>
         
     </div>
 </div>
@@ -854,7 +865,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">| This manuscript, Schirrmeister et. al (2017) |Imagined and executed movement classes, within subject |Time,  0–125 Hz | 5/1 |Different ConvNet architectures &lt;br&gt;Nonlinearities and pooling modes &lt;br&gt;Regularization and intermediate normalization layers &lt;br&gt;Factorized convolutions &lt;br&gt;Splitted vs one-step convolutions |Trial-wise vs. cropped training strategy |FBCSP + rLDA | Feature activation correlation &lt;br&gt;Feature-perturbation prediction correlation |See Section </span><span class="se">\r</span><span class="s2">ef{subsec:results-visualization}</span>
-<span class="s2">| Single-trial EEG classification of motor imagery using deep convolutional neural networks, citet{tang_single-trial_2017} |Imagined movement classes, within-subject |Time,  8–30 Hz | 2/2 | | | FBCSP | | |</span>
+<span class="s2">| Single-trial EEG classification of motor imagery using deep convolutional neural networks, citet{tang_single-trial_2017} |Imagined movement classes, within-subject |Time,  8–30 Hz | 2/2 | | | FBCSP | | </span>
 <span class="s2">| EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces, </span><span class="si">{cite}</span><span class="s2">`lawhern_eegnet:_2016` | Oddball response (RSVP), error response (ERN), movement classes (voluntarily started and imagined) |Time, 0.1–40 Hz | 3/1 |  Kernel sizes | |   | |</span>
 <span class="s2">| Remembered or Forgotten? –- An EEG-Based Computational Prediction Approach, </span><span class="si">{cite}</span><span class="s2">`sun_remembered_2016` | Memory performance, within-subject |Time, 0.05–15 Hz | 2/2 | | Different time windows |  |Weights (spatial) | Largest weights found over p</span><span class="se">\r</span><span class="s2">efrontal and temporal cortex</span>
 <span class="s2">|Multimodal Neural Network for Rapid Serial Visual Presentation Brain Computer Interface, </span><span class="si">{cite}</span><span class="s2">`manor_multimodal_2016`|Oddball response using RSVP and image (combined image-EEG decoding), within-subject|Time, 0.3–20 Hz | 3/2 | | |  | Weights &lt;br&gt; Activations &lt;br&gt; Saliency maps by gradient |Weights showed typical P300 distribution &lt;br&gt;Activations were high at plausible times (300-500ms) &lt;br&gt;Saliency maps showed plausible spatio-temporal plots</span>
@@ -880,7 +891,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -892,7 +903,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[8, 9, 8, 8, 8, 8, 8, 7, 8, 8, 8, 8, 8, 8, 8, 8, 7, 5, 5, 8]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9, 9, 9, 9, 9, 9, 9, 8, 9, 9, 9, 9, 9, 9, 9, 9, 8, 6, 6, 9]
 </pre></div>
 </div>
 </div>
@@ -914,23 +925,22 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">headings</span><span class="p">,</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">headings</span><span class="p">,</span> <span class="n">parts</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;Study&#39;, &#39; This manuscript, Schirrmeister et. al (2017) &#39;),
- (&#39;Decoding problem&#39;,
-  &#39;Imagined and executed movement classes, within subject &#39;),
- (&#39;Input domain&#39;, &#39;Time,  0–125 Hz &#39;),
- (&#39;Conv/dense layers&#39;, &#39; 5/1 &#39;),
- (&#39;Design choices&#39;,
-  &#39;Different ConvNet architectures &lt;br&gt;Nonlinearities and pooling modes &lt;br&gt;Regularization and intermediate normalization layers &lt;br&gt;Factorized convolutions &lt;br&gt;Splitted vs one-step convolutions &#39;),
- (&#39;Training strategies&#39;, &#39;Trial-wise vs. cropped training strategy &#39;),
- (&#39;External baseline&#39;, &#39;FBCSP + rLDA &#39;),
- (&#39;Visualization type(s)&#39;,
-  &#39; Feature activation correlation &lt;br&gt;Feature-perturbation prediction correlation &#39;),
- (&#39;Visualization findings&#39;, &#39;&#39;)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;Study&#39;,
+  &#39; Remembered or Forgotten? –- An EEG-Based Computational Prediction Approach, {cite}`sun_remembered_2016` &#39;),
+ (&#39;Decoding problem&#39;, &#39; Memory performance, within-subject &#39;),
+ (&#39;Input domain&#39;, &#39;Time, 0.05–15 Hz &#39;),
+ (&#39;Conv/dense layers&#39;, &#39; 2/2 &#39;),
+ (&#39;Design choices&#39;, &#39; &#39;),
+ (&#39;Training strategies&#39;, &#39; Different time windows &#39;),
+ (&#39;External baseline&#39;, &#39;  &#39;),
+ (&#39;Visualization type(s)&#39;, &#39;Weights (spatial) &#39;),
+ (&#39;Visualization findings&#39;,
+  &#39; Largest weights found over p\refrontal and temporal cortex&#39;)]
 </pre></div>
 </div>
 </div>
@@ -1067,6 +1077,600 @@ commentsRunWhenDOMLoaded(addUtterances);
 </table>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Study</th>
+      <th>Decoding problem</th>
+      <th>Input domain</th>
+      <th>Conv/dense layers</th>
+      <th>Design choices</th>
+      <th>Training strategies</th>
+      <th>External baseline</th>
+      <th>Visualization type(s)</th>
+      <th>Visualization findings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>This manuscript, Schirrmeister et. al (2017)</td>
+      <td>Imagined and executed movement classes, within...</td>
+      <td>Time,  0–125 Hz</td>
+      <td>5/1</td>
+      <td>Different ConvNet architectures &lt;br&gt;Nonlineari...</td>
+      <td>Trial-wise vs. cropped training strategy</td>
+      <td>FBCSP + rLDA</td>
+      <td>Feature activation correlation &lt;br&gt;Feature-pe...</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Single-trial EEG classification of motor imag...</td>
+      <td>Imagined movement classes, within-subject</td>
+      <td>Time,  8–30 Hz</td>
+      <td>2/2</td>
+      <td></td>
+      <td></td>
+      <td>FBCSP</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>EEGNet: A Compact Convolutional Network for E...</td>
+      <td>Oddball response (RSVP), error response (ERN)...</td>
+      <td>Time, 0.1–40 Hz</td>
+      <td>3/1</td>
+      <td>Kernel sizes</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Remembered or Forgotten? –- An EEG-Based Comp...</td>
+      <td>Memory performance, within-subject</td>
+      <td>Time, 0.05–15 Hz</td>
+      <td>2/2</td>
+      <td></td>
+      <td>Different time windows</td>
+      <td></td>
+      <td>Weights (spatial)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Multimodal Neural Network for Rapid Serial Vis...</td>
+      <td>Oddball response using RSVP and image (combine...</td>
+      <td>Time, 0.3–20 Hz</td>
+      <td>3/2</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Weights &lt;br&gt; Activations &lt;br&gt; Saliency maps b...</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>A novel deep learning approach for classifica...</td>
+      <td>Imagined and executed movement classes, within...</td>
+      <td>Frequency, 6–30 Hz</td>
+      <td>1/1</td>
+      <td>Addition of six-layer stacked autoencoder on C...</td>
+      <td></td>
+      <td>FBCSP, Twin SVM, DDFBS, Bi-spectrum, RQNN</td>
+      <td>Weights (spatial + frequential)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Predicting Seizures from Electroencephalograp...</td>
+      <td>Seizure prediction, within-subject</td>
+      <td>Frequency, 0–200 Hz</td>
+      <td>1/2</td>
+      <td></td>
+      <td>Different subdivisions of frequency range &lt;br...</td>
+      <td></td>
+      <td>Weights &lt;br&gt; Clustering of weights</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>EEG-based prediction of driver's cognitive pe...</td>
+      <td>Driver performance, within- and cross-subject</td>
+      <td>Time,  1–50 Hz</td>
+      <td>1/3</td>
+      <td>Replacement of convolutional layers by restric...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Deep learning for epileptic intracranial EEG ...</td>
+      <td>Epileptic discharges, cross-subject</td>
+      <td>Time,  0–100 HZ</td>
+      <td>1–2/2</td>
+      <td>1 or 2 convolutional layers</td>
+      <td></td>
+      <td></td>
+      <td>Weights &lt;br&gt;Correlation weights and interictal...</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Learning Robust Features using Deep Learning ...</td>
+      <td>Start of epileptic seizure, within- and cross-...</td>
+      <td>Frequency, mean amplitude for 0–7 Hz, 7–14 Hz,...</td>
+      <td>3/1 (+ LSTM as postprocessor)</td>
+      <td></td>
+      <td></td>
+      <td>Hand crafted features + SVM</td>
+      <td>Input occlusion and effect on prediction accu...</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Single-trial EEG RSVP classification using con...</td>
+      <td>Oddball response (RSVP), groupwise (ConvNet tr...</td>
+      <td>Time, 0.5–50 Hz</td>
+      <td>4/3</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Weights (spatial)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Wearable seizure detection using convolutional...</td>
+      <td>Seizure detection, cross-subject, within-subje...</td>
+      <td>Time,  0–128 Hz</td>
+      <td>1-3/1-3</td>
+      <td></td>
+      <td>Cross-subject supervised training, within-sub...</td>
+      <td>Multiple: spectral features, higher order stat...</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Learning Representations from EEG with Deep Re...</td>
+      <td>Cognitive load (number of characters to memori...</td>
+      <td>Frequency, mean power for 4–7 Hz, 8–13 Hz, 13...</td>
+      <td>3–7/2 (+ LSTM or other temporal post-processi...</td>
+      <td>Number of convolutional layers &lt;br&gt;Temporal pr...</td>
+      <td></td>
+      <td></td>
+      <td>Inputs that maximally activate given filter &lt;b...</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Deep Feature Learning for EEG Recordings, {cit...</td>
+      <td>Type of music rhythm, groupwise (ensembles of ...</td>
+      <td>Time, 0.5–30Hz</td>
+      <td>2/1</td>
+      <td>Kernel sizes</td>
+      <td>Pretraining first layer as convolutional auto...</td>
+      <td></td>
+      <td>Weights (spatial+3 timesteps, pretrained as a...</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Convolutional Neural Network for Multi-Categor...</td>
+      <td>Oddball response (RSVP), within-subject</td>
+      <td>Time, 0.1–50 Hz</td>
+      <td>3/3 (Spatio-temporal regularization)</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Weights &lt;br&gt; Mean and single-trial activations</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Parallel Convolutional-Linear Neural Network f...</td>
+      <td>Imagined movement classes, within-subject</td>
+      <td>Frequency, 4–40 Hz, using FBCSP</td>
+      <td>2/2 (Final fully connected layer uses concate...</td>
+      <td>Combination ConvNet and MLP (trained on differ...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Using Convolutional Neural networks to Recogni...</td>
+      <td>Type of music rhythm, within-subject</td>
+      <td>Time and frequency evaluated, 0-200 Hz</td>
+      <td>1-2/1</td>
+      <td>Best values from automatic hyperparameter opti...</td>
+      <td>Best values from automatic hyperparameter opti...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Convolutional deep belief networks for feature...</td>
+      <td>Imagined movement classes, within-subject</td>
+      <td>Frequency, 8–30 Hz</td>
+      <td>2/0 (Convolutional deep belief network, separa...</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Deep feature learning using target priors with...</td>
+      <td>Finger flexion trajectory (regression), within...</td>
+      <td>Time, 0.15–200 Hz</td>
+      <td>3/1 (Convolutional layers trained as convolut...</td>
+      <td>Partially supervised CSA</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Convolutional neural networks for P300 detecti...</td>
+      <td>Oddball / attention response using P300 spelle...</td>
+      <td>Time, 0.1-20 Hz</td>
+      <td>2/2</td>
+      <td>Electrode subset (fixed or automatically deter...</td>
+      <td></td>
+      <td>Multiple: Linear SVM, gradient boosting, E-SVM...</td>
+      <td>Weights</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">[</span><span class="s1">&#39;Study&#39;</span><span class="p">,</span> <span class="s1">&#39;Visualization type(s)&#39;</span><span class="p">,</span> <span class="s1">&#39;Visualization findings&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">(</span><span class="n">showindex</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| Study                                                                                                                              | Visualization type(s)                                                                                            | Visualization findings                                                                                                                                                                                                                                                          |
+|:-----------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Single-trial EEG classification of motor imagery using deep convolutional neural networks, citet{tang_single-trial_2017}           |                                                                                                                  |                                                                                                                                                                                                                                                                                 |
+| EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces, {cite}`lawhern_eegnet:_2016`                      |                                                                                                                  |                                                                                                                                                                                                                                                                                 |
+| Remembered or Forgotten? –- An EEG-Based Computational Prediction Approach, {cite}`sun_remembered_2016`                            | Weights (spatial)                                                                                                | Largest weights found over p                                                                                                                                                                                                                                                    |
+|                                                                                                                                    |                                                                                                                  | efrontal and temporal cortex                                                                                                                                                                                                                                                    |
+| Multimodal Neural Network for Rapid Serial Visual Presentation Brain Computer Interface, {cite}`manor_multimodal_2016`             | Weights &lt;br&gt; Activations &lt;br&gt; Saliency maps by gradient                                                          | Weights showed typical P300 distribution &lt;br&gt;Activations were high at plausible times (300-500ms) &lt;br&gt;Saliency maps showed plausible spatio-temporal plots                                                                                                                      |
+| A novel deep learning approach for classification of EEG motor imagery signals, {cite}`tabar_novel_2017`                           | Weights (spatial + frequential)                                                                                  | Some weights represented difference of values of two electrodes on different sides of head                                                                                                                                                                                      |
+| Predicting Seizures from Electroencephalography Recordings: A Knowledge Transfer Strategy, {cite}`liang_predicting_2016`           | Weights &lt;br&gt; Clustering of weights                                                                               | Clusters of weights showed typical frequency band subdivision (delta, theta, alpha, beta, gamma)                                                                                                                                                                                |
+| EEG-based prediction of driver&#39;s cognitive performance by deep convolutional neural network, {cite}`hajinoroozi_eeg-based_2016`    |                                                                                                                  |                                                                                                                                                                                                                                                                                 |
+| Deep learning for epileptic intracranial EEG data, {cite}`antoniades_deep_2016`                                                    | Weights &lt;br&gt;Correlation weights and interictal epileptic discharges (IED) &lt;br&gt;Activations                        | Weights increasingly correlated with IED waveforms with increasing number of training iterations &lt;br&gt;Second layer captured more complex and well-defined epileptic shapes than first layer &lt;br&gt;IEDs led to highly synchronized activations for neighbouring electrodes          |
+| Learning Robust Features using Deep Learning for Automatic Seizure Detection, {cite}`thodoroff_learning_2016`                      | Input occlusion and effect on prediction accuracy                                                                | Allowed to locate areas critical for seizure                                                                                                                                                                                                                                    |
+| Single-trial EEG RSVP classification using convolutional neural networks, {cite}`george_single-trial_2016`                         | Weights (spatial)                                                                                                | Some filter weights had expected topographic distributions for P300 &lt;br&gt;Others filters had large weights on areas not traditionally associated with P300                                                                                                                        |
+| Wearable seizure detection using convolutional neural networks with transfer learning, {cite}`page_wearable_2016`                  |                                                                                                                  |                                                                                                                                                                                                                                                                                 |
+| Learning Representations from EEG with Deep Recurrent-Convolutional Neural Networks, {cite}`bashivan_learning_2016`                | Inputs that maximally activate given filter &lt;br&gt;Activations of these inputs &lt;br&gt;&quot;Deconvolution&quot; for these inputs | Different filters were sensitive to different frequency bands &lt;br&gt;Later layers had more spatially localized activations &lt;br&gt;Learned features had noticeable links to well-known electrophysiological markers of cognitive load &lt;br&gt;                                             |
+| Deep Feature Learning for EEG Recordings, {cite}`stober_learning_2016`                                                             | Weights (spatial+3 timesteps, pretrained as autoencoder)                                                         | Different constraints led to different weights, one type of constraints could enforce weights that are similar across subjects; other type of constraints led to weights that have similar spatial topographies under different architectural configurations and preprocessings |
+| Convolutional Neural Network for Multi-Category Rapid Serial Visual Presentation BCI, {cite}`manor_convolutional_2015`             | Weights &lt;br&gt; Mean and single-trial activations                                                                   | Spatiotemporal regularization led to softer peaks in weights &lt;br&gt;Spatial weights showed typical P300 distribution &lt;br&gt;Activations mostly had peaks at typical times (300-400ms)                                                                                                 |
+| Parallel Convolutional-Linear Neural Network for Motor Imagery Classification, {cite}`sakhavi_parallel_2015`                       |                                                                                                                  |                                                                                                                                                                                                                                                                                 |
+| Using Convolutional Neural networks to Recognize Rhythm Stimuli form Electroencephalography Recordings, {cite}`stober_using_2014`  |                                                                                                                  |                                                                                                                                                                                                                                                                                 |
+| Convolutional deep belief networks for feature extraction of EEG signal, {cite}`ren_convolutional_2014`                            |                                                                                                                  |                                                                                                                                                                                                                                                                                 |
+| Deep feature learning using target priors with applications in ECoG signal decoding for BCI, {cite}`wang_deep_2013`                |                                                                                                                  |                                                                                                                                                                                                                                                                                 |
+| Convolutional neural networks for P300 detection with application to brain-computer interfaces, {cite}`cecotti_convolutional_2011` | Weights                                                                                                          | Spatial filters were similar for different architectures &lt;br&gt;Spatial filters were different (more focal, more diffuse) for different subjects                                                                                                                                   |
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;| Study                                                                                                                              | Visualization type(s)                                                                                            | Visualization findings                                                                                                                                                                                                                                                          |</span>
+<span class="s2">|:-----------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|</span>
+<span class="s2">| Single-trial EEG classification of motor imagery using deep convolutional neural networks, citet{tang_single-trial_2017}           |                                                                                                                  |                                                                                                                                                                                                                                                                                 |</span>
+<span class="s2">| EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces, </span><span class="si">{cite}</span><span class="s2">`lawhern_eegnet:_2016`                      |                                                                                                                  |                                                                                                                                                                                                                                                                                 |</span>
+<span class="s2">| Remembered or Forgotten? –- An EEG-Based Computational Prediction Approach, </span><span class="si">{cite}</span><span class="s2">`sun_remembered_2016`                            | Weights (spatial)                                                                                                | Largest weights found over prefrontal and temporal cortex                                                                                                                                                                                                                                                                    |</span>
+<span class="s2">| Multimodal Neural Network for Rapid Serial Visual Presentation Brain Computer Interface, </span><span class="si">{cite}</span><span class="s2">`manor_multimodal_2016`             | Weights &lt;br&gt; Activations &lt;br&gt; Saliency maps by gradient                                                          | Weights showed typical P300 distribution &lt;br&gt;Activations were high at plausible times (300-500ms) &lt;br&gt;Saliency maps showed plausible spatio-temporal plots                                                                                                                      |</span>
+<span class="s2">| A novel deep learning approach for classification of EEG motor imagery signals, </span><span class="si">{cite}</span><span class="s2">`tabar_novel_2017`                           | Weights (spatial + frequential)                                                                                  | Some weights represented difference of values of two electrodes on different sides of head                                                                                                                                                                                      |</span>
+<span class="s2">| Predicting Seizures from Electroencephalography Recordings: A Knowledge Transfer Strategy, </span><span class="si">{cite}</span><span class="s2">`liang_predicting_2016`           | Weights &lt;br&gt; Clustering of weights                                                                               | Clusters of weights showed typical frequency band subdivision (delta, theta, alpha, beta, gamma)                                                                                                                                                                                |</span>
+<span class="s2">| EEG-based prediction of driver&#39;s cognitive performance by deep convolutional neural network, </span><span class="si">{cite}</span><span class="s2">`hajinoroozi_eeg-based_2016`    |                                                                                                                  |                                                                                                                                                                                                                                                                                 |</span>
+<span class="s2">| Deep learning for epileptic intracranial EEG data, </span><span class="si">{cite}</span><span class="s2">`antoniades_deep_2016`                                                    | Weights &lt;br&gt;Correlation weights and interictal epileptic discharges (IED) &lt;br&gt;Activations                        | Weights increasingly correlated with IED waveforms with increasing number of training iterations &lt;br&gt;Second layer captured more complex and well-defined epileptic shapes than first layer &lt;br&gt;IEDs led to highly synchronized activations for neighbouring electrodes          |</span>
+<span class="s2">| Learning Robust Features using Deep Learning for Automatic Seizure Detection, </span><span class="si">{cite}</span><span class="s2">`thodoroff_learning_2016`                      | Input occlusion and effect on prediction accuracy                                                                | Allowed to locate areas critical for seizure                                                                                                                                                                                                                                    |</span>
+<span class="s2">| Single-trial EEG RSVP classification using convolutional neural networks, </span><span class="si">{cite}</span><span class="s2">`george_single-trial_2016`                         | Weights (spatial)                                                                                                | Some filter weights had expected topographic distributions for P300 &lt;br&gt;Others filters had large weights on areas not traditionally associated with P300                                                                                                                        |</span>
+<span class="s2">| Wearable seizure detection using convolutional neural networks with transfer learning, </span><span class="si">{cite}</span><span class="s2">`page_wearable_2016`                  |                                                                                                                  |                                                                                                                                                                                                                                                                                 |</span>
+<span class="s2">| Learning Representations from EEG with Deep Recurrent-Convolutional Neural Networks, </span><span class="si">{cite}</span><span class="s2">`bashivan_learning_2016`                | Inputs that maximally activate given filter &lt;br&gt;Activations of these inputs &lt;br&gt;&quot;Deconvolution&quot; for these inputs | Different filters were sensitive to different frequency bands &lt;br&gt;Later layers had more spatially localized activations &lt;br&gt;Learned features had noticeable links to well-known electrophysiological markers of cognitive load &lt;br&gt;                                             |</span>
+<span class="s2">| Deep Feature Learning for EEG Recordings, </span><span class="si">{cite}</span><span class="s2">`stober_learning_2016`                                                             | Weights (spatial+3 timesteps, pretrained as autoencoder)                                                         | Different constraints led to different weights, one type of constraints could enforce weights that are similar across subjects; other type of constraints led to weights that have similar spatial topographies under different architectural configurations and preprocessings |</span>
+<span class="s2">| Convolutional Neural Network for Multi-Category Rapid Serial Visual Presentation BCI, </span><span class="si">{cite}</span><span class="s2">`manor_convolutional_2015`             | Weights &lt;br&gt; Mean and single-trial activations                                                                   | Spatiotemporal regularization led to softer peaks in weights &lt;br&gt;Spatial weights showed typical P300 distribution &lt;br&gt;Activations mostly had peaks at typical times (300-400ms)                                                                                                 |</span>
+<span class="s2">| Parallel Convolutional-Linear Neural Network for Motor Imagery Classification, </span><span class="si">{cite}</span><span class="s2">`sakhavi_parallel_2015`                       |                                                                                                                  |                                                                                                                                                                                                                                                                                 |</span>
+<span class="s2">| Using Convolutional Neural networks to Recognize Rhythm Stimuli form Electroencephalography Recordings, </span><span class="si">{cite}</span><span class="s2">`stober_using_2014`  |                                                                                                                  |                                                                                                                                                                                                                                                                                 |</span>
+<span class="s2">| Convolutional deep belief networks for feature extraction of EEG signal, </span><span class="si">{cite}</span><span class="s2">`ren_convolutional_2014`                            |                                                                                                                  |                                                                                                                                                                                                                                                                                 |</span>
+<span class="s2">| Deep feature learning using target priors with applications in ECoG signal decoding for BCI, </span><span class="si">{cite}</span><span class="s2">`wang_deep_2013`                |                                                                                                                  |                                                                                                                                                                                                                                                                                 |</span>
+<span class="s2">| Convolutional neural networks for P300 detection with application to brain-computer interfaces, </span><span class="si">{cite}</span><span class="s2">`cecotti_convolutional_2011` | Weights                                                                                                          | Spatial filters were similar for different architectures &lt;br&gt;Spatial filters were different (more focal, more diffuse) for different subjects                                                                                                                                   |&quot;&quot;&quot;</span>
+
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">&#39;|&#39;</span> <span class="o">+</span> <span class="n">l</span><span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;cite&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| citet{tang_single-trial_2017}           |                                                                                                                  |                                                                                                                                                                                                                                                                                 |
+|{cite}`lawhern_eegnet:_2016`                      |                                                                                                                  |                                                                                                                                                                                                                                                                                 |
+|{cite}`sun_remembered_2016`                            | Weights (spatial)                                                                                                | Largest weights found over prefrontal and temporal cortex                                                                                                                                                                                                                                                                    |
+|{cite}`manor_multimodal_2016`             | Weights &lt;br&gt; Activations &lt;br&gt; Saliency maps by gradient                                                          | Weights showed typical P300 distribution &lt;br&gt;Activations were high at plausible times (300-500ms) &lt;br&gt;Saliency maps showed plausible spatio-temporal plots                                                                                                                      |
+|{cite}`tabar_novel_2017`                           | Weights (spatial + frequential)                                                                                  | Some weights represented difference of values of two electrodes on different sides of head                                                                                                                                                                                      |
+|{cite}`liang_predicting_2016`           | Weights &lt;br&gt; Clustering of weights                                                                               | Clusters of weights showed typical frequency band subdivision (delta, theta, alpha, beta, gamma)                                                                                                                                                                                |
+|{cite}`hajinoroozi_eeg-based_2016`    |                                                                                                                  |                                                                                                                                                                                                                                                                                 |
+|{cite}`antoniades_deep_2016`                                                    | Weights &lt;br&gt;Correlation weights and interictal epileptic discharges (IED) &lt;br&gt;Activations                        | Weights increasingly correlated with IED waveforms with increasing number of training iterations &lt;br&gt;Second layer captured more complex and well-defined epileptic shapes than first layer &lt;br&gt;IEDs led to highly synchronized activations for neighbouring electrodes          |
+|{cite}`thodoroff_learning_2016`                      | Input occlusion and effect on prediction accuracy                                                                | Allowed to locate areas critical for seizure                                                                                                                                                                                                                                    |
+|{cite}`george_single-trial_2016`                         | Weights (spatial)                                                                                                | Some filter weights had expected topographic distributions for P300 &lt;br&gt;Others filters had large weights on areas not traditionally associated with P300                                                                                                                        |
+|{cite}`page_wearable_2016`                  |                                                                                                                  |                                                                                                                                                                                                                                                                                 |
+|{cite}`bashivan_learning_2016`                | Inputs that maximally activate given filter &lt;br&gt;Activations of these inputs &lt;br&gt;&quot;Deconvolution&quot; for these inputs | Different filters were sensitive to different frequency bands &lt;br&gt;Later layers had more spatially localized activations &lt;br&gt;Learned features had noticeable links to well-known electrophysiological markers of cognitive load &lt;br&gt;                                             |
+|{cite}`stober_learning_2016`                                                             | Weights (spatial+3 timesteps, pretrained as autoencoder)                                                         | Different constraints led to different weights, one type of constraints could enforce weights that are similar across subjects; other type of constraints led to weights that have similar spatial topographies under different architectural configurations and preprocessings |
+|{cite}`manor_convolutional_2015`             | Weights &lt;br&gt; Mean and single-trial activations                                                                   | Spatiotemporal regularization led to softer peaks in weights &lt;br&gt;Spatial weights showed typical P300 distribution &lt;br&gt;Activations mostly had peaks at typical times (300-400ms)                                                                                                 |
+|{cite}`sakhavi_parallel_2015`                       |                                                                                                                  |                                                                                                                                                                                                                                                                                 |
+|{cite}`stober_using_2014`  |                                                                                                                  |                                                                                                                                                                                                                                                                                 |
+|{cite}`ren_convolutional_2014`                            |                                                                                                                  |                                                                                                                                                                                                                                                                                 |
+|{cite}`wang_deep_2013`                |                                                                                                                  |                                                                                                                                                                                                                                                                                 |
+|{cite}`cecotti_convolutional_2011` | Weights                                                                                                          | Spatial filters were similar for different architectures &lt;br&gt;Spatial filters were different (more focal, more diffuse) for different subjects                                                                                                                                   |
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="visulization-table-with-empty-papers">
+<h2>visulization table with empty papers<a class="headerlink" href="#visulization-table-with-empty-papers" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Study</p></th>
+<th class="text-align:left head"><p>Visualization type(s)</p></th>
+<th class="text-align:left head"><p>Visualization findings</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#tang-single-trial-2017" id="id50">[TLS17]</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#lawhern-eegnet-2016" id="id51">[LSW+16]</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#sun-remembered-2016" id="id52">[SQC+16]</a></p></td>
+<td class="text-align:left"><p>Weights (spatial)</p></td>
+<td class="text-align:left"><p>Largest weights found over prefrontal and temporal cortex</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#manor-multimodal-2016" id="id53">[MMG16]</a></p></td>
+<td class="text-align:left"><p>Weights <br> Activations <br> Saliency maps by gradient</p></td>
+<td class="text-align:left"><p>Weights showed typical P300 distribution <br>Activations were high at plausible times (300-500ms) <br>Saliency maps showed plausible spatio-temporal plots</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#tabar-novel-2017" id="id54">[TH17]</a></p></td>
+<td class="text-align:left"><p>Weights (spatial + frequential)</p></td>
+<td class="text-align:left"><p>Some weights represented difference of values of two electrodes on different sides of head</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#liang-predicting-2016" id="id55">[LLZW16]</a></p></td>
+<td class="text-align:left"><p>Weights <br> Clustering of weights</p></td>
+<td class="text-align:left"><p>Clusters of weights showed typical frequency band subdivision (delta, theta, alpha, beta, gamma)</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#hajinoroozi-eeg-based-2016" id="id56">[HMJ+16]</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#antoniades-deep-2016" id="id57">[ASTS16]</a></p></td>
+<td class="text-align:left"><p>Weights <br>Correlation weights and interictal epileptic discharges (IED) <br>Activations</p></td>
+<td class="text-align:left"><p>Weights increasingly correlated with IED waveforms with increasing number of training iterations <br>Second layer captured more complex and well-defined epileptic shapes than first layer <br>IEDs led to highly synchronized activations for neighbouring electrodes</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#thodoroff-learning-2016" id="id58">[TPL16]</a></p></td>
+<td class="text-align:left"><p>Input occlusion and effect on prediction accuracy</p></td>
+<td class="text-align:left"><p>Allowed to locate areas critical for seizure</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#george-single-trial-2016" id="id59">[SLK+16]</a></p></td>
+<td class="text-align:left"><p>Weights (spatial)</p></td>
+<td class="text-align:left"><p>Some filter weights had expected topographic distributions for P300 <br>Others filters had large weights on areas not traditionally associated with P300</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#page-wearable-2016" id="id60">[PSM16]</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#bashivan-learning-2016" id="id61">[BRYC16]</a></p></td>
+<td class="text-align:left"><p>Inputs that maximally activate given filter <br>Activations of these inputs <br>”Deconvolution” for these inputs</p></td>
+<td class="text-align:left"><p>Different filters were sensitive to different frequency bands <br>Later layers had more spatially localized activations <br>Learned features had noticeable links to well-known electrophysiological markers of cognitive load <br></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#stober-learning-2016" id="id62">[Sto16]</a></p></td>
+<td class="text-align:left"><p>Weights (spatial+3 timesteps, pretrained as autoencoder)</p></td>
+<td class="text-align:left"><p>Different constraints led to different weights, one type of constraints could enforce weights that are similar across subjects; other type of constraints led to weights that have similar spatial topographies under different architectural configurations and preprocessings</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#manor-convolutional-2015" id="id63">[MG15]</a></p></td>
+<td class="text-align:left"><p>Weights <br> Mean and single-trial activations</p></td>
+<td class="text-align:left"><p>Spatiotemporal regularization led to softer peaks in weights <br>Spatial weights showed typical P300 distribution <br>Activations mostly had peaks at typical times (300-400ms)</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#sakhavi-parallel-2015" id="id64">[SGY15]</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#stober-using-2014" id="id65">[SCG14]</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#ren-convolutional-2014" id="id66">[RW14]</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#wang-deep-2013" id="id67">[WLSJ13]</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#cecotti-convolutional-2011" id="id68">[CG11]</a></p></td>
+<td class="text-align:left"><p>Weights</p></td>
+<td class="text-align:left"><p>Spatial filters were similar for different architectures <br>Spatial filters were different (more focal, more diffuse) for different subjects</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="s1">&#39;Input domain&#39;</span><span class="p">]</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># exclude our own study</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;Time,  8–30 Hz &#39;</span><span class="p">,</span> <span class="s1">&#39;Time, 0.1–40 Hz &#39;</span><span class="p">,</span> <span class="s1">&#39;Time, 0.05–15 Hz &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Time, 0.3–20 Hz &#39;</span><span class="p">,</span> <span class="s1">&#39;Frequency, 6–30 Hz &#39;</span><span class="p">,</span> <span class="s1">&#39; Frequency, 0–200 Hz &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Time,  1–50 Hz &#39;</span><span class="p">,</span> <span class="s1">&#39; Time,  0–100 HZ &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Frequency, mean amplitude for 0–7 Hz, 7–14 Hz, 14–49 Hz &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Time, 0.5–50 Hz &#39;</span><span class="p">,</span> <span class="s1">&#39;Time,  0–128 Hz &#39;</span><span class="p">,</span>
+       <span class="s1">&#39; Frequency, mean power for 4–7 Hz, 8–13 Hz, 13–30 Hz &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Time, 0.5–30Hz &#39;</span><span class="p">,</span> <span class="s1">&#39;Time, 0.1–50 Hz &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Frequency, 4–40 Hz, using FBCSP &#39;</span><span class="p">,</span>
+       <span class="s1">&#39; Time and frequency evaluated, 0-200 Hz &#39;</span><span class="p">,</span> <span class="s1">&#39;Frequency, 8–30 Hz &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Time, 0.15–200 Hz &#39;</span><span class="p">,</span> <span class="s1">&#39; Time, 0.1-20 Hz &#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">domain_strings</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
+<span class="n">start_fs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[a-z ]+&#39;</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[–-–-]&#39;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]))[</span><span class="mi">0</span><span class="p">]))</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
+<span class="n">end_fs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[a-z HZFBCSP]+&#39;</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[–-–-]&#39;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]))[</span><span class="mi">1</span><span class="p">]))</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">import</span> <span class="nn">seaborn</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;darkgrid&#39;</span><span class="p">)</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;png&#39;
+<span class="c1">#matplotlib.rcParams[&#39;figure.figsize&#39;] = (12.0, 1.0)</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;freq&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">domain_strings</span><span class="p">])</span>
+<span class="n">time_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;time&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">domain_strings</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">98349384</span><span class="p">)</span>
+<span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;grey&#39;</span>
+<span class="n">domain_strings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">domain_strings</span><span class="p">)</span>
+<span class="n">start_fs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">start_fs</span><span class="p">)</span>
+<span class="n">end_fs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">end_fs</span><span class="p">)</span>
+<span class="n">i_sort</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="n">time_mask</span><span class="p">)[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">end_fs</span><span class="p">[</span><span class="n">time_mask</span><span class="p">])]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">e</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span>
+        <span class="n">domain_strings</span><span class="p">[</span><span class="n">i_sort</span><span class="p">],</span> <span class="n">start_fs</span><span class="p">[</span><span class="n">i_sort</span><span class="p">],</span> <span class="n">end_fs</span><span class="p">[</span><span class="n">i_sort</span><span class="p">])):</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="mf">0.6</span><span class="o">*</span><span class="n">i</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">i_sort</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.3</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">offset</span><span class="p">,</span><span class="n">offset</span><span class="p">]</span> <span class="p">,</span> <span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+<span class="n">i_sort</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="n">freq_mask</span><span class="p">)[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">end_fs</span><span class="p">[</span><span class="n">freq_mask</span><span class="p">])]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">e</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span>
+        <span class="n">domain_strings</span><span class="p">[</span><span class="n">i_sort</span><span class="p">],</span> <span class="n">start_fs</span><span class="p">[</span><span class="n">i_sort</span><span class="p">],</span> <span class="n">end_fs</span><span class="p">[</span><span class="n">i_sort</span><span class="p">])):</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="mf">0.6</span><span class="o">*</span><span class="n">i</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">i_sort</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.7</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">offset</span><span class="p">,</span><span class="n">offset</span><span class="p">]</span> <span class="p">,</span> <span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Input domain&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency [Hz]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="s2">&quot;Frequency&quot;</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Input domains and frequency ranges in prior work&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.05, &#39;Input domains and frequency ranges in prior work&#39;)
+</pre></div>
+</div>
+<img alt="_images/ConvertLatex_31_1.png" src="_images/ConvertLatex_31_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">98349384</span><span class="p">)</span>
+<span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;grey&#39;</span>
+<span class="k">for</span> <span class="n">low_c</span><span class="p">,</span> <span class="n">high_c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">low_conv_ls</span><span class="p">,</span> <span class="n">high_conv_ls</span><span class="p">):</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.1</span>
+    <span class="n">tried_cs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">low_c</span><span class="p">,</span> <span class="n">high_c</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">offset</span><span class="p">,]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">tried_cs</span><span class="p">),</span> <span class="n">tried_cs</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="n">i_c</span><span class="p">,</span> <span class="n">n_c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bincount_conv</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">i_c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">n_c</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.535</span><span class="p">,</span> <span class="n">i_c</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_c</span><span class="p">)</span><span class="o">+</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">low_c</span><span class="p">,</span> <span class="n">high_c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">low_dense_ls</span><span class="p">,</span> <span class="n">high_dense_ls</span><span class="p">):</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.1</span>
+    <span class="n">tried_cs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">low_c</span><span class="p">,</span> <span class="n">high_c</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">offset</span><span class="p">,]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">tried_cs</span><span class="p">),</span> <span class="n">tried_cs</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="n">i_c</span><span class="p">,</span> <span class="n">n_c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bincount_dense</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="n">i_c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">n_c</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.535</span><span class="p">,</span> <span class="n">i_c</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_c</span><span class="p">)</span><span class="o">+</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Type of layer&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Number of layers&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Convolutional&quot;</span><span class="p">,</span> <span class="s2">&quot;Dense&quot;</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Number of layers in prior works&#39; architectures&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="layer-stuff">
+<h1>layer stuff<a class="headerlink" href="#layer-stuff" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Conv/dense layers&#39;</span><span class="p">])[</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># exclude ourstudy</span>
 </pre></div>
 </div>
@@ -1152,42 +1756,10 @@ commentsRunWhenDOMLoaded(addUtterances);
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.05, &quot;Number of layers in prior works&#39; architectures&quot;)
-</pre></div>
-</div>
-<img alt="_images/ConvertLatex_24_1.png" src="_images/ConvertLatex_24_1.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;Study&#39;</span><span class="p">,</span> <span class="s1">&#39;Decoding problem&#39;</span><span class="p">,</span> <span class="s1">&#39;External baseline&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">(</span><span class="n">showindex</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| Study                                                                                                                              | Decoding problem                                                                                                                     | External baseline                                                               |
-|:-----------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------|
-| This manuscript, Schirrmeister et. al (2017)                                                                                       | Imagined and executed movement classes, within subject                                                                               | FBCSP + rLDA                                                                    |
-| Single-trial EEG classification of motor imagery using deep convolutional neural networks, citet{tang_single-trial_2017}           | Imagined movement classes, within-subject                                                                                            | FBCSP                                                                           |
-| EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces, {cite}`lawhern_eegnet:_2016`                      | Oddball response (RSVP), error response (ERN), movement classes (voluntarily started and imagined)                                   |                                                                                 |
-| Remembered or Forgotten? –- An EEG-Based Computational Prediction Approach, {cite}`sun_remembered_2016`                            | Memory performance, within-subject                                                                                                   |                                                                                 |
-| Multimodal Neural Network for Rapid Serial Visual Presentation Brain Computer Interface, {cite}`manor_multimodal_2016`             | Oddball response using RSVP and image (combined image-EEG decoding), within-subject                                                  |                                                                                 |
-| A novel deep learning approach for classification of EEG motor imagery signals, {cite}`tabar_novel_2017`                           | Imagined and executed movement classes, within-subject                                                                               | FBCSP, Twin SVM, DDFBS, Bi-spectrum, RQNN                                       |
-| Predicting Seizures from Electroencephalography Recordings: A Knowledge Transfer Strategy, {cite}`liang_predicting_2016`           | Seizure prediction, within-subject                                                                                                   |                                                                                 |
-| EEG-based prediction of driver&#39;s cognitive performance by deep convolutional neural network, {cite}`hajinoroozi_eeg-based_2016`    | Driver performance, within- and cross-subject                                                                                        |                                                                                 |
-| Deep learning for epileptic intracranial EEG data, {cite}`antoniades_deep_2016`                                                    | Epileptic discharges, cross-subject                                                                                                  |                                                                                 |
-| Learning Robust Features using Deep Learning for Automatic Seizure Detection, {cite}`thodoroff_learning_2016`                      | Start of epileptic seizure, within- and cross-subject                                                                                | Hand crafted features + SVM                                                     |
-| Single-trial EEG RSVP classification using convolutional neural networks, {cite}`george_single-trial_2016`                         | Oddball response (RSVP), groupwise (ConvNet trained on all subjects)                                                                 |                                                                                 |
-| Wearable seizure detection using convolutional neural networks with transfer learning, {cite}`page_wearable_2016`                  | Seizure detection, cross-subject, within-subject, groupwise                                                                          | Multiple: spectral features, higher order statistics + linear-SVM, RBF-SVM, ... |
-| Learning Representations from EEG with Deep Recurrent-Convolutional Neural Networks, {cite}`bashivan_learning_2016`                | Cognitive load (number of characters to memorize), cross-subject                                                                     |                                                                                 |
-| Deep Feature Learning for EEG Recordings, {cite}`stober_learning_2016`                                                             | Type of music rhythm, groupwise (ensembles of leave-one-subject-out trained models, evaluated on separate test set of same subjects) |                                                                                 |
-| Convolutional Neural Network for Multi-Category Rapid Serial Visual Presentation BCI, {cite}`manor_convolutional_2015`             | Oddball response (RSVP), within-subject                                                                                              |                                                                                 |
-| Parallel Convolutional-Linear Neural Network for Motor Imagery Classification, {cite}`sakhavi_parallel_2015`                       | Imagined movement classes, within-subject                                                                                            |                                                                                 |
-| Using Convolutional Neural networks to Recognize Rhythm Stimuli form Electroencephalography Recordings, {cite}`stober_using_2014`  | Type of music rhythm, within-subject                                                                                                 |                                                                                 |
-| Convolutional deep belief networks for feature extraction of EEG signal, {cite}`ren_convolutional_2014`                            | Imagined movement classes, within-subject                                                                                            |                                                                                 |
-| Deep feature learning using target priors with applications in ECoG signal decoding for BCI, {cite}`wang_deep_2013`                | Finger flexion trajectory (regression), within-subject                                                                               |                                                                                 |
-| Convolutional neural networks for P300 detection with application to brain-computer interfaces, {cite}`cecotti_convolutional_2011` | Oddball / attention response using P300 speller, within-subject                                                                      | Multiple: Linear SVM, gradient boosting, E-SVM, S-SVM, mLVQ, LDA, ...           |
 </pre></div>
 </div>
 </div>
@@ -1208,75 +1780,75 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td class="text-align:left"><p>Imagined movement classes, within-subject</p></td>
 <td class="text-align:left"><p>FBCSP</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces, <a class="bibtex reference internal" href="PriorWork.html#lawhern-eegnet-2016" id="id50">[LSW+16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces, <a class="bibtex reference internal" href="PriorWork.html#lawhern-eegnet-2016" id="id69">[LSW+16]</a></p></td>
 <td class="text-align:left"><p>Oddball response (RSVP), error response (ERN), movement classes (voluntarily started and imagined)</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Remembered or Forgotten? –- An EEG-Based Computational Prediction Approach, <a class="bibtex reference internal" href="PriorWork.html#sun-remembered-2016" id="id51">[SQC+16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Remembered or Forgotten? –- An EEG-Based Computational Prediction Approach, <a class="bibtex reference internal" href="PriorWork.html#sun-remembered-2016" id="id70">[SQC+16]</a></p></td>
 <td class="text-align:left"><p>Memory performance, within-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Multimodal Neural Network for Rapid Serial Visual Presentation Brain Computer Interface, <a class="bibtex reference internal" href="PriorWork.html#manor-multimodal-2016" id="id52">[MMG16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Multimodal Neural Network for Rapid Serial Visual Presentation Brain Computer Interface, <a class="bibtex reference internal" href="PriorWork.html#manor-multimodal-2016" id="id71">[MMG16]</a></p></td>
 <td class="text-align:left"><p>Oddball response using RSVP and image (combined image-EEG decoding), within-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>A novel deep learning approach for classification of EEG motor imagery signals, <a class="bibtex reference internal" href="PriorWork.html#tabar-novel-2017" id="id53">[TH17]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>A novel deep learning approach for classification of EEG motor imagery signals, <a class="bibtex reference internal" href="PriorWork.html#tabar-novel-2017" id="id72">[TH17]</a></p></td>
 <td class="text-align:left"><p>Imagined and executed movement classes, within-subject</p></td>
 <td class="text-align:left"><p>Weights (spatial + frequential)</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Predicting Seizures from Electroencephalography Recordings: A Knowledge Transfer Strategy, <a class="bibtex reference internal" href="PriorWork.html#liang-predicting-2016" id="id54">[LLZW16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Predicting Seizures from Electroencephalography Recordings: A Knowledge Transfer Strategy, <a class="bibtex reference internal" href="PriorWork.html#liang-predicting-2016" id="id73">[LLZW16]</a></p></td>
 <td class="text-align:left"><p>Seizure prediction, within-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>EEG-based prediction of driver’s cognitive performance by deep convolutional neural network, <a class="bibtex reference internal" href="PriorWork.html#hajinoroozi-eeg-based-2016" id="id55">[HMJ+16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>EEG-based prediction of driver’s cognitive performance by deep convolutional neural network, <a class="bibtex reference internal" href="PriorWork.html#hajinoroozi-eeg-based-2016" id="id74">[HMJ+16]</a></p></td>
 <td class="text-align:left"><p>Driver performance, within- and cross-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Deep learning for epileptic intracranial EEG data, <a class="bibtex reference internal" href="PriorWork.html#antoniades-deep-2016" id="id56">[ASTS16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Deep learning for epileptic intracranial EEG data, <a class="bibtex reference internal" href="PriorWork.html#antoniades-deep-2016" id="id75">[ASTS16]</a></p></td>
 <td class="text-align:left"><p>Epileptic discharges, cross-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Learning Robust Features using Deep Learning for Automatic Seizure Detection, <a class="bibtex reference internal" href="PriorWork.html#thodoroff-learning-2016" id="id57">[TPL16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Learning Robust Features using Deep Learning for Automatic Seizure Detection, <a class="bibtex reference internal" href="PriorWork.html#thodoroff-learning-2016" id="id76">[TPL16]</a></p></td>
 <td class="text-align:left"><p>Start of epileptic seizure, within- and cross-subject</p></td>
 <td class="text-align:left"><p>Hand crafted features + SVM</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Single-trial EEG RSVP classification using convolutional neural networks, <a class="bibtex reference internal" href="PriorWork.html#george-single-trial-2016" id="id58">[SLK+16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Single-trial EEG RSVP classification using convolutional neural networks, <a class="bibtex reference internal" href="PriorWork.html#george-single-trial-2016" id="id77">[SLK+16]</a></p></td>
 <td class="text-align:left"><p>Oddball response (RSVP), groupwise (ConvNet trained on all subjects)</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Wearable seizure detection using convolutional neural networks with transfer learning, <a class="bibtex reference internal" href="PriorWork.html#page-wearable-2016" id="id59">[PSM16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Wearable seizure detection using convolutional neural networks with transfer learning, <a class="bibtex reference internal" href="PriorWork.html#page-wearable-2016" id="id78">[PSM16]</a></p></td>
 <td class="text-align:left"><p>Seizure detection, cross-subject, within-subject, groupwise</p></td>
 <td class="text-align:left"><p>Multiple: spectral features, higher order statistics + linear-SVM, RBF-SVM, …</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Learning Representations from EEG with Deep Recurrent-Convolutional Neural Networks, <a class="bibtex reference internal" href="PriorWork.html#bashivan-learning-2016" id="id60">[BRYC16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Learning Representations from EEG with Deep Recurrent-Convolutional Neural Networks, <a class="bibtex reference internal" href="PriorWork.html#bashivan-learning-2016" id="id79">[BRYC16]</a></p></td>
 <td class="text-align:left"><p>Cognitive load (number of characters to memorize), cross-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Deep Feature Learning for EEG Recordings, <a class="bibtex reference internal" href="PriorWork.html#stober-learning-2016" id="id61">[Sto16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Deep Feature Learning for EEG Recordings, <a class="bibtex reference internal" href="PriorWork.html#stober-learning-2016" id="id80">[Sto16]</a></p></td>
 <td class="text-align:left"><p>Type of music rhythm, groupwise (ensembles of leave-one-subject-out trained models, evaluated on separate test set of same subjects)</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Convolutional Neural Network for Multi-Category Rapid Serial Visual Presentation BCI, <a class="bibtex reference internal" href="PriorWork.html#manor-convolutional-2015" id="id62">[MG15]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Convolutional Neural Network for Multi-Category Rapid Serial Visual Presentation BCI, <a class="bibtex reference internal" href="PriorWork.html#manor-convolutional-2015" id="id81">[MG15]</a></p></td>
 <td class="text-align:left"><p>Oddball response (RSVP), within-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Parallel Convolutional-Linear Neural Network for Motor Imagery Classification, <a class="bibtex reference internal" href="PriorWork.html#sakhavi-parallel-2015" id="id63">[SGY15]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Parallel Convolutional-Linear Neural Network for Motor Imagery Classification, <a class="bibtex reference internal" href="PriorWork.html#sakhavi-parallel-2015" id="id82">[SGY15]</a></p></td>
 <td class="text-align:left"><p>Imagined movement classes, within-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Using Convolutional Neural networks to Recognize Rhythm Stimuli form Electroencephalography Recordings, <a class="bibtex reference internal" href="PriorWork.html#stober-using-2014" id="id64">[SCG14]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Using Convolutional Neural networks to Recognize Rhythm Stimuli form Electroencephalography Recordings, <a class="bibtex reference internal" href="PriorWork.html#stober-using-2014" id="id83">[SCG14]</a></p></td>
 <td class="text-align:left"><p>Type of music rhythm, within-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Convolutional deep belief networks for feature extraction of EEG signal, <a class="bibtex reference internal" href="PriorWork.html#ren-convolutional-2014" id="id65">[RW14]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Convolutional deep belief networks for feature extraction of EEG signal, <a class="bibtex reference internal" href="PriorWork.html#ren-convolutional-2014" id="id84">[RW14]</a></p></td>
 <td class="text-align:left"><p>Imagined movement classes, within-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Deep feature learning using target priors with applications in ECoG signal decoding for BCI, <a class="bibtex reference internal" href="PriorWork.html#wang-deep-2013" id="id66">[WLSJ13]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Deep feature learning using target priors with applications in ECoG signal decoding for BCI, <a class="bibtex reference internal" href="PriorWork.html#wang-deep-2013" id="id85">[WLSJ13]</a></p></td>
 <td class="text-align:left"><p>Finger flexion trajectory (regression), within-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Convolutional neural networks for P300 detection with application to brain-computer interfaces, <a class="bibtex reference internal" href="PriorWork.html#cecotti-convolutional-2011" id="id67">[CG11]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Convolutional neural networks for P300 detection with application to brain-computer interfaces, <a class="bibtex reference internal" href="PriorWork.html#cecotti-convolutional-2011" id="id86">[CG11]</a></p></td>
 <td class="text-align:left"><p>Oddball / attention response using P300 speller, within-subject</p></td>
 <td class="text-align:left"><p>Multiple: Linear SVM, gradient boosting, E-SVM, S-SVM, mLVQ, LDA, …</p></td>
 </tr>
