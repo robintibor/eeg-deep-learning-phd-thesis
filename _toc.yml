@@ -2,8 +2,11 @@
 - file: Abstract
 - file: Introduction
 - file: PriorWork
+- file: MovementDecoding
 - file: TaskDecoding
 - file: Pathology
 - file: DeepLearningImprovements
 - file: FeatureComparison
+- file: Invertible
+- file: DeepInterpretability
 - file: FutureWork

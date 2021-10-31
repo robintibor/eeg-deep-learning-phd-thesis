@@ -1,9 +1,10 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Introduction &#8212; Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</title>
     
   <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
@@ -24,8 +25,8 @@
     href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -139,8 +140,13 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="MovementDecoding.html">
+   Decoding Movement-Related Brain Activity
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="TaskDecoding.html">
-   Decoding Task-Related Brain Activity
+   Further Task-Related Decoding
   </a>
  </li>
  <li class="toctree-l1">
@@ -318,19 +324,22 @@ commentsRunWhenDOMLoaded(addUtterances);
 <tr class="row-even"><td class="text-align:left"><p><a class="reference internal" href="PriorWork.html#prior-work"><span class="std std-ref">Prior Work</span></a></p></td>
 <td class="text-align:right"><p>Prior to 2017, research did not clearly show how competitive deep learning is compared with well-optimized feature baselines</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="reference internal" href="TaskDecoding.html#task-related"><span class="std std-ref">Task-Related Decoding</span></a></p></td>
-<td class="text-align:right"><p>Deep learning can be at least as good as strong feature-based baselines for task-related decoding; deep networks also learn to extract known hand-engineered features</p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a class="reference internal" href="MovementDecoding.html#movement-related"><span class="std std-ref">Movement-Related Decoding</span></a></p></td>
+<td class="text-align:right"><p>Deep learning can be at least as good as strong feature-based baselines for movement-related decoding; deep networks also learn to extract known hand-engineered features</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="reference internal" href="Pathology.html#pathology"><span class="std std-ref">Decoding Pathology</span></a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a class="reference internal" href="TaskDecoding.html#task-related"><span class="std std-ref">Task-Related Decoding</span></a></p></td>
+<td class="text-align:right"><p>Deep learning also performs well at other task-related decoding</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="reference internal" href="Pathology.html#pathology"><span class="std std-ref">Decoding Pathology</span></a></p></td>
 <td class="text-align:right"><p>Deep networks designed for task-related decoding can also decode pathology well</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="reference internal" href="DeepLearningImprovements.html#dl-improvements"><span class="std std-ref">Further Deep Learning Improvements</span></a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a class="reference internal" href="DeepLearningImprovements.html#dl-improvements"><span class="std std-ref">Further Deep Learning Improvements</span></a></p></td>
 <td class="text-align:right"><p>Deep learning improvements from other domains partially carry over to EEG decoding</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="reference internal" href="FeatureComparison.html#feature-comparison"><span class="std std-ref">Back to Features - a Comparison</span></a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a class="reference internal" href="FeatureComparison.html#feature-comparison"><span class="std std-ref">Back to Features - a Comparison</span></a></p></td>
 <td class="text-align:right"><p>Well-optimized feature baselines remain competitive with deep learning</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="reference internal" href="FutureWork.html#future-work"><span class="std std-ref">Future Work</span></a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a class="reference internal" href="FutureWork.html#future-work"><span class="std std-ref">Future Work</span></a></p></td>
 <td class="text-align:right"><p>Newer DL architectures such as transformers or invertible networks may allow better performance and better interpretability</p></td>
 </tr>
 </tbody>
