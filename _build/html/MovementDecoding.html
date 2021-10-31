@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Decoding Movement-Related Brain Activity &#8212; Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "robintibor/eeg-deep-learning-phd-thesis");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Further Task-Related Decoding" href="TaskDecoding.html" />
+    <link rel="prev" title="Prior Work" href="PriorWork.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/Rainbow_brain,_Aug_2014.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Abstract.html">
+   Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="PriorWork.html">
+   Prior Work
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Decoding Movement-Related Brain Activity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TaskDecoding.html">
+   Further Task-Related Decoding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Pathology.html">
+   Decoding Pathology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DeepLearningImprovements.html">
+   Deep Learning Improvements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FeatureComparison.html">
+   Back to Features - a Comparison
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Invertible.html">
+   Invertible Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DeepInterpretability.html">
+   Further Interpretability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FutureWork.html">
+   Future Work
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/MovementDecoding.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/MovementDecoding.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background-and-our-development-strategy">
+   Background and our Development Strategy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#models-details">
+   Models Details
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fbcsp-network">
+     FBCSP Network
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shallow-network">
+     Shallow Network
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deep-network">
+     Deep Network
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fbcsp-baseline">
+     FBCSP Baseline
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cropped-training">
+   Cropped Training
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#design-choices">
+   Design Choices
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results">
+   Results
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     FBCSP Network
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shallow-and-deep-results">
+     Shallow And Deep Results
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#design-choices-etc">
+   Design Choices etc.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizations">
+   visualizations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#old-merge">
+   old - merge
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="decoding-movement-related-brain-activity">
+<span id="movement-related"></span><h1>Decoding Movement-Related Brain Activity<a class="headerlink" href="#decoding-movement-related-brain-activity" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="background-and-our-development-strategy">
+<h2>Background and our Development Strategy<a class="headerlink" href="#background-and-our-development-strategy" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-movement-related-tasks-are-the-most-researched-tasks-in-eeg-decoding admonition">
+<p class="admonition-title">Movement-related tasks are the most researched tasks in EEG decoding.</p>
+<ul class="simple">
+<li><p>Many studies have been done on it before the advent of deep learning</p></li>
+<li><p>Hence, good feature-based baselines exist</p></li>
+</ul>
+</div>
+<div class="admonition-most-well-performing-movement-intention-decoding-methods-have-strong-assumptions admonition">
+<p class="admonition-title">Most well-performing movement-intention-decoding methods have strong assumptions</p>
+<ul class="simple">
+<li><p>They use knowledge about brain signals</p></li>
+<li><p>Assume changes in amplitude of oscillations in specific frequency ranges predict the intention</p></li>
+<li><p>These changes also are assumed to follow specific spatial patterns</p></li>
+</ul>
+</div>
+<p>[Explain background with beautiful pictures]</p>
+<div class="admonition-we-followed-the-strategy-of-iteratively-relaxing-these-assumptions-in-our-deep-learning-development admonition">
+<p class="admonition-title">We followed the strategy of iteratively relaxing these assumptions in our deep learning development</p>
+<ul class="simple">
+<li><p>First, use a network that exactly embeds the strategies of FBCSP, simply train jointly</p></li>
+<li><p>Then a “shallow” network with large kernel sizes, mean pooling and squared activation to easily extract slow amplitude changes</p></li>
+<li><p>Then a “deep” network with smaller kernel sizes and activation functions as networks in computer vision for a more generic network</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="models-details">
+<h2>Models Details<a class="headerlink" href="#models-details" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fbcsp-network">
+<h3>FBCSP Network<a class="headerlink" href="#fbcsp-network" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="shallow-network">
+<h3>Shallow Network<a class="headerlink" href="#shallow-network" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="deep-network">
+<h3>Deep Network<a class="headerlink" href="#deep-network" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="fbcsp-baseline">
+<h3>FBCSP Baseline<a class="headerlink" href="#fbcsp-baseline" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="cropped-training">
+<h2>Cropped Training<a class="headerlink" href="#cropped-training" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="design-choices">
+<h2>Design Choices<a class="headerlink" href="#design-choices" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>FBCSP Network<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>check master thesis
+explain why not checked further
+(OR JUST DO IT?)</p>
+</div>
+<div class="section" id="shallow-and-deep-results">
+<h3>Shallow And Deep Results<a class="headerlink" href="#shallow-and-deep-results" title="Permalink to this headline">¶</a></h3>
+<p>as in paper</p>
+</div>
+</div>
+<div class="section" id="design-choices-etc">
+<h2>Design Choices etc.<a class="headerlink" href="#design-choices-etc" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="visualizations">
+<h2>visualizations<a class="headerlink" href="#visualizations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>check what is actually used?</p></li>
+<li><p>precise definition difficult</p></li>
+<li><p>also note extra results on other datasets and why and also mention further papers task related</p></li>
+<li><p>possibly comparison with current state</p></li>
+</ul>
+</div>
+<div class="section" id="old-merge">
+<h2>old - merge<a class="headerlink" href="#old-merge" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>unclear how good deep learning can be for task-related activity</p></li>
+<li><p>important benchmark as many decode on this</p></li>
+<li><p>our approach to evaluate</p></li>
+<li><p>our benchmark method (copy FBCSP text)</p></li>
+<li></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="PriorWork.html" title="previous page">Prior Work</a>
+    <a class='right-next' id="next-link" href="TaskDecoding.html" title="next page">Further Task-Related Decoding</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

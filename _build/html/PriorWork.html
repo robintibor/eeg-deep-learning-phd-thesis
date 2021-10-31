@@ -1,0 +1,799 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Prior Work &#8212; Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "robintibor/eeg-deep-learning-phd-thesis");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Decoding Movement-Related Brain Activity" href="MovementDecoding.html" />
+    <link rel="prev" title="Introduction" href="Introduction.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/Rainbow_brain,_Aug_2014.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Abstract.html">
+   Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Prior Work
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MovementDecoding.html">
+   Decoding Movement-Related Brain Activity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TaskDecoding.html">
+   Further Task-Related Decoding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Pathology.html">
+   Decoding Pathology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DeepLearningImprovements.html">
+   Deep Learning Improvements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FeatureComparison.html">
+   Back to Features - a Comparison
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Invertible.html">
+   Invertible Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DeepInterpretability.html">
+   Further Interpretability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FutureWork.html">
+   Future Work
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/PriorWork.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/PriorWork.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decoding-problems-and-baselines">
+   Decoding Problems and Baselines
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-domains-and-frequency-ranges">
+   Input Domains and Frequency Ranges
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#networn-architectures">
+   Networn Architectures
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hyperparameter-evaluations">
+   Hyperparameter Evaluations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizations">
+   Visualizations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="prior-work">
+<span id="id1"></span><h1>Prior Work<a class="headerlink" href="#prior-work" title="Permalink to this headline">¶</a></h1>
+<p>Maybe add a question that we address at end of each section?</p>
+<div class="section" id="decoding-problems-and-baselines">
+<h2>Decoding Problems and Baselines<a class="headerlink" href="#decoding-problems-and-baselines" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-deep-learning-on-eeg-studies-prior-to-2017-only-had-limited-comparisons-to-feature-based-baselines admonition">
+<p class="admonition-title">Deep Learning on EEG studies prior to 2017 only had limited comparisons to feature-based baselines</p>
+<ul class="simple">
+<li><p>From 19 identified studies, only 5 had an external baseline</p></li>
+<li><p>Decoding problems were very varied, movement-related decoding the most frequent problem</p></li>
+<li><p>Remained unclear how deep learning approaches compare to well-tuned feature-based approaches</p></li>
+</ul>
+</div>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Decoding problem</p></th>
+<th class="text-align:left head"><p>Number of studies</p></th>
+<th class="text-align:left head"><p>With external baseline</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Imagined or Executed Movement</p></td>
+<td class="text-align:left"><p>6</p></td>
+<td class="text-align:left"><p>2</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Oddball/P300</p></td>
+<td class="text-align:left"><p>5</p></td>
+<td class="text-align:left"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Epilepsy-related</p></td>
+<td class="text-align:left"><p>4</p></td>
+<td class="text-align:left"><p>2</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Music Rhythm</p></td>
+<td class="text-align:left"><p>2</p></td>
+<td class="text-align:left"><p>0</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Memory Performance/Cognitive Load</p></td>
+<td class="text-align:left"><p>2</p></td>
+<td class="text-align:left"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Driver Performance</p></td>
+<td class="text-align:left"><p>1</p></td>
+<td class="text-align:left"><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<div class="tip admonition">
+<p class="admonition-title">We therefore focused on movement-related decoding with strong, externally validated baselines</p>
+<ul class="simple">
+<li><p>Movement-related decoding among most well-researched EEG decoding problems</p></li>
+<li><p>Very strong feature-based baselines exist</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="input-domains-and-frequency-ranges">
+<h2>Input Domains and Frequency Ranges<a class="headerlink" href="#input-domains-and-frequency-ranges" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-prior-studies-using-time-domain-inputs-mostly-excluded-higher-frequencies admonition">
+<p class="admonition-title">Prior studies using time domain inputs mostly excluded higher frequencies</p>
+<ul class="simple">
+<li><p>More studies used time domain inputs than frequency domain inputs</p></li>
+<li><p>Only four studies used time domain inputs above 50 Hz</p></li>
+</ul>
+</div>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">import</span> <span class="nn">seaborn</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s1">&#39;colorblind&#39;</span><span class="p">)</span>
+<span class="n">seaborn</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;darkgrid&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;png&#39;
+<span class="c1">#matplotlib.rcParams[&#39;figure.figsize&#39;] = (12.0, 1.0)</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;Time,  8–30 Hz &#39;</span><span class="p">,</span> <span class="s1">&#39;Time, 0.1–40 Hz &#39;</span><span class="p">,</span> <span class="s1">&#39;Time, 0.05–15 Hz &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Time, 0.3–20 Hz &#39;</span><span class="p">,</span> <span class="s1">&#39;Frequency, 6–30 Hz &#39;</span><span class="p">,</span> <span class="s1">&#39; Frequency, 0–200 Hz &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Time,  1–50 Hz &#39;</span><span class="p">,</span> <span class="s1">&#39; Time,  0–100 HZ &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Frequency, mean amplitude for 0–7 Hz, 7–14 Hz, 14–49 Hz &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Time, 0.5–50 Hz &#39;</span><span class="p">,</span> <span class="s1">&#39;Time,  0–128 Hz &#39;</span><span class="p">,</span>
+       <span class="s1">&#39; Frequency, mean power for 4–7 Hz, 8–13 Hz, 13–30 Hz &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Time, 0.5–30Hz &#39;</span><span class="p">,</span> <span class="s1">&#39;Time, 0.1–50 Hz &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Frequency, 4–40 Hz, using FBCSP &#39;</span><span class="p">,</span>
+       <span class="s1">&#39; Time and frequency evaluated, 0-200 Hz &#39;</span><span class="p">,</span> <span class="s1">&#39;Frequency, 8–30 Hz &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;Time, 0.15–200 Hz &#39;</span><span class="p">,</span> <span class="s1">&#39; Time, 0.1-20 Hz &#39;</span><span class="p">])</span>
+<span class="n">domain_strings</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
+<span class="n">start_fs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[a-z ]+&#39;</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[–-–-]&#39;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]))[</span><span class="mi">0</span><span class="p">]))</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
+<span class="n">end_fs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[a-z HZFBCSP]+&#39;</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[–-–-]&#39;</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]))[</span><span class="mi">1</span><span class="p">]))</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">a</span><span class="p">]</span>
+<span class="n">domain_strings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">domain_strings</span><span class="p">)</span>
+<span class="n">start_fs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">start_fs</span><span class="p">)</span>
+<span class="n">end_fs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">end_fs</span><span class="p">)</span>
+
+<span class="n">freq_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;freq&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">domain_strings</span><span class="p">])</span>
+<span class="n">time_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;time&#39;</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">domain_strings</span><span class="p">])</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">98349384</span><span class="p">)</span>
+<span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;grey&#39;</span>
+<span class="n">i_sort</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="n">time_mask</span><span class="p">)[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">end_fs</span><span class="p">[</span><span class="n">time_mask</span><span class="p">])]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">e</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span>
+        <span class="n">domain_strings</span><span class="p">[</span><span class="n">i_sort</span><span class="p">],</span> <span class="n">start_fs</span><span class="p">[</span><span class="n">i_sort</span><span class="p">],</span> <span class="n">end_fs</span><span class="p">[</span><span class="n">i_sort</span><span class="p">])):</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="mf">0.6</span><span class="o">*</span><span class="n">i</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">i_sort</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.3</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">offset</span><span class="p">,</span><span class="n">offset</span><span class="p">]</span> <span class="p">,</span> <span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">i_sort</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="n">freq_mask</span><span class="p">)[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">end_fs</span><span class="p">[</span><span class="n">freq_mask</span><span class="p">])]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">e</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span>
+        <span class="n">domain_strings</span><span class="p">[</span><span class="n">i_sort</span><span class="p">],</span> <span class="n">start_fs</span><span class="p">[</span><span class="n">i_sort</span><span class="p">],</span> <span class="n">end_fs</span><span class="p">[</span><span class="n">i_sort</span><span class="p">])):</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="mf">0.6</span><span class="o">*</span><span class="n">i</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">i_sort</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.7</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">offset</span><span class="p">,</span><span class="n">offset</span><span class="p">]</span> <span class="p">,</span> <span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Input domain&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency [Hz]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="s2">&quot;Frequency&quot;</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Input domains and frequency ranges in prior work&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">200</span><span class="p">])</span>
+<span class="n">glue</span><span class="p">(</span><span class="s1">&#39;input_domain_fig&#39;</span><span class="p">,</span> <span class="n">fig</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+<span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="id26">
+<div class="cell_output docutils container">
+<img alt="_images/PriorWork_8_0.png" src="_images/PriorWork_8_0.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text"><em>Input domains and frequency ranges in prior work</em>. Grey lines represent frequency ranges of individual studies. Note that many studies only include frequencies below 50 Hz, some use very restricted ranges (alpha/beta band).</span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">We used also high-gamma frequencies &gt; 50 Hz on one dataset</p>
+<ul class="simple">
+<li><p>Used very suitable dataset for high-gamma nalysis</p></li>
+<li><p>Deep networks should be able to extract information from any frequency range</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="networn-architectures">
+<h2>Networn Architectures<a class="headerlink" href="#networn-architectures" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-most-investigated-network-architectures-were-fairly-shallow-below-4-layers admonition">
+<p class="admonition-title">Most investigated network architectures were fairly shallow (below 4 layers)</p>
+<ul class="simple">
+<li><p>Unlike architectures in computer vision, most EEG DL architectures had only 1-3 convolutional layers</p></li>
+<li><p>Unlike architectures in computer vision, many architectures used several dense layers</p></li>
+</ul>
+</div>
+<div class="cell tag_hide-input tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39; 2/2 &#39;</span><span class="p">,</span> <span class="s1">&#39; 3/1 &#39;</span><span class="p">,</span> <span class="s1">&#39; 2/2 &#39;</span><span class="p">,</span> <span class="s1">&#39; 3/2 &#39;</span><span class="p">,</span> <span class="s1">&#39; 1/1 &#39;</span><span class="p">,</span> <span class="s1">&#39; 1/2 &#39;</span><span class="p">,</span> <span class="s1">&#39; 1/3 &#39;</span><span class="p">,</span>
+       <span class="s1">&#39; 1–2/2 &#39;</span><span class="p">,</span> <span class="s1">&#39; 3/1 (+ LSTM as postprocessor) &#39;</span><span class="p">,</span> <span class="s1">&#39; 4/3 &#39;</span><span class="p">,</span> <span class="s1">&#39; 1-3/1-3 &#39;</span><span class="p">,</span>
+       <span class="s1">&#39; 3–7/2 (+ LSTM or other temporal post-processing (see design choices)) &#39;</span><span class="p">,</span>
+       <span class="s1">&#39; 2/1 &#39;</span><span class="p">,</span> <span class="s1">&#39; 3/3 (Spatio-temporal regularization) &#39;</span><span class="p">,</span>
+       <span class="s1">&#39; 2/2 (Final fully connected layer uses concatenated output by convolutionaland fully connected layers) &#39;</span><span class="p">,</span>
+       <span class="s1">&#39; 1-2/1 &#39;</span><span class="p">,</span>
+       <span class="s1">&#39;2/0 (Convolutional deep belief network, separately trained RBF-SVM classifier) &#39;</span><span class="p">,</span>
+       <span class="s1">&#39; 3/1 (Convolutional layers trained as convolutional stacked autoencoder with target prior) &#39;</span><span class="p">,</span>
+       <span class="s1">&#39; 2/2 &#39;</span><span class="p">])</span>
+
+<span class="n">conv_ls</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">ls</span><span class="p">]</span>
+<span class="n">low_conv_ls</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[–-]&#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">conv_ls</span><span class="p">]</span>
+<span class="n">high_conv_ls</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[–-]&#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">conv_ls</span><span class="p">]</span>
+<span class="n">dense_ls</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">ls</span><span class="p">]</span>
+<span class="n">low_dense_ls</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[–-]&#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">[:</span><span class="mi">8</span><span class="p">])[</span><span class="mi">0</span><span class="p">][:</span><span class="mi">2</span><span class="p">])</span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">dense_ls</span><span class="p">]</span>
+<span class="n">high_dense_ls</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[–-]&#39;</span><span class="p">,</span> <span class="n">c</span><span class="p">[:</span><span class="mi">8</span><span class="p">])[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="mi">2</span><span class="p">])</span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">dense_ls</span><span class="p">]</span>
+
+<span class="n">all_conv_ls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">low_c</span><span class="p">,</span> <span class="n">high_c</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">low_c</span><span class="p">,</span> <span class="n">high_c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">low_conv_ls</span><span class="p">,</span> <span class="n">high_conv_ls</span><span class="p">)])</span>
+<span class="n">all_dense_ls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">low_c</span><span class="p">,</span> <span class="n">high_c</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">low_c</span><span class="p">,</span> <span class="n">high_c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">low_dense_ls</span><span class="p">,</span> <span class="n">high_dense_ls</span><span class="p">)])</span>
+<span class="n">bincount_conv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">all_conv_ls</span><span class="p">)</span>
+<span class="n">bincount_dense</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">all_dense_ls</span><span class="p">)</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">98349384</span><span class="p">)</span>
+<span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;grey&#39;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">low_c</span><span class="p">,</span> <span class="n">high_c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">low_conv_ls</span><span class="p">,</span> <span class="n">high_conv_ls</span><span class="p">):</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.1</span>
+    <span class="n">tried_cs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">low_c</span><span class="p">,</span> <span class="n">high_c</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">offset</span><span class="p">,]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">tried_cs</span><span class="p">),</span> <span class="n">tried_cs</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="n">i_c</span><span class="p">,</span> <span class="n">n_c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bincount_conv</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">i_c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">n_c</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.535</span><span class="p">,</span> <span class="n">i_c</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_c</span><span class="p">)</span><span class="o">+</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">low_c</span><span class="p">,</span> <span class="n">high_c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">low_dense_ls</span><span class="p">,</span> <span class="n">high_dense_ls</span><span class="p">):</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.1</span>
+    <span class="n">tried_cs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">low_c</span><span class="p">,</span> <span class="n">high_c</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">offset</span><span class="p">,]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">tried_cs</span><span class="p">),</span> <span class="n">tried_cs</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="n">i_c</span><span class="p">,</span> <span class="n">n_c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bincount_dense</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="n">i_c</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">n_c</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.535</span><span class="p">,</span> <span class="n">i_c</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_c</span><span class="p">)</span><span class="o">+</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Type of layer&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Number of layers&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Convolutional&quot;</span><span class="p">,</span> <span class="s2">&quot;Dense&quot;</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">]);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Number of layers in prior works&#39; architectures&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">)</span>
+<span class="n">glue</span><span class="p">(</span><span class="s1">&#39;layernum_fig&#39;</span><span class="p">,</span> <span class="n">fig</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+<span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="id27">
+<div class="cell_output docutils container">
+<img alt="_images/PriorWork_13_0.png" src="_images/PriorWork_13_0.png" />
+</div>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text"><em>Number of layers in prior work</em>. Small grey markers represent individual architectures. Dashed lines indicate different number of layers investigated in a single study (e.g., a single study investigated 3-7 convolutional layers). Larger grey markers indicate sum of occurences of that layer number over all studies (e.g., 9 architectures used 2 convolutional layers). Note most architectures use only 1-3 convolutional layers.</span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">We will evaluate shallower and deeper architectures</p>
+<ul class="simple">
+<li><p>…</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="hyperparameter-evaluations">
+<h2>Hyperparameter Evaluations<a class="headerlink" href="#hyperparameter-evaluations" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-prior-work-varied-widely-in-which-design-choices-and-training-strategies-were-compared admonition">
+<p class="admonition-title">Prior work varied widely in which design choices and training strategies were compared</p>
+<ul class="simple">
+<li><p>Six studies did not compare any design choices or training strategies</p></li>
+<li><p>Most common was to try different kernel sizes</p></li>
+<li><p>Only one study evaluated a wider range of hyperparameters for both design choices and training strategies</p></li>
+</ul>
+</div>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Study</p></th>
+<th class="text-align:left head"><p>Design choices</p></th>
+<th class="text-align:left head"><p>Training strategies</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#lawhern-eegnet-2016" id="id2">[LSW+16]</a></p></td>
+<td class="text-align:left"><p>Kernel sizes</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#sun-remembered-2016" id="id3">[SQC+16]</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p>Different time windows</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#tabar-novel-2017" id="id4">[TH17]</a></p></td>
+<td class="text-align:left"><p>Addition of six-layer stacked autoencoder on ConvNet features <br> Kernel sizes</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#liang-predicting-2016" id="id5">[LLZW16]</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p>Different subdivisions of frequency range <br>Different lengths of time crops <br>Transfer learning with auxiliary non-epilepsy datasets</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#hajinoroozi-eeg-based-2016" id="id6">[HMJ+16]</a></p></td>
+<td class="text-align:left"><p>Replacement of convolutional layers by restricted Boltzmann machines with slightly varied network architecture}</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#antoniades-deep-2016" id="id7">[ASTS16]</a></p></td>
+<td class="text-align:left"><p>1 or 2 convolutional layers</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#page-wearable-2016" id="id8">[PSM16]</a></p></td>
+<td class="text-align:left"><p></p></td>
+<td class="text-align:left"><p>Cross-subject supervised training, within-subject finetuning of fully connected layers</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#bashivan-learning-2016" id="id9">[BRYC16]</a></p></td>
+<td class="text-align:left"><p>Number of convolutional layers <br>Temporal processing of ConvNet output by max pooling, temporal convolution, LSTM or temporal convolution + LSTM</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#stober-learning-2016" id="id10">[Sto16]</a></p></td>
+<td class="text-align:left"><p>Kernel sizes</p></td>
+<td class="text-align:left"><p>Pretraining first layer as convolutional autoencoder with different constraints</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#sakhavi-parallel-2015" id="id11">[SGY15]</a></p></td>
+<td class="text-align:left"><p>Combination ConvNet and MLP (trained on different features) vs. only ConvNet vs. only MLP</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#stober-using-2014" id="id12">[SCG14]</a></p></td>
+<td class="text-align:left"><p>Best values from automatic hyperparameter optimization: frequency cutoff, one vs two layers, kernel sizes, number of channels, pooling width</p></td>
+<td class="text-align:left"><p>Best values from automatic hyperparameter optimization: learning rate, learning rate decay, momentum, final momentum</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#wang-deep-2013" id="id13">[WLSJ13]</a></p></td>
+<td class="text-align:left"><p>Partially supervised CSA</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#cecotti-convolutional-2011" id="id14">[CG11]</a></p></td>
+<td class="text-align:left"><p>Electrode subset (fixed or automatically determined) <br>Using only one spatial filter <br>Different ensembling strategies</p></td>
+<td class="text-align:left"><p></p></td>
+</tr>
+</tbody>
+</table>
+<div class="tip admonition">
+<p class="admonition-title">We evaluated many design choices and two training strategies</p>
+<ul class="simple">
+<li><p>Find out if network design improvements in computer vision carry over to EEG decoding</p></li>
+<li><p>Test training strategies using whole trials or sliding windows within trials</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="visualizations">
+<h2>Visualizations<a class="headerlink" href="#visualizations" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-prior-work-mostly-analyzed-weights-and-activations admonition">
+<p class="admonition-title">Prior work mostly analyzed weights and activations</p>
+<ul class="simple">
+<li><p>Eight studies did not present any visualization</p></li>
+<li><p>Visualizations in input space (maximally activating inputs, input occlusions, saliency maps) were used in three studies</p></li>
+</ul>
+</div>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Study</p></th>
+<th class="text-align:left head"><p>Visualization type(s)</p></th>
+<th class="text-align:left head"><p>Visualization findings</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#sun-remembered-2016" id="id15">[SQC+16]</a></p></td>
+<td class="text-align:left"><p>Weights (spatial)</p></td>
+<td class="text-align:left"><p>Largest weights found over prefrontal and temporal cortex</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#manor-multimodal-2016" id="id16">[MMG16]</a></p></td>
+<td class="text-align:left"><p>Weights <br> Activations <br> Saliency maps by gradient</p></td>
+<td class="text-align:left"><p>Weights showed typical P300 distribution <br>Activations were high at plausible times (300-500ms) <br>Saliency maps showed plausible spatio-temporal plots</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#tabar-novel-2017" id="id17">[TH17]</a></p></td>
+<td class="text-align:left"><p>Weights (spatial + frequential)</p></td>
+<td class="text-align:left"><p>Some weights represented difference of values of two electrodes on different sides of head</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#liang-predicting-2016" id="id18">[LLZW16]</a></p></td>
+<td class="text-align:left"><p>Weights <br> Clustering of weights</p></td>
+<td class="text-align:left"><p>Clusters of weights showed typical frequency band subdivision (delta, theta, alpha, beta, gamma)</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#antoniades-deep-2016" id="id19">[ASTS16]</a></p></td>
+<td class="text-align:left"><p>Weights <br>Correlation weights and interictal epileptic discharges (IED) <br>Activations</p></td>
+<td class="text-align:left"><p>Weights increasingly correlated with IED waveforms with increasing number of training iterations <br>Second layer captured more complex and well-defined epileptic shapes than first layer <br>IEDs led to highly synchronized activations for neighbouring electrodes</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#thodoroff-learning-2016" id="id20">[TPL16]</a></p></td>
+<td class="text-align:left"><p>Input occlusion and effect on prediction accuracy</p></td>
+<td class="text-align:left"><p>Allowed to locate areas critical for seizure</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#george-single-trial-2016" id="id21">[SLK+16]</a></p></td>
+<td class="text-align:left"><p>Weights (spatial)</p></td>
+<td class="text-align:left"><p>Some filter weights had expected topographic distributions for P300 <br>Others filters had large weights on areas not traditionally associated with P300</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#bashivan-learning-2016" id="id22">[BRYC16]</a></p></td>
+<td class="text-align:left"><p>Inputs that maximally activate given filter <br>Activations of these inputs <br>”Deconvolution” for these inputs</p></td>
+<td class="text-align:left"><p>Different filters were sensitive to different frequency bands <br>Later layers had more spatially localized activations <br>Learned features had noticeable links to well-known electrophysiological markers of cognitive load <br></p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#stober-learning-2016" id="id23">[Sto16]</a></p></td>
+<td class="text-align:left"><p>Weights (spatial+3 timesteps, pretrained as autoencoder)</p></td>
+<td class="text-align:left"><p>Different constraints led to different weights, one type of constraints could enforce weights that are similar across subjects; other type of constraints led to weights that have similar spatial topographies under different architectural configurations and preprocessings</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#manor-convolutional-2015" id="id24">[MG15]</a></p></td>
+<td class="text-align:left"><p>Weights <br> Mean and single-trial activations</p></td>
+<td class="text-align:left"><p>Spatiotemporal regularization led to softer peaks in weights <br>Spatial weights showed typical P300 distribution <br>Activations mostly had peaks at typical times (300-400ms)</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#cecotti-convolutional-2011" id="id25">[CG11]</a></p></td>
+<td class="text-align:left"><p>Weights</p></td>
+<td class="text-align:left"><p>Spatial filters were similar for different architectures <br>Spatial filters were different (more focal, more diffuse) for different subjects</p></td>
+</tr>
+</tbody>
+</table>
+<div class="tip admonition">
+<p class="admonition-title">We developed visualizations investigating known frequency amplitude features</p>
+<ul class="simple">
+<li><p>Investigate in how far networks exploit features known to work well for movement-related decoding</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="bibtex-bibliography-PriorWork-0"><dl class="citation">
+<dt class="bibtex label" id="antoniades-deep-2016"><span class="brackets">ASTS16</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id19">2</a>)</span></dt>
+<dd><p>A. Antoniades, L. Spyrou, C. C. Took, and S. Sanei. Deep learning for epileptic intracranial EEG data. In <em>2016 IEEE 26th International Workshop on Machine Learning for Signal Processing (MLSP)</em>, 1–6. September 2016. <a class="reference external" href="https://doi.org/10.1109/MLSP.2016.7738824">doi:10.1109/MLSP.2016.7738824</a>.</p>
+</dd>
+<dt class="bibtex label" id="bashivan-learning-2016"><span class="brackets">BRYC16</span><span class="fn-backref">(<a href="#id9">1</a>,<a href="#id22">2</a>)</span></dt>
+<dd><p>Pouya Bashivan, Irina Rish, Mohammed Yeasin, and Noel Codella. Learning Representations from EEG with Deep Recurrent-Convolutional Neural Networks. In <em>arXiv:1511.06448 [cs]</em>. 2016. arXiv: 1511.06448. URL: <a class="reference external" href="http://arxiv.org/abs/1511.06448">http://arxiv.org/abs/1511.06448</a>.</p>
+</dd>
+<dt class="bibtex label" id="cecotti-convolutional-2011"><span class="brackets">CG11</span><span class="fn-backref">(<a href="#id14">1</a>,<a href="#id25">2</a>)</span></dt>
+<dd><p>Hubert Cecotti and Axel Graser. Convolutional Neural Networks for P300 Detection with Application to Brain-Computer Interfaces. <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em>, 33(3):433–445, March 2011. URL: <a class="reference external" href="http://dx.doi.org/10.1109/TPAMI.2010.125">http://dx.doi.org/10.1109/TPAMI.2010.125</a>, <a class="reference external" href="https://doi.org/10.1109/TPAMI.2010.125">doi:10.1109/TPAMI.2010.125</a>.</p>
+</dd>
+<dt class="bibtex label" id="hajinoroozi-eeg-based-2016"><span class="brackets"><a class="fn-backref" href="#id6">HMJ+16</a></span></dt>
+<dd><p>Mehdi Hajinoroozi, Zijing Mao, Tzyy-Ping Jung, Chin-Teng Lin, and Yufei Huang. EEG-based prediction of driver’s cognitive performance by deep convolutional neural network. <em>Signal Processing: Image Communication</em>, 47:549–555, September 2016. URL: <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0923596516300832">http://www.sciencedirect.com/science/article/pii/S0923596516300832</a>, <a class="reference external" href="https://doi.org/10.1016/j.image.2016.05.018">doi:10.1016/j.image.2016.05.018</a>.</p>
+</dd>
+<dt class="bibtex label" id="lawhern-eegnet-2016"><span class="brackets"><a class="fn-backref" href="#id2">LSW+16</a></span></dt>
+<dd><p>Vernon J. Lawhern, Amelia J. Solon, Nicholas R. Waytowich, Stephen M. Gordon, Chou P. Hung, and Brent J. Lance. EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces. <em>arXiv:1611.08024 [cs, q-bio, stat]</em>, November 2016. arXiv: 1611.08024. URL: <a class="reference external" href="http://arxiv.org/abs/1611.08024">http://arxiv.org/abs/1611.08024</a>.</p>
+</dd>
+<dt class="bibtex label" id="liang-predicting-2016"><span class="brackets">LLZW16</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id18">2</a>)</span></dt>
+<dd><p>J. Liang, R. Lu, C. Zhang, and F. Wang. Predicting Seizures from Electroencephalography Recordings: A Knowledge Transfer Strategy. In <em>2016 IEEE International Conference on Healthcare Informatics (ICHI)</em>, 184–191. October 2016. <a class="reference external" href="https://doi.org/10.1109/ICHI.2016.27">doi:10.1109/ICHI.2016.27</a>.</p>
+</dd>
+<dt class="bibtex label" id="manor-convolutional-2015"><span class="brackets"><a class="fn-backref" href="#id24">MG15</a></span></dt>
+<dd><p>Ran Manor and Amir B. Geva. Convolutional Neural Network for Multi-Category Rapid Serial Visual Presentation BCI. <em>Frontiers in Computational Neuroscience</em>, 9:146, 2015. <a class="reference external" href="https://doi.org/10.3389/fncom.2015.00146">doi:10.3389/fncom.2015.00146</a>.</p>
+</dd>
+<dt class="bibtex label" id="manor-multimodal-2016"><span class="brackets"><a class="fn-backref" href="#id16">MMG16</a></span></dt>
+<dd><p>Ran Manor, Liran Mishali, and Amir B. Geva. Multimodal Neural Network for Rapid Serial Visual Presentation Brain Computer Interface. <em>Frontiers in Computational Neuroscience</em>, December 2016. URL: <a class="reference external" href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC5168930/">http://www.ncbi.nlm.nih.gov/pmc/articles/PMC5168930/</a>, <a class="reference external" href="https://doi.org/10.3389/fncom.2016.00130">doi:10.3389/fncom.2016.00130</a>.</p>
+</dd>
+<dt class="bibtex label" id="page-wearable-2016"><span class="brackets"><a class="fn-backref" href="#id8">PSM16</a></span></dt>
+<dd><p>A. Page, C. Shea, and T. Mohsenin. Wearable seizure detection using convolutional neural networks with transfer learning. In <em>2016 IEEE International Symposium on Circuits and Systems (ISCAS)</em>, 1086–1089. May 2016. <a class="reference external" href="https://doi.org/10.1109/ISCAS.2016.7527433">doi:10.1109/ISCAS.2016.7527433</a>.</p>
+</dd>
+<dt class="bibtex label" id="ren-convolutional-2014"><span class="brackets">RW14</span></dt>
+<dd><p>Y. Ren and Y. Wu. Convolutional deep belief networks for feature extraction of EEG signal. In <em>2014 International Joint Conference on Neural Networks (IJCNN)</em>, 2850–2853. July 2014. <a class="reference external" href="https://doi.org/10.1109/IJCNN.2014.6889383">doi:10.1109/IJCNN.2014.6889383</a>.</p>
+</dd>
+<dt class="bibtex label" id="sakhavi-parallel-2015"><span class="brackets"><a class="fn-backref" href="#id11">SGY15</a></span></dt>
+<dd><p>S. Sakhavi, C. Guan, and S. Yan. Parallel convolutional-linear neural network for motor imagery classification. In <em>Signal Processing Conference (EUSIPCO), 2015 23rd European</em>, 2736–2740. August 2015. <a class="reference external" href="https://doi.org/10.1109/EUSIPCO.2015.7362882">doi:10.1109/EUSIPCO.2015.7362882</a>.</p>
+</dd>
+<dt class="bibtex label" id="george-single-trial-2016"><span class="brackets"><a class="fn-backref" href="#id21">SLK+16</a></span></dt>
+<dd><p>Jared Shamwell, Hyungtae Lee, Heesung Kwon, Amar R. Marathe, Vernon Lawhern, and William Nothwang. Single-trial EEG RSVP classification using convolutional neural networks. In Thomas George, Achyut K. Dutta, and M. Saif Islam, editors, <em>SPIE Defense+ Security</em>, volume 9836. International Society for Optics and Photonics, May 2016. URL: <a class="reference external" href="http://proceedings.spiedigitallibrary.org/proceeding.aspx?doi=10.1117/12.2224172">http://proceedings.spiedigitallibrary.org/proceeding.aspx?doi=10.1117/12.2224172</a>, <a class="reference external" href="https://doi.org/10.1117/12.2224172">doi:10.1117/12.2224172</a>.</p>
+</dd>
+<dt class="bibtex label" id="stober-learning-2016"><span class="brackets">Sto16</span><span class="fn-backref">(<a href="#id10">1</a>,<a href="#id23">2</a>)</span></dt>
+<dd><p>Sebastian Stober. Learning Discriminative Features from Electroencephalography Recordings by Encoding Similarity Constraints. In <em>Bernstein Conference 2016</em>. 2016. <a class="reference external" href="https://doi.org/10.12751/nncn.bc2016.0223">doi:10.12751/nncn.bc2016.0223</a>.</p>
+</dd>
+<dt class="bibtex label" id="stober-using-2014"><span class="brackets"><a class="fn-backref" href="#id12">SCG14</a></span></dt>
+<dd><p>Sebastian Stober, Daniel J. Cameron, and Jessica A. Grahn. Using Convolutional Neural Networks to Recognize Rhythm Stimuli from Electroencephalography Recordings. In <em>Proceedings of the 27th International Conference on Neural Information Processing Systems</em>, NIPS’14, 1449–1457. Cambridge, MA, USA, 2014. MIT Press. URL: <a class="reference external" href="http://dl.acm.org/citation.cfm?id=2968826.2968988">http://dl.acm.org/citation.cfm?id=2968826.2968988</a>.</p>
+</dd>
+<dt class="bibtex label" id="sun-remembered-2016"><span class="brackets">SQC+16</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id15">2</a>)</span></dt>
+<dd><p>Xuyun Sun, Cunle Qian, Zhongqin Chen, Zhaohui Wu, Benyan Luo, and Gang Pan. Remembered or Forgotten?—An EEG-Based Computational Prediction Approach. <em>PLOS ONE</em>, 11(12):e0167497, December 2016. URL: <a class="reference external" href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0167497">http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0167497</a>, <a class="reference external" href="https://doi.org/10.1371/journal.pone.0167497">doi:10.1371/journal.pone.0167497</a>.</p>
+</dd>
+<dt class="bibtex label" id="tabar-novel-2017"><span class="brackets">TH17</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id17">2</a>)</span></dt>
+<dd><p>Yousef Rezaei Tabar and Ugur Halici. A novel deep learning approach for classification of EEG motor imagery signals. <em>Journal of Neural Engineering</em>, 14(1):016003, 2017. URL: <a class="reference external" href="http://stacks.iop.org/1741-2552/14/i=1/a=016003">http://stacks.iop.org/1741-2552/14/i=1/a=016003</a>, <a class="reference external" href="https://doi.org/10.1088/1741-2560/14/1/016003">doi:10.1088/1741-2560/14/1/016003</a>.</p>
+</dd>
+<dt class="bibtex label" id="tang-single-trial-2017"><span class="brackets">TLS17</span></dt>
+<dd><p>Zhichuan Tang, Chao Li, and Shouqian Sun. Single-trial EEG classification of motor imagery using deep convolutional neural networks. <em>Optik - International Journal for Light and Electron Optics</em>, 130:11–18, February 2017. URL: <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0030402616312980">http://www.sciencedirect.com/science/article/pii/S0030402616312980</a>, <a class="reference external" href="https://doi.org/10.1016/j.ijleo.2016.10.117">doi:10.1016/j.ijleo.2016.10.117</a>.</p>
+</dd>
+<dt class="bibtex label" id="thodoroff-learning-2016"><span class="brackets"><a class="fn-backref" href="#id20">TPL16</a></span></dt>
+<dd><p>Pierre Thodoroff, Joelle Pineau, and Andrew Lim. Learning Robust Features using Deep Learning for Automatic Seizure Detection. In <em>JMLR Workshop and Conference Proceedings</em>, volume 56. 2016. URL: <a class="reference external" href="http://www.jmlr.org/proceedings/papers/v56/Thodoroff16.pdf">http://www.jmlr.org/proceedings/papers/v56/Thodoroff16.pdf</a>.</p>
+</dd>
+<dt class="bibtex label" id="wang-deep-2013"><span class="brackets"><a class="fn-backref" href="#id13">WLSJ13</a></span></dt>
+<dd><p>Zuoguan Wang, Siwei Lyu, Gerwin Schalk, and Qiang Ji. Deep Feature Learning Using Target Priors with Applications in ECoG Signal Decoding for BCI. In <em>Proceedings of the Twenty-Third International Joint Conference on Artificial Intelligence</em>, IJCAI ‘13, 1785–1791. Beijing, China, 2013. AAAI Press. URL: <a class="reference external" href="http://dl.acm.org/citation.cfm?id=2540128.2540384">http://dl.acm.org/citation.cfm?id=2540128.2540384</a>.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="Introduction.html" title="previous page">Introduction</a>
+    <a class='right-next' id="next-link" href="MovementDecoding.html" title="next page">Decoding Movement-Related Brain Activity</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By The Jupyter Book community<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
