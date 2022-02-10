@@ -1,12 +1,14 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prior Work &#8212; Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</title>
     
-  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -18,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -33,13 +31,12 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -78,10 +75,10 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -89,16 +86,16 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Decoding Movement-Related Brain Activity" href="MovementDecoding.html" />
+    <link rel="next" title="Neural Network Architectures for EEG-Decoding" href="DeepArchitectures.html" />
     <link rel="prev" title="Introduction" href="Introduction.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -107,27 +104,31 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  <img src="_static/Rainbow_brain,_Aug_2014.png" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/Rainbow_brain,_Aug_2014.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Abstract.html">
    Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)
   </a>
  </li>
 </ul>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Introduction.html">
    Introduction
@@ -136,6 +137,16 @@ commentsRunWhenDOMLoaded(addUtterances);
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Prior Work
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DeepArchitectures.html">
+   Neural Network Architectures for EEG-Decoding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CroppedTraining.html">
+   Cropped Training
   </a>
  </li>
  <li class="toctree-l1">
@@ -180,6 +191,7 @@ commentsRunWhenDOMLoaded(addUtterances);
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -195,21 +207,21 @@ commentsRunWhenDOMLoaded(addUtterances);
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -227,16 +239,16 @@ commentsRunWhenDOMLoaded(addUtterances);
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -255,16 +267,16 @@ commentsRunWhenDOMLoaded(addUtterances);
     </div>
 </div>
 
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#decoding-problems-and-baselines">
    Decoding Problems and Baselines
@@ -297,8 +309,8 @@ commentsRunWhenDOMLoaded(addUtterances);
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -306,13 +318,13 @@ commentsRunWhenDOMLoaded(addUtterances);
         
               <div>
                 
-  <div class="section" id="prior-work">
+  <div class="tex2jax_ignore mathjax_ignore section" id="prior-work">
 <span id="id1"></span><h1>Prior Work<a class="headerlink" href="#prior-work" title="Permalink to this headline">¶</a></h1>
 <p>Maybe add a question that we address at end of each section?</p>
 <div class="section" id="decoding-problems-and-baselines">
 <h2>Decoding Problems and Baselines<a class="headerlink" href="#decoding-problems-and-baselines" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-deep-learning-on-eeg-studies-prior-to-2017-only-had-limited-comparisons-to-feature-based-baselines admonition">
-<p class="admonition-title">Deep Learning on EEG studies prior to 2017 only had limited comparisons to feature-based baselines</p>
+<p class="admonition-title">Deep Learning on EEG studies prior to 2017 only had limited comparisons to feature-based baselines </p>
 <ul class="simple">
 <li><p>From 19 identified studies, only 5 had an external baseline</p></li>
 <li><p>Decoding problems were very varied, movement-related decoding the most frequent problem</p></li>
@@ -434,11 +446,11 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
-<div class="figure align-default" id="id26">
+<div class="figure align-default" id="id50">
 <div class="cell_output docutils container">
 <img alt="_images/PriorWork_8_0.png" src="_images/PriorWork_8_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text"><em>Input domains and frequency ranges in prior work</em>. Grey lines represent frequency ranges of individual studies. Note that many studies only include frequencies below 50 Hz, some use very restricted ranges (alpha/beta band).</span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text"><em>Input domains and frequency ranges in prior work</em>. Grey lines represent frequency ranges of individual studies. Note that many studies only include frequencies below 50 Hz, some use very restricted ranges (alpha/beta band).</span><a class="headerlink" href="#id50" title="Permalink to this image">¶</a></p>
 </div>
 <div class="tip admonition">
 <p class="admonition-title">We used also high-gamma frequencies &gt; 50 Hz on one dataset</p>
@@ -514,14 +526,14 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
-<div class="figure align-default" id="id27">
+<div class="figure align-default" id="id51">
 <div class="cell_output docutils container">
 <img alt="_images/PriorWork_13_0.png" src="_images/PriorWork_13_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text"><em>Number of layers in prior work</em>. Small grey markers represent individual architectures. Dashed lines indicate different number of layers investigated in a single study (e.g., a single study investigated 3-7 convolutional layers). Larger grey markers indicate sum of occurences of that layer number over all studies (e.g., 9 architectures used 2 convolutional layers). Note most architectures use only 1-3 convolutional layers.</span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text"><em>Number of layers in prior work</em>. Small grey markers represent individual architectures. Dashed lines indicate different number of layers investigated in a single study (e.g., a single study investigated 3-7 convolutional layers). Larger grey markers indicate sum of occurences of that layer number over all studies (e.g., 9 architectures used 2 convolutional layers). Note most architectures use only 1-3 convolutional layers.</span><a class="headerlink" href="#id51" title="Permalink to this image">¶</a></p>
 </div>
 <div class="tip admonition">
-<p class="admonition-title">We will evaluate shallower and deeper architectures</p>
+<p class="admonition-title">We will evaluate shallower and deeper architectures </p>
 <ul class="simple">
 <li><p>…</p></li>
 </ul>
@@ -545,55 +557,55 @@ commentsRunWhenDOMLoaded(addUtterances);
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#lawhern-eegnet-2016" id="id2">[LSW+16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id2"><span class="problematic" id="id3">:cite:`lawhern_eegnet:_2016`</span></a></p></td>
 <td class="text-align:left"><p>Kernel sizes</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#sun-remembered-2016" id="id3">[SQC+16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id4"><span class="problematic" id="id5">:cite:`sun_remembered_2016`</span></a></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p>Different time windows</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#tabar-novel-2017" id="id4">[TH17]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id6"><span class="problematic" id="id7">:cite:`tabar_novel_2017`</span></a></p></td>
 <td class="text-align:left"><p>Addition of six-layer stacked autoencoder on ConvNet features <br> Kernel sizes</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#liang-predicting-2016" id="id5">[LLZW16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id8"><span class="problematic" id="id9">:cite:`liang_predicting_2016`</span></a></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p>Different subdivisions of frequency range <br>Different lengths of time crops <br>Transfer learning with auxiliary non-epilepsy datasets</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#hajinoroozi-eeg-based-2016" id="id6">[HMJ+16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id10"><span class="problematic" id="id11">:cite:`hajinoroozi_eeg-based_2016`</span></a></p></td>
 <td class="text-align:left"><p>Replacement of convolutional layers by restricted Boltzmann machines with slightly varied network architecture}</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#antoniades-deep-2016" id="id7">[ASTS16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id12"><span class="problematic" id="id13">:cite:`antoniades_deep_2016`</span></a></p></td>
 <td class="text-align:left"><p>1 or 2 convolutional layers</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#page-wearable-2016" id="id8">[PSM16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id14"><span class="problematic" id="id15">:cite:`page_wearable_2016`</span></a></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p>Cross-subject supervised training, within-subject finetuning of fully connected layers</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#bashivan-learning-2016" id="id9">[BRYC16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id16"><span class="problematic" id="id17">:cite:`bashivan_learning_2016`</span></a></p></td>
 <td class="text-align:left"><p>Number of convolutional layers <br>Temporal processing of ConvNet output by max pooling, temporal convolution, LSTM or temporal convolution + LSTM</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#stober-learning-2016" id="id10">[Sto16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id18"><span class="problematic" id="id19">:cite:`stober_learning_2016`</span></a></p></td>
 <td class="text-align:left"><p>Kernel sizes</p></td>
 <td class="text-align:left"><p>Pretraining first layer as convolutional autoencoder with different constraints</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#sakhavi-parallel-2015" id="id11">[SGY15]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id20"><span class="problematic" id="id21">:cite:`sakhavi_parallel_2015`</span></a></p></td>
 <td class="text-align:left"><p>Combination ConvNet and MLP (trained on different features) vs. only ConvNet vs. only MLP</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#stober-using-2014" id="id12">[SCG14]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id22"><span class="problematic" id="id23">:cite:`stober_using_2014`</span></a></p></td>
 <td class="text-align:left"><p>Best values from automatic hyperparameter optimization: frequency cutoff, one vs two layers, kernel sizes, number of channels, pooling width</p></td>
 <td class="text-align:left"><p>Best values from automatic hyperparameter optimization: learning rate, learning rate decay, momentum, final momentum</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#wang-deep-2013" id="id13">[WLSJ13]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id24"><span class="problematic" id="id25">:cite:`wang_deep_2013`</span></a></p></td>
 <td class="text-align:left"><p>Partially supervised CSA</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#cecotti-convolutional-2011" id="id14">[CG11]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id26"><span class="problematic" id="id27">:cite:`cecotti_convolutional_2011`</span></a></p></td>
 <td class="text-align:left"><p>Electrode subset (fixed or automatically determined) <br>Using only one spatial filter <br>Different ensembling strategies</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
@@ -610,7 +622,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="section" id="visualizations">
 <h2>Visualizations<a class="headerlink" href="#visualizations" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-prior-work-mostly-analyzed-weights-and-activations admonition">
-<p class="admonition-title">Prior work mostly analyzed weights and activations</p>
+<p class="admonition-title">Prior work mostly analyzed weights and activations </p>
 <ul class="simple">
 <li><p>Eight studies did not present any visualization</p></li>
 <li><p>Visualizations in input space (maximally activating inputs, input occlusions, saliency maps) were used in three studies</p></li>
@@ -624,47 +636,47 @@ commentsRunWhenDOMLoaded(addUtterances);
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#sun-remembered-2016" id="id15">[SQC+16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id28"><span class="problematic" id="id29">:cite:`sun_remembered_2016`</span></a></p></td>
 <td class="text-align:left"><p>Weights (spatial)</p></td>
 <td class="text-align:left"><p>Largest weights found over prefrontal and temporal cortex</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#manor-multimodal-2016" id="id16">[MMG16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id30"><span class="problematic" id="id31">:cite:`manor_multimodal_2016`</span></a></p></td>
 <td class="text-align:left"><p>Weights <br> Activations <br> Saliency maps by gradient</p></td>
 <td class="text-align:left"><p>Weights showed typical P300 distribution <br>Activations were high at plausible times (300-500ms) <br>Saliency maps showed plausible spatio-temporal plots</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#tabar-novel-2017" id="id17">[TH17]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id32"><span class="problematic" id="id33">:cite:`tabar_novel_2017`</span></a></p></td>
 <td class="text-align:left"><p>Weights (spatial + frequential)</p></td>
 <td class="text-align:left"><p>Some weights represented difference of values of two electrodes on different sides of head</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#liang-predicting-2016" id="id18">[LLZW16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id34"><span class="problematic" id="id35">:cite:`liang_predicting_2016`</span></a></p></td>
 <td class="text-align:left"><p>Weights <br> Clustering of weights</p></td>
 <td class="text-align:left"><p>Clusters of weights showed typical frequency band subdivision (delta, theta, alpha, beta, gamma)</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#antoniades-deep-2016" id="id19">[ASTS16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id36"><span class="problematic" id="id37">:cite:`antoniades_deep_2016`</span></a></p></td>
 <td class="text-align:left"><p>Weights <br>Correlation weights and interictal epileptic discharges (IED) <br>Activations</p></td>
 <td class="text-align:left"><p>Weights increasingly correlated with IED waveforms with increasing number of training iterations <br>Second layer captured more complex and well-defined epileptic shapes than first layer <br>IEDs led to highly synchronized activations for neighbouring electrodes</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#thodoroff-learning-2016" id="id20">[TPL16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id38"><span class="problematic" id="id39">:cite:`thodoroff_learning_2016`</span></a></p></td>
 <td class="text-align:left"><p>Input occlusion and effect on prediction accuracy</p></td>
 <td class="text-align:left"><p>Allowed to locate areas critical for seizure</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#george-single-trial-2016" id="id21">[SLK+16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id40"><span class="problematic" id="id41">:cite:`george_single-trial_2016`</span></a></p></td>
 <td class="text-align:left"><p>Weights (spatial)</p></td>
 <td class="text-align:left"><p>Some filter weights had expected topographic distributions for P300 <br>Others filters had large weights on areas not traditionally associated with P300</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#bashivan-learning-2016" id="id22">[BRYC16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id42"><span class="problematic" id="id43">:cite:`bashivan_learning_2016`</span></a></p></td>
 <td class="text-align:left"><p>Inputs that maximally activate given filter <br>Activations of these inputs <br>”Deconvolution” for these inputs</p></td>
 <td class="text-align:left"><p>Different filters were sensitive to different frequency bands <br>Later layers had more spatially localized activations <br>Learned features had noticeable links to well-known electrophysiological markers of cognitive load <br></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#stober-learning-2016" id="id23">[Sto16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id44"><span class="problematic" id="id45">:cite:`stober_learning_2016`</span></a></p></td>
 <td class="text-align:left"><p>Weights (spatial+3 timesteps, pretrained as autoencoder)</p></td>
 <td class="text-align:left"><p>Different constraints led to different weights, one type of constraints could enforce weights that are similar across subjects; other type of constraints led to weights that have similar spatial topographies under different architectural configurations and preprocessings</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="#manor-convolutional-2015" id="id24">[MG15]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id46"><span class="problematic" id="id47">:cite:`manor_convolutional_2015`</span></a></p></td>
 <td class="text-align:left"><p>Weights <br> Mean and single-trial activations</p></td>
 <td class="text-align:left"><p>Spatiotemporal regularization led to softer peaks in weights <br>Spatial weights showed typical P300 distribution <br>Activations mostly had peaks at typical times (300-400ms)</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="#cecotti-convolutional-2011" id="id25">[CG11]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id48"><span class="problematic" id="id49">:cite:`cecotti_convolutional_2011`</span></a></p></td>
 <td class="text-align:left"><p>Weights</p></td>
 <td class="text-align:left"><p>Spatial filters were similar for different architectures <br>Spatial filters were different (more focal, more diffuse) for different subjects</p></td>
 </tr>
@@ -679,66 +691,6 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p id="bibtex-bibliography-PriorWork-0"><dl class="citation">
-<dt class="bibtex label" id="antoniades-deep-2016"><span class="brackets">ASTS16</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id19">2</a>)</span></dt>
-<dd><p>A. Antoniades, L. Spyrou, C. C. Took, and S. Sanei. Deep learning for epileptic intracranial EEG data. In <em>2016 IEEE 26th International Workshop on Machine Learning for Signal Processing (MLSP)</em>, 1–6. September 2016. <a class="reference external" href="https://doi.org/10.1109/MLSP.2016.7738824">doi:10.1109/MLSP.2016.7738824</a>.</p>
-</dd>
-<dt class="bibtex label" id="bashivan-learning-2016"><span class="brackets">BRYC16</span><span class="fn-backref">(<a href="#id9">1</a>,<a href="#id22">2</a>)</span></dt>
-<dd><p>Pouya Bashivan, Irina Rish, Mohammed Yeasin, and Noel Codella. Learning Representations from EEG with Deep Recurrent-Convolutional Neural Networks. In <em>arXiv:1511.06448 [cs]</em>. 2016. arXiv: 1511.06448. URL: <a class="reference external" href="http://arxiv.org/abs/1511.06448">http://arxiv.org/abs/1511.06448</a>.</p>
-</dd>
-<dt class="bibtex label" id="cecotti-convolutional-2011"><span class="brackets">CG11</span><span class="fn-backref">(<a href="#id14">1</a>,<a href="#id25">2</a>)</span></dt>
-<dd><p>Hubert Cecotti and Axel Graser. Convolutional Neural Networks for P300 Detection with Application to Brain-Computer Interfaces. <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em>, 33(3):433–445, March 2011. URL: <a class="reference external" href="http://dx.doi.org/10.1109/TPAMI.2010.125">http://dx.doi.org/10.1109/TPAMI.2010.125</a>, <a class="reference external" href="https://doi.org/10.1109/TPAMI.2010.125">doi:10.1109/TPAMI.2010.125</a>.</p>
-</dd>
-<dt class="bibtex label" id="hajinoroozi-eeg-based-2016"><span class="brackets"><a class="fn-backref" href="#id6">HMJ+16</a></span></dt>
-<dd><p>Mehdi Hajinoroozi, Zijing Mao, Tzyy-Ping Jung, Chin-Teng Lin, and Yufei Huang. EEG-based prediction of driver’s cognitive performance by deep convolutional neural network. <em>Signal Processing: Image Communication</em>, 47:549–555, September 2016. URL: <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0923596516300832">http://www.sciencedirect.com/science/article/pii/S0923596516300832</a>, <a class="reference external" href="https://doi.org/10.1016/j.image.2016.05.018">doi:10.1016/j.image.2016.05.018</a>.</p>
-</dd>
-<dt class="bibtex label" id="lawhern-eegnet-2016"><span class="brackets"><a class="fn-backref" href="#id2">LSW+16</a></span></dt>
-<dd><p>Vernon J. Lawhern, Amelia J. Solon, Nicholas R. Waytowich, Stephen M. Gordon, Chou P. Hung, and Brent J. Lance. EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces. <em>arXiv:1611.08024 [cs, q-bio, stat]</em>, November 2016. arXiv: 1611.08024. URL: <a class="reference external" href="http://arxiv.org/abs/1611.08024">http://arxiv.org/abs/1611.08024</a>.</p>
-</dd>
-<dt class="bibtex label" id="liang-predicting-2016"><span class="brackets">LLZW16</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id18">2</a>)</span></dt>
-<dd><p>J. Liang, R. Lu, C. Zhang, and F. Wang. Predicting Seizures from Electroencephalography Recordings: A Knowledge Transfer Strategy. In <em>2016 IEEE International Conference on Healthcare Informatics (ICHI)</em>, 184–191. October 2016. <a class="reference external" href="https://doi.org/10.1109/ICHI.2016.27">doi:10.1109/ICHI.2016.27</a>.</p>
-</dd>
-<dt class="bibtex label" id="manor-convolutional-2015"><span class="brackets"><a class="fn-backref" href="#id24">MG15</a></span></dt>
-<dd><p>Ran Manor and Amir B. Geva. Convolutional Neural Network for Multi-Category Rapid Serial Visual Presentation BCI. <em>Frontiers in Computational Neuroscience</em>, 9:146, 2015. <a class="reference external" href="https://doi.org/10.3389/fncom.2015.00146">doi:10.3389/fncom.2015.00146</a>.</p>
-</dd>
-<dt class="bibtex label" id="manor-multimodal-2016"><span class="brackets"><a class="fn-backref" href="#id16">MMG16</a></span></dt>
-<dd><p>Ran Manor, Liran Mishali, and Amir B. Geva. Multimodal Neural Network for Rapid Serial Visual Presentation Brain Computer Interface. <em>Frontiers in Computational Neuroscience</em>, December 2016. URL: <a class="reference external" href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC5168930/">http://www.ncbi.nlm.nih.gov/pmc/articles/PMC5168930/</a>, <a class="reference external" href="https://doi.org/10.3389/fncom.2016.00130">doi:10.3389/fncom.2016.00130</a>.</p>
-</dd>
-<dt class="bibtex label" id="page-wearable-2016"><span class="brackets"><a class="fn-backref" href="#id8">PSM16</a></span></dt>
-<dd><p>A. Page, C. Shea, and T. Mohsenin. Wearable seizure detection using convolutional neural networks with transfer learning. In <em>2016 IEEE International Symposium on Circuits and Systems (ISCAS)</em>, 1086–1089. May 2016. <a class="reference external" href="https://doi.org/10.1109/ISCAS.2016.7527433">doi:10.1109/ISCAS.2016.7527433</a>.</p>
-</dd>
-<dt class="bibtex label" id="ren-convolutional-2014"><span class="brackets">RW14</span></dt>
-<dd><p>Y. Ren and Y. Wu. Convolutional deep belief networks for feature extraction of EEG signal. In <em>2014 International Joint Conference on Neural Networks (IJCNN)</em>, 2850–2853. July 2014. <a class="reference external" href="https://doi.org/10.1109/IJCNN.2014.6889383">doi:10.1109/IJCNN.2014.6889383</a>.</p>
-</dd>
-<dt class="bibtex label" id="sakhavi-parallel-2015"><span class="brackets"><a class="fn-backref" href="#id11">SGY15</a></span></dt>
-<dd><p>S. Sakhavi, C. Guan, and S. Yan. Parallel convolutional-linear neural network for motor imagery classification. In <em>Signal Processing Conference (EUSIPCO), 2015 23rd European</em>, 2736–2740. August 2015. <a class="reference external" href="https://doi.org/10.1109/EUSIPCO.2015.7362882">doi:10.1109/EUSIPCO.2015.7362882</a>.</p>
-</dd>
-<dt class="bibtex label" id="george-single-trial-2016"><span class="brackets"><a class="fn-backref" href="#id21">SLK+16</a></span></dt>
-<dd><p>Jared Shamwell, Hyungtae Lee, Heesung Kwon, Amar R. Marathe, Vernon Lawhern, and William Nothwang. Single-trial EEG RSVP classification using convolutional neural networks. In Thomas George, Achyut K. Dutta, and M. Saif Islam, editors, <em>SPIE Defense+ Security</em>, volume 9836. International Society for Optics and Photonics, May 2016. URL: <a class="reference external" href="http://proceedings.spiedigitallibrary.org/proceeding.aspx?doi=10.1117/12.2224172">http://proceedings.spiedigitallibrary.org/proceeding.aspx?doi=10.1117/12.2224172</a>, <a class="reference external" href="https://doi.org/10.1117/12.2224172">doi:10.1117/12.2224172</a>.</p>
-</dd>
-<dt class="bibtex label" id="stober-learning-2016"><span class="brackets">Sto16</span><span class="fn-backref">(<a href="#id10">1</a>,<a href="#id23">2</a>)</span></dt>
-<dd><p>Sebastian Stober. Learning Discriminative Features from Electroencephalography Recordings by Encoding Similarity Constraints. In <em>Bernstein Conference 2016</em>. 2016. <a class="reference external" href="https://doi.org/10.12751/nncn.bc2016.0223">doi:10.12751/nncn.bc2016.0223</a>.</p>
-</dd>
-<dt class="bibtex label" id="stober-using-2014"><span class="brackets"><a class="fn-backref" href="#id12">SCG14</a></span></dt>
-<dd><p>Sebastian Stober, Daniel J. Cameron, and Jessica A. Grahn. Using Convolutional Neural Networks to Recognize Rhythm Stimuli from Electroencephalography Recordings. In <em>Proceedings of the 27th International Conference on Neural Information Processing Systems</em>, NIPS’14, 1449–1457. Cambridge, MA, USA, 2014. MIT Press. URL: <a class="reference external" href="http://dl.acm.org/citation.cfm?id=2968826.2968988">http://dl.acm.org/citation.cfm?id=2968826.2968988</a>.</p>
-</dd>
-<dt class="bibtex label" id="sun-remembered-2016"><span class="brackets">SQC+16</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id15">2</a>)</span></dt>
-<dd><p>Xuyun Sun, Cunle Qian, Zhongqin Chen, Zhaohui Wu, Benyan Luo, and Gang Pan. Remembered or Forgotten?—An EEG-Based Computational Prediction Approach. <em>PLOS ONE</em>, 11(12):e0167497, December 2016. URL: <a class="reference external" href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0167497">http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0167497</a>, <a class="reference external" href="https://doi.org/10.1371/journal.pone.0167497">doi:10.1371/journal.pone.0167497</a>.</p>
-</dd>
-<dt class="bibtex label" id="tabar-novel-2017"><span class="brackets">TH17</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id17">2</a>)</span></dt>
-<dd><p>Yousef Rezaei Tabar and Ugur Halici. A novel deep learning approach for classification of EEG motor imagery signals. <em>Journal of Neural Engineering</em>, 14(1):016003, 2017. URL: <a class="reference external" href="http://stacks.iop.org/1741-2552/14/i=1/a=016003">http://stacks.iop.org/1741-2552/14/i=1/a=016003</a>, <a class="reference external" href="https://doi.org/10.1088/1741-2560/14/1/016003">doi:10.1088/1741-2560/14/1/016003</a>.</p>
-</dd>
-<dt class="bibtex label" id="tang-single-trial-2017"><span class="brackets">TLS17</span></dt>
-<dd><p>Zhichuan Tang, Chao Li, and Shouqian Sun. Single-trial EEG classification of motor imagery using deep convolutional neural networks. <em>Optik - International Journal for Light and Electron Optics</em>, 130:11–18, February 2017. URL: <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0030402616312980">http://www.sciencedirect.com/science/article/pii/S0030402616312980</a>, <a class="reference external" href="https://doi.org/10.1016/j.ijleo.2016.10.117">doi:10.1016/j.ijleo.2016.10.117</a>.</p>
-</dd>
-<dt class="bibtex label" id="thodoroff-learning-2016"><span class="brackets"><a class="fn-backref" href="#id20">TPL16</a></span></dt>
-<dd><p>Pierre Thodoroff, Joelle Pineau, and Andrew Lim. Learning Robust Features using Deep Learning for Automatic Seizure Detection. In <em>JMLR Workshop and Conference Proceedings</em>, volume 56. 2016. URL: <a class="reference external" href="http://www.jmlr.org/proceedings/papers/v56/Thodoroff16.pdf">http://www.jmlr.org/proceedings/papers/v56/Thodoroff16.pdf</a>.</p>
-</dd>
-<dt class="bibtex label" id="wang-deep-2013"><span class="brackets"><a class="fn-backref" href="#id13">WLSJ13</a></span></dt>
-<dd><p>Zuoguan Wang, Siwei Lyu, Gerwin Schalk, and Qiang Ji. Deep Feature Learning Using Target Priors with Applications in ECoG Signal Decoding for BCI. In <em>Proceedings of the Twenty-Third International Joint Conference on Artificial Intelligence</em>, IJCAI ‘13, 1785–1791. Beijing, China, 2013. AAAI Press. URL: <a class="reference external" href="http://dl.acm.org/citation.cfm?id=2540128.2540384">http://dl.acm.org/citation.cfm?id=2540128.2540384</a>.</p>
-</dd>
-</dl>
-</p>
 </div>
 </div>
 
@@ -764,23 +716,43 @@ commentsRunWhenDOMLoaded(addUtterances);
 
               </div>
               
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="Introduction.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Introduction</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="DeepArchitectures.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Neural Network Architectures for EEG-Decoding</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="Introduction.html" title="previous page">Introduction</a>
-    <a class='right-next' id="next-link" href="MovementDecoding.html" title="next page">Decoding Movement-Related Brain Activity</a>
-
-    </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
           By The Jupyter Book community<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -789,11 +761,9 @@ commentsRunWhenDOMLoaded(addUtterances);
 
       </div>
     </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    
+  
   </body>
 </html>

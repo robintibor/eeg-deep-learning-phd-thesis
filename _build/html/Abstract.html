@@ -1,12 +1,14 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG) &#8212; Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</title>
     
-  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -18,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -33,13 +31,12 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -78,10 +75,10 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -90,14 +87,14 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Introduction" href="Introduction.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -106,27 +103,31 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  <img src="_static/Rainbow_brain,_Aug_2014.png" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/Rainbow_brain,_Aug_2014.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
- <li class="toctree-l1 current active">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1 current">
   <a class="reference internal" href="#">
    Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Introduction.html">
    Introduction
@@ -135,6 +136,21 @@ commentsRunWhenDOMLoaded(addUtterances);
  <li class="toctree-l1">
   <a class="reference internal" href="PriorWork.html">
    Prior Work
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DeepArchitectures.html">
+   Neural Network Architectures for EEG-Decoding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CroppedTraining.html">
+   Cropped Training
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="PerturbationVisualization.html">
+   Perturbation Visualization
   </a>
  </li>
  <li class="toctree-l1">
@@ -158,27 +174,13 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="FeatureComparison.html">
-   Back to Features - a Comparison
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Invertible.html">
-   Invertible Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DeepInterpretability.html">
-   Further Interpretability
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="FutureWork.html">
    Future Work
   </a>
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -194,21 +196,21 @@ commentsRunWhenDOMLoaded(addUtterances);
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -226,16 +228,16 @@ commentsRunWhenDOMLoaded(addUtterances);
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -254,11 +256,12 @@ commentsRunWhenDOMLoaded(addUtterances);
     </div>
 </div>
 
-    </div>
+        </div>
 
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -266,20 +269,48 @@ commentsRunWhenDOMLoaded(addUtterances);
         
               <div>
                 
-  <div class="section" id="deep-learning-for-brain-signal-decoding-from-electroencephalography-eeg">
+  <div class="tex2jax_ignore mathjax_ignore section" id="deep-learning-for-brain-signal-decoding-from-electroencephalography-eeg">
 <h1>Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)<a class="headerlink" href="#deep-learning-for-brain-signal-decoding-from-electroencephalography-eeg" title="Permalink to this headline">¶</a></h1>
 <p>What a marvelous topic to learn about!</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="Introduction.html#introduction"><span class="std std-ref">Introduction</span></a></p></li>
-<li><p><a class="reference internal" href="PriorWork.html#prior-work"><span class="std std-ref">Prior Work</span></a></p></li>
-<li><p><a class="reference internal" href="MovementDecoding.html#movement-related"><span class="std std-ref">Movement-Related Decoding</span></a></p></li>
-<li><p><a class="reference internal" href="Pathology.html#pathology"><span class="std std-ref">Decoding Pathology</span></a></p></li>
-<li><p><a class="reference internal" href="DeepLearningImprovements.html#dl-improvements"><span class="std std-ref">Further Deep Learning Improvements</span></a></p></li>
-<li><p><a class="reference internal" href="FeatureComparison.html#feature-comparison"><span class="std std-ref">Back to Features - a Comparison</span></a></p></li>
-<li><p><a class="reference internal" href="Invertible.html#invertible-networks"><span class="std std-ref">Invertible Networks</span></a></p></li>
-<li><p><a class="reference internal" href="DeepInterpretability.html#deep-interpretability"><span class="std std-ref">Further Interpretability</span></a></p></li>
-<li><p><a class="reference internal" href="FutureWork.html#future-work"><span class="std std-ref">Future Work</span></a></p></li>
-</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Chapter</p></th>
+<th class="text-align:right head"><p>Summary</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p><a class="reference internal" href="Introduction.html#introduction"><span class="std std-ref">Introduction</span></a></p></td>
+<td class="text-align:right"><p>Deep learning on EEG is a very promising approach for brain-signal-based medical applications like automatic diagnosis</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="reference internal" href="PriorWork.html#prior-work"><span class="std std-ref">Prior Work</span></a></p></td>
+<td class="text-align:right"><p>Prior to 2017, research did not clearly show how competitive deep learning is compared with well-optimized feature baselines</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="reference internal" href="DeepArchitectures.html#network-architectures"><span class="std std-ref">Neural Network Architectures for EEG-Decoding</span></a></p></td>
+<td class="text-align:right"><p>Starting from a network mimicking an established EEG decoding pipeline, progressively more generic neural network architectures for EEG decoding</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="reference internal" href="DeepArchitectures.html#network-architectures"><span class="std std-ref">Cropped Training</span></a></p></td>
+<td class="text-align:right"><p>A training strategy to use many sliding windows in a computationally efficient manner</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="reference internal" href="PerturbationVisualization.html#perturbation-visualization"><span class="std std-ref">Perturbation Visualization</span></a></p></td>
+<td class="text-align:right"><p>A visualization of how frequency features affect the trained network and its limitations</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="reference internal" href="MovementDecoding.html#movement-related"><span class="std std-ref">Movement-Related Decoding</span></a></p></td>
+<td class="text-align:right"><p>Deep learning can be at least as good as feature-based baselines for movement-related decoding; deep networks also learn to extract known hand-engineered features</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="reference internal" href="TaskDecoding.html#task-related"><span class="std std-ref">Task-Related Decoding</span></a></p></td>
+<td class="text-align:right"><p>Deep learning also performs well at other task-related decoding</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="reference internal" href="Pathology.html#pathology"><span class="std std-ref">Decoding Pathology</span></a></p></td>
+<td class="text-align:right"><p>Deep networks designed for task-related decoding can also decode pathology well</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><a class="reference internal" href="DeepLearningImprovements.html#dl-improvements"><span class="std std-ref">Further Deep Learning Improvements</span></a></p></td>
+<td class="text-align:right"><p>Deep learning improvements from other domains partially carry over to EEG decoding    ?</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><a class="reference internal" href="FutureWork.html#future-work"><span class="std std-ref">Future Work</span></a></p></td>
+<td class="text-align:right"><p>Newer DL architectures such as transformers or invertible networks may allow better performance and better interpretability</p></td>
+</tr>
+</tbody>
+</table>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -306,22 +337,34 @@ commentsRunWhenDOMLoaded(addUtterances);
 
               </div>
               
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+     <div id="next">
+        <a class="right-next" href="Introduction.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Introduction</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='right-next' id="next-link" href="Introduction.html" title="next page">Introduction</a>
-
-    </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
           By The Jupyter Book community<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -330,11 +373,9 @@ commentsRunWhenDOMLoaded(addUtterances);
 
       </div>
     </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    
+  
   </body>
 </html>

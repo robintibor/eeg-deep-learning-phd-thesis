@@ -1,12 +1,14 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Decoding Movement-Related Brain Activity &#8212; Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</title>
     
-  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -18,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -33,13 +31,12 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -78,10 +75,12 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -90,15 +89,15 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Further Task-Related Decoding" href="TaskDecoding.html" />
-    <link rel="prev" title="Prior Work" href="PriorWork.html" />
-
+    <link rel="prev" title="Perturbation Visualization" href="PerturbationVisualization.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -107,27 +106,31 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  <img src="_static/Rainbow_brain,_Aug_2014.png" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/Rainbow_brain,_Aug_2014.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Abstract.html">
    Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)
   </a>
  </li>
 </ul>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Introduction.html">
    Introduction
@@ -136,6 +139,21 @@ commentsRunWhenDOMLoaded(addUtterances);
  <li class="toctree-l1">
   <a class="reference internal" href="PriorWork.html">
    Prior Work
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DeepArchitectures.html">
+   Neural Network Architectures for EEG-Decoding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CroppedTraining.html">
+   Cropped Training
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="PerturbationVisualization.html">
+   Perturbation Visualization
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -159,27 +177,13 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="FeatureComparison.html">
-   Back to Features - a Comparison
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Invertible.html">
-   Invertible Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DeepInterpretability.html">
-   Further Interpretability
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="FutureWork.html">
    Future Work
   </a>
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -195,21 +199,21 @@ commentsRunWhenDOMLoaded(addUtterances);
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -227,16 +231,16 @@ commentsRunWhenDOMLoaded(addUtterances);
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -255,57 +259,64 @@ commentsRunWhenDOMLoaded(addUtterances);
     </div>
 </div>
 
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#background-and-our-development-strategy">
-   Background and our Development Strategy
+  <a class="reference internal nav-link" href="#datasets">
+   Datasets
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#models-details">
-   Models Details
+  <a class="reference internal nav-link" href="#high-gamma-dataset">
+   High-Gamma Dataset
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fbcsp-network">
-     FBCSP Network
+    <a class="reference internal nav-link" href="#bci-competition-iv-2a">
+     BCI Competition IV 2a
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#shallow-network">
-     Shallow Network
+    <a class="reference internal nav-link" href="#bci-competition-iv-2b">
+     BCI Competition IV 2b
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#deep-network">
-     Deep Network
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#fbcsp-baseline">
-     FBCSP Baseline
+    <a class="reference internal nav-link" href="#mixed-imagery-dataset">
+     Mixed Imagery Dataset
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cropped-training">
-   Cropped Training
+  <a class="reference internal nav-link" href="#preprocessing">
+   Preprocessing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-details">
+   Training details
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#design-choices">
    Design Choices
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tied-loss-function">
+     Tied Loss Function
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#results">
@@ -313,13 +324,18 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     FBCSP Network
+    <a class="reference internal nav-link" href="#validation-of-fbcsp-pipeline">
+     Validation of FBCSP Pipeline
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#shallow-and-deep-results">
-     Shallow And Deep Results
+    <a class="reference internal nav-link" href="#filterbank-network">
+     Filterbank Network
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convnets-reached-fbcsp-accuracies">
+     ConvNets reached FBCSP accuracies
     </a>
    </li>
   </ul>
@@ -330,8 +346,8 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizations">
-   visualizations
+  <a class="reference internal nav-link" href="#amplitude-perturbation-visualizations">
+   Amplitude Perturbation Visualizations
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -341,8 +357,8 @@ commentsRunWhenDOMLoaded(addUtterances);
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -350,80 +366,293 @@ commentsRunWhenDOMLoaded(addUtterances);
         
               <div>
                 
-  <div class="section" id="decoding-movement-related-brain-activity">
+  <div class="tex2jax_ignore mathjax_ignore section" id="decoding-movement-related-brain-activity">
 <span id="movement-related"></span><h1>Decoding Movement-Related Brain Activity<a class="headerlink" href="#decoding-movement-related-brain-activity" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="background-and-our-development-strategy">
-<h2>Background and our Development Strategy<a class="headerlink" href="#background-and-our-development-strategy" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-movement-related-tasks-are-the-most-researched-tasks-in-eeg-decoding admonition">
-<p class="admonition-title">Movement-related tasks are the most researched tasks in EEG decoding.</p>
-<ul class="simple">
-<li><p>Many studies have been done on it before the advent of deep learning</p></li>
-<li><p>Hence, good feature-based baselines exist</p></li>
-</ul>
+<p>Task-related and especially movement-related decoding problems are among the most researched paradigms in EEG decoding and were hence our problem choice for the first evaluation of deep learning on EEG. A typical setup is that subjects receive a cue for a specific body part (e.g. right hand, feet, tongue, etc.) and either move this body part (motor execution) or just imagine to move this part (motor imagery). The EEG signals acquired during the imagined or executed movements then often contain patterns specific to the body part that was moved or thought about. These patterns can then be decoded using machine learning.</p>
+<div class="section" id="datasets">
+<h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="admonition-most-well-performing-movement-intention-decoding-methods-have-strong-assumptions admonition">
-<p class="admonition-title">Most well-performing movement-intention-decoding methods have strong assumptions</p>
-<ul class="simple">
-<li><p>They use knowledge about brain signals</p></li>
-<li><p>Assume changes in amplitude of oscillations in specific frequency ranges predict the intention</p></li>
-<li><p>These changes also are assumed to follow specific spatial patterns</p></li>
-</ul>
+<div class="section" id="high-gamma-dataset">
+<h2>High-Gamma Dataset<a class="headerlink" href="#high-gamma-dataset" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Our High-Gamma Dataset is a 128-electrode dataset (of which we later only use 44 sensors
+covering the motor cortex, (see Section \ref{subsec:preprocessing}),
+obtained from 14 healthy subjects (6 female, 2 left-handed, age 27.2<span class="math notranslate nohighlight">\(\pm\)</span>3.6 (mean<span class="math notranslate nohighlight">\(\pm\)</span>std)) with
+roughly 1000 (963.1<span class="math notranslate nohighlight">\(\pm\)</span>150.9, mean<span class="math notranslate nohighlight">\(\pm\)</span>std) four-second trials of executed movements divided into 13 runs per subject.
+The four classes of movements were movements of either the left hand, the right hand, both feet,
+and rest (no movement, but same type of visual cue as for the other classes).
+The training set consists of the approx. 880 trials of all runs except the last two runs, the test set of the approx.
+160 trials of the last 2 runs.
+This dataset was acquired in an EEG lab optimized for non-invasive detection of high-frequency movement-related EEG
+components \citep{ball_movement_2008,darvas_high_2010}.
+Such high-frequency components in the range of approx. 60 to above 100 Hz are typically increased during movement
+execution and may contain useful movement-related
+information \citep{crone_functional_1998,hammer_predominance_2016,quandt_single_2012}.
+Our technical EEG Setup comprised
+(1.) Active electromagnetic shielding: optimized for frequencies from DC - 10 kHz (-30 dB to -50 dB), shielded window,
+ventilation &amp; cable
+feedthrough (mrShield, CFW EMV-Consulting AG, Reute, CH) (2.) Suitable
+amplifiers: high-resolution (24 bits/sample) and low-noise
+(\textless{}0.6  <span class="math notranslate nohighlight">\(\mu V\)</span> RMS 0.16–200 Hz, \textless{}1.5 <span class="math notranslate nohighlight">\(\mu V\)</span> RMS 0.16–3500 Hz),
+5 kHz sampling rate (NeurOne, Mega Electronics Ltd, Kuopio, FI) (3.)
+actively shielded EEG caps: 128 channels (WaveGuard Original, ANT,
+Enschede, NL) and (4.) full optical decoupling: All devices are battery
+powered and communicate via optic fibers.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Subjects sat in a comfortable armchair in the dimly lit Faraday cabin.
+The contact impedance from electrodes to skin was typically reduced
+below 5 kOhm using electrolyte gel (SUPER-VISC, EASYCAP GmbH,
+Herrsching, GER) and blunt cannulas. Visual cues were presented using a
+monitor outside the cabin, visible through the shielded window. The
+distance between the display and the subjects’ eyes was approx. 1 m. A
+fixation point was attached at the center of the screen. The subjects
+were instructed to relax, fixate the fixation mark and to keep as still
+as possible during the motor execution task. Blinking and swallowing was
+restricted to the inter-trial intervals.
+The electromagnetic shielding combined with the comfortable armchair, dimly lit Faraday cabin and the relatively long 3-4 second inter-trial intervals (see below) were used to minimize artifacts produced by the subjects during the trials.</p>
+</div></blockquote>
+<blockquote>
+<div><p>The tasks were as following. Depending on the direction of a gray arrow
+that was shown on black background, the subjects had to repetitively
+clench their toes (downward arrow), perform sequential finger-tapping of
+their left (leftward arrow) or right (rightward arrow) hand, or relax
+(upward arrow). The movements were selected to require little
+proximal muscular activity while still being complex enough to
+keep subjects involved. Within the 4-s trials, the subjects performed
+the repetitive movements at their own pace, which had to be maintained
+as long as the arrow was showing. Per run, 80 arrows were displayed for
+4 s each, with 3 to 4 s of continuous random inter-trial interval. The
+order of presentation was pseudo-randomized, with all four arrows being
+shown every four trials. Ideally 13 runs were performed to collect 260
+trials of each movement and rest. The stimuli were presented and the
+data recorded with BCI2000 \citep{schalk_bci2000:_2004}.
+The experiment was approved by the ethical committee of the University of Freiburg.</p>
+</div></blockquote>
+<div class="section" id="bci-competition-iv-2a">
+<h3>BCI Competition IV 2a<a class="headerlink" href="#bci-competition-iv-2a" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>The BCI competition IV dataset 2a is a 22-electrode EEG motor-imagery dataset, with 9 subjects and 2
+sessions, each with 288 four-second trials of imagined movements per subject (movements of the left hand,
+the right hand, the feet and the tongue) (Brunner et al., 2008). The training set consists of the 288 trials of
+the first session, the test set of the 288 trials of the second session.</p>
+</div></blockquote>
 </div>
-<p>[Explain background with beautiful pictures]</p>
-<div class="admonition-we-followed-the-strategy-of-iteratively-relaxing-these-assumptions-in-our-deep-learning-development admonition">
-<p class="admonition-title">We followed the strategy of iteratively relaxing these assumptions in our deep learning development</p>
-<ul class="simple">
-<li><p>First, use a network that exactly embeds the strategies of FBCSP, simply train jointly</p></li>
-<li><p>Then a “shallow” network with large kernel sizes, mean pooling and squared activation to easily extract slow amplitude changes</p></li>
-<li><p>Then a “deep” network with smaller kernel sizes and activation functions as networks in computer vision for a more generic network</p></li>
-</ul>
+<div class="section" id="bci-competition-iv-2b">
+<h3>BCI Competition IV 2b<a class="headerlink" href="#bci-competition-iv-2b" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>The BCI competition IV dataset 2b is a 3-electrode EEG motor-imagery dataset with 9 subjects and 5 sessions of imagined movements of the left or the right hand, the latest 3 sessions include online feedback \citep{leeb_bci_2008}.
+The training set consists of the approx. 400  trials of the first 3 sessions (408.9<span class="math notranslate nohighlight">\(\pm\)</span>13.7, mean<span class="math notranslate nohighlight">\(\pm\)</span>std), the test set consists of the approx. 320 trials (315.6<span class="math notranslate nohighlight">\(\pm\)</span>12.6, mean<span class="math notranslate nohighlight">\(\pm\)</span>std) of the last two sessions.</p>
+</div></blockquote>
+</div>
+<div class="section" id="mixed-imagery-dataset">
+<h3>Mixed Imagery Dataset<a class="headerlink" href="#mixed-imagery-dataset" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
-<div class="section" id="models-details">
-<h2>Models Details<a class="headerlink" href="#models-details" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="fbcsp-network">
-<h3>FBCSP Network<a class="headerlink" href="#fbcsp-network" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="preprocessing">
+<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>We only minimally preprocessed the data to allow the networks to learn from as much information as possible while keeping the input distribution in a value range suitable for stable network training.</p>
+<p>Concretely, our preprocessing steps were:</p>
+<ol class="simple">
+<li><p><strong>Remove outlier trials:</strong> Any trial where at least one channel had a value outside +- 800 mV was removed to ensure stable training.</p></li>
+<li><p><strong>Channel selection:</strong> For the high-gamma dataset, we selected only the 44 sensors covering the motor cortex for faster and more  accurate motor decoding.</p></li>
+<li><p><strong>Highpass (Optional) :</strong> Highpass signal to above 4 Hz. This should partially remove potentially informative eye components from the signal and ensure that the decoding relies more on brain signals. For the BCI competition datasets, in this step we bandpassed to 4-38 Hz as using only frequencies until ~38-40 Hz was commonly done in prior work in this dataset.</p></li>
+<li><p><strong>Standardization:</strong> Exponential moving standardization to make sure the input distribution value range is suitable for network training.</p></li>
+</ol>
+<p>Our electrode-wise exponential moving standardization computes exponential moving means and variances with a decay factor of 0.999  for each channel and used these to standardize the continuous data.
+Formally,</p>
+<p><span class="math notranslate nohighlight">\(x't = (x_t - \mu_t) / \sqrt{\sigma_t^2}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\mu_t = 0.001 x_t + 0.999\mu_{t-1}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\sigma_t^2 = 0.001(x_t - \mu_t)^2 + 0.999 \sigma_{t-1}^2\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(x't\)</span> and <span class="math notranslate nohighlight">\(x_t\)</span> are the standardized and the original signal for one electrode at time <span class="math notranslate nohighlight">\(t\)</span>, respectively. As starting values for these recursive formulas we set the first 1000 mean values <span class="math notranslate nohighlight">\(\mu_t\)</span> and first 1000 variance values <span class="math notranslate nohighlight">\(\sigma_t^2\)</span> to the mean and the variance of the first 1000 samples, which were always completely inside the training set (so we never used future test data in our preprocessing). Some form of standardization is a commonly used procedure for ConvNets; exponentially moving standardization has the advantage that it is also applicable for an online BCI.</p>
+<blockquote>
+<div><p>For FBCSP, this standardization always worsened accuracies in preliminary experiments, so we did not use it. Overall, the minimal preprocessing without any manual feature extraction ensured our end-to-end pipeline could in  principle be applied to a large number of brain-signal decoding tasks.</p>
+</div></blockquote>
 </div>
-<div class="section" id="shallow-network">
-<h3>Shallow Network<a class="headerlink" href="#shallow-network" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="deep-network">
-<h3>Deep Network<a class="headerlink" href="#deep-network" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="fbcsp-baseline">
-<h3>FBCSP Baseline<a class="headerlink" href="#fbcsp-baseline" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
-<div class="section" id="cropped-training">
-<h2>Cropped Training<a class="headerlink" href="#cropped-training" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="training-details">
+<h2>Training details<a class="headerlink" href="#training-details" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>As optimization method, we used Adam [Kingma and Ba, 2014] together with a specific early stopping method, as this consistently yielded good accuracy in preliminary experiments on the training set. Adam is a variant of stochastic gradient descent designed to work well with high-dimensional parameters, which makes it
+suitable for optimizing the large number of parameters of a ConvNet \citep{kingma_adam:_2014}.
+The early stopping strategy that we use throughout these experiments, developed in the computer vision field
+\footnote{\url{
+<a class="reference external" href="https://web.archive.org/web/20160809230156/https://code.google.com/p/cuda-convnet/wiki/Methodology">https://web.archive.org/web/20160809230156/https://code.google.com/p/cuda-convnet/wiki/Methodology</a>}},
+splits the training set into a training and validation fold and stops the first phase of the training when validation
+accuracy does not improve for a predefined number of epochs.
+The training continues on the combined training and validation fold starting from the parameter values that led to the
+best accuracies on the validation fold so far.
+The training ends when the loss function on the validation fold drops to the same value as the loss function on the
+training fold at the end of the first training phase (we do not continue training in a
+third phase as in the original description).
+Early stopping in general allows training on different types of networks and datasets without choosing the number of
+training epochs by hand. Our specific strategy uses the entire training data while only training once.
+In our study, all reported accuracies have been determined on an independent test set.</p>
+</div></blockquote>
+<p>Note that in later works we do not use this early stopping method anymore as we found training on the whole training set with a cosine learning rate schedule to lead to better final performance.</p>
 </div>
 <div class="section" id="design-choices">
 <h2>Design Choices<a class="headerlink" href="#design-choices" title="Permalink to this headline">¶</a></h2>
+<p>For the shallow and deep network, we evaluated how a number of design choices affect the final accuracies.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Design aspect</p></th>
+<th class="text-align:left head"><p>Our Choice</p></th>
+<th class="text-align:left head"><p>Variants</p></th>
+<th class="head"><p>Motivation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>Activation functions</p></td>
+<td class="text-align:left"><p>ELU</p></td>
+<td class="text-align:left"><p>Square, ReLU</p></td>
+<td><p>We expected these choices to be sensitive to the type of feature (e.g., signal phase or power), as squaring and mean pooling results in mean power (given a zero-mean signal). Different features may play different roles in the low-frequency components vs the higher frequencies (see the section “Datasets and Preprocessing”).</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Pooling mode</p></td>
+<td class="text-align:left"><p>Max</p></td>
+<td class="text-align:left"><p>Mean</p></td>
+<td><p>(see above)</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Regularization and intermediate normalization</p></td>
+<td class="text-align:left"><p>Dropout + batch normalization + a new tied loss function (explanations see text)</p></td>
+<td class="text-align:left"><p>Only batch normalization, only dropout, neither of both, nor tied loss</p></td>
+<td><p>We wanted to investigate whether recent deep learning advances improve accuracies and check how much regularization is required.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>Factorized temporal convolutions</p></td>
+<td class="text-align:left"><p>One 10 × 1 convolution per convolutional layer</p></td>
+<td class="text-align:left"><p>Two 6 × 1 convolutions per convolutional layer</p></td>
+<td><p>Factorized convolutions are used by other successful ConvNets [Szegedy et al., 2015]</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>Splitted vs one-step convolution</p></td>
+<td class="text-align:left"><p>Splitted convolution in first layer (see the section “Deep ConvNet for raw EEG signals”)</p></td>
+<td class="text-align:left"><p>One-step convolution in first layer</p></td>
+<td><p>Factorizing convolution into spatial and temporal parts may improve accuracies for the large number of EEG input channels (compared with three rgb color channels of regular image datasets).</p></td>
+</tr>
+</tbody>
+</table>
+<p>(from HBM paper)</p>
+<div class="section" id="tied-loss-function">
+<h3>Tied Loss Function<a class="headerlink" href="#tied-loss-function" title="Permalink to this headline">¶</a></h3>
+<p>Our tied loss function penalizes the discrepancy between neighbouring predictions. Concretely, in this \textit{tied sample loss function}, we added the cross-entropy of two neighboring predictions to the usual loss
+of of negative log likelihood of the labels.
+So, denoting the predicted probabilties <span class="math notranslate nohighlight">\(p\big(l_k|f_k(X^j_{t..t+T'};\theta)\big)\)</span> for crop
+<span class="math notranslate nohighlight">\(X^j_{t..t+T'}\)</span> with label <span class="math notranslate nohighlight">\(l_k\)</span> from time step <span class="math notranslate nohighlight">\(t\)</span> to <span class="math notranslate nohighlight">\(t+T'\)</span> by <span class="math notranslate nohighlight">\(p_{f,k}(X^j_{t..t+T'})\)</span>, the loss now also depends on the
+predicted probabilties for the next crop  <span class="math notranslate nohighlight">\(p_{f,k}(X^j_{t..t+T'+1})\)</span> and is then:</p>
+<p><span class="math notranslate nohighlight">\(\textrm{loss}\big(y^j, p_{f,k}(X^j_{t..t+T'})\big)=\sum_{k=1}^{K}-log\big(p_{f,k}(X^j_{t..t+T'})\big)\cdot \delta(y^j=l_k)
+\quad + \quad \sum_{k=1}^{K}-log\big(p_{f,k}(X^j_{t..t+T'})\big) \cdot p_{f,k}(X^j_{t..t+T'+1})\)</span></p>
+<p>This is meant to make the ConvNet focus on features which are stable for several neighboring input crops.</p>
+</div>
 </div>
 <div class="section" id="results">
 <h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3>FBCSP Network<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>check master thesis
-explain why not checked further
-(OR JUST DO IT?)</p>
+<div class="section" id="validation-of-fbcsp-pipeline">
+<h3>Validation of FBCSP Pipeline<a class="headerlink" href="#validation-of-fbcsp-pipeline" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>As a first step before moving to the evaluation of ConvNet decoding, we validated our FBCSP implementation, as this was the baseline we compared the ConvNets results against. To validate our FBCSP implementation, we compared its accuracies to those published in the literature for the BCI competition IV dataset 2a \citep{sakhavi_parallel_2015}. Using the same 0.5–2.5 s (relative to trial onset) time window, we reached an accuracy of 67.6%, statistically not significantly different from theirs (67.0%, p=0.73, Wilcoxon signed-rank test). Note however, that we used the full trial window for later experiments with convolutional networks, i.e., from 0.5–4 seconds. This yielded a slightly better accuracy of 67.8%, which was still not statistically significantly different from the original results on the 0.5–2.5 s window (p=0.73). For all later comparisons, we use the 0.5–4 seconds time window on all datasets.</p>
+</div></blockquote>
 </div>
-<div class="section" id="shallow-and-deep-results">
-<h3>Shallow And Deep Results<a class="headerlink" href="#shallow-and-deep-results" title="Permalink to this headline">¶</a></h3>
-<p>as in paper</p>
+<div class="section" id="filterbank-network">
+<h3>Filterbank Network<a class="headerlink" href="#filterbank-network" title="Permalink to this headline">¶</a></h3>
+<p>Prior to our more extensive study, we had evaluated the filterbank network [ref] on the High-Gamma Dataset in a master thesis [ref]. The evaluation was on a different version of the High-Gamma Dataset. This version contained different subjects, some subjects had not been recorded yet and other subjects were later excluded due to the presence of too many artifacts. Furthermore, we evaluated 150Hz and 300 Hz as sampling rates here, in the remainder we will use 250 Hz.</p>
+<p>The results in Table XX show that the Filterbank net outperforms FBCSP by 2.4% (300Hz) and 1.3% (150 Hz) respectively. Despite the good performance, we did not evaluate this network further as our implementation had a very large GPU memory requirement and we were more interested in evaluating more expressive architectures that were not as fixed to implement FBCSP steps.</p>
+<table class="colwidths-auto table" id="filterbank-net-results">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Filterbank Net vs FBCSP Accuracies. Std is standard deviation over the 18 subjects used here.</span><a class="headerlink" href="#filterbank-net-results" title="Permalink to this table">¶</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Decoding Method</p></th>
+<th class="head"><p>Sampling rate</p></th>
+<th class="head"><p>Test Accuracy [%]</p></th>
+<th class="head"><p>Std [%]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>FBCSP</p></td>
+<td><p>300</p></td>
+<td><p>88.1</p></td>
+<td><p>13.9</p></td>
+</tr>
+<tr class="row-odd"><td><p>FBCSP</p></td>
+<td><p>150</p></td>
+<td><p>86.7</p></td>
+<td><p>14.3</p></td>
+</tr>
+<tr class="row-even"><td><p>Filterbank Net</p></td>
+<td><p>300</p></td>
+<td><p>90.5</p></td>
+<td><p>10.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Filterbank Net</p></td>
+<td><p>150</p></td>
+<td><p>87.9</p></td>
+<td><p>13.9</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="convnets-reached-fbcsp-accuracies">
+<h3>ConvNets reached FBCSP accuracies<a class="headerlink" href="#convnets-reached-fbcsp-accuracies" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-default" id="movement-decoding-result-comparison-figure">
+<a class="reference internal image-reference" href="_images/Final_Comparison.ipynb.2.png"><img alt="_images/Final_Comparison.ipynb.2.png" src="_images/Final_Comparison.ipynb.2.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text"><strong>FBCSP vs. ConvNet decoding accuracies.</strong> Each small marker represents
+accuracy of one subject, the large square markers represent average
+accuracies across all subjects of both datasets. Markers above the
+dashed line indicate experiments where ConvNets performed better than
+FBCSP and opposite for markers below the dashed line. Stars indicate
+statistically significant differences between FBCSP and ConvNets
+(Wilcoxon signed-rank test, p&lt;0.05: *, p&lt;0.01: **,
+p&lt;0.001=***). Bottom left of every plot: linear correlation
+coefficient between FBCSP and ConvNet decoding accuracies. Mean
+accuracies were very similar for ConvNets and FBCSP, the (small)
+statistically significant differences were in direction of the ConvNets.</span><a class="headerlink" href="#movement-decoding-result-comparison-figure" title="Permalink to this image">¶</a></p>
+</div>
+<blockquote>
+<div><p>Both the deep the shallow ConvNets, with appropriate design choices (see Result 5), reached similar accuracies as FBCSP-based decoding, with small but statistically significant advantages for the ConvNets in some settings. For the mean of all subjects of both datasets, accuracies of the shallow ConvNet on <span class="math notranslate nohighlight">\(0-f_\textrm{end}\)</span> Hz and for the deep ConvNet on <span class="math notranslate nohighlight">\(4-f_\textrm{end} Hz\)</span> were not statistically significantly different from FBCSP (Fig. 9 and Table 2). The deep ConvNet on <span class="math notranslate nohighlight">\(0-f_\textrm{end}\)</span> Hz and the shallow ConvNet on <span class="math notranslate nohighlight">\(4-f_\textrm{end} Hz\)</span> reached slightly higher (1.9% and 3.3% higher, respectively) accuracies that were also statistically significantly different (P &lt; 0.05, Wilcoxon signed-rank test). Note that all results in this section were obtained with cropped training, for a comparison of cropped and trial-wise training, see the section “Training Strategy.” Note that all P values below 0.01 in this study remain significant when controlled with false-discovery-rate correction at <span class="math notranslate nohighlight">\(\alpha=0.05\)</span> across all tests involving ConvNet accuracies.</p>
+</div></blockquote>
+<div class="figure align-default" id="confusion-mat-figure">
+<a class="reference internal image-reference" href="_images/Confusion_Mats.jpg"><img alt="_images/Confusion_Mats.jpg" src="_images/Confusion_Mats.jpg" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text"><strong>Confusion matrices for FBCSP- and ConvNet-based decoding.</strong> Results are shown for the High-Gamma Dataset, on 0–fend Hz. Each entry of row r and column c for upper-left 4×4-square: Number of trials of target r predicted as class c (also written in percent of all trials). Bold diagonal corresponds to correctly predicted trials of the different classes. Percentages and colors indicate fraction of trials in this cell from all trials of the corresponding column (i.e., from all trials of the corresponding target class). The lower-right value corresponds to overall accuracy. Bottom row corresponds to sensitivity defined as the number of trials correctly predicted for class c/number of trials for class c. Rightmost column corresponds to precision defined as the number of trials correctly predicted for class r/number of trials predicted as class r. Stars indicate statistically significantly different values of ConvNet decoding from FBCSP, diamonds indicate statistically significantly different values between the shallow and deep ConvNets. P&lt;0.05: <span class="math notranslate nohighlight">\(\diamond\)</span>/*, P&lt;0.01: <span class="math notranslate nohighlight">\(\diamond\diamond\)</span>/**, P&lt;0.001: <span class="math notranslate nohighlight">\(\diamond\diamond\diamond\)</span>/***, Wilcoxon signed-rank test.</span><a class="headerlink" href="#confusion-mat-figure" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 </div>
 <div class="section" id="design-choices-etc">
 <h2>Design Choices etc.<a class="headerlink" href="#design-choices-etc" title="Permalink to this headline">¶</a></h2>
+<p>Design choices substantially affected deep network accuracies on both datasets, meaning BCI Competition IV 2a and the High Gamma Dataset.</p>
+<blockquote>
+<div><p>Batch normalization and dropout significantly increased accuracies. This became especially clear when omitting both simultaneously (Fig. 11a). Batch normalization provided a larger accuracy increase for the shallow ConvNet, whereas dropout provided a larger increase for the deep ConvNet. For both networks and for both frequency bands, the only statistically significant accuracy differences were accuracy decreases after removing dropout for the deep ConvNet on 0–fend-Hz data or removing batch normalization and dropout for both networks and frequency ranges (P&lt;0.05, Wilcoxon signed-rank test). Usage of tied loss did not affect the accuracies very much, never yielding statistically significant differences (P &gt;0.05). Splitting the first layer into two convolutions had the strongest accuracy increase on the 0–fend-Hz data for the shallow ConvNet, where it is also the only statistically significant difference (P&lt;0.01).</p>
+</div></blockquote>
+<div class="figure align-default">
+<img alt="_images/Final_Comparison.ipynb.9.pdf-1.png" src="_images/Final_Comparison.ipynb.9.pdf-1.png" />
 </div>
-<div class="section" id="visualizations">
-<h2>visualizations<a class="headerlink" href="#visualizations" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>check what is actually used?</p></li>
-<li><p>precise definition difficult</p></li>
-<li><p>also note extra results on other datasets and why and also mention further papers task related</p></li>
-<li><p>possibly comparison with current state</p></li>
-</ul>
+<div class="figure align-default" id="id1">
+<img alt="_images/Final_Comparison.ipynb.10.pdf-1.png" src="_images/Final_Comparison.ipynb.10.pdf-1.png" />
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Impact of ConvNet design choices on decoding accuracy. Accuracy differences of baseline and design choices on x-axis for the 0–fend-Hz and 4–fend-Hz datasets. Each small marker represents accuracy difference for one subject, and each larger marker represents mean accuracy difference across all subjects of both datasets. Bars: standard error of the differences across subjects. Stars indicate statistically significant differences to baseline (Wilcoxon signed-rank test, P &lt; 0.05: <span class="math notranslate nohighlight">\(\diamond\)</span>*, P &lt; 0.01: <span class="math notranslate nohighlight">\(\diamond\diamond\)</span>**, P &lt; 0.001=***). Top: Impact of design choices applicable to both ConvNets. Shown are the effects from the removal of one aspect from the architecture on decoding accuracies. All statistically significant differences were accuracy decreases. Notably, there was a clear negative effect of removing both dropout and batch normalization, seen in both ConvNets’ accuracies and for both frequency ranges. Bottom: Impact of different types of nonlinearities, pooling modes and filter sizes. Results are given independently for the deep ConvNet and the shallow ConvNet. As before, all statistically significant differences were from accuracy decreases. Notably, replacing ELU by ReLU as nonlinearity led to decreases on both frequency ranges, which were both statistically significant.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="amplitude-perturbation-visualizations">
+<h2>Amplitude Perturbation Visualizations<a class="headerlink" href="#amplitude-perturbation-visualizations" title="Permalink to this headline">¶</a></h2>
+<p>Our amplitude perturbation visualizations show that the network have learned to extract commonly used spectral amplitude features.</p>
+<blockquote>
+<div><p>We show three visualizations extracted from input-perturbation network-prediction correlations, the first two to show the frequency profile of the causal effects, the third to show their topography.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Thus, first, we computed the mean across electrodes for each class separately to show correlations between classes and frequency bands. We see plausible results, for example, for the rest class, positive correlations in the alpha and beta bands and negative correlations in the gamma band (Fig. 17).</p>
+</div></blockquote>
+<div class="figure align-default" id="id2">
+<img alt="_images/Bandpower_Perturbation.ipynb.0.pdf-1.png" src="_images/Bandpower_Perturbation.ipynb.0.pdf-1.png" />
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Input-perturbation network-prediction correlations for all frequencies for the deep ConvNet, per class. Plausible correlations, for example, rest positively, other classes negatively correlated with the amplitude changes in frequency range from 20 to 30 Hz.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<blockquote>
+<div><p>Then, second, by taking the mean of the absolute values both over all classes and electrodes, we computed a general frequency profile. This showed clear peaks in the alpha, beta, and gamma bands (Fig. 18). Similar peaks were seen in the means of the CSP binary decoding accuracies for the same frequency range.</p>
+</div></blockquote>
+<div class="figure align-default" id="id3">
+<img alt="_images/Bandpower_Perturbation.ipynb.12.pdf-1.png" src="_images/Bandpower_Perturbation.ipynb.12.pdf-1.png" />
+<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Absolute input-perturbation network-prediction correlation frequency profile for the deep ConvNet. Mean absolute correlation value across classes. CSP binary decoding accuracies for different frequency bands for comparison, averaged across subjects and class pairs. Peaks in alpha, beta, and gamma band for input-perturbation network-prediction correlations and CSP accuracies.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<blockquote>
+<div><p>Third, scalp maps of the input-perturbation effects on network predictions for the different frequency bands, as shown in Figure 19, show spatial distributions expected for motor tasks in the alpha, beta and—for the first time for such a noninvasive EEG decoding visualization—for the high gamma band. These scalp maps directly reflect the behavior of the ConvNets and one needs to be careful when making inferences about the data from them. For example, the positive correlation on the right side of the scalp for the Hand (R) class in the alpha band only means the ConvNet increased its prediction when the amplitude at these electrodes was increased independently of other frequency bands and electrodes. It does not imply that there was an increase of amplitude for the right hand class in the data. Rather, this correlation could be explained by the ConvNet reducing common noise between both locations, for more explanations of these effects in case of linear models, see Haufe et al. [2014]. Nevertheless, for the first time in noninvasive EEG, these maps clearly revealed the global somatotopic organization of causal contributions of motor cortical gamma band activity to decoding right and left hand and foot movements. Interestingly, these maps revealed highly focalized patterns, particularly during hand movement in the gamma frequency range (Fig. 16, first plots in last row), in contrast to the more diffuse patterns in the conventional task-related spectral analysis as shown in Figure 14.</p>
+</div></blockquote>
+<div class="figure align-default" id="id4">
+<img alt="_images/Bandpower_Perturbation.ipynb.3.pdf-1.png" src="_images/Bandpower_Perturbation.ipynb.3.pdf-1.png" />
+<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Input-perturbation network-prediction correlation maps for the deep ConvNet. Correlation of class predictions and amplitude changes. Averaged over all subjects of the High-Gamma Dataset. Colormaps are scaled per scalp plot. Plausible scalp maps for all frequency bands, for example, contralateral positive correlations for the hand classes in the gamma band.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 <div class="section" id="old-merge">
 <h2>old - merge<a class="headerlink" href="#old-merge" title="Permalink to this headline">¶</a></h2>
@@ -459,23 +688,43 @@ explain why not checked further
 
               </div>
               
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="PerturbationVisualization.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Perturbation Visualization</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="TaskDecoding.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Further Task-Related Decoding</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="PriorWork.html" title="previous page">Prior Work</a>
-    <a class='right-next' id="next-link" href="TaskDecoding.html" title="next page">Further Task-Related Decoding</a>
-
-    </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
           By The Jupyter Book community<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -484,11 +733,9 @@ explain why not checked further
 
       </div>
     </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    
+  
   </body>
 </html>

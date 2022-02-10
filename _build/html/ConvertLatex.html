@@ -1,12 +1,14 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>old, copied &#8212; Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</title>
     
-  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -18,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -33,13 +31,12 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -78,10 +75,10 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -89,14 +86,14 @@ commentsRunWhenDOMLoaded(addUtterances);
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -105,27 +102,31 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  <img src="_static/Rainbow_brain,_Aug_2014.png" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/Rainbow_brain,_Aug_2014.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Abstract.html">
    Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Introduction.html">
    Introduction
@@ -134,6 +135,16 @@ commentsRunWhenDOMLoaded(addUtterances);
  <li class="toctree-l1">
   <a class="reference internal" href="PriorWork.html">
    Prior Work
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DeepArchitectures.html">
+   Neural Network Architectures for EEG-Decoding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CroppedTraining.html">
+   Cropped Training
   </a>
  </li>
  <li class="toctree-l1">
@@ -178,6 +189,7 @@ commentsRunWhenDOMLoaded(addUtterances);
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -193,21 +205,21 @@ commentsRunWhenDOMLoaded(addUtterances);
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -225,16 +237,16 @@ commentsRunWhenDOMLoaded(addUtterances);
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -253,21 +265,21 @@ commentsRunWhenDOMLoaded(addUtterances);
     </div>
 </div>
 
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    old, copied
   </a>
-  <ul class="nav section-nav flex-column">
+  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#visulization-table-with-empty-papers">
      visulization table with empty papers
@@ -282,8 +294,8 @@ commentsRunWhenDOMLoaded(addUtterances);
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -309,75 +321,75 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p>Imagined movement classes, within-subject</p></td>
 <td><p>FBCSP</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces, <a class="bibtex reference internal" href="PriorWork.html#lawhern-eegnet-2016" id="id1">[LSW+16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces, <a href="#id1"><span class="problematic" id="id2">:cite:`lawhern_eegnet:_2016`</span></a></p></td>
 <td><p>Oddball response (RSVP), error response (ERN), movement classes (voluntarily started and imagined)</p></td>
 <td><p>[recheck]</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Remembered or Forgotten? –- An EEG-Based Computational Prediction Approach, <a class="bibtex reference internal" href="PriorWork.html#sun-remembered-2016" id="id2">[SQC+16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Remembered or Forgotten? –- An EEG-Based Computational Prediction Approach, <a href="#id3"><span class="problematic" id="id4">:cite:`sun_remembered_2016`</span></a></p></td>
 <td><p>Memory performance, within-subject</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Multimodal Neural Network for Rapid Serial Visual Presentation Brain Computer Interface, <a class="bibtex reference internal" href="PriorWork.html#manor-multimodal-2016" id="id3">[MMG16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Multimodal Neural Network for Rapid Serial Visual Presentation Brain Computer Interface, <a href="#id5"><span class="problematic" id="id6">:cite:`manor_multimodal_2016`</span></a></p></td>
 <td><p>Oddball response using RSVP and image (combined image-EEG decoding), within-subject</p></td>
 <td><p>Time, 0.3–20 Hz</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>A novel deep learning approach for classification of EEG motor imagery signals, <a class="bibtex reference internal" href="PriorWork.html#tabar-novel-2017" id="id4">[TH17]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>A novel deep learning approach for classification of EEG motor imagery signals, <a href="#id7"><span class="problematic" id="id8">:cite:`tabar_novel_2017`</span></a></p></td>
 <td><p>Imagined and executed movement classes, within-subject</p></td>
 <td><p>Frequency, 6–30 Hz</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Predicting Seizures from Electroencephalography Recordings: A Knowledge Transfer Strategy, <a class="bibtex reference internal" href="PriorWork.html#liang-predicting-2016" id="id5">[LLZW16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Predicting Seizures from Electroencephalography Recordings: A Knowledge Transfer Strategy, <a href="#id9"><span class="problematic" id="id10">:cite:`liang_predicting_2016`</span></a></p></td>
 <td><p>Seizure prediction, within-subject</p></td>
 <td><p>Frequency, 0–200 Hz</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>EEG-based prediction of driver’s cognitive performance by deep convolutional neural network, <a class="bibtex reference internal" href="PriorWork.html#hajinoroozi-eeg-based-2016" id="id6">[HMJ+16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>EEG-based prediction of driver’s cognitive performance by deep convolutional neural network, <a href="#id11"><span class="problematic" id="id12">:cite:`hajinoroozi_eeg-based_2016`</span></a></p></td>
 <td><p>Driver performance, within- and cross-subject</p></td>
 <td><p>Time,  1–50 Hz</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Deep learning for epileptic intracranial EEG data, <a class="bibtex reference internal" href="PriorWork.html#antoniades-deep-2016" id="id7">[ASTS16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Deep learning for epileptic intracranial EEG data, <a href="#id13"><span class="problematic" id="id14">:cite:`antoniades_deep_2016`</span></a></p></td>
 <td><p>Epileptic discharges, cross-subject</p></td>
 <td><p>Time,  0–100 HZ</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Learning Robust Features using Deep Learning for Automatic Seizure Detection, <a class="bibtex reference internal" href="PriorWork.html#thodoroff-learning-2016" id="id8">[TPL16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Learning Robust Features using Deep Learning for Automatic Seizure Detection, <a href="#id15"><span class="problematic" id="id16">:cite:`thodoroff_learning_2016`</span></a></p></td>
 <td><p>Start of epileptic seizure, within- and cross-subject</p></td>
 <td><p>Frequency, mean amplitude for 0–7 Hz, 7–14 Hz, 14–49 Hz</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Single-trial EEG RSVP classification using convolutional neural networks, <a class="bibtex reference internal" href="PriorWork.html#george-single-trial-2016" id="id9">[SLK+16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Single-trial EEG RSVP classification using convolutional neural networks, <a href="#id17"><span class="problematic" id="id18">:cite:`george_single-trial_2016`</span></a></p></td>
 <td><p>Oddball response (RSVP), groupwise (ConvNet trained on all subjects)</p></td>
 <td><p>Time, 0.5–50 Hz</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Wearable seizure detection using convolutional neural networks with transfer learning, <a class="bibtex reference internal" href="PriorWork.html#page-wearable-2016" id="id10">[PSM16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Wearable seizure detection using convolutional neural networks with transfer learning, <a href="#id19"><span class="problematic" id="id20">:cite:`page_wearable_2016`</span></a></p></td>
 <td><p>Seizure detection, cross-subject, within-subject, groupwise</p></td>
 <td><p>Time,  0–128 Hz</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Learning Representations from EEG with Deep Recurrent-Convolutional Neural Networks, <a class="bibtex reference internal" href="PriorWork.html#bashivan-learning-2016" id="id11">[BRYC16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Learning Representations from EEG with Deep Recurrent-Convolutional Neural Networks, <a href="#id21"><span class="problematic" id="id22">:cite:`bashivan_learning_2016`</span></a></p></td>
 <td><p>Cognitive load (number of characters to memorize), cross-subject</p></td>
 <td><p>Frequency, mean power for 4–7 Hz, 8–13 Hz, 13–30 Hz</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Deep Feature Learning for EEG Recordings, <a class="bibtex reference internal" href="PriorWork.html#stober-learning-2016" id="id12">[Sto16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Deep Feature Learning for EEG Recordings, <a href="#id23"><span class="problematic" id="id24">:cite:`stober_learning_2016`</span></a></p></td>
 <td><p>Type of music rhythm, groupwise (ensembles of leave-one-subject-out trained models, evaluated on separate test set of same subjects)</p></td>
 <td><p>Time, 0.5–30Hz</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Convolutional Neural Network for Multi-Category Rapid Serial Visual Presentation BCI, <a class="bibtex reference internal" href="PriorWork.html#manor-convolutional-2015" id="id13">[MG15]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Convolutional Neural Network for Multi-Category Rapid Serial Visual Presentation BCI, <a href="#id25"><span class="problematic" id="id26">:cite:`manor_convolutional_2015`</span></a></p></td>
 <td><p>Oddball response (RSVP), within-subject</p></td>
 <td><p>Time, 0.1–50 Hz</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Parallel Convolutional-Linear Neural Network for Motor Imagery Classification, <a class="bibtex reference internal" href="PriorWork.html#sakhavi-parallel-2015" id="id14">[SGY15]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Parallel Convolutional-Linear Neural Network for Motor Imagery Classification, <a href="#id27"><span class="problematic" id="id28">:cite:`sakhavi_parallel_2015`</span></a></p></td>
 <td><p>Imagined movement classes, within-subject</p></td>
 <td><p>Frequency, 4–40 Hz, using FBCSP</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Using Convolutional Neural networks to Recognize Rhythm Stimuli form Electroencephalography Recordings, <a class="bibtex reference internal" href="PriorWork.html#stober-using-2014" id="id15">[SCG14]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Using Convolutional Neural networks to Recognize Rhythm Stimuli form Electroencephalography Recordings, <a href="#id29"><span class="problematic" id="id30">:cite:`stober_using_2014`</span></a></p></td>
 <td><p>Type of music rhythm, within-subject</p></td>
 <td><p>Time and frequency evaluated, 0-200 Hz</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Convolutional deep belief networks for feature extraction of EEG signal, <a class="bibtex reference internal" href="PriorWork.html#ren-convolutional-2014" id="id16">[RW14]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Convolutional deep belief networks for feature extraction of EEG signal, <a href="#id31"><span class="problematic" id="id32">:cite:`ren_convolutional_2014`</span></a></p></td>
 <td><p>Imagined movement classes, within-subject</p></td>
 <td><p>Frequency, 8–30 Hz</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Deep feature learning using target priors with applications in ECoG signal decoding for BCI, <a class="bibtex reference internal" href="PriorWork.html#wang-deep-2013" id="id17">[WLSJ13]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Deep feature learning using target priors with applications in ECoG signal decoding for BCI, <a href="#id33"><span class="problematic" id="id34">:cite:`wang_deep_2013`</span></a></p></td>
 <td><p>Finger flexion trajectory (regression), within-subject</p></td>
 <td><p>Time, 0.15–200 Hz</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Convolutional neural networks for P300 detection with application to brain-computer interfaces, <a class="bibtex reference internal" href="PriorWork.html#cecotti-convolutional-2011" id="id18">[CG11]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Convolutional neural networks for P300 detection with application to brain-computer interfaces, <a href="#id35"><span class="problematic" id="id36">:cite:`cecotti_convolutional_2011`</span></a></p></td>
 <td><p>Oddball / attention response using P300 speller, within-subject</p></td>
 <td><p>Time, 0.1-20 Hz</p></td>
 </tr>
@@ -417,7 +429,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces, <a class="bibtex reference internal" href="PriorWork.html#lawhern-eegnet-2016" id="id19">[LSW+16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces, <a href="#id37"><span class="problematic" id="id38">:cite:`lawhern_eegnet:_2016`</span></a></p></td>
 <td><p>Oddball response (RSVP), error response (ERN), movement classes (voluntarily started and imagined)</p></td>
 <td><p>Time, 0.1–40 Hz</p></td>
 <td><p>3/1</p></td>
@@ -427,7 +439,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Remembered or Forgotten? –- An EEG-Based Computational Prediction Approach, <a class="bibtex reference internal" href="PriorWork.html#sun-remembered-2016" id="id20">[SQC+16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Remembered or Forgotten? –- An EEG-Based Computational Prediction Approach, <a href="#id39"><span class="problematic" id="id40">:cite:`sun_remembered_2016`</span></a></p></td>
 <td><p>Memory performance, within-subject</p></td>
 <td><p>Time, 0.05–15 Hz</p></td>
 <td><p>2/2</p></td>
@@ -437,7 +449,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p>Weights (spatial)</p></td>
 <td><p>Largest weights found over p\refrontal and temporal cortex</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Multimodal Neural Network for Rapid Serial Visual Presentation Brain Computer Interface, <a class="bibtex reference internal" href="PriorWork.html#manor-multimodal-2016" id="id21">[MMG16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Multimodal Neural Network for Rapid Serial Visual Presentation Brain Computer Interface, <a href="#id41"><span class="problematic" id="id42">:cite:`manor_multimodal_2016`</span></a></p></td>
 <td><p>Oddball response using RSVP and image (combined image-EEG decoding), within-subject</p></td>
 <td><p>Time, 0.3–20 Hz</p></td>
 <td><p>3/2</p></td>
@@ -447,7 +459,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p>Weights <br> Activations <br> Saliency maps by gradient</p></td>
 <td><p>Weights showed typical P300 distribution <br>Activations were high at plausible times (300-500ms) <br>Saliency maps showed plausible spatio-temporal plots</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>A novel deep learning approach for classification of EEG motor imagery signals, <a class="bibtex reference internal" href="PriorWork.html#tabar-novel-2017" id="id22">[TH17]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>A novel deep learning approach for classification of EEG motor imagery signals, <a href="#id43"><span class="problematic" id="id44">:cite:`tabar_novel_2017`</span></a></p></td>
 <td><p>Imagined and executed movement classes, within-subject</p></td>
 <td><p>Frequency, 6–30 Hz</p></td>
 <td><p>1/1</p></td>
@@ -457,7 +469,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p>Some weights represented difference of values of two electrodes on different sides of head</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Predicting Seizures from Electroencephalography Recordings: A Knowledge Transfer Strategy, <a class="bibtex reference internal" href="PriorWork.html#liang-predicting-2016" id="id23">[LLZW16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Predicting Seizures from Electroencephalography Recordings: A Knowledge Transfer Strategy, <a href="#id45"><span class="problematic" id="id46">:cite:`liang_predicting_2016`</span></a></p></td>
 <td><p>Seizure prediction, within-subject</p></td>
 <td><p>Frequency, 0–200 Hz</p></td>
 <td><p>1/2</p></td>
@@ -467,7 +479,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p>Weights <br> Clustering of weights</p></td>
 <td><p>Clusters of weights showed typical frequency band subdivision (delta, theta, alpha, beta, gamma)</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>EEG-based prediction of driver’s cognitive performance by deep convolutional neural network, <a class="bibtex reference internal" href="PriorWork.html#hajinoroozi-eeg-based-2016" id="id24">[HMJ+16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>EEG-based prediction of driver’s cognitive performance by deep convolutional neural network, <a href="#id47"><span class="problematic" id="id48">:cite:`hajinoroozi_eeg-based_2016`</span></a></p></td>
 <td><p>Driver performance, within- and cross-subject</p></td>
 <td><p>Time,  1–50 Hz</p></td>
 <td><p>1/3</p></td>
@@ -477,7 +489,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Deep learning for epileptic intracranial EEG data, <a class="bibtex reference internal" href="PriorWork.html#antoniades-deep-2016" id="id25">[ASTS16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Deep learning for epileptic intracranial EEG data, <a href="#id49"><span class="problematic" id="id50">:cite:`antoniades_deep_2016`</span></a></p></td>
 <td><p>Epileptic discharges, cross-subject</p></td>
 <td><p>Time,  0–100 HZ</p></td>
 <td><p>1–2/2</p></td>
@@ -487,7 +499,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p>Weights <br>Correlation weights and interictal epileptic discharges (IED) <br>Activations</p></td>
 <td><p>Weights increasingly correlated with IED waveforms with increasing number of training iterations <br>Second layer captured more complex and well-defined epileptic shapes than first layer <br>IEDs led to highly synchronized activations for neighbouring electrodes</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Learning Robust Features using Deep Learning for Automatic Seizure Detection, <a class="bibtex reference internal" href="PriorWork.html#thodoroff-learning-2016" id="id26">[TPL16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Learning Robust Features using Deep Learning for Automatic Seizure Detection, <a href="#id51"><span class="problematic" id="id52">:cite:`thodoroff_learning_2016`</span></a></p></td>
 <td><p>Start of epileptic seizure, within- and cross-subject</p></td>
 <td><p>Frequency, mean amplitude for 0–7 Hz, 7–14 Hz, 14–49 Hz</p></td>
 <td><p>3/1 (+ LSTM as postprocessor)</p></td>
@@ -497,7 +509,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p>Input occlusion and effect on prediction accuracy</p></td>
 <td><p>Allowed to locate areas critical for seizure</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Single-trial EEG RSVP classification using convolutional neural networks, <a class="bibtex reference internal" href="PriorWork.html#george-single-trial-2016" id="id27">[SLK+16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Single-trial EEG RSVP classification using convolutional neural networks, <a href="#id53"><span class="problematic" id="id54">:cite:`george_single-trial_2016`</span></a></p></td>
 <td><p>Oddball response (RSVP), groupwise (ConvNet trained on all subjects)</p></td>
 <td><p>Time, 0.5–50 Hz</p></td>
 <td><p>4/3</p></td>
@@ -507,7 +519,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p>Weights (spatial)</p></td>
 <td><p>Some filter weights had expected topographic distributions for P300 <br>Others filters had large weights on areas not traditionally associated with P300</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Wearable seizure detection using convolutional neural networks with transfer learning, <a class="bibtex reference internal" href="PriorWork.html#page-wearable-2016" id="id28">[PSM16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Wearable seizure detection using convolutional neural networks with transfer learning, <a href="#id55"><span class="problematic" id="id56">:cite:`page_wearable_2016`</span></a></p></td>
 <td><p>Seizure detection, cross-subject, within-subject, groupwise</p></td>
 <td><p>Time,  0–128 Hz</p></td>
 <td><p>1-3/1-3</p></td>
@@ -517,7 +529,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Learning Representations from EEG with Deep Recurrent-Convolutional Neural Networks, <a class="bibtex reference internal" href="PriorWork.html#bashivan-learning-2016" id="id29">[BRYC16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Learning Representations from EEG with Deep Recurrent-Convolutional Neural Networks, <a href="#id57"><span class="problematic" id="id58">:cite:`bashivan_learning_2016`</span></a></p></td>
 <td><p>Cognitive load (number of characters to memorize), cross-subject</p></td>
 <td><p>Frequency, mean power for 4–7 Hz, 8–13 Hz, 13–30 Hz</p></td>
 <td><p>3–7/2 (+ LSTM or other temporal post-processing (see design choices))</p></td>
@@ -527,7 +539,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p>Inputs that maximally activate given filter <br>Activations of these inputs <br>”Deconvolution” for these inputs</p></td>
 <td><p>Different filters were sensitive to different frequency bands <br>Later layers had more spatially localized activations <br>Learned features had noticeable links to well-known electrophysiological markers of cognitive load <br></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Deep Feature Learning for EEG Recordings, <a class="bibtex reference internal" href="PriorWork.html#stober-learning-2016" id="id30">[Sto16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Deep Feature Learning for EEG Recordings, <a href="#id59"><span class="problematic" id="id60">:cite:`stober_learning_2016`</span></a></p></td>
 <td><p>Type of music rhythm, groupwise (ensembles of leave-one-subject-out trained models, evaluated on separate test set of same subjects)</p></td>
 <td><p>Time, 0.5–30Hz</p></td>
 <td><p>2/1</p></td>
@@ -537,7 +549,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p>Weights (spatial+3 timesteps, pretrained as autoencoder)</p></td>
 <td><p>Different constraints led to different weights, one type of constraints could enforce weights that are similar across subjects; other type of constraints led to weights that have similar spatial topographies under different architectural configurations and preprocessings</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Convolutional Neural Network for Multi-Category Rapid Serial Visual Presentation BCI, <a class="bibtex reference internal" href="PriorWork.html#manor-convolutional-2015" id="id31">[MG15]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Convolutional Neural Network for Multi-Category Rapid Serial Visual Presentation BCI, <a href="#id61"><span class="problematic" id="id62">:cite:`manor_convolutional_2015`</span></a></p></td>
 <td><p>Oddball response (RSVP), within-subject</p></td>
 <td><p>Time, 0.1–50 Hz</p></td>
 <td><p>3/3 (Spatio-temporal regularization)</p></td>
@@ -547,7 +559,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p>Weights <br> Mean and single-trial activations</p></td>
 <td><p>Spatiotemporal regularization led to softer peaks in weights <br>Spatial weights showed typical P300 distribution <br>Activations mostly had peaks at typical times (300-400ms)</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Parallel Convolutional-Linear Neural Network for Motor Imagery Classification, <a class="bibtex reference internal" href="PriorWork.html#sakhavi-parallel-2015" id="id32">[SGY15]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Parallel Convolutional-Linear Neural Network for Motor Imagery Classification, <a href="#id63"><span class="problematic" id="id64">:cite:`sakhavi_parallel_2015`</span></a></p></td>
 <td><p>Imagined movement classes, within-subject</p></td>
 <td><p>Frequency, 4–40 Hz, using FBCSP</p></td>
 <td><p>2/2 (Final fully connected layer uses concatenated output by convolutionaland fully connected layers)</p></td>
@@ -557,7 +569,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Using Convolutional Neural networks to Recognize Rhythm Stimuli form Electroencephalography Recordings, <a class="bibtex reference internal" href="PriorWork.html#stober-using-2014" id="id33">[SCG14]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Using Convolutional Neural networks to Recognize Rhythm Stimuli form Electroencephalography Recordings, <a href="#id65"><span class="problematic" id="id66">:cite:`stober_using_2014`</span></a></p></td>
 <td><p>Type of music rhythm, within-subject</p></td>
 <td><p>Time and frequency evaluated, 0-200 Hz</p></td>
 <td><p>1-2/1</p></td>
@@ -567,7 +579,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Convolutional deep belief networks for feature extraction of EEG signal, <a class="bibtex reference internal" href="PriorWork.html#ren-convolutional-2014" id="id34">[RW14]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Convolutional deep belief networks for feature extraction of EEG signal, <a href="#id67"><span class="problematic" id="id68">:cite:`ren_convolutional_2014`</span></a></p></td>
 <td><p>Imagined movement classes, within-subject</p></td>
 <td><p>Frequency, 8–30 Hz</p></td>
 <td><p>2/0 (Convolutional deep belief network, separately trained RBF-SVM classifier)</p></td>
@@ -577,7 +589,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Deep feature learning using target priors with applications in ECoG signal decoding for BCI, <a class="bibtex reference internal" href="PriorWork.html#wang-deep-2013" id="id35">[WLSJ13]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Deep feature learning using target priors with applications in ECoG signal decoding for BCI, <a href="#id69"><span class="problematic" id="id70">:cite:`wang_deep_2013`</span></a></p></td>
 <td><p>Finger flexion trajectory (regression), within-subject</p></td>
 <td><p>Time, 0.15–200 Hz</p></td>
 <td><p>3/1 (Convolutional layers trained as convolutional stacked autoencoder with target prior)</p></td>
@@ -587,7 +599,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td><p></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Convolutional neural networks for P300 detection with application to brain-computer interfaces, <a class="bibtex reference internal" href="PriorWork.html#cecotti-convolutional-2011" id="id36">[CG11]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Convolutional neural networks for P300 detection with application to brain-computer interfaces, <a href="#id71"><span class="problematic" id="id72">:cite:`cecotti_convolutional_2011`</span></a></p></td>
 <td><p>Oddball / attention response using P300 speller, within-subject</p></td>
 <td><p>Time, 0.1-20 Hz</p></td>
 <td><p>2/2</p></td>
@@ -1036,55 +1048,55 @@ commentsRunWhenDOMLoaded(addUtterances);
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:left"><p>EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces, <a class="bibtex reference internal" href="PriorWork.html#lawhern-eegnet-2016" id="id37">[LSW+16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces, <a href="#id73"><span class="problematic" id="id74">:cite:`lawhern_eegnet:_2016`</span></a></p></td>
 <td class="text-align:left"><p>Kernel sizes</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Remembered or Forgotten? –- An EEG-Based Computational Prediction Approach, <a class="bibtex reference internal" href="PriorWork.html#sun-remembered-2016" id="id38">[SQC+16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Remembered or Forgotten? –- An EEG-Based Computational Prediction Approach, <a href="#id75"><span class="problematic" id="id76">:cite:`sun_remembered_2016`</span></a></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p>Different time windows</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>A novel deep learning approach for classification of EEG motor imagery signals, <a class="bibtex reference internal" href="PriorWork.html#tabar-novel-2017" id="id39">[TH17]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>A novel deep learning approach for classification of EEG motor imagery signals, <a href="#id77"><span class="problematic" id="id78">:cite:`tabar_novel_2017`</span></a></p></td>
 <td class="text-align:left"><p>Addition of six-layer stacked autoencoder on ConvNet features <br> Kernel sizes}</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Predicting Seizures from Electroencephalography Recordings: A Knowledge Transfer Strategy, <a class="bibtex reference internal" href="PriorWork.html#liang-predicting-2016" id="id40">[LLZW16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Predicting Seizures from Electroencephalography Recordings: A Knowledge Transfer Strategy, <a href="#id79"><span class="problematic" id="id80">:cite:`liang_predicting_2016`</span></a></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p>Different subdivisions of frequency range <br>Different lengths of time crops <br>Transfer learning with auxiliary non-epilepsy datasets</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>EEG-based prediction of driver’s cognitive performance by deep convolutional neural network, <a class="bibtex reference internal" href="PriorWork.html#hajinoroozi-eeg-based-2016" id="id41">[HMJ+16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>EEG-based prediction of driver’s cognitive performance by deep convolutional neural network, <a href="#id81"><span class="problematic" id="id82">:cite:`hajinoroozi_eeg-based_2016`</span></a></p></td>
 <td class="text-align:left"><p>Replacement of convolutional layers by restricted Boltzmann machines with slightly varied network architecture}</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Deep learning for epileptic intracranial EEG data, <a class="bibtex reference internal" href="PriorWork.html#antoniades-deep-2016" id="id42">[ASTS16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Deep learning for epileptic intracranial EEG data, <a href="#id83"><span class="problematic" id="id84">:cite:`antoniades_deep_2016`</span></a></p></td>
 <td class="text-align:left"><p>1 or 2 convolutional layers</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Wearable seizure detection using convolutional neural networks with transfer learning, <a class="bibtex reference internal" href="PriorWork.html#page-wearable-2016" id="id43">[PSM16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Wearable seizure detection using convolutional neural networks with transfer learning, <a href="#id85"><span class="problematic" id="id86">:cite:`page_wearable_2016`</span></a></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p>Cross-subject supervised training, within-subject finetuning of fully connected layers</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Learning Representations from EEG with Deep Recurrent-Convolutional Neural Networks, <a class="bibtex reference internal" href="PriorWork.html#bashivan-learning-2016" id="id44">[BRYC16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Learning Representations from EEG with Deep Recurrent-Convolutional Neural Networks, <a href="#id87"><span class="problematic" id="id88">:cite:`bashivan_learning_2016`</span></a></p></td>
 <td class="text-align:left"><p>Number of convolutional layers <br>Temporal processing of ConvNet output by max pooling, temporal convolution, LSTM or temporal convolution + LSTM</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Deep Feature Learning for EEG Recordings, <a class="bibtex reference internal" href="PriorWork.html#stober-learning-2016" id="id45">[Sto16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Deep Feature Learning for EEG Recordings, <a href="#id89"><span class="problematic" id="id90">:cite:`stober_learning_2016`</span></a></p></td>
 <td class="text-align:left"><p>Kernel sizes</p></td>
 <td class="text-align:left"><p>Pretraining first layer as convolutional autoencoder with different constraints</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Parallel Convolutional-Linear Neural Network for Motor Imagery Classification, <a class="bibtex reference internal" href="PriorWork.html#sakhavi-parallel-2015" id="id46">[SGY15]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Parallel Convolutional-Linear Neural Network for Motor Imagery Classification, <a href="#id91"><span class="problematic" id="id92">:cite:`sakhavi_parallel_2015`</span></a></p></td>
 <td class="text-align:left"><p>Combination ConvNet and MLP (trained on different features) vs. only ConvNet vs. only MLP</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Using Convolutional Neural networks to Recognize Rhythm Stimuli form Electroencephalography Recordings, <a class="bibtex reference internal" href="PriorWork.html#stober-using-2014" id="id47">[SCG14]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Using Convolutional Neural networks to Recognize Rhythm Stimuli form Electroencephalography Recordings, <a href="#id93"><span class="problematic" id="id94">:cite:`stober_using_2014`</span></a></p></td>
 <td class="text-align:left"><p>Best values from automatic hyperparameter optimization: frequency cutoff, one vs two layers, kernel sizes, number of channels, pooling width</p></td>
 <td class="text-align:left"><p>Best values from automatic hyperparameter optimization: learning rate, learning rate decay, momentum, final momentum</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Deep feature learning using target priors with applications in ECoG signal decoding for BCI, <a class="bibtex reference internal" href="PriorWork.html#wang-deep-2013" id="id48">[WLSJ13]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Deep feature learning using target priors with applications in ECoG signal decoding for BCI, <a href="#id95"><span class="problematic" id="id96">:cite:`wang_deep_2013`</span></a></p></td>
 <td class="text-align:left"><p>Partially supervised CSA</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Convolutional neural networks for P300 detection with application to brain-computer interfaces, <a class="bibtex reference internal" href="PriorWork.html#cecotti-convolutional-2011" id="id49">[CG11]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Convolutional neural networks for P300 detection with application to brain-computer interfaces, <a href="#id97"><span class="problematic" id="id98">:cite:`cecotti_convolutional_2011`</span></a></p></td>
 <td class="text-align:left"><p>Electrode subset (fixed or automatically determined) <br>Using only one spatial filter <br>Different ensembling strategies</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
@@ -1469,79 +1481,79 @@ commentsRunWhenDOMLoaded(addUtterances);
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#tang-single-trial-2017" id="id50">[TLS17]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id99"><span class="problematic" id="id100">:cite:`tang_single-trial_2017`</span></a></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#lawhern-eegnet-2016" id="id51">[LSW+16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id101"><span class="problematic" id="id102">:cite:`lawhern_eegnet:_2016`</span></a></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#sun-remembered-2016" id="id52">[SQC+16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id103"><span class="problematic" id="id104">:cite:`sun_remembered_2016`</span></a></p></td>
 <td class="text-align:left"><p>Weights (spatial)</p></td>
 <td class="text-align:left"><p>Largest weights found over prefrontal and temporal cortex</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#manor-multimodal-2016" id="id53">[MMG16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id105"><span class="problematic" id="id106">:cite:`manor_multimodal_2016`</span></a></p></td>
 <td class="text-align:left"><p>Weights <br> Activations <br> Saliency maps by gradient</p></td>
 <td class="text-align:left"><p>Weights showed typical P300 distribution <br>Activations were high at plausible times (300-500ms) <br>Saliency maps showed plausible spatio-temporal plots</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#tabar-novel-2017" id="id54">[TH17]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id107"><span class="problematic" id="id108">:cite:`tabar_novel_2017`</span></a></p></td>
 <td class="text-align:left"><p>Weights (spatial + frequential)</p></td>
 <td class="text-align:left"><p>Some weights represented difference of values of two electrodes on different sides of head</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#liang-predicting-2016" id="id55">[LLZW16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id109"><span class="problematic" id="id110">:cite:`liang_predicting_2016`</span></a></p></td>
 <td class="text-align:left"><p>Weights <br> Clustering of weights</p></td>
 <td class="text-align:left"><p>Clusters of weights showed typical frequency band subdivision (delta, theta, alpha, beta, gamma)</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#hajinoroozi-eeg-based-2016" id="id56">[HMJ+16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id111"><span class="problematic" id="id112">:cite:`hajinoroozi_eeg-based_2016`</span></a></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#antoniades-deep-2016" id="id57">[ASTS16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id113"><span class="problematic" id="id114">:cite:`antoniades_deep_2016`</span></a></p></td>
 <td class="text-align:left"><p>Weights <br>Correlation weights and interictal epileptic discharges (IED) <br>Activations</p></td>
 <td class="text-align:left"><p>Weights increasingly correlated with IED waveforms with increasing number of training iterations <br>Second layer captured more complex and well-defined epileptic shapes than first layer <br>IEDs led to highly synchronized activations for neighbouring electrodes</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#thodoroff-learning-2016" id="id58">[TPL16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id115"><span class="problematic" id="id116">:cite:`thodoroff_learning_2016`</span></a></p></td>
 <td class="text-align:left"><p>Input occlusion and effect on prediction accuracy</p></td>
 <td class="text-align:left"><p>Allowed to locate areas critical for seizure</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#george-single-trial-2016" id="id59">[SLK+16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id117"><span class="problematic" id="id118">:cite:`george_single-trial_2016`</span></a></p></td>
 <td class="text-align:left"><p>Weights (spatial)</p></td>
 <td class="text-align:left"><p>Some filter weights had expected topographic distributions for P300 <br>Others filters had large weights on areas not traditionally associated with P300</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#page-wearable-2016" id="id60">[PSM16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id119"><span class="problematic" id="id120">:cite:`page_wearable_2016`</span></a></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#bashivan-learning-2016" id="id61">[BRYC16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id121"><span class="problematic" id="id122">:cite:`bashivan_learning_2016`</span></a></p></td>
 <td class="text-align:left"><p>Inputs that maximally activate given filter <br>Activations of these inputs <br>”Deconvolution” for these inputs</p></td>
 <td class="text-align:left"><p>Different filters were sensitive to different frequency bands <br>Later layers had more spatially localized activations <br>Learned features had noticeable links to well-known electrophysiological markers of cognitive load <br></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#stober-learning-2016" id="id62">[Sto16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id123"><span class="problematic" id="id124">:cite:`stober_learning_2016`</span></a></p></td>
 <td class="text-align:left"><p>Weights (spatial+3 timesteps, pretrained as autoencoder)</p></td>
 <td class="text-align:left"><p>Different constraints led to different weights, one type of constraints could enforce weights that are similar across subjects; other type of constraints led to weights that have similar spatial topographies under different architectural configurations and preprocessings</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#manor-convolutional-2015" id="id63">[MG15]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id125"><span class="problematic" id="id126">:cite:`manor_convolutional_2015`</span></a></p></td>
 <td class="text-align:left"><p>Weights <br> Mean and single-trial activations</p></td>
 <td class="text-align:left"><p>Spatiotemporal regularization led to softer peaks in weights <br>Spatial weights showed typical P300 distribution <br>Activations mostly had peaks at typical times (300-400ms)</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#sakhavi-parallel-2015" id="id64">[SGY15]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id127"><span class="problematic" id="id128">:cite:`sakhavi_parallel_2015`</span></a></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#stober-using-2014" id="id65">[SCG14]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id129"><span class="problematic" id="id130">:cite:`stober_using_2014`</span></a></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#ren-convolutional-2014" id="id66">[RW14]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id131"><span class="problematic" id="id132">:cite:`ren_convolutional_2014`</span></a></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#wang-deep-2013" id="id67">[WLSJ13]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><a href="#id133"><span class="problematic" id="id134">:cite:`wang_deep_2013`</span></a></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a class="bibtex reference internal" href="PriorWork.html#cecotti-convolutional-2011" id="id68">[CG11]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><a href="#id135"><span class="problematic" id="id136">:cite:`cecotti_convolutional_2011`</span></a></p></td>
 <td class="text-align:left"><p>Weights</p></td>
 <td class="text-align:left"><p>Spatial filters were similar for different architectures <br>Spatial filters were different (more focal, more diffuse) for different subjects</p></td>
 </tr>
@@ -1795,75 +1807,75 @@ commentsRunWhenDOMLoaded(addUtterances);
 <td class="text-align:left"><p>Imagined movement classes, within-subject</p></td>
 <td class="text-align:left"><p>FBCSP</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces, <a class="bibtex reference internal" href="PriorWork.html#lawhern-eegnet-2016" id="id69">[LSW+16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces, <a href="#id137"><span class="problematic" id="id138">:cite:`lawhern_eegnet:_2016`</span></a></p></td>
 <td class="text-align:left"><p>Oddball response (RSVP), error response (ERN), movement classes (voluntarily started and imagined)</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Remembered or Forgotten? –- An EEG-Based Computational Prediction Approach, <a class="bibtex reference internal" href="PriorWork.html#sun-remembered-2016" id="id70">[SQC+16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Remembered or Forgotten? –- An EEG-Based Computational Prediction Approach, <a href="#id139"><span class="problematic" id="id140">:cite:`sun_remembered_2016`</span></a></p></td>
 <td class="text-align:left"><p>Memory performance, within-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Multimodal Neural Network for Rapid Serial Visual Presentation Brain Computer Interface, <a class="bibtex reference internal" href="PriorWork.html#manor-multimodal-2016" id="id71">[MMG16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Multimodal Neural Network for Rapid Serial Visual Presentation Brain Computer Interface, <a href="#id141"><span class="problematic" id="id142">:cite:`manor_multimodal_2016`</span></a></p></td>
 <td class="text-align:left"><p>Oddball response using RSVP and image (combined image-EEG decoding), within-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>A novel deep learning approach for classification of EEG motor imagery signals, <a class="bibtex reference internal" href="PriorWork.html#tabar-novel-2017" id="id72">[TH17]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>A novel deep learning approach for classification of EEG motor imagery signals, <a href="#id143"><span class="problematic" id="id144">:cite:`tabar_novel_2017`</span></a></p></td>
 <td class="text-align:left"><p>Imagined and executed movement classes, within-subject</p></td>
 <td class="text-align:left"><p>Weights (spatial + frequential)</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Predicting Seizures from Electroencephalography Recordings: A Knowledge Transfer Strategy, <a class="bibtex reference internal" href="PriorWork.html#liang-predicting-2016" id="id73">[LLZW16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Predicting Seizures from Electroencephalography Recordings: A Knowledge Transfer Strategy, <a href="#id145"><span class="problematic" id="id146">:cite:`liang_predicting_2016`</span></a></p></td>
 <td class="text-align:left"><p>Seizure prediction, within-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>EEG-based prediction of driver’s cognitive performance by deep convolutional neural network, <a class="bibtex reference internal" href="PriorWork.html#hajinoroozi-eeg-based-2016" id="id74">[HMJ+16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>EEG-based prediction of driver’s cognitive performance by deep convolutional neural network, <a href="#id147"><span class="problematic" id="id148">:cite:`hajinoroozi_eeg-based_2016`</span></a></p></td>
 <td class="text-align:left"><p>Driver performance, within- and cross-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Deep learning for epileptic intracranial EEG data, <a class="bibtex reference internal" href="PriorWork.html#antoniades-deep-2016" id="id75">[ASTS16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Deep learning for epileptic intracranial EEG data, <a href="#id149"><span class="problematic" id="id150">:cite:`antoniades_deep_2016`</span></a></p></td>
 <td class="text-align:left"><p>Epileptic discharges, cross-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Learning Robust Features using Deep Learning for Automatic Seizure Detection, <a class="bibtex reference internal" href="PriorWork.html#thodoroff-learning-2016" id="id76">[TPL16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Learning Robust Features using Deep Learning for Automatic Seizure Detection, <a href="#id151"><span class="problematic" id="id152">:cite:`thodoroff_learning_2016`</span></a></p></td>
 <td class="text-align:left"><p>Start of epileptic seizure, within- and cross-subject</p></td>
 <td class="text-align:left"><p>Hand crafted features + SVM</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Single-trial EEG RSVP classification using convolutional neural networks, <a class="bibtex reference internal" href="PriorWork.html#george-single-trial-2016" id="id77">[SLK+16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Single-trial EEG RSVP classification using convolutional neural networks, <a href="#id153"><span class="problematic" id="id154">:cite:`george_single-trial_2016`</span></a></p></td>
 <td class="text-align:left"><p>Oddball response (RSVP), groupwise (ConvNet trained on all subjects)</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Wearable seizure detection using convolutional neural networks with transfer learning, <a class="bibtex reference internal" href="PriorWork.html#page-wearable-2016" id="id78">[PSM16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Wearable seizure detection using convolutional neural networks with transfer learning, <a href="#id155"><span class="problematic" id="id156">:cite:`page_wearable_2016`</span></a></p></td>
 <td class="text-align:left"><p>Seizure detection, cross-subject, within-subject, groupwise</p></td>
 <td class="text-align:left"><p>Multiple: spectral features, higher order statistics + linear-SVM, RBF-SVM, …</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Learning Representations from EEG with Deep Recurrent-Convolutional Neural Networks, <a class="bibtex reference internal" href="PriorWork.html#bashivan-learning-2016" id="id79">[BRYC16]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Learning Representations from EEG with Deep Recurrent-Convolutional Neural Networks, <a href="#id157"><span class="problematic" id="id158">:cite:`bashivan_learning_2016`</span></a></p></td>
 <td class="text-align:left"><p>Cognitive load (number of characters to memorize), cross-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Deep Feature Learning for EEG Recordings, <a class="bibtex reference internal" href="PriorWork.html#stober-learning-2016" id="id80">[Sto16]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Deep Feature Learning for EEG Recordings, <a href="#id159"><span class="problematic" id="id160">:cite:`stober_learning_2016`</span></a></p></td>
 <td class="text-align:left"><p>Type of music rhythm, groupwise (ensembles of leave-one-subject-out trained models, evaluated on separate test set of same subjects)</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Convolutional Neural Network for Multi-Category Rapid Serial Visual Presentation BCI, <a class="bibtex reference internal" href="PriorWork.html#manor-convolutional-2015" id="id81">[MG15]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Convolutional Neural Network for Multi-Category Rapid Serial Visual Presentation BCI, <a href="#id161"><span class="problematic" id="id162">:cite:`manor_convolutional_2015`</span></a></p></td>
 <td class="text-align:left"><p>Oddball response (RSVP), within-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Parallel Convolutional-Linear Neural Network for Motor Imagery Classification, <a class="bibtex reference internal" href="PriorWork.html#sakhavi-parallel-2015" id="id82">[SGY15]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Parallel Convolutional-Linear Neural Network for Motor Imagery Classification, <a href="#id163"><span class="problematic" id="id164">:cite:`sakhavi_parallel_2015`</span></a></p></td>
 <td class="text-align:left"><p>Imagined movement classes, within-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Using Convolutional Neural networks to Recognize Rhythm Stimuli form Electroencephalography Recordings, <a class="bibtex reference internal" href="PriorWork.html#stober-using-2014" id="id83">[SCG14]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Using Convolutional Neural networks to Recognize Rhythm Stimuli form Electroencephalography Recordings, <a href="#id165"><span class="problematic" id="id166">:cite:`stober_using_2014`</span></a></p></td>
 <td class="text-align:left"><p>Type of music rhythm, within-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Convolutional deep belief networks for feature extraction of EEG signal, <a class="bibtex reference internal" href="PriorWork.html#ren-convolutional-2014" id="id84">[RW14]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Convolutional deep belief networks for feature extraction of EEG signal, <a href="#id167"><span class="problematic" id="id168">:cite:`ren_convolutional_2014`</span></a></p></td>
 <td class="text-align:left"><p>Imagined movement classes, within-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>Deep feature learning using target priors with applications in ECoG signal decoding for BCI, <a class="bibtex reference internal" href="PriorWork.html#wang-deep-2013" id="id85">[WLSJ13]</a></p></td>
+<tr class="row-even"><td class="text-align:left"><p>Deep feature learning using target priors with applications in ECoG signal decoding for BCI, <a href="#id169"><span class="problematic" id="id170">:cite:`wang_deep_2013`</span></a></p></td>
 <td class="text-align:left"><p>Finger flexion trajectory (regression), within-subject</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Convolutional neural networks for P300 detection with application to brain-computer interfaces, <a class="bibtex reference internal" href="PriorWork.html#cecotti-convolutional-2011" id="id86">[CG11]</a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p>Convolutional neural networks for P300 detection with application to brain-computer interfaces, <a href="#id171"><span class="problematic" id="id172">:cite:`cecotti_convolutional_2011`</span></a></p></td>
 <td class="text-align:left"><p>Oddball / attention response using P300 speller, within-subject</p></td>
 <td class="text-align:left"><p>Multiple: Linear SVM, gradient boosting, E-SVM, S-SVM, mLVQ, LDA, …</p></td>
 </tr>
@@ -1893,21 +1905,25 @@ commentsRunWhenDOMLoaded(addUtterances);
 
               </div>
               
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-
-    </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
           By The Jupyter Book community<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -1916,11 +1932,9 @@ commentsRunWhenDOMLoaded(addUtterances);
 
       </div>
     </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    
+  
   </body>
 </html>

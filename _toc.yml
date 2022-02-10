@@ -1,12 +1,13 @@
-# In _toc.yml
-- file: Abstract
+format: jb-article
+root: Abstract
+sections:
 - file: Introduction
 - file: PriorWork
+- file: DeepArchitectures
+- file: CroppedTraining
+- file: PerturbationVisualization
 - file: MovementDecoding
 - file: TaskDecoding
 - file: Pathology
 - file: DeepLearningImprovements
-- file: FeatureComparison
-- file: Invertible
-- file: DeepInterpretability
 - file: FutureWork
