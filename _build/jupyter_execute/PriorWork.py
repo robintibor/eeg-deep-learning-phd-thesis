@@ -112,7 +112,7 @@ None
 # * Deep networks should be able to extract information from any frequency range 
 # ```
 
-# ## Networn Architectures
+# ## Network Architectures
 
 # ```{admonition}  Most investigated network architectures were fairly shallow (below 4 layers)
 # * Unlike architectures in computer vision, most EEG DL architectures had only 1-3 convolutional layers
@@ -246,9 +246,3 @@ None
 # :class: tip
 # * Investigate in how far networks exploit features known to work well for movement-related decoding
 # ```
-
-# ## References
-# 
-# ```{bibliography} ./references.bib
-# ```
-# 

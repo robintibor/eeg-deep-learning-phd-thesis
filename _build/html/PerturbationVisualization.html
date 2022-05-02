@@ -179,6 +179,11 @@ commentsRunWhenDOMLoaded(addUtterances);
    Future Work
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="References.html">
+   References
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -313,7 +318,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="section" id="interpretation-and-limitations">
 <h2>Interpretation and limitations<a class="headerlink" href="#interpretation-and-limitations" title="Permalink to this headline">¶</a></h2>
-<p>The perturbation-based visualization reflects network behavior and one cannot directly draw inferences about the data-generating process from them. This is because a prediction change caused by an amplitude perturbation may reflect both learned task-relevant factors as well as learned noise correlations. For example, increasing the amplitude in the alpha frequency range at C4, an electrode on the right side, may increase the predicted probability for right hand movement. That would likely not be because the alpha amplitude actually increases at C4 during right hand movement, but because the amplitude <em>decreases</em> on C3 <em>and</em> is correlated between C3 and C4. Hence, first subtracting the C4 amplitude from the C3 amplitude and then decoding negative values of this computation as indicating right hand movement is a reasonable learned prediction function. And this learned prediction function would cause the amplitude-perturbation function to show that an alpha increase at C4 causes an increase in the predicted probability for right hand movement. For a more detailed discussion of this effect in the context of linear models, see <span id="id3">[<a class="reference internal" href="PriorWork.html#id48">HMG+14</a>]</span>.</p>
+<p>The perturbation-based visualization reflects network behavior and one cannot directly draw inferences about the data-generating process from them. This is because a prediction change caused by an amplitude perturbation may reflect both learned task-relevant factors as well as learned noise correlations. For example, increasing the amplitude in the alpha frequency range at C4, an electrode on the right side, may increase the predicted probability for right hand movement. That would likely not be because the alpha amplitude actually increases at C4 during right hand movement, but because the amplitude <em>decreases</em> on C3 <em>and</em> is correlated between C3 and C4. Hence, first subtracting the C4 amplitude from the C3 amplitude and then decoding negative values of this computation as indicating right hand movement is a reasonable learned prediction function. And this learned prediction function would cause the amplitude-perturbation function to show that an alpha increase at C4 causes an increase in the predicted probability for right hand movement. For a more detailed discussion of this effect in the context of linear models, see <span id="id3">[<a class="reference internal" href="References.html#id23">HMG+14</a>]</span>.</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="krm"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
