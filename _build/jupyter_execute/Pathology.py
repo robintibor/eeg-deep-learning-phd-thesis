@@ -4,6 +4,8 @@
 # (pathology)=
 # # Decoding Pathology
 
+# 
+# 
 # * much less explored, best assumptions much less clear
 # * hypothesis model with least assumptions/most free should be best
 # * visualization even more important, also use doctors texts etc.

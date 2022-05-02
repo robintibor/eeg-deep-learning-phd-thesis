@@ -4,7 +4,7 @@
 # (perturbation-visualization)=
 # # Perturbation Visualization
 
-# Understanding what features the network has learned to extract from the EEG signal is scientifically interesting. Due to the end-to-end training, the networks may learn a variety of features to solve their task. The networks may learn brain-signal features known to be related to the task, non-brain-signal features like eye movements that happen to be informative for the task, or even novel brain-signal features that have not yet been known to be related to the task. However there is no straightforward way to find out what the deep networks have learned from the brain signals.
+# Understanding what features the network has learned to extract from the EEG signal is scientifically interesting. Due to the end-to-end training, the networks may learn a variety of features to solve their task. The networks may learn task-informative brain-signal features or task-informative non-brain-signal features, e.g., eye movements that correlate to a movement. The learned features may be already known from prior research on brain-signal decoding or represent novel features that had not been described in the literature. However, there is no straightforward way to find out what the deep networks have learned from the brain signals.
 
 # Therefore, we developed an input amplitude perturbation method to investigate in how far the deep networks learn to extract spectral amplitude features, which are very commonly used in many EEG decoding pipelines. For example, it is known that the amplitudes, for example of the alpha, beta and gamma bands, provide class-discriminative information for motor tasks [Ball et al., 2008; Pfurtscheller, 1981; Pfurtscheller and Aranibar, 1979]. Hence, it seems a priori very likely that the deep networks learn to extract such features and worthwhile to check whether they indeed do so.
 
@@ -28,20 +28,10 @@
 # 
 # [^krm]: This idea was suggested to us in personal communication by Klaus-Robert Müller
 
-# ## Limitations
+# ## Interpretation and limitations
 # 
-# TODO
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
+# The perturbation-based visualization reflects network behavior and one cannot directly draw inferences about the data-generating process from them. This is because a prediction change caused by an amplitude perturbation may reflect both learned task-relevant factors as well as learned noise correlations. For example, increasing the amplitude in the alpha frequency range at C4, an electrode on the right side, may increase the predicted probability for right hand movement. That would likely not be because the alpha amplitude actually increases at C4 during right hand movement, but because the amplitude *decreases* on C3 *and* is correlated between C3 and C4. Hence, first subtracting the C4 amplitude from the C3 amplitude and then decoding negative values of this computation as indicating right hand movement is a reasonable learned prediction function. And this learned prediction function would cause the amplitude-perturbation function to show that an alpha increase at C4 causes an increase in the predicted probability for right hand movement. For a more detailed discussion of this effect in the context of linear models, see {cite}`haufe_interpretation_2014`.
+# 
+# 
 
 # 

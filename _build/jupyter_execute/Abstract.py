@@ -17,15 +17,17 @@
 # | [Movement-Related Decoding](movement-related)   | Deep learning can be at least as good as feature-based baselines for movement-related decoding; deep networks also learn to extract known hand-engineered features|
 # | [Task-Related Decoding](task-related)   | Deep learning also performs well at other task-related decoding|
 # | [Decoding Pathology](pathology)  | Deep networks designed for task-related decoding can also decode pathology well  |
-# | [Further Deep Learning Improvements](dl-improvements)   | Deep learning improvements from other domains partially carry over to EEG decoding    ?|
+# | [Invertible Networks](invertible-networks) | Better Understanding and larger data through invertible networks |
 # | [Future Work](future-work)   | Newer DL architectures such as transformers or invertible networks may allow better performance and better interpretability   |
-# 
-# 
 
 # 
 # Possible:
 # 
-# %| [Back to Features - a Comparison](feature-comparison)   | Well-optimized feature baselines remain competitive with deep learning    |
+# | Chapter    | Summary    |
+# | :--- | ---: |
+# | [Back to Features - a Comparison](feature-comparison)   | Well-optimized feature baselines remain competitive with deep learning    |
+# | [Further Deep Learning Improvements](dl-improvements)   | Deep learning improvements from other domains partially carry over to EEG decoding    ?|
+# 
 # * [Introduction](introduction)
 # * [Prior Work](prior-work)
 # * [Neural Network Architectures for EEG-Decoding](network-architectures)

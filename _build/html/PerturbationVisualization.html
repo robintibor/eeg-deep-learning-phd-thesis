@@ -278,8 +278,8 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#limitations">
-   Limitations
+  <a class="reference internal nav-link" href="#interpretation-and-limitations">
+   Interpretation and limitations
   </a>
  </li>
 </ul>
@@ -295,7 +295,7 @@ commentsRunWhenDOMLoaded(addUtterances);
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="perturbation-visualization">
 <span id="id1"></span><h1>Perturbation Visualization<a class="headerlink" href="#perturbation-visualization" title="Permalink to this headline">¶</a></h1>
-<p>Understanding what features the network has learned to extract from the EEG signal is scientifically interesting. Due to the end-to-end training, the networks may learn a variety of features to solve their task. The networks may learn brain-signal features known to be related to the task, non-brain-signal features like eye movements that happen to be informative for the task, or even novel brain-signal features that have not yet been known to be related to the task. However there is no straightforward way to find out what the deep networks have learned from the brain signals.</p>
+<p>Understanding what features the network has learned to extract from the EEG signal is scientifically interesting. Due to the end-to-end training, the networks may learn a variety of features to solve their task. The networks may learn task-informative brain-signal features or task-informative non-brain-signal features, e.g., eye movements that correlate to a movement. The learned features may be already known from prior research on brain-signal decoding or represent novel features that had not been described in the literature. However, there is no straightforward way to find out what the deep networks have learned from the brain signals.</p>
 <p>Therefore, we developed an input amplitude perturbation method to investigate in how far the deep networks learn to extract spectral amplitude features, which are very commonly used in many EEG decoding pipelines. For example, it is known that the amplitudes, for example of the alpha, beta and gamma bands, provide class-discriminative information for motor tasks [Ball et al., 2008; Pfurtscheller, 1981; Pfurtscheller and Aranibar, 1979]. Hence, it seems a priori very likely that the deep networks learn to extract such features and worthwhile to check whether they indeed do so.</p>
 <div class="section" id="input-perturbation-network-prediction-correlation-map">
 <h2>Input-perturbation network-prediction correlation map<a class="headerlink" href="#input-perturbation-network-prediction-correlation-map" title="Permalink to this headline">¶</a></h2>
@@ -311,9 +311,9 @@ commentsRunWhenDOMLoaded(addUtterances);
 <h2>Gradient-based implementation<a class="headerlink" href="#gradient-based-implementation" title="Permalink to this headline">¶</a></h2>
 <p>An simpler way to implement the idea of testing the sensitivity of the network to spectral amplitude features is through gradient-based analysis <a class="footnote-reference brackets" href="#krm" id="id2">1</a>. There, we directly compute the gradient of the output unit with respect to the amplitudes of all frequency bins of all electrodes of the original unperturbed trial. To practically implement this, one must first transform the time domain input signal into the frequency domain and to a amplitude/phase representation via the Fourier transform. Then, one can transform the amplitude/phase representation back to the time domain using the inverse Fourier Transform. Since the inverse Fourier transform is differentiable one can backpropagate the gradients from the output unit through the time domain input back to the amplitudes. The more the network behaves locally linear around the input, the closer the results of this variant would be to the original perturbation variant. It is computationally substantially faster as everything is computed in one forward-backward pass, without needing to iterate over many perturbations.</p>
 </div>
-<div class="section" id="limitations">
-<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
-<p>TODO</p>
+<div class="section" id="interpretation-and-limitations">
+<h2>Interpretation and limitations<a class="headerlink" href="#interpretation-and-limitations" title="Permalink to this headline">¶</a></h2>
+<p>The perturbation-based visualization reflects network behavior and one cannot directly draw inferences about the data-generating process from them. This is because a prediction change caused by an amplitude perturbation may reflect both learned task-relevant factors as well as learned noise correlations. For example, increasing the amplitude in the alpha frequency range at C4, an electrode on the right side, may increase the predicted probability for right hand movement. That would likely not be because the alpha amplitude actually increases at C4 during right hand movement, but because the amplitude <em>decreases</em> on C3 <em>and</em> is correlated between C3 and C4. Hence, first subtracting the C4 amplitude from the C3 amplitude and then decoding negative values of this computation as indicating right hand movement is a reasonable learned prediction function. And this learned prediction function would cause the amplitude-perturbation function to show that an alpha increase at C4 causes an increase in the predicted probability for right hand movement. For a more detailed discussion of this effect in the context of linear models, see <span id="id3">[<a class="reference internal" href="PriorWork.html#id48">HMG+14</a>]</span>.</p>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="krm"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>

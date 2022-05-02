@@ -150,6 +150,11 @@ commentsRunWhenDOMLoaded(addUtterances);
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="PerturbationVisualization.html">
+   Perturbation Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="MovementDecoding.html">
    Decoding Movement-Related Brain Activity
   </a>
@@ -167,21 +172,6 @@ commentsRunWhenDOMLoaded(addUtterances);
  <li class="toctree-l1">
   <a class="reference internal" href="DeepLearningImprovements.html">
    Deep Learning Improvements
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FeatureComparison.html">
-   Back to Features - a Comparison
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Invertible.html">
-   Invertible Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DeepInterpretability.html">
-   Further Interpretability
   </a>
  </li>
  <li class="toctree-l1">
@@ -446,11 +436,11 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
-<div class="figure align-default" id="id50">
+<div class="figure align-default" id="id221">
 <div class="cell_output docutils container">
 <img alt="_images/PriorWork_8_0.png" src="_images/PriorWork_8_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text"><em>Input domains and frequency ranges in prior work</em>. Grey lines represent frequency ranges of individual studies. Note that many studies only include frequencies below 50 Hz, some use very restricted ranges (alpha/beta band).</span><a class="headerlink" href="#id50" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text"><em>Input domains and frequency ranges in prior work</em>. Grey lines represent frequency ranges of individual studies. Note that many studies only include frequencies below 50 Hz, some use very restricted ranges (alpha/beta band).</span><a class="headerlink" href="#id221" title="Permalink to this image">¶</a></p>
 </div>
 <div class="tip admonition">
 <p class="admonition-title">We used also high-gamma frequencies &gt; 50 Hz on one dataset</p>
@@ -526,11 +516,11 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 </div>
 </div>
-<div class="figure align-default" id="id51">
+<div class="figure align-default" id="id222">
 <div class="cell_output docutils container">
 <img alt="_images/PriorWork_13_0.png" src="_images/PriorWork_13_0.png" />
 </div>
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text"><em>Number of layers in prior work</em>. Small grey markers represent individual architectures. Dashed lines indicate different number of layers investigated in a single study (e.g., a single study investigated 3-7 convolutional layers). Larger grey markers indicate sum of occurences of that layer number over all studies (e.g., 9 architectures used 2 convolutional layers). Note most architectures use only 1-3 convolutional layers.</span><a class="headerlink" href="#id51" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text"><em>Number of layers in prior work</em>. Small grey markers represent individual architectures. Dashed lines indicate different number of layers investigated in a single study (e.g., a single study investigated 3-7 convolutional layers). Larger grey markers indicate sum of occurences of that layer number over all studies (e.g., 9 architectures used 2 convolutional layers). Note most architectures use only 1-3 convolutional layers.</span><a class="headerlink" href="#id222" title="Permalink to this image">¶</a></p>
 </div>
 <div class="tip admonition">
 <p class="admonition-title">We will evaluate shallower and deeper architectures </p>
@@ -557,55 +547,55 @@ commentsRunWhenDOMLoaded(addUtterances);
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:left"><p><a href="#id2"><span class="problematic" id="id3">:cite:`lawhern_eegnet:_2016`</span></a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id2">[<a class="reference internal" href="#id135">LSW+16</a>]</span></p></td>
 <td class="text-align:left"><p>Kernel sizes</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a href="#id4"><span class="problematic" id="id5">:cite:`sun_remembered_2016`</span></a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id3">[<a class="reference internal" href="#id208">SQC+16</a>]</span></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p>Different time windows</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a href="#id6"><span class="problematic" id="id7">:cite:`tabar_novel_2017`</span></a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id4">[<a class="reference internal" href="#id201">TH17</a>]</span></p></td>
 <td class="text-align:left"><p>Addition of six-layer stacked autoencoder on ConvNet features <br> Kernel sizes</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a href="#id8"><span class="problematic" id="id9">:cite:`liang_predicting_2016`</span></a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id5">[<a class="reference internal" href="#id157">LLZW16</a>]</span></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p>Different subdivisions of frequency range <br>Different lengths of time crops <br>Transfer learning with auxiliary non-epilepsy datasets</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a href="#id10"><span class="problematic" id="id11">:cite:`hajinoroozi_eeg-based_2016`</span></a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id6">[<a class="reference internal" href="#id165">HMJ+16</a>]</span></p></td>
 <td class="text-align:left"><p>Replacement of convolutional layers by restricted Boltzmann machines with slightly varied network architecture}</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a href="#id12"><span class="problematic" id="id13">:cite:`antoniades_deep_2016`</span></a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id7">[<a class="reference internal" href="#id139">ASTS16</a>]</span></p></td>
 <td class="text-align:left"><p>1 or 2 convolutional layers</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a href="#id14"><span class="problematic" id="id15">:cite:`page_wearable_2016`</span></a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id8">[<a class="reference internal" href="#id190">PSM16</a>]</span></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p>Cross-subject supervised training, within-subject finetuning of fully connected layers</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a href="#id16"><span class="problematic" id="id17">:cite:`bashivan_learning_2016`</span></a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id9">[<a class="reference internal" href="#id183">BRYC16</a>]</span></p></td>
 <td class="text-align:left"><p>Number of convolutional layers <br>Temporal processing of ConvNet output by max pooling, temporal convolution, LSTM or temporal convolution + LSTM</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a href="#id18"><span class="problematic" id="id19">:cite:`stober_learning_2016`</span></a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id10">[<a class="reference internal" href="#id212">Sto16</a>]</span></p></td>
 <td class="text-align:left"><p>Kernel sizes</p></td>
 <td class="text-align:left"><p>Pretraining first layer as convolutional autoencoder with different constraints</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a href="#id20"><span class="problematic" id="id21">:cite:`sakhavi_parallel_2015`</span></a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id11">[<a class="reference internal" href="#id102">SGY15</a>]</span></p></td>
 <td class="text-align:left"><p>Combination ConvNet and MLP (trained on different features) vs. only ConvNet vs. only MLP</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a href="#id22"><span class="problematic" id="id23">:cite:`stober_using_2014`</span></a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id12">[<a class="reference internal" href="#id169">SCG14</a>]</span></p></td>
 <td class="text-align:left"><p>Best values from automatic hyperparameter optimization: frequency cutoff, one vs two layers, kernel sizes, number of channels, pooling width</p></td>
 <td class="text-align:left"><p>Best values from automatic hyperparameter optimization: learning rate, learning rate decay, momentum, final momentum</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a href="#id24"><span class="problematic" id="id25">:cite:`wang_deep_2013`</span></a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id13">[<a class="reference internal" href="#id195">WLSJ13</a>]</span></p></td>
 <td class="text-align:left"><p>Partially supervised CSA</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a href="#id26"><span class="problematic" id="id27">:cite:`cecotti_convolutional_2011`</span></a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id14">[<a class="reference internal" href="#id198">CG11</a>]</span></p></td>
 <td class="text-align:left"><p>Electrode subset (fixed or automatically determined) <br>Using only one spatial filter <br>Different ensembling strategies</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
@@ -636,47 +626,47 @@ commentsRunWhenDOMLoaded(addUtterances);
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:left"><p><a href="#id28"><span class="problematic" id="id29">:cite:`sun_remembered_2016`</span></a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id15">[<a class="reference internal" href="#id208">SQC+16</a>]</span></p></td>
 <td class="text-align:left"><p>Weights (spatial)</p></td>
 <td class="text-align:left"><p>Largest weights found over prefrontal and temporal cortex</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a href="#id30"><span class="problematic" id="id31">:cite:`manor_multimodal_2016`</span></a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id16">[<a class="reference internal" href="#id182">MMG16</a>]</span></p></td>
 <td class="text-align:left"><p>Weights <br> Activations <br> Saliency maps by gradient</p></td>
 <td class="text-align:left"><p>Weights showed typical P300 distribution <br>Activations were high at plausible times (300-500ms) <br>Saliency maps showed plausible spatio-temporal plots</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a href="#id32"><span class="problematic" id="id33">:cite:`tabar_novel_2017`</span></a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id17">[<a class="reference internal" href="#id201">TH17</a>]</span></p></td>
 <td class="text-align:left"><p>Weights (spatial + frequential)</p></td>
 <td class="text-align:left"><p>Some weights represented difference of values of two electrodes on different sides of head</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a href="#id34"><span class="problematic" id="id35">:cite:`liang_predicting_2016`</span></a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id18">[<a class="reference internal" href="#id157">LLZW16</a>]</span></p></td>
 <td class="text-align:left"><p>Weights <br> Clustering of weights</p></td>
 <td class="text-align:left"><p>Clusters of weights showed typical frequency band subdivision (delta, theta, alpha, beta, gamma)</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a href="#id36"><span class="problematic" id="id37">:cite:`antoniades_deep_2016`</span></a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id19">[<a class="reference internal" href="#id139">ASTS16</a>]</span></p></td>
 <td class="text-align:left"><p>Weights <br>Correlation weights and interictal epileptic discharges (IED) <br>Activations</p></td>
 <td class="text-align:left"><p>Weights increasingly correlated with IED waveforms with increasing number of training iterations <br>Second layer captured more complex and well-defined epileptic shapes than first layer <br>IEDs led to highly synchronized activations for neighbouring electrodes</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a href="#id38"><span class="problematic" id="id39">:cite:`thodoroff_learning_2016`</span></a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id20">[<a class="reference internal" href="#id167">TPL16</a>]</span></p></td>
 <td class="text-align:left"><p>Input occlusion and effect on prediction accuracy</p></td>
 <td class="text-align:left"><p>Allowed to locate areas critical for seizure</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a href="#id40"><span class="problematic" id="id41">:cite:`george_single-trial_2016`</span></a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id21">[<a class="reference internal" href="#id186">SLK+16</a>]</span></p></td>
 <td class="text-align:left"><p>Weights (spatial)</p></td>
 <td class="text-align:left"><p>Some filter weights had expected topographic distributions for P300 <br>Others filters had large weights on areas not traditionally associated with P300</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a href="#id42"><span class="problematic" id="id43">:cite:`bashivan_learning_2016`</span></a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id22">[<a class="reference internal" href="#id183">BRYC16</a>]</span></p></td>
 <td class="text-align:left"><p>Inputs that maximally activate given filter <br>Activations of these inputs <br>”Deconvolution” for these inputs</p></td>
 <td class="text-align:left"><p>Different filters were sensitive to different frequency bands <br>Later layers had more spatially localized activations <br>Learned features had noticeable links to well-known electrophysiological markers of cognitive load <br></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a href="#id44"><span class="problematic" id="id45">:cite:`stober_learning_2016`</span></a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id23">[<a class="reference internal" href="#id212">Sto16</a>]</span></p></td>
 <td class="text-align:left"><p>Weights (spatial+3 timesteps, pretrained as autoencoder)</p></td>
 <td class="text-align:left"><p>Different constraints led to different weights, one type of constraints could enforce weights that are similar across subjects; other type of constraints led to weights that have similar spatial topographies under different architectural configurations and preprocessings</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><a href="#id46"><span class="problematic" id="id47">:cite:`manor_convolutional_2015`</span></a></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id24">[<a class="reference internal" href="#id132">MG15</a>]</span></p></td>
 <td class="text-align:left"><p>Weights <br> Mean and single-trial activations</p></td>
 <td class="text-align:left"><p>Spatiotemporal regularization led to softer peaks in weights <br>Spatial weights showed typical P300 distribution <br>Activations mostly had peaks at typical times (300-400ms)</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><a href="#id48"><span class="problematic" id="id49">:cite:`cecotti_convolutional_2011`</span></a></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id25">[<a class="reference internal" href="#id198">CG11</a>]</span></p></td>
 <td class="text-align:left"><p>Weights</p></td>
 <td class="text-align:left"><p>Spatial filters were similar for different architectures <br>Spatial filters were different (more focal, more diffuse) for different subjects</p></td>
 </tr>
@@ -691,6 +681,69 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="id26"><dl class="citation">
+<dt class="label" id="id139"><span class="brackets">ASTS16</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id19">2</a>)</span></dt>
+<dd><p>A. Antoniades, L. Spyrou, C. C. Took, and S. Sanei. Deep learning for epileptic intracranial EEG data. In <em>2016 IEEE 26th International Workshop on Machine Learning for Signal Processing (MLSP)</em>, 1–6. September 2016. <a class="reference external" href="https://doi.org/10.1109/MLSP.2016.7738824">doi:10.1109/MLSP.2016.7738824</a>.</p>
+</dd>
+<dt class="label" id="id183"><span class="brackets">BRYC16</span><span class="fn-backref">(<a href="#id9">1</a>,<a href="#id22">2</a>)</span></dt>
+<dd><p>Pouya Bashivan, Irina Rish, Mohammed Yeasin, and Noel Codella. Learning Representations from EEG with Deep Recurrent-Convolutional Neural Networks. In <em>arXiv:1511.06448 [cs]</em>. 2016. arXiv: 1511.06448. URL: <a class="reference external" href="http://arxiv.org/abs/1511.06448">http://arxiv.org/abs/1511.06448</a> (visited on 2016-12-20).</p>
+</dd>
+<dt class="label" id="id198"><span class="brackets">CG11</span><span class="fn-backref">(<a href="#id14">1</a>,<a href="#id25">2</a>)</span></dt>
+<dd><p>Hubert Cecotti and Axel Graser. Convolutional Neural Networks for P300 Detection with Application to Brain-Computer Interfaces. <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em>, 33(3):433–445, March 2011. URL: <a class="reference external" href="http://dx.doi.org/10.1109/TPAMI.2010.125">http://dx.doi.org/10.1109/TPAMI.2010.125</a> (visited on 2016-12-20), <a class="reference external" href="https://doi.org/10.1109/TPAMI.2010.125">doi:10.1109/TPAMI.2010.125</a>.</p>
+</dd>
+<dt class="label" id="id165"><span class="brackets"><a class="fn-backref" href="#id6">HMJ+16</a></span></dt>
+<dd><p>Mehdi Hajinoroozi, Zijing Mao, Tzyy-Ping Jung, Chin-Teng Lin, and Yufei Huang. EEG-based prediction of driver's cognitive performance by deep convolutional neural network. <em>Signal Processing: Image Communication</em>, 47:549–555, September 2016. URL: <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0923596516300832">http://www.sciencedirect.com/science/article/pii/S0923596516300832</a> (visited on 2016-12-20), <a class="reference external" href="https://doi.org/10.1016/j.image.2016.05.018">doi:10.1016/j.image.2016.05.018</a>.</p>
+</dd>
+<dt class="label" id="id48"><span class="brackets">HMG+14</span></dt>
+<dd><p>Stefan Haufe, Frank Meinecke, Kai Görgen, Sven Dähne, John-Dylan Haynes, Benjamin Blankertz, and Felix Bießmann. On the interpretation of weight vectors of linear models in multivariate neuroimaging. <em>NeuroImage</em>, 87:96–110, February 2014. URL: <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S1053811913010914">http://www.sciencedirect.com/science/article/pii/S1053811913010914</a> (visited on 2015-08-07), <a class="reference external" href="https://doi.org/10.1016/j.neuroimage.2013.10.067">doi:10.1016/j.neuroimage.2013.10.067</a>.</p>
+</dd>
+<dt class="label" id="id135"><span class="brackets"><a class="fn-backref" href="#id2">LSW+16</a></span></dt>
+<dd><p>Vernon J. Lawhern, Amelia J. Solon, Nicholas R. Waytowich, Stephen M. Gordon, Chou P. Hung, and Brent J. Lance. EEGNet: A Compact Convolutional Network for EEG-based Brain-Computer Interfaces. <em>arXiv:1611.08024 [cs, q-bio, stat]</em>, November 2016. arXiv: 1611.08024. URL: <a class="reference external" href="http://arxiv.org/abs/1611.08024">http://arxiv.org/abs/1611.08024</a> (visited on 2016-12-20).</p>
+</dd>
+<dt class="label" id="id157"><span class="brackets">LLZW16</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id18">2</a>)</span></dt>
+<dd><p>J. Liang, R. Lu, C. Zhang, and F. Wang. Predicting Seizures from Electroencephalography Recordings: A Knowledge Transfer Strategy. In <em>2016 IEEE International Conference on Healthcare Informatics (ICHI)</em>, 184–191. October 2016. <a class="reference external" href="https://doi.org/10.1109/ICHI.2016.27">doi:10.1109/ICHI.2016.27</a>.</p>
+</dd>
+<dt class="label" id="id132"><span class="brackets"><a class="fn-backref" href="#id24">MG15</a></span></dt>
+<dd><p>Ran Manor and Amir B. Geva. Convolutional Neural Network for Multi-Category Rapid Serial Visual Presentation BCI. <em>Frontiers in Computational Neuroscience</em>, 9:146, 2015. <a class="reference external" href="https://doi.org/10.3389/fncom.2015.00146">doi:10.3389/fncom.2015.00146</a>.</p>
+</dd>
+<dt class="label" id="id182"><span class="brackets"><a class="fn-backref" href="#id16">MMG16</a></span></dt>
+<dd><p>Ran Manor, Liran Mishali, and Amir B. Geva. Multimodal Neural Network for Rapid Serial Visual Presentation Brain Computer Interface. <em>Frontiers in Computational Neuroscience</em>, December 2016. URL: <a class="reference external" href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC5168930/">http://www.ncbi.nlm.nih.gov/pmc/articles/PMC5168930/</a> (visited on 2017-02-03), <a class="reference external" href="https://doi.org/10.3389/fncom.2016.00130">doi:10.3389/fncom.2016.00130</a>.</p>
+</dd>
+<dt class="label" id="id190"><span class="brackets"><a class="fn-backref" href="#id8">PSM16</a></span></dt>
+<dd><p>A. Page, C. Shea, and T. Mohsenin. Wearable seizure detection using convolutional neural networks with transfer learning. In <em>2016 IEEE International Symposium on Circuits and Systems (ISCAS)</em>, 1086–1089. May 2016. <a class="reference external" href="https://doi.org/10.1109/ISCAS.2016.7527433">doi:10.1109/ISCAS.2016.7527433</a>.</p>
+</dd>
+<dt class="label" id="id122"><span class="brackets">RW14</span></dt>
+<dd><p>Y. Ren and Y. Wu. Convolutional deep belief networks for feature extraction of EEG signal. In <em>2014 International Joint Conference on Neural Networks (IJCNN)</em>, 2850–2853. July 2014. <a class="reference external" href="https://doi.org/10.1109/IJCNN.2014.6889383">doi:10.1109/IJCNN.2014.6889383</a>.</p>
+</dd>
+<dt class="label" id="id102"><span class="brackets"><a class="fn-backref" href="#id11">SGY15</a></span></dt>
+<dd><p>S. Sakhavi, C. Guan, and S. Yan. Parallel convolutional-linear neural network for motor imagery classification. In <em>Signal Processing Conference (EUSIPCO), 2015 23rd European</em>, 2736–2740. August 2015. <a class="reference external" href="https://doi.org/10.1109/EUSIPCO.2015.7362882">doi:10.1109/EUSIPCO.2015.7362882</a>.</p>
+</dd>
+<dt class="label" id="id186"><span class="brackets"><a class="fn-backref" href="#id21">SLK+16</a></span></dt>
+<dd><p>Jared Shamwell, Hyungtae Lee, Heesung Kwon, Amar R. Marathe, Vernon Lawhern, and William Nothwang. Single-trial EEG RSVP classification using convolutional neural networks. In Thomas George, Achyut K. Dutta, and M. Saif Islam, editors, <em>SPIE Defense+ Security</em>, volume 9836. International Society for Optics and Photonics, May 2016. URL: <a class="reference external" href="http://proceedings.spiedigitallibrary.org/proceeding.aspx?doi=10.1117/12.2224172">http://proceedings.spiedigitallibrary.org/proceeding.aspx?doi=10.1117/12.2224172</a> (visited on 2017-02-14), <a class="reference external" href="https://doi.org/10.1117/12.2224172">doi:10.1117/12.2224172</a>.</p>
+</dd>
+<dt class="label" id="id212"><span class="brackets">Sto16</span><span class="fn-backref">(<a href="#id10">1</a>,<a href="#id23">2</a>)</span></dt>
+<dd><p>Sebastian Stober. Learning Discriminative Features from Electroencephalography Recordings by Encoding Similarity Constraints. In <em>Bernstein Conference 2016</em>. 2016. <a class="reference external" href="https://doi.org/10.12751/nncn.bc2016.0223">doi:10.12751/nncn.bc2016.0223</a>.</p>
+</dd>
+<dt class="label" id="id169"><span class="brackets"><a class="fn-backref" href="#id12">SCG14</a></span></dt>
+<dd><p>Sebastian Stober, Daniel J. Cameron, and Jessica A. Grahn. Using Convolutional Neural Networks to Recognize Rhythm Stimuli from Electroencephalography Recordings. In <em>Proceedings of the 27th International Conference on Neural Information Processing Systems</em>, NIPS'14, 1449–1457. Cambridge, MA, USA, 2014. MIT Press. URL: <a class="reference external" href="http://dl.acm.org/citation.cfm?id=2968826.2968988">http://dl.acm.org/citation.cfm?id=2968826.2968988</a> (visited on 2016-12-20).</p>
+</dd>
+<dt class="label" id="id208"><span class="brackets">SQC+16</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id15">2</a>)</span></dt>
+<dd><p>Xuyun Sun, Cunle Qian, Zhongqin Chen, Zhaohui Wu, Benyan Luo, and Gang Pan. Remembered or Forgotten?—An EEG-Based Computational Prediction Approach. <em>PLOS ONE</em>, 11(12):e0167497, December 2016. URL: <a class="reference external" href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0167497">http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0167497</a> (visited on 2017-02-14), <a class="reference external" href="https://doi.org/10.1371/journal.pone.0167497">doi:10.1371/journal.pone.0167497</a>.</p>
+</dd>
+<dt class="label" id="id201"><span class="brackets">TH17</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id17">2</a>)</span></dt>
+<dd><p>Yousef Rezaei Tabar and Ugur Halici. A novel deep learning approach for classification of EEG motor imagery signals. <em>Journal of Neural Engineering</em>, 14(1):016003, 2017. URL: <a class="reference external" href="http://stacks.iop.org/1741-2552/14/i=1/a=016003">http://stacks.iop.org/1741-2552/14/i=1/a=016003</a> (visited on 2017-02-14), <a class="reference external" href="https://doi.org/10.1088/1741-2560/14/1/016003">doi:10.1088/1741-2560/14/1/016003</a>.</p>
+</dd>
+<dt class="label" id="id199"><span class="brackets">TLS17</span></dt>
+<dd><p>Zhichuan Tang, Chao Li, and Shouqian Sun. Single-trial EEG classification of motor imagery using deep convolutional neural networks. <em>Optik - International Journal for Light and Electron Optics</em>, 130:11–18, February 2017. URL: <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0030402616312980">http://www.sciencedirect.com/science/article/pii/S0030402616312980</a> (visited on 2017-02-14), <a class="reference external" href="https://doi.org/10.1016/j.ijleo.2016.10.117">doi:10.1016/j.ijleo.2016.10.117</a>.</p>
+</dd>
+<dt class="label" id="id167"><span class="brackets"><a class="fn-backref" href="#id20">TPL16</a></span></dt>
+<dd><p>Pierre Thodoroff, Joelle Pineau, and Andrew Lim. Learning Robust Features using Deep Learning for Automatic Seizure Detection. In <em>JMLR Workshop and Conference Proceedings</em>, volume 56. 2016. URL: <a class="reference external" href="http://www.jmlr.org/proceedings/papers/v56/Thodoroff16.pdf">http://www.jmlr.org/proceedings/papers/v56/Thodoroff16.pdf</a> (visited on 2017-02-14).</p>
+</dd>
+<dt class="label" id="id195"><span class="brackets"><a class="fn-backref" href="#id13">WLSJ13</a></span></dt>
+<dd><p>Zuoguan Wang, Siwei Lyu, Gerwin Schalk, and Qiang Ji. Deep Feature Learning Using Target Priors with Applications in ECoG Signal Decoding for BCI. In <em>Proceedings of the Twenty-Third International Joint Conference on Artificial Intelligence</em>, IJCAI '13, 1785–1791. Beijing, China, 2013. AAAI Press. URL: <a class="reference external" href="http://dl.acm.org/citation.cfm?id=2540128.2540384">http://dl.acm.org/citation.cfm?id=2540128.2540384</a> (visited on 2017-01-16).</p>
+</dd>
+</dl>
+</p>
 </div>
 </div>
 

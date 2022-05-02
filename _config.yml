@@ -8,4 +8,5 @@ html:
     hypothesis: true
     utterances:
       repo: "robintibor/eeg-deep-learning-phd-thesis"
-
+bibtex_bibfiles:
+    - references.bib
