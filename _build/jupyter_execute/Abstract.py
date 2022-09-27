@@ -20,7 +20,6 @@
 # | [Invertible Networks](invertible-networks) | Better Understanding and larger data through invertible networks |
 # | [Future Work](future-work)   | Newer DL architectures such as transformers or invertible networks may allow better performance and better interpretability   |
 
-# 
 # Possible:
 # 
 # | Chapter    | Summary    |

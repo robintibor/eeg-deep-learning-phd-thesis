@@ -74,8 +74,6 @@
 # > The BCI competition IV dataset 2b is a 3-electrode EEG motor-imagery dataset with 9 subjects and 5 sessions of imagined movements of the left or the right hand, the latest 3 sessions include online feedback \citep{leeb_bci_2008}. 
 # The training set consists of the approx. 400  trials of the first 3 sessions (408.9$\pm$13.7, mean$\pm$std), the test set consists of the approx. 320 trials (315.6$\pm$12.6, mean$\pm$std) of the last two sessions.
 
-# ### Mixed Imagery Dataset
-
 # ## Preprocessing
 
 # We only minimally preprocessed the data to allow the networks to learn from as much information as possible while keeping the input distribution in a value range suitable for stable network training.
@@ -234,6 +232,20 @@
 # ```
 # 
 
+# ## Results on BCI Competition IV 2b
+
+# To ensure that the results also generalize to further datasets and also rule out hyperparameter overfitting, the FBCSP pipeline and the deep network pipelines were applied with the exact same hyperparameters on BCI Competition IV 2b. A few choices like the use of the decoding time window had been done after already seeing results from the evaluation sets of the High-Gamma dataset and the BCIC IV 2a dataset, hence the BCIC IV 2b dataset seemed a suitable dataset for further validation of the pipelines. Results in {numref}`bcic-iv-2b-results` show that the networks perform as good or better than FBCSP.
+# Results on further datasets, also non-movement-decoding datasets are presented in the next chapter.
+# 
+# 
+# ```{table} Kappa values on the BCIC IV 2b dataset. ConvNet kappa values show the difference to the FBCSP kappa value.
+# :name: bcic-iv-2b-results
+# 
+# | FBCSP   | Deep ConvNet | Shallow ConvNet |
+# |--|--|--|
+# |0.599|−0.001|+0.030|
+# ```
+
 # ## Amplitude Perturbation Visualizations
 
 # Our amplitude perturbation visualizations show that the network have learned to extract commonly used spectral amplitude features.
@@ -272,13 +284,3 @@
 # ---
 # Input-perturbation network-prediction correlation maps for the deep ConvNet. Correlation of class predictions and amplitude changes. Averaged over all subjects of the High-Gamma Dataset. Colormaps are scaled per scalp plot. Plausible scalp maps for all frequency bands, for example, contralateral positive correlations for the hand classes in the gamma band.
 # ```
-
-# ## old - merge
-
-# * unclear how good deep learning can be for task-related activity
-# * important benchmark as many decode on this
-# * our approach to evaluate
-# * our benchmark method (copy FBCSP text)
-# * 
-
-# 

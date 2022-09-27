@@ -9,6 +9,6 @@ sections:
 - file: MovementDecoding
 - file: TaskDecoding
 - file: Pathology
-- file: DeepLearningImprovements
+- file: Invertible
 - file: FutureWork
 - file: References
