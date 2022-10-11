@@ -182,20 +182,55 @@
 # 
 # ```
 
-# 
-# 
-# ## Large scale evaluation
-# Heilmeyer F.A., Schirrmeister R.T., Fiederer L.D.J., Völker M., Behncke J., Ball T., "A framework for large-scale evaluation of deep learning for EEG". IEEE International Conference on Systems, Man, and Cybernetics 2018 https://arxiv.org/abs/1806.07741
-# 
-# 
-# 
-# 
-# ### Interpretability (remove?)
-# 
-#     Hartmann K.G., Schirrmeister R. T., and Ball T., "Hierarchical internal representation of spectral features in deep convolutional networks trained for EEG decoding". IEEE The 6th International Winter Conference on Brain-Computer Interface 2018. doi.org/10.1109/IWW-BCI.2018.8311493
+# ## Evaluation on large-scale task-diverse dataset
 
-# In[ ]:
+# ```{table} Datasets for the large-scale evaluation framework.
+# :name: large-framework-overview-table
+# 
+# | Name (Acronym) | #Classes | Task Type | #Subjects | Trials per Subject | Class balance |
+# |---|---|---|---|---|---|
+# | High-Gamma Dataset (Motor) | 4 | Motor task | 20 | 1000 | balanced |
+# | KUKA Pouring Observation (KPO) | 2 | Error observation | 5 | 720-800 | balanced |
+# | Robot-Grasping Observation (RGO) | 2 | Error observation | 12 | 720-800 | balanced |
+# | Error-Related Negativity (ERN) | 2 | Eriksen flanker task | 31 | 1000 | 1/2 up to 1/15 |
+# | Semantic Categories | 3 | Speech imagery | 16 | 750 | balanced |
+# | Real vs. Pseudo Words | 2 | Speech imagery | 16 | 1000 | 3/1 |
+# {cite}`heilmeyer2018large`
+# ```
+# 
+# 
+# We also compared the deep and shallow ConvNet architectures as well as EEGNet on six classification tasks with more than 
+# 90000 trials in total (see {numref}`large-framework-overview-table`) {cite}`heilmeyer2018large`. The datasets tasks were all recorded in our lab and included the high-gamma dataset, three error-related tasks described before (Eriksen flanker task, robot grasping and robot pouring observations) as well as two tasks on semantic processing. In the semantic processing dataset, the classification tasks were to distinguish different types of words that a subject silently repeated {cite}`Rau:2015uk`. The first task was to distinguish existing real words from nonexisting pseudowords. The second classification task was to distingiush three semantic categories (food, animals, tools) the word may belong to. The evaluation code for all models always used the original code and hyperparameters from the original studies in order to ensure a fair comparison. Results show that the deep ConvNet and the more recent version of EEGNet (EEGNetv2) perform similarly well, with shallow and an older version of EEGNet performing slightly worse, see  {numref}`large-framework-per-dataset-results-fig`, {numref}`large-framework-averaged-results-fig`  and {numref}`large-framework-results-table`.
 
+# ![](images/large-framework-per-dataset-results.png)
 
+# ```{figure} images/large-framework-per-dataset-results.png
+# :name: large-framework-per-dataset-results-fig
+# 
+# Per-dataset results for the large-scale evaluation of deep ConvNet, shallow ConvNet and two versions of EEGNet. Boxplots show the distribution over per-subject accuracies for the individual decoding tasks. ern, kpo and rgo are the error-related datasets, ern: Error-related negativity Eriksen flanker task, KPO: KUKA Pouring Observation paradigm, rgo: robot-grasping observation paradigm. motor is the high-gamma dataset with 6 additional subjects that were excluded for data quality reasons from {cite}`schirrmeisterdeephbm2017`. pseudovsreal and semantic are two semantic processing datasets to classify silent repetitions of  pseudowords vs. realwords (pseudovsreal) or different semantic categories (semantic) .
+# 
+# ```
 
+# ![](images/large-framework-averaged-results.png)
 
+# ```{figure} images/large-framework-averaged-results.png
+# :name: large-framework-averaged-results-fig
+# 
+# Dataset-averaged results for the large-scale evaluation of deep ConvNet, shallow ConvNet and two versions of EEGNet. Accuracies are normalized to the average of the accuracies of all models.
+# 
+# ```
+
+# ```{table} Dataset-averaged results for the large-scale evaluation of deep ConvNet, shallow ConvNet and two versions of EEGNet. Accuracies are normalized to the average of the accuracies of all models.
+# :name: large-framework-results-table
+# 
+# |  | Mean accuracy | Mean normalized accuracy |
+# |---|---|---|
+# | Deep ConvNet | 70.08% ± 20.92\% | 1.00 ± 0.05 |
+# | EEGNetv2 | 70.00% ±18.86% | 1.02 ± 0.08 |
+# | EEGNet | 67.71% ± 19.04% | 0.98 ± 0.06 |
+# | Shallow ConvNet | 67.71% ±19.04% | 0.99 ± 0.06 |
+# {cite}`heilmeyer2018large`
+# ```
+# 
+
+# 
