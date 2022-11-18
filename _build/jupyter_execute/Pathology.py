@@ -243,7 +243,7 @@ get_ipython().system('[](images/Time_Plot.pdf-1.png)')
 # Finally, consistent with the strong usage of the delta and theta frequency range by the ConvNets as seen in the input-perturbation network-prediction correlation maps ({numref}`perturbation-shallow-pathology-fig`), `slowing` and `temporal` are the 6th and 10th most frequently occurring words in the textual reports of the pathological recordings, while never occurring in the textual reports of the normal recordings (irrespective of correct or incorrect predictions).
 
 # ## Discussion
-# 
+
 # To the best of our knowledge, the ConvNet architectures used in this study achieved the best accuracies published so far on the TUH EEG Abnormal Corpus.
 # The architectures used were only very slightly modified versions of ConvNet architectures that we previously introduced to decode task-related information. This suggests that these architectures might be broadly applicable both for physiological and clinical EEG.
 # The identification of all-round architectures would greatly simplify the application of deep learning to EEG decoding problems and expand their potential use cases. 

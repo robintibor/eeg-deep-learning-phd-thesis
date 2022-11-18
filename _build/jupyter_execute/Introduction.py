@@ -11,7 +11,9 @@
 # ```
 # 
 # 
-# Machine learning (ML), i.e., training programs to solve tasks by using data, has the potential to benefit medical applications. Compared to humans processing medical data, machine-learning programs can process larger amounts of data and extract different information. For example, machine-learning algorithms have been used to process the large amounts of signals recorded in an intensive-care unit to predict kidney failure, diagnosed breast cancer using high-frequency features usually ignored by doctors, translated brain signals into control signals for external devices in real-time and detected pathology from long brain signal recordings. Used in this way, machine learning can improve medical interventions, enable new assistive devices and advance scientific understanding.
+# Machine learning (ML), i.e., using data to train programs to solve tasks, has the potential to benefit medical applications. Compared to humans processing medical data, machine-learning programs can process larger amounts of data and extract different information. For example, machine-learning algorithms have been used to process the large amounts of signals recorded in an intensive-care unit to predict kidney failure, diagnosed breast cancer using high-frequency features usually ignored by doctors, translated brain signals into control signals for external devices in real-time and detected pathology from long brain signal recordings. Used in this way, machine learning can improve medical interventions, enable new assistive devices and advance scientific understanding.
+# 
+# TODO:refs
 # 
 # 
 # 
@@ -22,34 +24,14 @@
 # 
 # % [maybe ref ML for scientific discovery]
 
-# EEG, electroencephalographic recordings that measure the electric signals produced by the brain, are a very suitable signal type for machine learning. Large EEG datasets can be created for training ML algorithms as EEG recordings are fairly cheap to acquire and can be recorded without substantial side effects.  Furthermore, EEG signals are especially hard for humans to read. Some uses of EEG such as diagnosis of pathologies may be improved by applying machine learning, while others such as brain-computer interfaces are only possible through machine learning. Finally, since the information contained in the EEG signal is far from being fully understood, machine learning may even help understand the EEG signal itself better.
+# Electroencephalographic (EEG) recordings that measure the electric signals produced by the brain, are a very suitable signal type for machine learning. Large EEG datasets can be created for training ML algorithms as EEG recordings are fairly cheap to acquire and can be recorded without substantial side effects.  Furthermore, EEG signals are especially hard for humans to read, making them a promising target to extract information via machine learning. Some uses of EEG such as diagnosis of pathologies may be improved by applying machine learning, while others such as brain-computer interfaces are only possible through machine learning. Finally, since the information contained in the EEG signal is far from being fully understood, machine learning may even help understand the EEG signal itself better.
 # 
 
-# Deep learning is a very promising approach for brain-signal decoding from EEG. Deep learning describes machine-learning methods that train a model comprised of multiple computational stages, where the computational stages are typically trained jointly to solve a given task. Deep neural networks (DNNs) are deep learning models that are  inspired by computational structures in the brain and have recently become the most successful models for a wide variety of tasks, including object detection in images, speech recognition from audio or machine translation.  DNNs only have very general assumptions about the properties of their training signals embedded into them (such as smoothness, locality, hierarchical structure) and have shown great success on a variety of natural signals. Therefore, DNNs are very promising to apply to hard-to-understand natural signals like EEG signals.
-# 
-# 
-# 
+# Deep learning is a very promising approach for brain-signal decoding from EEG. The umbrella term deep learning describes brain-inspired machine-learning models with multiple computational stages, where the computational stages are typically trained jointly to solve a given task. Deep neural networks (DNNs) are deep learning models that are  inspired by computational structures in the brain and have in recent times become the most successful models for a wide variety of tasks, including object detection in images, speech recognition from audio or machine translation.  DNNs only have very general assumptions about the properties of their training signals embedded into them (such as smoothness, locality, hierarchical structure) and have shown great success on a variety of natural signals. Therefore, DNNs are very promising to apply to hard-to-understand natural signals like EEG signals.
 
 # Prior to the work presented in this thesis, it was unclear how well DNN architectures can decode EEG signals compared to hand-engineered feature-based approaches. The high dimensionality, low signal-to-noise ratio and large signal variability (e.g., from person to person or even session to session for the same person) are among the challenges that may  favor feature-based approaches that exploit more specific assumptions about the EEG signal. While there had been a long history of applying deep learning to EEG signals, a more systematic study of the performance of modern DNNs on EEG signal decoding, including effects of different design choices had been missing.
 
 # (Results and structure, also mention visualization)
-
-# ```{admonition} Deep learning is an interesting approach for EEG
-# * Can exploit large data well
-# * Proven to work well on diversity of natural signals
-# * Flexible models/little inductive bias
-# ```
-# 
-# ```{admonition} Deep learning is a challenging approach for EEG
-# * Unknown if it is really better than feature-based approaches
-# * Unknown how much information can really be extracted from EEG
-# * Limited understanding of EEG signal also limits understanding of DL EEG models
-# 
-# ```
-# 
-# %* Non-brain-signals should not be used when testing assistive technology with healthy population
-# 
-# 
 
 # In[ ]:
 
