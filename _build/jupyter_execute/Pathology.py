@@ -4,21 +4,11 @@
 # (pathology)=
 # # Decoding Pathology
 
-# > We also evaluated our deep ConvNets for automatic medical diagnosis from EEG. EEG is widely used in clinical practice because of its low cost and its lack of side effects. It is important both as a screening method as well as for hypothesis-based diagnostics, e.g., in epilepsy or stroke. One of the main limitations of using EEG for diagnostics is the required time and specialized knowledge of experts that need to be well-trained on EEG diagnostics to reach reliable results. Therefore, a deep-learning approach that aids in the diagnostic process could make EEG diagnosis more widely accessible, reduce time and effort for clinicians and potentially make diagnoses more accurate.
+# > We also evaluated our deep ConvNets for automatic medical diagnosis from EEG. EEG is important for clinical practice both as a screening method as well as for hypothesis-based diagnostics, e.g., in epilepsy or stroke. One of the main limitations of using EEG for diagnostics is the required time and specialized knowledge of experts that need to be well-trained on EEG diagnostics to reach reliable results. Therefore, a deep-learning approach that aids in the diagnostic process could make EEG diagnosis more widely accessible, reduce time and effort for clinicians and potentially make diagnoses more accurate.
 
 # ## Dataset and Preprocessing
 
 # ### Temple University Hospital EEG Abnormal Corpus
-
-# We used the Temple University Hospital (TUH) EEG Abnormal Corpus for evaluating our deep ConvNets on pathology detection from EEG.
-# > The Temple University Hospital (TUH) EEG Abnormal Corpus 1.1.2 is a dataset of manually labeled normal and pathological clinical EEG recordings.
-# It is taken from the TUH EEG Data Corpus which contains over 16000 clinical recordings of more than 10000 subjects from over 12 years `cite`{obeid_temple_2016}.
-# The Abnormal Corpus contains 3017 recordings, 1529 of which were labeled normal and 1488 of which were labeled pathological.
-# The Corpus was split into a training and evaluation set, see {numref}`table-tuh-dataset`.
-# 
-# > Recordings were acquired from  at least 21 standard electrode positions and with a sampling rate of in most cases 250 Hz.
-# Per recording, there are around 20 minutes of EEG data.
-# The inter-rater agreement on between the medical report of a certified neurologist and a medical student annotator was 99\% for the training recordings and 100\% for the evaluation recordings.
 
 # ```{table} TUH EEG Abnormal Corpus 1.1.2 Statistics. Obtained from https://www.isip.piconepress.com/projects/tuh_eeg/. Rater agreements refer to the agreement between the student annotator of the file and the medical report written by a certified neurologist.
 # :name: table-tuh-dataset
@@ -35,6 +25,16 @@
 # |                     | Rater Disagreement  | 0 (0\%)       | 0 (0\%)           |
 # 
 # ```
+
+# We used the Temple University Hospital (TUH) EEG Abnormal Corpus for evaluating our deep ConvNets on pathology detection from EEG.
+# > The Temple University Hospital (TUH) EEG Abnormal Corpus 1.1.2 is a dataset of manually labeled normal and pathological clinical EEG recordings.
+# It is taken from the TUH EEG Data Corpus which contains over 16000 clinical recordings of more than 10000 subjects from over 12 years `cite`{obeid_temple_2016}.
+# The Abnormal Corpus contains 3017 recordings, 1529 of which were labeled normal and 1488 of which were labeled pathological.
+# The Corpus was split into a training and evaluation set, see {numref}`table-tuh-dataset`.
+# 
+# > Recordings were acquired from  at least 21 standard electrode positions and with a sampling rate of in most cases 250 Hz.
+# Per recording, there are around 20 minutes of EEG data.
+# The inter-rater agreement on between the medical report of a certified neurologist and a medical student annotator was 99\% for the training recordings and 100\% for the evaluation recordings.
 
 # ### Preprocessing
 

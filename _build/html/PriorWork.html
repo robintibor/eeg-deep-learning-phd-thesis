@@ -321,7 +321,8 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li><p>Remained unclear how deep learning approaches compare to well-tuned feature-based approaches</p></li>
 </ul>
 </div>
-<table class="colwidths-auto table">
+<table class="colwidths-auto table" id="prior-work-tasks-table">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Decoding problems in deep-learning EEG decoding studies prior to our work. Studies with external baseline compared their decoding results to an external baseline result by other authors.</span><a class="headerlink" href="#prior-work-tasks-table" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="text-align:left head"><p>Decoding problem</p></th>
 <th class="text-align:left head"><p>Number of studies</p></th>
@@ -355,6 +356,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </tr>
 </tbody>
 </table>
+<p>Prior to 2017, when the first work presented in this thesis was published, there was only limited literature on EEG decoding with deep learning. From 19 studies we identified at the time, most were about movement-related decoding problems such as decoding which body part (hand, feet etc.) a person is imagining to move (see <a class="reference internal" href="#prior-work-tasks-table"><span class="std std-numref">Table 1</span></a>). Few of the studies compared their decoding results to an external published baseline result, making it hard to evaluate the quality of the decoding results. To advance the understanding of EEG deep learning decoding, we therefore decided to first focus on movement-related decoding, as it is a widely researched decoding type. Also there are strong feature-based baselines and baseline results for movement-realted decoding problems, making it a suitable problem type to try deep-learning models on.</p>
 <div class="tip admonition">
 <p class="admonition-title">We therefore focused on movement-related decoding with strong, externally validated baselines</p>
 <ul class="simple">
@@ -438,14 +440,16 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="figure align-default" id="id26">
 <div class="cell_output docutils container">
-<img alt="_images/PriorWork_8_0.png" src="_images/PriorWork_8_0.png" />
+<img alt="_images/PriorWork_9_0.png" src="_images/PriorWork_9_0.png" />
 </div>
 <p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text"><em>Input domains and frequency ranges in prior work</em>. Grey lines represent frequency ranges of individual studies. Note that many studies only include frequencies below 50 Hz, some use very restricted ranges (alpha/beta band).</span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
 </div>
+<p>Deep networks can either decode directly from the time-domain EEG or process the data in the frequency domain, for example after a Fourier transformation. 12 of the prior studies used time-domain inputs, 6 used frequency-domain inputs and one used both. We decided to work directly in the time domain, as the deep networks should be capable to learn to extract any needed spectral information from the time-domain input.</p>
+<p>Most prior studies that were working in the time domain only used frequencies below 50 Hz. We were also interested in how well deep networks can also extract lesser-used higher-frequency components of the EEG signal. Our internal high-gamma dataset was recorded specifically to allow extraction of higher-frequency (&gt;50 Hz) information from scalp EEG, and therefore we used this as one of the main datasets for our study.</p>
 <div class="tip admonition">
 <p class="admonition-title">We used also high-gamma frequencies &gt; 50 Hz on one dataset</p>
 <ul class="simple">
-<li><p>Used very suitable dataset for high-gamma nalysis</p></li>
+<li><p>Used very suitable dataset for high-gamma analysis</p></li>
 <li><p>Deep networks should be able to extract information from any frequency range</p></li>
 </ul>
 </div>
@@ -518,16 +522,11 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="figure align-default" id="id27">
 <div class="cell_output docutils container">
-<img alt="_images/PriorWork_13_0.png" src="_images/PriorWork_13_0.png" />
+<img alt="_images/PriorWork_15_0.png" src="_images/PriorWork_15_0.png" />
 </div>
 <p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text"><em>Number of layers in prior work</em>. Small grey markers represent individual architectures. Dashed lines indicate different number of layers investigated in a single study (e.g., a single study investigated 3-7 convolutional layers). Larger grey markers indicate sum of occurences of that layer number over all studies (e.g., 9 architectures used 2 convolutional layers). Note most architectures use only 1-3 convolutional layers.</span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
 </div>
-<div class="tip admonition">
-<p class="admonition-title">We will evaluate shallower and deeper architectures </p>
-<ul class="simple">
-<li><p>…</p></li>
-</ul>
-</div>
+<p>The architectures used in prior work typically only included up to 3 layers, with only 2 studies considering more layers. As network architectures in other domains tend to be a lot deeper, we also evalauted architectures with a larger number of layers in our work.</p>
 </div>
 <div class="section" id="hyperparameter-evaluations">
 <h2>Hyperparameter Evaluations<a class="headerlink" href="#hyperparameter-evaluations" title="Permalink to this headline">¶</a></h2>
@@ -547,55 +546,55 @@ commentsRunWhenDOMLoaded(addUtterances);
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:left"><p><span id="id2">[<a class="reference internal" href="References.html#id122">LSW+16</a>]</span></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id2">[<a class="reference internal" href="References.html#id144">LSW+16</a>]</span></p></td>
 <td class="text-align:left"><p>Kernel sizes</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><span id="id3">[<a class="reference internal" href="References.html#id195">SQC+16</a>]</span></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id3">[<a class="reference internal" href="References.html#id216">SQC+16</a>]</span></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p>Different time windows</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><span id="id4">[<a class="reference internal" href="References.html#id188">TH17</a>]</span></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id4">[<a class="reference internal" href="References.html#id209">TH17</a>]</span></p></td>
 <td class="text-align:left"><p>Addition of six-layer stacked autoencoder on ConvNet features <br> Kernel sizes</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><span id="id5">[<a class="reference internal" href="References.html#id144">LLZW16</a>]</span></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id5">[<a class="reference internal" href="References.html#id166">LLZW16</a>]</span></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p>Different subdivisions of frequency range <br>Different lengths of time crops <br>Transfer learning with auxiliary non-epilepsy datasets</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><span id="id6">[<a class="reference internal" href="References.html#id152">HMJ+16</a>]</span></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id6">[<a class="reference internal" href="References.html#id174">HMJ+16</a>]</span></p></td>
 <td class="text-align:left"><p>Replacement of convolutional layers by restricted Boltzmann machines with slightly varied network architecture}</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><span id="id7">[<a class="reference internal" href="References.html#id126">ASTS16</a>]</span></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id7">[<a class="reference internal" href="References.html#id148">ASTS16</a>]</span></p></td>
 <td class="text-align:left"><p>1 or 2 convolutional layers</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><span id="id8">[<a class="reference internal" href="References.html#id177">PSM16</a>]</span></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id8">[<a class="reference internal" href="References.html#id198">PSM16</a>]</span></p></td>
 <td class="text-align:left"><p></p></td>
 <td class="text-align:left"><p>Cross-subject supervised training, within-subject finetuning of fully connected layers</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><span id="id9">[<a class="reference internal" href="References.html#id170">BRYC16</a>]</span></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id9">[<a class="reference internal" href="References.html#id191">BRYC16</a>]</span></p></td>
 <td class="text-align:left"><p>Number of convolutional layers <br>Temporal processing of ConvNet output by max pooling, temporal convolution, LSTM or temporal convolution + LSTM</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><span id="id10">[<a class="reference internal" href="References.html#id199">Sto16</a>]</span></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id10">[<a class="reference internal" href="References.html#id220">Sto16</a>]</span></p></td>
 <td class="text-align:left"><p>Kernel sizes</p></td>
 <td class="text-align:left"><p>Pretraining first layer as convolutional autoencoder with different constraints</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><span id="id11">[<a class="reference internal" href="References.html#id89">SGY15</a>]</span></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id11">[<a class="reference internal" href="References.html#id111">SGY15</a>]</span></p></td>
 <td class="text-align:left"><p>Combination ConvNet and MLP (trained on different features) vs. only ConvNet vs. only MLP</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><span id="id12">[<a class="reference internal" href="References.html#id156">SCG14</a>]</span></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id12">[<a class="reference internal" href="References.html#id178">SCG14</a>]</span></p></td>
 <td class="text-align:left"><p>Best values from automatic hyperparameter optimization: frequency cutoff, one vs two layers, kernel sizes, number of channels, pooling width</p></td>
 <td class="text-align:left"><p>Best values from automatic hyperparameter optimization: learning rate, learning rate decay, momentum, final momentum</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><span id="id13">[<a class="reference internal" href="References.html#id182">WLSJ13</a>]</span></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id13">[<a class="reference internal" href="References.html#id203">WLSJ13</a>]</span></p></td>
 <td class="text-align:left"><p>Partially supervised CSA</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><span id="id14">[<a class="reference internal" href="References.html#id185">CG11</a>]</span></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id14">[<a class="reference internal" href="References.html#id206">CG11</a>]</span></p></td>
 <td class="text-align:left"><p>Electrode subset (fixed or automatically determined) <br>Using only one spatial filter <br>Different ensembling strategies</p></td>
 <td class="text-align:left"><p></p></td>
 </tr>
@@ -626,47 +625,47 @@ commentsRunWhenDOMLoaded(addUtterances);
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:left"><p><span id="id15">[<a class="reference internal" href="References.html#id195">SQC+16</a>]</span></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id15">[<a class="reference internal" href="References.html#id216">SQC+16</a>]</span></p></td>
 <td class="text-align:left"><p>Weights (spatial)</p></td>
 <td class="text-align:left"><p>Largest weights found over prefrontal and temporal cortex</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><span id="id16">[<a class="reference internal" href="References.html#id169">MMG16</a>]</span></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id16">[<a class="reference internal" href="References.html#id190">MMG16</a>]</span></p></td>
 <td class="text-align:left"><p>Weights <br> Activations <br> Saliency maps by gradient</p></td>
 <td class="text-align:left"><p>Weights showed typical P300 distribution <br>Activations were high at plausible times (300-500ms) <br>Saliency maps showed plausible spatio-temporal plots</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><span id="id17">[<a class="reference internal" href="References.html#id188">TH17</a>]</span></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id17">[<a class="reference internal" href="References.html#id209">TH17</a>]</span></p></td>
 <td class="text-align:left"><p>Weights (spatial + frequential)</p></td>
 <td class="text-align:left"><p>Some weights represented difference of values of two electrodes on different sides of head</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><span id="id18">[<a class="reference internal" href="References.html#id144">LLZW16</a>]</span></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id18">[<a class="reference internal" href="References.html#id166">LLZW16</a>]</span></p></td>
 <td class="text-align:left"><p>Weights <br> Clustering of weights</p></td>
 <td class="text-align:left"><p>Clusters of weights showed typical frequency band subdivision (delta, theta, alpha, beta, gamma)</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><span id="id19">[<a class="reference internal" href="References.html#id126">ASTS16</a>]</span></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id19">[<a class="reference internal" href="References.html#id148">ASTS16</a>]</span></p></td>
 <td class="text-align:left"><p>Weights <br>Correlation weights and interictal epileptic discharges (IED) <br>Activations</p></td>
 <td class="text-align:left"><p>Weights increasingly correlated with IED waveforms with increasing number of training iterations <br>Second layer captured more complex and well-defined epileptic shapes than first layer <br>IEDs led to highly synchronized activations for neighbouring electrodes</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><span id="id20">[<a class="reference internal" href="References.html#id154">TPL16</a>]</span></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id20">[<a class="reference internal" href="References.html#id176">TPL16</a>]</span></p></td>
 <td class="text-align:left"><p>Input occlusion and effect on prediction accuracy</p></td>
 <td class="text-align:left"><p>Allowed to locate areas critical for seizure</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><span id="id21">[<a class="reference internal" href="References.html#id173">SLK+16</a>]</span></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id21">[<a class="reference internal" href="References.html#id194">SLK+16</a>]</span></p></td>
 <td class="text-align:left"><p>Weights (spatial)</p></td>
 <td class="text-align:left"><p>Some filter weights had expected topographic distributions for P300 <br>Others filters had large weights on areas not traditionally associated with P300</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><span id="id22">[<a class="reference internal" href="References.html#id170">BRYC16</a>]</span></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id22">[<a class="reference internal" href="References.html#id191">BRYC16</a>]</span></p></td>
 <td class="text-align:left"><p>Inputs that maximally activate given filter <br>Activations of these inputs <br>”Deconvolution” for these inputs</p></td>
 <td class="text-align:left"><p>Different filters were sensitive to different frequency bands <br>Later layers had more spatially localized activations <br>Learned features had noticeable links to well-known electrophysiological markers of cognitive load <br></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><span id="id23">[<a class="reference internal" href="References.html#id199">Sto16</a>]</span></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id23">[<a class="reference internal" href="References.html#id220">Sto16</a>]</span></p></td>
 <td class="text-align:left"><p>Weights (spatial+3 timesteps, pretrained as autoencoder)</p></td>
 <td class="text-align:left"><p>Different constraints led to different weights, one type of constraints could enforce weights that are similar across subjects; other type of constraints led to weights that have similar spatial topographies under different architectural configurations and preprocessings</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><span id="id24">[<a class="reference internal" href="References.html#id119">MG15</a>]</span></p></td>
+<tr class="row-odd"><td class="text-align:left"><p><span id="id24">[<a class="reference internal" href="References.html#id141">MG15</a>]</span></p></td>
 <td class="text-align:left"><p>Weights <br> Mean and single-trial activations</p></td>
 <td class="text-align:left"><p>Spatiotemporal regularization led to softer peaks in weights <br>Spatial weights showed typical P300 distribution <br>Activations mostly had peaks at typical times (300-400ms)</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><span id="id25">[<a class="reference internal" href="References.html#id185">CG11</a>]</span></p></td>
+<tr class="row-even"><td class="text-align:left"><p><span id="id25">[<a class="reference internal" href="References.html#id206">CG11</a>]</span></p></td>
 <td class="text-align:left"><p>Weights</p></td>
 <td class="text-align:left"><p>Spatial filters were similar for different architectures <br>Spatial filters were different (more focal, more diffuse) for different subjects</p></td>
 </tr>

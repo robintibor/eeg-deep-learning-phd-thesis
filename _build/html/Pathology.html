@@ -345,26 +345,14 @@ commentsRunWhenDOMLoaded(addUtterances);
   <div class="tex2jax_ignore mathjax_ignore section" id="decoding-pathology">
 <span id="pathology"></span><h1>Decoding Pathology<a class="headerlink" href="#decoding-pathology" title="Permalink to this headline">¶</a></h1>
 <blockquote>
-<div><p>We also evaluated our deep ConvNets for automatic medical diagnosis from EEG. EEG is widely used in clinical practice because of its low cost and its lack of side effects. It is important both as a screening method as well as for hypothesis-based diagnostics, e.g., in epilepsy or stroke. One of the main limitations of using EEG for diagnostics is the required time and specialized knowledge of experts that need to be well-trained on EEG diagnostics to reach reliable results. Therefore, a deep-learning approach that aids in the diagnostic process could make EEG diagnosis more widely accessible, reduce time and effort for clinicians and potentially make diagnoses more accurate.</p>
+<div><p>We also evaluated our deep ConvNets for automatic medical diagnosis from EEG. EEG is important for clinical practice both as a screening method as well as for hypothesis-based diagnostics, e.g., in epilepsy or stroke. One of the main limitations of using EEG for diagnostics is the required time and specialized knowledge of experts that need to be well-trained on EEG diagnostics to reach reliable results. Therefore, a deep-learning approach that aids in the diagnostic process could make EEG diagnosis more widely accessible, reduce time and effort for clinicians and potentially make diagnoses more accurate.</p>
 </div></blockquote>
 <div class="section" id="dataset-and-preprocessing">
 <h2>Dataset and Preprocessing<a class="headerlink" href="#dataset-and-preprocessing" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="temple-university-hospital-eeg-abnormal-corpus">
 <h3>Temple University Hospital EEG Abnormal Corpus<a class="headerlink" href="#temple-university-hospital-eeg-abnormal-corpus" title="Permalink to this headline">¶</a></h3>
-<p>We used the Temple University Hospital (TUH) EEG Abnormal Corpus for evaluating our deep ConvNets on pathology detection from EEG.</p>
-<blockquote>
-<div><p>The Temple University Hospital (TUH) EEG Abnormal Corpus 1.1.2 is a dataset of manually labeled normal and pathological clinical EEG recordings.
-It is taken from the TUH EEG Data Corpus which contains over 16000 clinical recordings of more than 10000 subjects from over 12 years <code class="docutils literal notranslate"><span class="pre">cite</span></code>{obeid_temple_2016}.
-The Abnormal Corpus contains 3017 recordings, 1529 of which were labeled normal and 1488 of which were labeled pathological.
-The Corpus was split into a training and evaluation set, see <a class="reference internal" href="#table-tuh-dataset"><span class="std std-numref">Table 9</span></a>.</p>
-</div></blockquote>
-<blockquote>
-<div><p>Recordings were acquired from  at least 21 standard electrode positions and with a sampling rate of in most cases 250 Hz.
-Per recording, there are around 20 minutes of EEG data.
-The inter-rater agreement on between the medical report of a certified neurologist and a medical student annotator was 99% for the training recordings and 100% for the evaluation recordings.</p>
-</div></blockquote>
 <table class="colwidths-auto table" id="table-tuh-dataset">
-<caption><span class="caption-number">Table 9 </span><span class="caption-text">TUH EEG Abnormal Corpus 1.1.2 Statistics. Obtained from <a class="reference external" href="https://www.isip.piconepress.com/projects/tuh_eeg/">https://www.isip.piconepress.com/projects/tuh_eeg/</a>. Rater agreements refer to the agreement between the student annotator of the file and the medical report written by a certified neurologist.</span><a class="headerlink" href="#table-tuh-dataset" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 10 </span><span class="caption-text">TUH EEG Abnormal Corpus 1.1.2 Statistics. Obtained from <a class="reference external" href="https://www.isip.piconepress.com/projects/tuh_eeg/">https://www.isip.piconepress.com/projects/tuh_eeg/</a>. Rater agreements refer to the agreement between the student annotator of the file and the medical report written by a certified neurologist.</span><a class="headerlink" href="#table-tuh-dataset" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
@@ -415,6 +403,18 @@ The inter-rater agreement on between the medical report of a certified neurologi
 </tr>
 </tbody>
 </table>
+<p>We used the Temple University Hospital (TUH) EEG Abnormal Corpus for evaluating our deep ConvNets on pathology detection from EEG.</p>
+<blockquote>
+<div><p>The Temple University Hospital (TUH) EEG Abnormal Corpus 1.1.2 is a dataset of manually labeled normal and pathological clinical EEG recordings.
+It is taken from the TUH EEG Data Corpus which contains over 16000 clinical recordings of more than 10000 subjects from over 12 years <code class="docutils literal notranslate"><span class="pre">cite</span></code>{obeid_temple_2016}.
+The Abnormal Corpus contains 3017 recordings, 1529 of which were labeled normal and 1488 of which were labeled pathological.
+The Corpus was split into a training and evaluation set, see <a class="reference internal" href="#table-tuh-dataset"><span class="std std-numref">Table 10</span></a>.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Recordings were acquired from  at least 21 standard electrode positions and with a sampling rate of in most cases 250 Hz.
+Per recording, there are around 20 minutes of EEG data.
+The inter-rater agreement on between the medical report of a certified neurologist and a medical student annotator was 99% for the training recordings and 100% for the evaluation recordings.</p>
+</div></blockquote>
 </div>
 <div class="section" id="preprocessing">
 <h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h3>
@@ -457,7 +457,7 @@ We set a time limit of 3.5 hours for each configuration run on a single fold. Ru
 <div class="section" id="deep-and-shallow-convnets-reached-state-of-the-art-results">
 <h2>Deep and shallow ConvNets reached state-of-the-art results<a class="headerlink" href="#deep-and-shallow-convnets-reached-state-of-the-art-results" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table" id="pathology-convnet-results">
-<caption><span class="caption-number">Table 10 </span><span class="caption-text">Decoding accuracies for discriminating normal and pathological EEG with deep and shallow ConvNets. For deep and shallow ConvNets, mean over five independent runs with different random seeds. Deep and shallow ConvNet outperformed the feature-based deep learning baseline.</span><a class="headerlink" href="#pathology-convnet-results" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 11 </span><span class="caption-text">Decoding accuracies for discriminating normal and pathological EEG with deep and shallow ConvNets. For deep and shallow ConvNets, mean over five independent runs with different random seeds. Deep and shallow ConvNet outperformed the feature-based deep learning baseline.</span><a class="headerlink" href="#pathology-convnet-results" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>Accuracy</p></th>
@@ -467,7 +467,7 @@ We set a time limit of 3.5 hours for each configuration run on a single fold. Ru
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Baseline <span id="id1">[<a class="reference internal" href="References.html#id21">LdD17</a>]</span></p></td>
+<tr class="row-even"><td><p>Baseline <span id="id1">[<a class="reference internal" href="References.html#id24">LdD17</a>]</span></p></td>
 <td><p>78.8</p></td>
 <td><p>75.4</p></td>
 <td><p>81.9</p></td>
@@ -491,7 +491,7 @@ We set a time limit of 3.5 hours for each configuration run on a single fold. Ru
 <td><p>77.3</p></td>
 <td><p>50.2</p></td>
 </tr>
-<tr class="row-even"><td><p><span id="id2">[<a class="reference internal" href="References.html#id22">SGE+17</a>]</span></p></td>
+<tr class="row-even"><td><p><span id="id2">[<a class="reference internal" href="References.html#id25">SGE+17</a>]</span></p></td>
 <td><p></p></td>
 <td><p></p></td>
 <td><p></p></td>
@@ -538,7 +538,7 @@ This implies that predictions with high accuracies can be made from just 6 secon
 <div class="card w-100 shadow-none border-1 docutils">
 <div class="card-body docutils">
 <blockquote>
-<div><p class="card-text">Confusion Matrices for deep and shallow ConvNets}, summed over five independent runs <span id="id3">[<a class="reference internal" href="References.html#id22">SGE+17</a>]</span>.
+<div><p class="card-text">Confusion Matrices for deep and shallow ConvNets}, summed over five independent runs <span id="id3">[<a class="reference internal" href="References.html#id25">SGE+17</a>]</span>.
 Each entry of row r and column c for upper-left 2x2-square: Number of trials of target r predicted as class c (also written in percent of all trials).
 Bold diagonal corresponds to correctly predicted trials for both classes. Percentages and colors indicate fraction of trials in each cell relative to all trials.
 The lower-right value: overall accuracy. The first two values in the bottom row correspond to sensitivity and specificity.
@@ -576,7 +576,7 @@ However, the decrease is below 0.5% and thus should be interpreted cautiously.</
 <p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">Final shallow ConvNet architecture selected by SMAC. Note that max pooling is the only nonlinearity SMAC decided to use.</span><a class="headerlink" href="#shallow-smac-net-fig" title="Permalink to this image">¶</a></p>
 </div>
 <table class="colwidths-auto table" id="pathology-smac-results">
-<caption><span class="caption-number">Table 11 </span><span class="caption-text">Decoding accuracies with the default  of deep and shallow ConvNets as well as versions optimized by automatic architecture optimization. Train here refers to 10-fold cross-validation on the 1500 chronologically earliest recordings of the training data.</span><a class="headerlink" href="#pathology-smac-results" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 12 </span><span class="caption-text">Decoding accuracies with the default  of deep and shallow ConvNets as well as versions optimized by automatic architecture optimization. Train here refers to 10-fold cross-validation on the 1500 chronologically earliest recordings of the training data.</span><a class="headerlink" href="#pathology-smac-results" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
@@ -622,7 +622,7 @@ However, the decrease is below 0.5% and thus should be interpreted cautiously.</
 <td><p>83.0</p></td>
 <td><p>79.8</p></td>
 </tr>
-<tr class="row-odd"><td><p><span id="id4">[<a class="reference internal" href="References.html#id22">SGE+17</a>]</span></p></td>
+<tr class="row-odd"><td><p><span id="id4">[<a class="reference internal" href="References.html#id25">SGE+17</a>]</span></p></td>
 <td><p></p></td>
 <td><p></p></td>
 <td><p></p></td>
@@ -632,7 +632,7 @@ However, the decrease is below 0.5% and thus should be interpreted cautiously.</
 </tbody>
 </table>
 <p>The models discovered by automated architecture optimization were markedly different from our original deep and shallow ConvNets. For example, the optimized architectures used only 1.8 and 3.7 seconds of EEG data for the optimized deep and shallow ConvNet, respectively, in contrast to about 6 seconds in the original versions.
-While the improved performance of these modified architectures for the 10-fold cross-validation on the training dataset (2.1% and 1.4% improvement for deep and shallow ConvNets, respectively) did not generalize to the evaluation set (0.9% and  1.5% deterioration for deep and shallow ConvNets, respectively, see <a class="reference internal" href="#pathology-smac-results"><span class="std std-numref">Table 11</span></a>, the modifications to the original network architectures already provided interesting insights for further exploration:
+While the improved performance of these modified architectures for the 10-fold cross-validation on the training dataset (2.1% and 1.4% improvement for deep and shallow ConvNets, respectively) did not generalize to the evaluation set (0.9% and  1.5% deterioration for deep and shallow ConvNets, respectively, see <a class="reference internal" href="#pathology-smac-results"><span class="std std-numref">Table 12</span></a>, the modifications to the original network architectures already provided interesting insights for further exploration:
 For example, in the case of the shallow ConvNet, the modified architecture did not use any of the original nonlinearities, but used max pooling as the only nonlinearity (see Fig. <a class="reference internal" href="#shallow-smac-net-fig"><span class="std std-numref">Fig. 33</span></a>), a configuration we had not considered in our  manual search so far.</p>
 </div>
 <div class="section" id="visualization">
@@ -691,9 +691,9 @@ The identification of all-round architectures would greatly simplify the applica
 Further accuracy improvements could thus be possible with improved decoding models that can extract and integrate additional information from longer timescales.
 The exact nature of such models, as well as the amount of EEG they would require, remains to be determined.
 More accurate decoding models could either be ConvNets that are designed to intelligently use a larger input length or recurrent neural networks, since these are known to inherently work well for data with information both on shorter and longer term scales.
-Furthermore, combinations between both approaches, for example using a recurrent neural network on top of a ConvNet, as they have been used in other domains like speech recognition <span id="id5">[<a class="reference internal" href="References.html#id192">LW15</a>, <a class="reference internal" href="References.html#id193">SVSS15</a>, <a class="reference internal" href="References.html#id209">SSRB15</a>]</span>, are promising.</p>
+Furthermore, combinations between both approaches, for example using a recurrent neural network on top of a ConvNet, as they have been used in other domains like speech recognition <span id="id5">[<a class="reference internal" href="References.html#id195">LW15</a>, <a class="reference internal" href="References.html#id196">SVSS15</a>, <a class="reference internal" href="References.html#id212">SSRB15</a>]</span>, are promising.</p>
 <p>Our automated architecture optimization provided interesting insights by yielding configurations that were markedly different from our hand-engineered architectures, yet reached similar accuracies. Since the marked improvements in training performance did not improve the evaluation accuracies in this study, in future work, we plan to use more training recordings in the optimization and study different cross-validation methods to also improve evaluation accuracies.
-A full-blown architecture search <span id="id6">[<a class="reference internal" href="References.html#id17">MKF+16</a>, <a class="reference internal" href="References.html#id15">MLM+17</a>, <a class="reference internal" href="References.html#id16">RMS+17</a>, <a class="reference internal" href="References.html#id14">ZL16</a>, <a class="reference internal" href="References.html#id13">ZVSL17</a>]</span> could also further improve accuracy. With such improved methods it would also be important not only to decode pathological vs. normal EEG in a binary fashion, but to also evaluate the possibility to derive more fine-grained clinical information, such as the type of pathological change (slowing, asymmetry, etc) or the likely underlying disorder (such as epilepsy).</p>
+A full-blown architecture search <span id="id6">[<a class="reference internal" href="References.html#id20">MKF+16</a>, <a class="reference internal" href="References.html#id18">MLM+17</a>, <a class="reference internal" href="References.html#id19">RMS+17</a>, <a class="reference internal" href="References.html#id17">ZL16</a>, <a class="reference internal" href="References.html#id16">ZVSL17</a>]</span> could also further improve accuracy. With such improved methods it would also be important not only to decode pathological vs. normal EEG in a binary fashion, but to also evaluate the possibility to derive more fine-grained clinical information, such as the type of pathological change (slowing, asymmetry, etc) or the likely underlying disorder (such as epilepsy).</p>
 <p>Any of these or other improvements might eventually bring the machine-learning decoding performance of pathological EEG closer to human-level performance.
 Since clinicians make their judgments from patterns they see in the EEG and other available context information, there is no clear reason why machine learning models with access to the same information could not reach human-level accuracy.
 This human-level performance is a benchmark for decoding accuracies that does not exist for other brain-signal decoding tasks, e.g. in decoding task-related information for brain-computer interfaces, where there is inherent uncertainty what information is even present in the EEG and no human-level benchmark exists.</p>
@@ -703,7 +703,7 @@ Similarly, the textual reports also yielded plausible insights, e.g., that <code
 Additionally, inspection of the textual reports also emphasized the importance of  integrating contextual information such as the age of the subject.</p>
 <p>Still, to yield more clinically useful insights and diagnosis explanations, further improvements in ConvNet visualizations are needed.
 Deep learning models that use an attention mechanism might be more interpretable, since these models can highlight which parts of the recording were most important for the decoding decision.
-Other deep learning visualization methods like recent saliency map methods <span id="id7">[<a class="reference internal" href="References.html#id12">KSA+17</a>, <a class="reference internal" href="References.html#id11">MSM17</a>]</span> to explain individual decisions or conditional generative adversarial networks  <span id="id8">[<a class="reference internal" href="References.html#id18">MO14</a>, <a class="reference internal" href="References.html#id20">Spr15</a>]</span> to understand what makes a recording pathological or normal might further improve the clinical benefit of deep learning methods that decode pathological EEG.</p>
+Other deep learning visualization methods like recent saliency map methods <span id="id7">[<a class="reference internal" href="References.html#id15">KSA+17</a>, <a class="reference internal" href="References.html#id14">MSM17</a>]</span> to explain individual decisions or conditional generative adversarial networks  <span id="id8">[<a class="reference internal" href="References.html#id21">MO14</a>, <a class="reference internal" href="References.html#id23">Spr15</a>]</span> to understand what makes a recording pathological or normal might further improve the clinical benefit of deep learning methods that decode pathological EEG.</p>
 </div>
 </div>
 

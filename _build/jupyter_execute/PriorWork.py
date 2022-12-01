@@ -14,14 +14,20 @@
 # * Remained unclear how deep learning approaches compare to well-tuned feature-based approaches
 # ```
 
-# |  Decoding problem                                                                                                                     | Number of studies                                                               | With external baseline|
-# |:-----------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------|
+# ```{table} Decoding problems in deep-learning EEG decoding studies prior to our work. Studies with external baseline compared their decoding results to an external baseline result by other authors.
+# :name: prior-work-tasks-table
+# 
+# |  Decoding problem     | Number of studies  | With external baseline|
+# |:------|:-------------------|:---------------------------------|
 # |Imagined or Executed Movement|6|2|
 # |Oddball/P300|5|1|
 # |Epilepsy-related|4|2|
 # |Music Rhythm|2|0|
 # |Memory Performance/Cognitive Load|2|0|
 # |Driver Performance|1|0|
+# ```
+
+# Prior to 2017, when the first work presented in this thesis was published, there was only limited literature on EEG decoding with deep learning. From 19 studies we identified at the time, most were about movement-related decoding problems such as decoding which body part (hand, feet etc.) a person is imagining to move (see {numref}`prior-work-tasks-table`). Few of the studies compared their decoding results to an external published baseline result, making it hard to evaluate the quality of the decoding results. To advance the understanding of EEG deep learning decoding, we therefore decided to first focus on movement-related decoding, as it is a widely researched decoding type. Also there are strong feature-based baselines and baseline results for movement-realted decoding problems, making it a suitable problem type to try deep-learning models on. 
 
 # ```{admonition} We therefore focused on movement-related decoding with strong, externally validated baselines
 # :class: tip
@@ -106,9 +112,13 @@ None
 # ```
 # %:figclass: margin-caption
 
+# Deep networks can either decode directly from the time-domain EEG or process the data in the frequency domain, for example after a Fourier transformation. 12 of the prior studies used time-domain inputs, 6 used frequency-domain inputs and one used both. We decided to work directly in the time domain, as the deep networks should be capable to learn to extract any needed spectral information from the time-domain input. 
+# 
+# Most prior studies that were working in the time domain only used frequencies below 50 Hz. We were also interested in how well deep networks can also extract lesser-used higher-frequency components of the EEG signal. Our internal high-gamma dataset was recorded specifically to allow extraction of higher-frequency (>50 Hz) information from scalp EEG, and therefore we used this as one of the main datasets for our study.
+
 # ```{admonition} We used also high-gamma frequencies > 50 Hz on one dataset
 # :class: tip
-# * Used very suitable dataset for high-gamma nalysis 
+# * Used very suitable dataset for high-gamma analysis 
 # * Deep networks should be able to extract information from any frequency range 
 # ```
 
@@ -182,12 +192,9 @@ None
 # 
 # *Number of layers in prior work*. Small grey markers represent individual architectures. Dashed lines indicate different number of layers investigated in a single study (e.g., a single study investigated 3-7 convolutional layers). Larger grey markers indicate sum of occurences of that layer number over all studies (e.g., 9 architectures used 2 convolutional layers). Note most architectures use only 1-3 convolutional layers.
 # ```
-# %:figclass: margin-caption
+# 
 
-# ```{admonition} We will evaluate shallower and deeper architectures 
-# :class: tip
-# * ...
-# ```
+# The architectures used in prior work typically only included up to 3 layers, with only 2 studies considering more layers. As network architectures in other domains tend to be a lot deeper, we also evalauted architectures with a larger number of layers in our work.
 
 # ## Hyperparameter Evaluations
 
