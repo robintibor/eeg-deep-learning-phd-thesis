@@ -1,21 +1,5 @@
 {
   "PriorWork": {
-    "input_domain_fig": {
-      "data": {
-        "image/png": null,
-        "text/plain": "<Figure size 576x288 with 1 Axes>"
-      },
-      "metadata": {
-        "scrapbook": {
-          "mime_prefix": "",
-          "name": "input_domain_fig"
-        },
-        "filenames": {
-          "image/png": "/home/robintibor/work/thesis/jupyter-book/thesis-book/_build/jupyter_execute/PriorWork_9_0.png"
-        }
-      },
-      "output_type": "display_data"
-    },
     "layernum_fig": {
       "data": {
         "image/png": null,
@@ -27,7 +11,23 @@
           "name": "layernum_fig"
         },
         "filenames": {
-          "image/png": "/home/robintibor/work/thesis/jupyter-book/thesis-book/_build/jupyter_execute/PriorWork_15_0.png"
+          "image/png": "/home/robintibor/work/thesis/jupyter-book/thesis-book/_build/jupyter_execute/PriorWork_10_0.png"
+        }
+      },
+      "output_type": "display_data"
+    },
+    "input_domain_fig": {
+      "data": {
+        "image/png": null,
+        "text/plain": "<Figure size 576x288 with 1 Axes>"
+      },
+      "metadata": {
+        "scrapbook": {
+          "mime_prefix": "",
+          "name": "input_domain_fig"
+        },
+        "filenames": {
+          "image/png": "/home/robintibor/work/thesis/jupyter-book/thesis-book/_build/jupyter_execute/PriorWork_6_0.png"
         }
       },
       "output_type": "display_data"

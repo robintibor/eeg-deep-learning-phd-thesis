@@ -552,7 +552,7 @@ predicted probabilties for the next crop  <span class="math notranslate nohighli
 <p>Prior to our more extensive study, we had evaluated the filterbank network [ref] on the High-Gamma Dataset in a master thesis [ref]. The evaluation was on a different version of the High-Gamma Dataset. This version contained different subjects, some subjects had not been recorded yet and other subjects were later excluded due to the presence of too many artifacts. Furthermore, we evaluated 150Hz and 300 Hz as sampling rates here, in the remainder we will use 250 Hz.</p>
 <p>The results in Table XX show that the Filterbank net outperforms FBCSP by 2.4% (300Hz) and 1.3% (150 Hz) respectively. Despite the good performance, we did not evaluate this network further as our implementation had a very large GPU memory requirement and we were more interested in evaluating more expressive architectures that were not as fixed to implement FBCSP steps.</p>
 <table class="colwidths-auto table" id="filterbank-net-results">
-<caption><span class="caption-number">Table 2 </span><span class="caption-text">Filterbank Net vs FBCSP Accuracies. Std is standard deviation over the 18 subjects used here.</span><a class="headerlink" href="#filterbank-net-results" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">Filterbank Net vs FBCSP Accuracies. Std is standard deviation over the 18 subjects used here.</span><a class="headerlink" href="#filterbank-net-results" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Decoding Method</p></th>
 <th class="head"><p>Sampling rate</p></th>
@@ -625,10 +625,10 @@ statistically significant differences were in direction of the ConvNets.</span><
 </div>
 <div class="section" id="results-on-bci-competition-iv-2b">
 <h2>Results on BCI Competition IV 2b<a class="headerlink" href="#results-on-bci-competition-iv-2b" title="Permalink to this headline">¶</a></h2>
-<p>To ensure that the results also generalize to further datasets and also rule out hyperparameter overfitting, the FBCSP pipeline and the deep network pipelines were applied with the exact same hyperparameters on BCI Competition IV 2b. A few choices like the use of the decoding time window had been done after already seeing results from the evaluation sets of the High-Gamma dataset and the BCIC IV 2a dataset, hence the BCIC IV 2b dataset seemed a suitable dataset for further validation of the pipelines. Results in <a class="reference internal" href="#bcic-iv-2b-results"><span class="std std-numref">Table 3</span></a> show that the networks perform as good or better than FBCSP.
+<p>To ensure that the results also generalize to further datasets and also rule out hyperparameter overfitting, the FBCSP pipeline and the deep network pipelines were applied with the exact same hyperparameters on BCI Competition IV 2b. A few choices like the use of the decoding time window had been done after already seeing results from the evaluation sets of the High-Gamma dataset and the BCIC IV 2a dataset, hence the BCIC IV 2b dataset seemed a suitable dataset for further validation of the pipelines. Results in <a class="reference internal" href="#bcic-iv-2b-results"><span class="std std-numref">Table 5</span></a> show that the networks perform as good or better than FBCSP.
 Results on further datasets, also non-movement-decoding datasets are presented in the next chapter.</p>
 <table class="colwidths-auto table" id="bcic-iv-2b-results">
-<caption><span class="caption-number">Table 3 </span><span class="caption-text">Kappa values on the BCIC IV 2b dataset. ConvNet kappa values show the difference to the FBCSP kappa value.</span><a class="headerlink" href="#bcic-iv-2b-results" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">Kappa values on the BCIC IV 2b dataset. ConvNet kappa values show the difference to the FBCSP kappa value.</span><a class="headerlink" href="#bcic-iv-2b-results" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>FBCSP</p></th>
 <th class="head"><p>Deep ConvNet</p></th>

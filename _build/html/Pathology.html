@@ -352,7 +352,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div class="section" id="temple-university-hospital-eeg-abnormal-corpus">
 <h3>Temple University Hospital EEG Abnormal Corpus<a class="headerlink" href="#temple-university-hospital-eeg-abnormal-corpus" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-auto table" id="table-tuh-dataset">
-<caption><span class="caption-number">Table 10 </span><span class="caption-text">TUH EEG Abnormal Corpus 1.1.2 Statistics. Obtained from <a class="reference external" href="https://www.isip.piconepress.com/projects/tuh_eeg/">https://www.isip.piconepress.com/projects/tuh_eeg/</a>. Rater agreements refer to the agreement between the student annotator of the file and the medical report written by a certified neurologist.</span><a class="headerlink" href="#table-tuh-dataset" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 12 </span><span class="caption-text">TUH EEG Abnormal Corpus 1.1.2 Statistics. Obtained from <a class="reference external" href="https://www.isip.piconepress.com/projects/tuh_eeg/">https://www.isip.piconepress.com/projects/tuh_eeg/</a>. Rater agreements refer to the agreement between the student annotator of the file and the medical report written by a certified neurologist.</span><a class="headerlink" href="#table-tuh-dataset" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
@@ -408,7 +408,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <div><p>The Temple University Hospital (TUH) EEG Abnormal Corpus 1.1.2 is a dataset of manually labeled normal and pathological clinical EEG recordings.
 It is taken from the TUH EEG Data Corpus which contains over 16000 clinical recordings of more than 10000 subjects from over 12 years <code class="docutils literal notranslate"><span class="pre">cite</span></code>{obeid_temple_2016}.
 The Abnormal Corpus contains 3017 recordings, 1529 of which were labeled normal and 1488 of which were labeled pathological.
-The Corpus was split into a training and evaluation set, see <a class="reference internal" href="#table-tuh-dataset"><span class="std std-numref">Table 10</span></a>.</p>
+The Corpus was split into a training and evaluation set, see <a class="reference internal" href="#table-tuh-dataset"><span class="std std-numref">Table 12</span></a>.</p>
 </div></blockquote>
 <blockquote>
 <div><p>Recordings were acquired from  at least 21 standard electrode positions and with a sampling rate of in most cases 250 Hz.
@@ -457,7 +457,7 @@ We set a time limit of 3.5 hours for each configuration run on a single fold. Ru
 <div class="section" id="deep-and-shallow-convnets-reached-state-of-the-art-results">
 <h2>Deep and shallow ConvNets reached state-of-the-art results<a class="headerlink" href="#deep-and-shallow-convnets-reached-state-of-the-art-results" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-auto table" id="pathology-convnet-results">
-<caption><span class="caption-number">Table 11 </span><span class="caption-text">Decoding accuracies for discriminating normal and pathological EEG with deep and shallow ConvNets. For deep and shallow ConvNets, mean over five independent runs with different random seeds. Deep and shallow ConvNet outperformed the feature-based deep learning baseline.</span><a class="headerlink" href="#pathology-convnet-results" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 13 </span><span class="caption-text">Decoding accuracies for discriminating normal and pathological EEG with deep and shallow ConvNets. For deep and shallow ConvNets, mean over five independent runs with different random seeds. Deep and shallow ConvNet outperformed the feature-based deep learning baseline.</span><a class="headerlink" href="#pathology-convnet-results" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>Accuracy</p></th>
@@ -576,7 +576,7 @@ However, the decrease is below 0.5% and thus should be interpreted cautiously.</
 <p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">Final shallow ConvNet architecture selected by SMAC. Note that max pooling is the only nonlinearity SMAC decided to use.</span><a class="headerlink" href="#shallow-smac-net-fig" title="Permalink to this image">¶</a></p>
 </div>
 <table class="colwidths-auto table" id="pathology-smac-results">
-<caption><span class="caption-number">Table 12 </span><span class="caption-text">Decoding accuracies with the default  of deep and shallow ConvNets as well as versions optimized by automatic architecture optimization. Train here refers to 10-fold cross-validation on the 1500 chronologically earliest recordings of the training data.</span><a class="headerlink" href="#pathology-smac-results" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 14 </span><span class="caption-text">Decoding accuracies with the default  of deep and shallow ConvNets as well as versions optimized by automatic architecture optimization. Train here refers to 10-fold cross-validation on the 1500 chronologically earliest recordings of the training data.</span><a class="headerlink" href="#pathology-smac-results" title="Permalink to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p></p></th>
@@ -632,7 +632,7 @@ However, the decrease is below 0.5% and thus should be interpreted cautiously.</
 </tbody>
 </table>
 <p>The models discovered by automated architecture optimization were markedly different from our original deep and shallow ConvNets. For example, the optimized architectures used only 1.8 and 3.7 seconds of EEG data for the optimized deep and shallow ConvNet, respectively, in contrast to about 6 seconds in the original versions.
-While the improved performance of these modified architectures for the 10-fold cross-validation on the training dataset (2.1% and 1.4% improvement for deep and shallow ConvNets, respectively) did not generalize to the evaluation set (0.9% and  1.5% deterioration for deep and shallow ConvNets, respectively, see <a class="reference internal" href="#pathology-smac-results"><span class="std std-numref">Table 12</span></a>, the modifications to the original network architectures already provided interesting insights for further exploration:
+While the improved performance of these modified architectures for the 10-fold cross-validation on the training dataset (2.1% and 1.4% improvement for deep and shallow ConvNets, respectively) did not generalize to the evaluation set (0.9% and  1.5% deterioration for deep and shallow ConvNets, respectively, see <a class="reference internal" href="#pathology-smac-results"><span class="std std-numref">Table 14</span></a>, the modifications to the original network architectures already provided interesting insights for further exploration:
 For example, in the case of the shallow ConvNet, the modified architecture did not use any of the original nonlinearities, but used max pooling as the only nonlinearity (see Fig. <a class="reference internal" href="#shallow-smac-net-fig"><span class="std std-numref">Fig. 33</span></a>), a configuration we had not considered in our  manual search so far.</p>
 </div>
 <div class="section" id="visualization">

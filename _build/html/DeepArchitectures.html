@@ -275,26 +275,31 @@ commentsRunWhenDOMLoaded(addUtterances);
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#filter-bank-common-spatial-patterns-as-a-starting-point">
-   Filter Bank Common Spatial Patterns as a Starting Point
+  <a class="reference internal nav-link" href="#background">
+   Background
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filter-bank-common-spatial-patterns-as-a-starting-point">
+     Filter Bank Common Spatial Patterns as a Starting Point
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#common-spatial-patterns">
      Common Spatial Patterns
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filterbank">
+     Filterbank
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filterbank-network-architecture">
+     Filterbank network architecture
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#filterbank">
-   Filterbank
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#filterbank-network-architecture">
-   Filterbank network architecture
-  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#shallow-network-architecture">
@@ -311,11 +316,6 @@ commentsRunWhenDOMLoaded(addUtterances);
    Residual Network
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#to-remove-temporal-convolutional-network">
-   To remove? : Temporal Convolutional Network
-  </a>
- </li>
 </ul>
 
             </nav>
@@ -329,27 +329,30 @@ commentsRunWhenDOMLoaded(addUtterances);
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="neural-network-architectures-for-eeg-decoding">
 <span id="network-architectures"></span><h1>Neural Network Architectures for EEG-Decoding<a class="headerlink" href="#neural-network-architectures-for-eeg-decoding" title="Permalink to this headline">¶</a></h1>
-<p>We developed neural network architectures for EEG decoding with a EEG-specific development strategy. We started from smaller architectures that closely mimic a feature-based EEG-decoding algorithm and later progressed to a more generic architecture. This development strategy ensured that we could be fairly confident that the initial network architectures should perform as well as the feature-based algorithm. That also allowed us to use these smaller architectures to create a robust data preprocessing pipeline. After validating that the smaller architectures perform well with this pipeline, we could proceed to develop and evaluate more generic architectures.</p>
+<p>We developed neural network architectures with a EEG-decoding-specific development strategy. We started from smaller architectures that closely mimic a feature-based EEG-decoding algorithm and later progressed to more generic architectures. This development strategy ensured that the initial network architectures should be able to perform as well as the feature-based algorithm and also allowed us to use these smaller architectures to create a robust data preprocessing pipeline. After validating the decoding performance of  the smaller architectures, proceeded to develop and evaluate more generic architectures.</p>
+<p>I first describe some background including architectures designed in a prior master thesis and then describe the architectures presented in our first publication on EEG deep learning decoding <span id="id1">[<a class="reference internal" href="References.html#id28">SSF+17</a>]</span>. This part uses content from <span id="id2">[<a class="reference internal" href="References.html#id28">SSF+17</a>]</span>.</p>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="filter-bank-common-spatial-patterns-as-a-starting-point">
-<h2>Filter Bank Common Spatial Patterns as a Starting Point<a class="headerlink" href="#filter-bank-common-spatial-patterns-as-a-starting-point" title="Permalink to this headline">¶</a></h2>
-<p>We selected filter bank common spatial patterns (FBSCP) as the feature-based EEG-decoding algorithm to  mimic using neural network architectures. FBCSP is an EEG-decoding algorithm that has been successfully used in task-related EEG-decoding competitions [refs]. FBCSP aims to decode changes in the amplitude of different frequencies. These amplitude changes often happen in the EEG signal during certain tasks. The basic building block of FBCSP is the Common Spatial Patterns (CSP) algorithm. CSP aims to find a spatial filter over the EEG electrodes, such that the variance of the spatially filtered EEG signal allows distinguish two conditions. More specifically, the spatially filtered signal maximizes the ratio of the signal variance between the two conditions, e.g. of the signal during two different movements. For example, the signal of a spatial filter computed by CSP may have a very large variance during movements of the left hand and a very small variance during movements of the right hand.</p>
+<h3>Filter Bank Common Spatial Patterns as a Starting Point<a class="headerlink" href="#filter-bank-common-spatial-patterns-as-a-starting-point" title="Permalink to this headline">¶</a></h3>
+<p>We selected filter bank common spatial patterns (FBSCP) as the feature-based EEG-decoding algorithm to  mimic using neural network architectures <span id="id3">[<a class="reference internal" href="References.html#id59">ACZG08</a>, <a class="reference internal" href="References.html#id61">CAW+09</a>]</span>. FBCSP is an EEG-decoding algorithm that has been successfully used in task-related EEG-decoding competitions <span id="id4">[<a class="reference internal" href="References.html#id74">TMA+12</a>]</span>. FBCSP aims to decode changes in the amplitude of different frequencies. These amplitude changes often happen in the EEG signal during certain tasks. The basic building block of FBCSP is the Common Spatial Patterns (CSP) algorithm. CSP aims to find a spatial filter over the EEG electrodes, such that the variance of the spatially filtered EEG signal allows distinguish two conditions. More specifically, the spatially filtered signal maximizes the ratio of the signal variance between the two conditions, e.g. of the signal during two different movements. For example, the signal of a spatial filter computed by CSP may have a very large variance during movements of the left hand and a very small variance during movements of the right hand.</p>
 <div class="figure align-default" id="csp-figure">
 <img alt="_images/Methods_Common_Spatial_Patterns_18_0.png" src="_images/Methods_Common_Spatial_Patterns_18_0.png" />
 <p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Common Spatial Patterns example taken from a master thesis [ref]. Top parts show EEG signals for three electrodes during a left hand and  a right hand movement. Bottom parts show spatially filtered signals of two CSP filters. Green parts have lower variance and red parts have higher variance. Note that this difference is strongly amplified after CSP filtering.</span><a class="headerlink" href="#csp-figure" title="Permalink to this image">¶</a></p>
 </div>
+</div>
 <div class="section" id="common-spatial-patterns">
 <h3>Common Spatial Patterns<a class="headerlink" href="#common-spatial-patterns" title="Permalink to this headline">¶</a></h3>
-<p>In EEG Decoding, Common Spatial Patterns (CSP) [ref] is used to decode brain signals that lead to a change in the amplitudes of the EEG signal with a specific spatial topography. To do that, CSP aims to maximize the ratio of the signal variance between signals of two classes. Concretely, we are given signals <span class="math notranslate nohighlight">\(X_{1}, X_{2} \in \mathbb{R}^{n x k x t}\)</span> from <span class="math notranslate nohighlight">\(n\)</span> EEG trials (can be different for <span class="math notranslate nohighlight">\(X_1, X_2\)</span>), <span class="math notranslate nohighlight">\(k\)</span> EEG electrodes and <span class="math notranslate nohighlight">\(t\)</span> timepoints within each trial. CSP then finds a spatial filter <span class="math notranslate nohighlight">\(w\)</span> that maximize the ratio of the variances of the spatially filtered <span class="math notranslate nohighlight">\(X_1,X_2\)</span>:</p>
+<p>In EEG Decoding, Common Spatial Patterns (CSP) is used to decode brain signals that lead to a change in the amplitudes of the EEG signal with a specific spatial topography <span id="id5">[<a class="reference internal" href="References.html#id56">BTL+08</a>, <a class="reference internal" href="References.html#id151">KLZ90</a>, <a class="reference internal" href="References.html#id107">RMGP00</a>]</span>. To do that, CSP aims to maximize the ratio of the signal variance between spatially filtered signals of two classes. Concretely, we are given signals <span class="math notranslate nohighlight">\(X_{1}, X_{2} \in \mathbb{R}^{n x k x t}\)</span> from <span class="math notranslate nohighlight">\(n\)</span> EEG trials (can be different for <span class="math notranslate nohighlight">\(X_1, X_2\)</span>), <span class="math notranslate nohighlight">\(k\)</span> EEG electrodes and <span class="math notranslate nohighlight">\(t\)</span> timepoints within each trial. CSP then finds a spatial filter <span class="math notranslate nohighlight">\(w\)</span> that maximize the ratio of the variances of the spatially filtered <span class="math notranslate nohighlight">\(X_1,X_2\)</span>:</p>
 <p><span class="math notranslate nohighlight">\(w=\arg\!\max_w\frac{Var(w^T X_1)}{Var(w^T X_2)}= \arg\!\max_w\frac{||w^T X_1||^2}{||w^T X_2||^2}=\arg\!\max_w\frac{w^T X_1  X_1^T w}{w^T X_2  X_2^T w}\)</span></p>
 <p>Rather than just finding a single spatial filter <span class="math notranslate nohighlight">\(w\)</span>, CSP is typically used to find a whole matrix of spatial filters <span class="math notranslate nohighlight">\(W^{kxk}\)</span>, with spatial filters ordered by the above variance ratio and orthogonal to each other. So the first filter <span class="math notranslate nohighlight">\(w_1\)</span> results in the largest variance ratio and the last filter <span class="math notranslate nohighlight">\(w_k\)</span> results in the smallest variance ratio. Different algorithms can then be used to subselect some set of filters to filter signals for a subsequent decoding algorithm.</p>
 <p>The CSP-filtered signals can be used to construct features to train a classifier. Since the CSP-filtered signals should have very different variances for the different classes, the natural choice is to use the per-trial variances of the CSP-filtered signals as features. This results in as many features per trial as the number of CSP filters that were selected for decoding. Typically, one applies the logarithm to the variances to get more standard-normally distributed features.</p>
 </div>
-</div>
 <div class="section" id="filterbank">
-<h2>Filterbank<a class="headerlink" href="#filterbank" title="Permalink to this headline">¶</a></h2>
+<h3>Filterbank<a class="headerlink" href="#filterbank" title="Permalink to this headline">¶</a></h3>
 <p>CSP is typically applied to an EEG signal that has been bandpass filtered to a specific frequency range. The filtering to a frequency range is useful as brain signals cause EEG signal amplitude changes that are temporally and spatially different for different frequencies [refs]. For example, during movement the alpha rhythm may be suppressed for multiple electrodes covering a fairly large region on the scalp while the high gamma rhythm would be amplified for a few electrodes covering a smaller region.</p>
-<p>Filterbank Common Spatial Patterns applies CSP separately on signals bandpass-filtered to different frequency ranges [ref]. This allows to capture multiple frequency-specific changes in the EEG signal and can also make the decoding more robust to subject-specific signal characteristics, i.e., which frequency range is most informative for a given subject. The trial-log-variance features of each frequencyband and each CSP filter are then concatenated to form the entire trial feature vector. Typically, a feature selection procedure will select a subset of these features to train the final classifier.</p>
-<p>The overall FBCSP pipeline hence looks like this (from [ref]):</p>
+<p>Filterbank Common Spatial Patterns applies CSP separately on signals bandpass-filtered to different frequency ranges <span id="id6">[<a class="reference internal" href="References.html#id59">ACZG08</a>, <a class="reference internal" href="References.html#id61">CAW+09</a>]</span>. This allows to capture multiple frequency-specific changes in the EEG signal and can also make the decoding more robust to subject-specific signal characteristics, i.e., which frequency range is most informative for a given subject. The trial-log-variance features of each frequencyband and each CSP filter are then concatenated to form the entire trial feature vector. Typically, a feature selection procedure will select a subset of these features to train the final classifier.</p>
+<p>The overall FBCSP pipeline hence looks like this <span id="id7">[<a class="reference internal" href="References.html#id28">SSF+17</a>]</span>:</p>
 <ol class="simple">
 <li><p><strong>Bandpass filtering</strong>: Different bandpass filters are applied to separate the raw EEG signal into different frequency bands.</p></li>
 <li><p><strong>Epoching</strong>: The continuous EEG signal is cut into trials as explained in the section “Input and labels.”</p></li>
@@ -360,7 +363,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ol>
 </div>
 <div class="section" id="filterbank-network-architecture">
-<h2>Filterbank network architecture<a class="headerlink" href="#filterbank-network-architecture" title="Permalink to this headline">¶</a></h2>
+<h3>Filterbank network architecture<a class="headerlink" href="#filterbank-network-architecture" title="Permalink to this headline">¶</a></h3>
 <p>The first neural network architecture was developed by us in a prior master thesis [ref] to jointly learn the same steps that are learned separately by FBCSP. Concretely, the network simultaenously learn the spatial filters across many frequency bands and the classification weights for the trial variances of all resulting spatially filtered signals. To be able to do that, the network is fed with several signals that were bandpass-filtered to different frequency ranges. The network then performs the following steps:</p>
 <ol class="simple">
 <li><p>Apply learnable spatial filter weights, resulting in spatially filtered signals</p></li>
@@ -373,7 +376,8 @@ commentsRunWhenDOMLoaded(addUtterances);
 <p>The spatial filter weights and the classification weights are trained jointly.</p>
 <div class="figure align-default" id="filterbank-net-figure">
 <img alt="_images/csp_as_a_net_explanation.png" src="_images/csp_as_a_net_explanation.png" />
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Filterbank network architecture overview.  Input signals were bandpass filtered to different frequency ranges. Signals are first transformed by learned spatial filters, then squared, summed and the log-transformed. The resulting features are transformed into class probabilities by a classification weights followed by the softmax function.</span><a class="headerlink" href="#filterbank-net-figure" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Filterbank network architecture overview.  Input signals were bandpass filtered to different frequency ranges. Signals are first transformed by learned spatial filters, then squared, summed and the log-transformed. The resulting features are transformed into class probabilities by a classification weights followed by the softmax function. Taken from from a master thesis [ref].</span><a class="headerlink" href="#filterbank-net-figure" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 </div>
 <div class="section" id="shallow-network-architecture">
@@ -386,23 +390,19 @@ commentsRunWhenDOMLoaded(addUtterances);
 </div>
 <div class="section" id="deep-network-architecture">
 <h2>Deep Network Architecture<a class="headerlink" href="#deep-network-architecture" title="Permalink to this headline">¶</a></h2>
-<p>The deep architecture is a more generic architecture, closer to network architectures used in computer vision. The first two temporal convolution and spatial filtering layers are the same in the shallow network, which is followed by a ELU nonlinearity [ref] and max pooling. The following three blocks simply consist of a convolution, a ELU nonlinearity and a max pooling. In the end, there is again a final linear classification layer with a softmax function. Due to its less specific and more generic computational steps, the deep architecture should be able to capture a large variety of features. Hence, the learned features may also be less biased towards the amplitude features commonly used in task-related EEG decoding.</p>
+<p>The deep architecture is a more generic architecture, closer to network architectures used in computer vision. The first two temporal convolution and spatial filtering layers are the same in the shallow network, which is followed by a ELU nonlinearity (ELUs, <span class="math notranslate nohighlight">\(f(x)=x\)</span> for <span class="math notranslate nohighlight">\(x &gt; 0\)</span> and <span class="math notranslate nohighlight">\(f(x) = e^x-1\)</span> for <span class="math notranslate nohighlight">\(x &lt;= 0\)</span> <span id="id8">[<a class="reference internal" href="References.html#id211">CUH16</a>]</span>) and max pooling. The following three blocks simply consist of a convolution, a ELU nonlinearity and a max pooling. In the end, there is again a final linear classification layer with a softmax function. Due to its less specific and more generic computational steps, the deep architecture should be able to capture a large variety of features. Hence, the learned features may also be less biased towards the amplitude features commonly used in task-related EEG decoding.</p>
 <div class="figure align-default" id="deep-net-figure">
 <a class="reference internal image-reference" href="_images/3D_Diagram_MatplotLib.ipynb.1.png"><img alt="_images/3D_Diagram_MatplotLib.ipynb.1.png" src="_images/3D_Diagram_MatplotLib.ipynb.1.png" style="width: 75%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Deep network architecture, figure from [ref].</span><a class="headerlink" href="#deep-net-figure" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Deep network architecture, figure from <span id="id9">[<a class="reference internal" href="References.html#id28">SSF+17</a>]</span>.</span><a class="headerlink" href="#deep-net-figure" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="residual-network">
 <h2>Residual Network<a class="headerlink" href="#residual-network" title="Permalink to this headline">¶</a></h2>
-<p>We also developed a residual network (ResNet) for EEG decoding. We use the same residual blocks as the original paper, described in Figure <a class="reference internal" href="#residual-net-figure"><span class="std std-numref">Fig. 7</span></a>. Our ResNet used exponential linear unit activation functions [Clevert et al., 2016] throughout the network (same as the deep ConvNet) and also starts with a splitted temporal and spatial convolution (same as the deep and shallow ConvNets), followed by 14 residual blocks, mean pooling and a final softmax dense classification layer (for further details, see Supporting Information, Section A.3 in [ref]).</p>
+<p>We also developed a residual network (ResNet <span id="id10">[<a class="reference internal" href="References.html#id104">HZRS15</a>]</span>) for EEG decoding. We use the same residual blocks as the original paper, described in Figure <a class="reference internal" href="#residual-net-figure"><span class="std std-numref">Fig. 7</span></a>. Our ResNet used ELU activation functions throughout the network (same as the deep ConvNet) and also starts with a splitted temporal and spatial convolution (same as the deep and shallow ConvNets), followed by 14 residual blocks, mean pooling and a final softmax dense classification layer (for further details, see Supporting Information, Section A.3 in <span id="id11">[<a class="reference internal" href="References.html#id28">SSF+17</a>]</span>).</p>
 <div class="figure align-default" id="residual-net-figure">
 <img alt="_images/residual_block.png" src="_images/residual_block.png" />
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Residual block, Figure from [ref]. “Residual block used in the ResNet architecture and as described in original paper (He et al. [2015]; see Fig. 2) with identity shortcut option A, except using ELU instead of ReLU nonlinearities.”</span><a class="headerlink" href="#residual-net-figure" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Residual block, Figure from <span id="id12">[<a class="reference internal" href="References.html#id28">SSF+17</a>]</span>. “Residual block used in the ResNet architecture and as described in original paper (<span id="id13">[<a class="reference internal" href="References.html#id104">HZRS15</a>]</span>; see Fig. 2) with identity shortcut option A, except using ELU instead of ReLU nonlinearities.”</span><a class="headerlink" href="#residual-net-figure" title="Permalink to this image">¶</a></p>
 </div>
-</div>
-<div class="section" id="to-remove-temporal-convolutional-network">
-<h2>To remove? : Temporal Convolutional Network<a class="headerlink" href="#to-remove-temporal-convolutional-network" title="Permalink to this headline">¶</a></h2>
-<p>In another master thesis [ref], Patrick Ch… developed the Temporal Convolutional Network for EEG decoding using automatic hyperparameter optimization. Temporal Convolutional Networks use residual blocks and dilated convolutions and had originally been introduced as an alternative to recurrent neural networks.</p>
 </div>
 </div>
 

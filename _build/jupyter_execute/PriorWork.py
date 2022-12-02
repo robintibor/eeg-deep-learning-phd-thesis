@@ -4,15 +4,14 @@
 # (prior-work)=
 # # Prior Work
 
-# Maybe add a question that we address at end of each section?
+# ```{admonition}  Prior to our work, research on deep-learning-based EEG decoding was limited
+# * Few studies compared to published well-tuned feature-based decoding results
+# * Most EEG DL architectures had only 1-3 convolutional layers and included dense layers
+# * Most work only considered very restricted frequency ranges
+# * Most studies only compared few design choices and training strategies
+# ```
 
 # ## Decoding Problems and Baselines
-
-# ```{admonition}  Deep Learning on EEG studies prior to 2017 only had limited comparisons to feature-based baselines 
-# * From 19 identified studies, only 5 had an external baseline
-# * Decoding problems were very varied, movement-related decoding the most frequent problem
-# * Remained unclear how deep learning approaches compare to well-tuned feature-based approaches
-# ```
 
 # ```{table} Decoding problems in deep-learning EEG decoding studies prior to our work. Studies with external baseline compared their decoding results to an external baseline result by other authors.
 # :name: prior-work-tasks-table
@@ -27,20 +26,9 @@
 # |Driver Performance|1|0|
 # ```
 
-# Prior to 2017, when the first work presented in this thesis was published, there was only limited literature on EEG decoding with deep learning. From 19 studies we identified at the time, most were about movement-related decoding problems such as decoding which body part (hand, feet etc.) a person is imagining to move (see {numref}`prior-work-tasks-table`). Few of the studies compared their decoding results to an external published baseline result, making it hard to evaluate the quality of the decoding results. To advance the understanding of EEG deep learning decoding, we therefore decided to first focus on movement-related decoding, as it is a widely researched decoding type. Also there are strong feature-based baselines and baseline results for movement-realted decoding problems, making it a suitable problem type to try deep-learning models on. 
-
-# ```{admonition} We therefore focused on movement-related decoding with strong, externally validated baselines
-# :class: tip
-# * Movement-related decoding among most well-researched EEG decoding problems
-# * Very strong feature-based baselines exist
-# ```
+# Prior to 2017, when the first work presented in this thesis was published, there was only limited literature on EEG decoding with deep learning. From 19 studies we identified at the time, most were about movement-related decoding problems such as decoding which body part (hand, feet etc.) a person is imagining to move (see {numref}`prior-work-tasks-table`). Only 5 of the 19 studies compared their decoding results to an external published baseline result, making it hard to evaluate the quality of the decoding results. To advance the understanding of EEG deep learning decoding, we therefore decided to first focus on movement-related decoding, as it is a widely researched type decoding task. Also there are strong feature-based baselines and baseline results for movement-related decoding problems, making it a suitable problem type for evaluating the performance of EEG deep-learning decoding. 
 
 # ## Input Domains and Frequency Ranges
-
-# ```{admonition} Prior studies using time domain inputs mostly excluded higher frequencies
-# * More studies used time domain inputs than frequency domain inputs
-# * Only four studies used time domain inputs above 50 Hz
-# ```
 
 # In[10]:
 
@@ -114,20 +102,9 @@ None
 
 # Deep networks can either decode directly from the time-domain EEG or process the data in the frequency domain, for example after a Fourier transformation. 12 of the prior studies used time-domain inputs, 6 used frequency-domain inputs and one used both. We decided to work directly in the time domain, as the deep networks should be capable to learn to extract any needed spectral information from the time-domain input. 
 # 
-# Most prior studies that were working in the time domain only used frequencies below 50 Hz. We were also interested in how well deep networks can also extract lesser-used higher-frequency components of the EEG signal. Our internal high-gamma dataset was recorded specifically to allow extraction of higher-frequency (>50 Hz) information from scalp EEG, and therefore we used this as one of the main datasets for our study.
-
-# ```{admonition} We used also high-gamma frequencies > 50 Hz on one dataset
-# :class: tip
-# * Used very suitable dataset for high-gamma analysis 
-# * Deep networks should be able to extract information from any frequency range 
-# ```
+# Most prior studies that were working in the time domain only used frequencies below 50 Hz. We were also interested in how well deep networks can also extract lesser-used higher-frequency components of the EEG signal. We used a sampling rate of 250 Hz, which means we were able to analyze frequencies up to the Nyquist frequency of 125 Hz. As a suitable dataset where high-frequency information may help decoding, we included our high-gamma dataset in our study, since it was recorded specifically to allow extraction of higher-frequency (>50 Hz) information from scalp EEG.
 
 # ## Network Architectures
-
-# ```{admonition}  Most investigated network architectures were fairly shallow (below 4 layers)
-# * Unlike architectures in computer vision, most EEG DL architectures had only 1-3 convolutional layers
-# * Unlike architectures in computer vision, many architectures used several dense layers
-# ```
 
 # In[1]:
 
@@ -194,62 +171,58 @@ None
 # ```
 # 
 
-# The architectures used in prior work typically only included up to 3 layers, with only 2 studies considering more layers. As network architectures in other domains tend to be a lot deeper, we also evalauted architectures with a larger number of layers in our work.
+# The architectures used in prior work typically only included up to 3 layers, with only 2 studies considering more layers. As network architectures in other domains tend to be a lot deeper, we also evalauted architectures with a larger number of layers in our work. Several architectures from prior work also included fully-connected layers which had fallen out of favor in computer-vision deep-learning architectures and which we therefore also avoided.
 
 # ## Hyperparameter Evaluations
 
-# ```{admonition}  Prior work varied widely in which design choices and training strategies were compared
-# * Six studies did not compare any design choices or training strategies
-# * Most common was to try different kernel sizes
-# * Only one study evaluated a wider range of hyperparameters for both design choices and training strategies
+# ```{table} Design choices and training strategies that prior deep-learning EEG decoding studies had studies.
+# :name: prior-work-design-choices-table
+# 
+# | Study | Design choices| Training strategies |
+# |:------|:------------|:---------------|
+# |{cite}`lawhern_eegnet:_2016` | Kernel sizes  |   |
+# |{cite}`sun_remembered_2016` | | Different time windows |
+# |{cite}`tabar_novel_2017` | Addition of six-layer stacked autoencoder on ConvNet features <br> Kernel sizes | |
+# | {cite}`liang_predicting_2016` | |Different subdivisions of frequency range <br>Different lengths of time crops <br>Transfer learning with auxiliary non-epilepsy datasets |
+# |{cite}`hajinoroozi_eeg-based_2016` | Replacement of convolutional layers by restricted Boltzmann machines with slightly varied network architecture}| |
+# |{cite}`antoniades_deep_2016` | 1 or 2 convolutional layers ||
+# |{cite}`page_wearable_2016` | | Cross-subject supervised training, within-subject finetuning of fully connected layers |
+# |{cite}`bashivan_learning_2016` | Number of convolutional layers <br>Temporal processing of ConvNet output by max pooling, temporal convolution, LSTM or temporal convolution + LSTM | |
+# |{cite}`stober_learning_2016` | Kernel sizes | Pretraining first layer as convolutional autoencoder with different constraints |
+# |{cite}`sakhavi_parallel_2015` | Combination ConvNet and MLP (trained on different features) vs. only ConvNet vs. only MLP | |
+# |{cite}`stober_using_2014`  | Best values from automatic hyperparameter optimization: frequency cutoff, one vs two layers, kernel sizes, number of channels, pooling width | Best values from automatic hyperparameter optimization: learning rate, learning rate decay, momentum, final momentum |
+# |{cite}`wang_deep_2013` | Partially supervised CSA | |
+# |{cite}`cecotti_convolutional_2011` | Electrode subset (fixed or automatically determined) <br>Using only one spatial filter <br>Different ensembling strategies||
 # ```
 
-# | Study                                                                                                                              | Design choices                                                                                                                                                                                  | Training strategies                                                                                                                      |
-# |:-----------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------|
-# |{cite}`lawhern_eegnet:_2016`                      | Kernel sizes                                                                                                                                                                                    |                                                                                                                                          |
-# |{cite}`sun_remembered_2016`                            |                                                                                                                                                                                                 | Different time windows                                                                                                                   |
-# |{cite}`tabar_novel_2017`                           | Addition of six-layer stacked autoencoder on ConvNet features <br> Kernel sizes                                                                                                              |                                                                                                                                          |
-# | {cite}`liang_predicting_2016`           |                                                                                                                                                                                                 | Different subdivisions of frequency range <br>Different lengths of time crops <br>Transfer learning with auxiliary non-epilepsy datasets |
-# |{cite}`hajinoroozi_eeg-based_2016`    | Replacement of convolutional layers by restricted Boltzmann machines with slightly varied network architecture}                                                                                 |                                                                                                                                          |
-# |{cite}`antoniades_deep_2016`                                                    | 1 or 2 convolutional layers                                                                                                                                                                     |                                                                                                                                          |
-# |{cite}`page_wearable_2016`                  |                                                                                                                                                                                                 | Cross-subject supervised training, within-subject finetuning of fully connected layers                                                   |
-# |{cite}`bashivan_learning_2016`                | Number of convolutional layers <br>Temporal processing of ConvNet output by max pooling, temporal convolution, LSTM or temporal convolution + LSTM                                              |                                                                                                                                          |
-# |{cite}`stober_learning_2016`                                                             | Kernel sizes                                                                                                                                                                                    | Pretraining first layer as convolutional autoencoder with different constraints                                                          |
-# |{cite}`sakhavi_parallel_2015`                       | Combination ConvNet and MLP (trained on different features) vs. only ConvNet vs. only MLP                                                                                                       |                                                                                                                                          |
-# |{cite}`stober_using_2014`  | Best values from automatic hyperparameter optimization: frequency cutoff, one vs two layers, kernel sizes, number of channels, pooling width                                                    | Best values from automatic hyperparameter optimization: learning rate, learning rate decay, momentum, final momentum                     |
-# |{cite}`wang_deep_2013`                | Partially supervised CSA                                                                                                                                                                        |                                                                                                                                          |
-# |{cite}`cecotti_convolutional_2011` | Electrode subset (fixed or automatically determined) <br>Using only one spatial filter <br>Different ensembling strategies                                                                      |                                                                                                                                          |
-# 
-# 
-
-# ```{admonition} We evaluated many design choices and two training strategies
-# :class: tip
-# * Find out if network design improvements in computer vision carry over to EEG decoding
-# * Test training strategies using whole trials or sliding windows within trials
-# ```
+# Prior work varied widely in which design choices and training strategies were compared. 6 of the studies did not compare any design choices or  training strategy hyperparamters. The other 13 studies evaluated different hyperparameters, with the most common one the kernel size (see {numref}`prior-work-design-choices-table`). Only one study evaluated a wider range of hyperparameters {cite}`stober_using_2014`. We therefore compared a wider range of design choices and training strategies and specifically evaluated in how far improvements of computer vision architecture design choices and training strategies also lead to improvements in EEG decoding.
 
 # ## Visualizations
 
-# ```{admonition}  Prior work mostly analyzed weights and activations 
-# * Eight studies did not present any visualization
-# * Visualizations in input space (maximally activating inputs, input occlusions, saliency maps) were used in three studies
+# ```{table} Visualizations presented in prior work.
+# :name: prior-work-visualizations-table
+# | Study | Visualization type(s) | Visualization findings   |
+# |:-------|:-----|:-----|
+# |{cite}`sun_remembered_2016`| Weights (spatial)| Largest weights found over prefrontal and temporal cortex|
+# |{cite}`manor_multimodal_2016` | Weights <br> Activations <br> Saliency maps by gradient | Weights showed typical P300 distribution <br>Activations were high at plausible times (300-500ms) <br>Saliency maps showed plausible spatio-temporal plots| 
+# |{cite}`tabar_novel_2017` | Weights (spatial + frequential) | Some weights represented difference of values of two electrodes on different sides of head|
+# |{cite}`liang_predicting_2016` | Weights <br> Clustering of weights | Clusters of weights showed typical frequency band subdivision (delta, theta, alpha, beta, gamma)|
+# |{cite}`antoniades_deep_2016` | Weights <br>Correlation weights and interictal epileptic discharges (IED) <br>Activations                        | Weights increasingly correlated with IED waveforms with increasing number of training iterations <br>Second layer captured more complex and well-defined epileptic shapes than first layer <br>IEDs led to highly synchronized activations for neighbouring electrodes |
+# |{cite}`thodoroff_learning_2016` | Input occlusion and effect on prediction accuracy | Allowed to locate areas critical for seizure |
+# |{cite}`george_single-trial_2016` | Weights (spatial) | Some filter weights had expected topographic distributions for P300 <br>Others filters had large weights on areas not traditionally associated with P300|
+# |{cite}`bashivan_learning_2016` | Inputs that maximally activate given filter <br>Activations of these inputs <br>"Deconvolution" for these inputs | Different filters were sensitive to different frequency bands <br>Later layers had more spatially localized activations <br>Learned features had noticeable links to well-known electrophysiological markers of cognitive load <br> |
+# |{cite}`stober_learning_2016` | Weights (spatial+3 timesteps, pretrained as autoencoder) | Different constraints led to different weights, one type of constraints could enforce weights that are similar across subjects; other type of constraints led to weights that have similar spatial topographies under different architectural configurations and preprocessings |
+# |{cite}`manor_convolutional_2015` | Weights <br> Mean and single-trial activations | Spatiotemporal regularization led to softer peaks in weights <br>Spatial weights showed typical P300 distribution <br>Activations mostly had peaks at typical times (300-400ms) |
+# |{cite}`cecotti_convolutional_2011` | Weights | Spatial filters were similar for different architectures <br>Spatial filters were different (more focal, more diffuse) for different subjects |
 # ```
 
-# | Study                                                                                                                              | Visualization type(s)                                                                                            | Visualization findings   |
-# |:-----------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:-------------------------|
-# |{cite}`sun_remembered_2016`                            | Weights (spatial)                                                                                                | Largest weights found over prefrontal and temporal cortex                                                                                                                                                                                                                                                                    |
-# |{cite}`manor_multimodal_2016`             | Weights <br> Activations <br> Saliency maps by gradient                                                          | Weights showed typical P300 distribution <br>Activations were high at plausible times (300-500ms) <br>Saliency maps showed plausible spatio-temporal plots                                                                                                                      |
-# |{cite}`tabar_novel_2017`                           | Weights (spatial + frequential)                                                                                  | Some weights represented difference of values of two electrodes on different sides of head                                                                                                                                                                                      |
-# |{cite}`liang_predicting_2016`           | Weights <br> Clustering of weights                                                                               | Clusters of weights showed typical frequency band subdivision (delta, theta, alpha, beta, gamma)                                                                                                                                                                                |
-# |{cite}`antoniades_deep_2016`                                                    | Weights <br>Correlation weights and interictal epileptic discharges (IED) <br>Activations                        | Weights increasingly correlated with IED waveforms with increasing number of training iterations <br>Second layer captured more complex and well-defined epileptic shapes than first layer <br>IEDs led to highly synchronized activations for neighbouring electrodes          |
-# |{cite}`thodoroff_learning_2016`                      | Input occlusion and effect on prediction accuracy                                                                | Allowed to locate areas critical for seizure                                                                                                                                                                                                                                    |
-# |{cite}`george_single-trial_2016`                         | Weights (spatial)                                                                                                | Some filter weights had expected topographic distributions for P300 <br>Others filters had large weights on areas not traditionally associated with P300                                                                                                                        |
-# |{cite}`bashivan_learning_2016`                | Inputs that maximally activate given filter <br>Activations of these inputs <br>"Deconvolution" for these inputs | Different filters were sensitive to different frequency bands <br>Later layers had more spatially localized activations <br>Learned features had noticeable links to well-known electrophysiological markers of cognitive load <br>                                             |
-# |{cite}`stober_learning_2016`                                                             | Weights (spatial+3 timesteps, pretrained as autoencoder)                                                         | Different constraints led to different weights, one type of constraints could enforce weights that are similar across subjects; other type of constraints led to weights that have similar spatial topographies under different architectural configurations and preprocessings |
-# |{cite}`manor_convolutional_2015`             | Weights <br> Mean and single-trial activations                                                                   | Spatiotemporal regularization led to softer peaks in weights <br>Spatial weights showed typical P300 distribution <br>Activations mostly had peaks at typical times (300-400ms)                                                                                                 |
-# |{cite}`cecotti_convolutional_2011` | Weights                                                                                                          | Spatial filters were similar for different architectures <br>Spatial filters were different (more focal, more diffuse) for different subjects                                                                                                                                   |
+# Visualizations can help understand what information the networks are extracting from the EEG signal. 11 of the prior 19 studies presented any visualizations. These studies mostly focussed on analyzing weights and activations, see {numref}`prior-work-visualizations-table`. In our work, we focused on investigating how far the networks extract features known to work well for movement-related decoding, see section TODO.
 
-# ```{admonition} We developed visualizations investigating known frequency amplitude features
+# ```{admonition} We thoroughly evaluated deep-learning-based EEG decoding
 # :class: tip
-# * Investigate in how far networks exploit features known to work well for movement-related decoding
+# * We used well-researched EEG movement-related decoding tasks with strong baselines
+# * We used a dataset suitable to analyze extraction of higher-frequency information
+# * We tried shallower EEG-specific as well as deeper more generic architectures
+# * We evaluated many design choices and two training strategies
+# * We investigate in how far networks learn to extract well-known EEG features
 # ```
