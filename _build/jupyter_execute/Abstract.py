@@ -12,7 +12,7 @@
 # | [Introduction](introduction)   |  Deep learning on EEG is a very promising approach for brain-signal-based medical applications like automatic diagnosis  |
 # | [Prior Work](prior-work)   | Prior to 2017, research did not clearly show how competitive deep learning is compared with well-optimized feature baselines   |
 # | [Neural Network Architectures for EEG-Decoding](network-architectures)   | Starting from a network mimicking an established EEG decoding pipeline, progressively more generic neural network architectures for EEG decoding |
-# | [Cropped Training](network-architectures)   | A training strategy to use many sliding windows in a computationally efficient manner |
+# | [Cropped Training](cropped-training)   | A training strategy to use many sliding windows in a computationally efficient manner |
 # | [Perturbation Visualization](perturbation-visualization)   | A visualization of how frequency features affect the trained network and its limitations |
 # | [Movement-Related Decoding](movement-related)   | Deep learning can be at least as good as feature-based baselines for movement-related decoding; deep networks also learn to extract known hand-engineered features|
 # | [Task-Related Decoding](task-related)   | Deep learning also performs well at other task-related decoding|

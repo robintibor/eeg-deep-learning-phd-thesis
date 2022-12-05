@@ -61,29 +61,28 @@
 
 # ![title](images/cross-subject-flanker-gui.png)
 
-# ````{panels}
-# :container: container-fluid 
-# :column: col-lg-6 col-md-6 col-sm-6 col-xs-12 
-# :card: shadow-none border-0
+# ::::{grid}
+# :gutter: 2
 # 
+# :::{grid-item}
 # ```{figure} images/within-subject-flanker-gui.png
 # :width: 100%
 # :name: within-subject-flanker-gui-fig
 # 
 # Comparison of within-subject decoding by rLDA and deep ConvNets. Error bars show the SEM. A) Eriksen flanker task (mean of 31 subjects), last 20% of subject data as test set. Deep ConvNets were 7.12% better than rLDA, pval = 6.24 *10-20 (paired t-test). B) Online GUI control (mean of 4 subjects), last session of each subject as test data {cite}`volker2018deep`
 # ```
+# :::
 # 
-# ---
-# 
+# :::{grid-item}
 # ```{figure} images/cross-subject-flanker-gui.png
 # :width: 100%
 # :name: cross-subject-flanker-gui-fig
 # 
 # Mean normalized decoding accuracy on unknown subjects. Error bars show the SEM. A) Eriksen flanker task, trained on 30 subjects, tested on 1 subject.  Deep ConvNets were 5.05% better than rLDA, p = 3.16 *10-4 (paired t-test). B) Online GUI control. Trained on 3 subjects, tested on the  respective remaining subject. {cite}`volker2018deep`
 # ```
+# :::
 # 
-# ````
-# 
+# ::::
 
 # ## Proof-of-concept assistive system
 # 

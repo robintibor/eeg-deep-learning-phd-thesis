@@ -10,6 +10,9 @@ html:
       repo: "robintibor/eeg-deep-learning-phd-thesis"
 bibtex_bibfiles:
     - references.bib
+bibtex_reference_style: author_year
 sphinx:
   extra_extensions:
    - sphinx_subfigure
+  config:
+    bibtex_reference_style: author_year 

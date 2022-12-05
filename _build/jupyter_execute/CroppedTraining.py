@@ -4,7 +4,7 @@
 # (cropped-training)=
 # # Cropped Training
 
-# In this chapter, we describe a specific "cropped" training strategy that regularizes the networks by training on many sliding temporal windows within the data. This is meant to squeeze out more performance from deep networks on EEG, as the performance of deep networks often scales well with more training data [ref] and EEG datasets are often rather small. We show how to use a cropped training strategy, similarly used in computer vision by training on crops of the images, on EEG data. First, we will describe regular non-cropped training, then cropped training on a conceptual level and finally how to make cropped training computationally faster. 
+# In this chapter, we describe a specific "cropped" training strategy that regularizes the networks by training on many sliding temporal windows within the data. This is meant to squeeze out more performance from deep networks on EEG, as the performance of deep networks often scales well with more training data and EEG datasets are often rather small. We show how to use a cropped training strategy by training on temporal crops of EEG data that had been similarly used in computer vision by training on spatial crops of images. First, we will describe regular non-cropped training, then cropped training on a conceptual level and finally how to make cropped training computationally more efficient. 
 
 # ## Non-Cropped/Trialwise Training
 
@@ -35,7 +35,7 @@
 
 # ## Computationally Faster Cropped Training
 
-# Cropped training can be implemented with substantially less computations by exploiting that highly overlapping crops result in highly overlapping intermediate representations. By passing a group of neighbouring crops together, we can reuse intermediate computations. See Figures XX and YY for a concrete example of this speedup method. This idea had been used in the same way for dense predictions on images, e.g. for segmentation [Giusti et al., 2013; Nasse et al., 2009; Sermanet et al., 2014; Shelhamer et al., 2016]. 
+# Cropped training can be implemented with substantially less computations by exploiting that highly overlapping crops result in highly overlapping intermediate representations. By passing a group of neighbouring crops together, we can reuse intermediate computations. See {numref}`cropped-naive-computation-figure` and  {numref}`cropped-efficient-computation-figure` for a concrete example of this speedup method. This idea had been used in the same way for dense predictions on images, e.g. for segmentation {cite}`giusti_fast_2013,nasse_face_2009,sermanet_overfeat:_2013,shelhamer_fully_2016`.
 
 # ![title](images/Multiple_Prediction_Matplotlib_Graphics.ipynb.2.png)
 
@@ -58,10 +58,4 @@
 
 # Efficient cropped training then results in the exact same predictions and training as if the neighbouring crops were passed separately through the network. This is only true for networks that either use left-padding or no padding at all. In the deep and shallow network described here, we do not use any padding. In the residual network, we use padding, hence the training is not exactly identical to passing neighbouring crops separately, but we found it still improves over trial-wise training.
 
-# The more efficient way to do cropped training introduces a new hyperparameter, the number of neighbouring crops that are decoded together. The larger this hyperparameter, the more computations are saved and the more speedup one gets (see Giusti et al. [2013] for a more detailed speedup analysis on images). Larger numbers of neighbouring crops that are trained on simultanaeously require more memory and may also affect the training dynamics due to more neighbouring crops being in the same mini-batch. However, we did not find negative effects on the training dynamics from larger number of simultaneously decoded neighbouring crops, consistent with prior work in computer vision ([Shelhamer et al., 2016]).
-
-# In[ ]:
-
-
-
-
+# The more efficient way to do cropped training introduces a new hyperparameter, the number of neighbouring crops that are decoded together. The larger this hyperparameter, the more computations are saved and the more speedup one gets (see {cite}`giusti_fast_2013` for a more detailed speedup analysis on images). Larger numbers of neighbouring crops that are trained on simultanaeously require more memory and may also affect the training dynamics due to more neighbouring crops being in the same mini-batch. However, we did not find negative effects on the training dynamics from larger number of simultaneously decoded neighbouring crops, consistent with prior work in computer vision {cite}`shelhamer_fully_2016`.
