@@ -448,6 +448,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convnet-independent-visualizations">
+   ConvNet-independent visualizations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#amplitude-perturbation-visualizations">
    Amplitude Perturbation Visualizations
   </a>
@@ -550,6 +555,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#results-on-bci-competition-iv-2b">
    Results on BCI Competition IV 2b
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convnet-independent-visualizations">
+   ConvNet-independent visualizations
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -781,14 +791,17 @@ significant (p&gt;0.1) and showed a lot of variation between subjects.</p>
 </table>
 <p>To ensure that the results also generalize to further datasets and also rule out hyperparameter overfitting, the FBCSP pipeline and the deep network pipelines were applied with the exact same hyperparameters on BCI Competition IV 2b. A few choices like the use of the decoding time window had been done after already seeing results from the evaluation sets of the High-Gamma dataset and the BCIC IV 2a dataset, hence the BCIC IV 2b dataset seemed a suitable dataset for further validation of the pipelines. Results in <a class="reference internal" href="#bcic-iv-2b-results"><span class="std std-numref">Table 6</span></a> show that the networks perform as good or better than FBCSP. Results on further datasets, also non-movement-decoding datasets are presented in the next chapter.</p>
 </div>
-<div class="section" id="amplitude-perturbation-visualizations">
-<h2>Amplitude Perturbation Visualizations<a class="headerlink" href="#amplitude-perturbation-visualizations" title="Permalink to this headline">#</a></h2>
+<div class="section" id="convnet-independent-visualizations">
+<h2>ConvNet-independent visualizations<a class="headerlink" href="#convnet-independent-visualizations" title="Permalink to this headline">#</a></h2>
 <div class="figure align-default" id="envelope-class-fig">
 <img alt="_images/Envelope_Correlations.ipynb.1.pdf-1.png" src="_images/Envelope_Correlations.ipynb.1.pdf-1.png" />
 <p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Average over subjects from the High-Gamma Dataset. Colormaps are scaled per frequency band/row. This is a ConvNet-independent visualization. Scalp plots show spatial distributions of class-related spectral amplitude changes well in line with the literature.</span><a class="headerlink" href="#envelope-class-fig" title="Permalink to this image">#</a></p>
 </div>
-<p>Before moving to ConvNet visualization, we examined the spectral amplitude changes associated with the different movement classes in the alpha, beta and gamma frequency bands. For that, we first computed the moving average of the squared envelope in narrow frequency bands via the Hilbert transform and then computed linear correlations of these moving averages with the class label. This results in frequency-resolved envelope/amplitude-class label correlations.</p>
-<p>We found the expected overall scalp topographies (see Figure \ref{fig:results-spectral-topo}). For example, for the alpha (7–13 Hz) frequency band, there was a class-related power decrease (anti-correlation in the class-envelope correlations) in the left and right pericentral regions with respect to the hand classes, stronger contralaterally to the side of the hand movement , i.e., the regions with pronounced power decreases lie around the primary sensorimotor hand representation areas. For the feet class, there was a power decrease located around the vertex, i.e.,  approx. above the primary motor foot area. As expected, opposite changes (power increases) with a similar topography were visible for the gamma band (71–91 Hz).</p>
+</div>
+<div class="section" id="amplitude-perturbation-visualizations">
+<h2>Amplitude Perturbation Visualizations<a class="headerlink" href="#amplitude-perturbation-visualizations" title="Permalink to this headline">#</a></h2>
+<p>Before moving to ConvNet visualization, we examined the spectral amplitude changes associated with the different movement classes in the alpha, beta and gamma frequency bands. For that, we first computed the moving average of the squared envelope in narrow frequency bands via the Hilbert transform as a measure of the power in those frequency bands.Then we computed linear correlations of these moving averages with the class label. This results in frequency-resolved envelope-class label correlations.</p>
+<p>We found the expected overall scalp topographies (see Figure \ref{fig:results-spectral-topo}) to show physiologically plausible patterns. For example, for the alpha (7–13 Hz) frequency band, there was a class-related power decrease (anti-correlation in the class-envelope correlations) in the left and right pericentral regions with respect to the hand classes, stronger contralaterally to the side of the hand movement , i.e., the regions with pronounced power decreases lie around the primary sensorimotor hand representation areas. For the feet class, there was a power decrease located around the vertex, i.e.,  approx. above the primary motor foot area. As expected, opposite changes (power increases) with a similar topography were visible for the gamma band (71–91 Hz).</p>
 <div class="figure align-default" id="bandpower-perturbation-per-class-fig">
 <img alt="_images/Bandpower_Perturbation.ipynb.0.pdf-1.png" src="_images/Bandpower_Perturbation.ipynb.0.pdf-1.png" />
 <p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Input-perturbation network-prediction correlations for all frequencies for the deep ConvNet, per class. Plausible correlations, for example, rest positively, other classes negatively correlated with the amplitude changes in frequency range from 20 to 30 Hz.</span><a class="headerlink" href="#bandpower-perturbation-per-class-fig" title="Permalink to this image">#</a></p>

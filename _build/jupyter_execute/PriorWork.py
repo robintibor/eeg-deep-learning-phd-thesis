@@ -218,11 +218,11 @@ None
 
 # Visualizations can help understand what information the networks are extracting from the EEG signal. 11 of the prior 19 studies presented any visualizations. These studies mostly focussed on analyzing weights and activations, see {numref}`prior-work-visualizations-table`. In our work, we focused on investigating how far the networks extract features known to work well for movement-related decoding, see section TODO.
 
-# ```{admonition} We thoroughly evaluated deep-learning-based EEG decoding
+# ```{admonition} We aimed to thoroughly evaluate deep-learning-based EEG decoding by...
 # :class: tip
-# * We used well-researched EEG movement-related decoding tasks with strong baselines
-# * We used a dataset suitable to analyze extraction of higher-frequency information
-# * We tried shallower EEG-specific as well as deeper more generic architectures
-# * We evaluated many design choices and two training strategies
-# * We investigate in how far networks learn to extract well-known EEG features
+# * using a well-researched EEG movement-related decoding tasks with strong baselines
+# * using a dataset suitable to analyze extraction of higher-frequency information
+# * trying shallower EEG-specific as well as deeper more generic architectures
+# * evaluating many design choices and two training strategies
+# * investigating in how far networks learn to extract well-known EEG features
 # ```

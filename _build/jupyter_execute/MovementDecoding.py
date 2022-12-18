@@ -207,7 +207,7 @@
 # To ensure that the results also generalize to further datasets and also rule out hyperparameter overfitting, the FBCSP pipeline and the deep network pipelines were applied with the exact same hyperparameters on BCI Competition IV 2b. A few choices like the use of the decoding time window had been done after already seeing results from the evaluation sets of the High-Gamma dataset and the BCIC IV 2a dataset, hence the BCIC IV 2b dataset seemed a suitable dataset for further validation of the pipelines. Results in {numref}`bcic-iv-2b-results` show that the networks perform as good or better than FBCSP. Results on further datasets, also non-movement-decoding datasets are presented in the next chapter.
 # 
 
-# ## Amplitude Perturbation Visualizations
+# ## ConvNet-independent visualizations
 
 # ![](images/Envelope_Correlations.ipynb.1.pdf-1.png)
 
@@ -218,9 +218,11 @@
 # Average over subjects from the High-Gamma Dataset. Colormaps are scaled per frequency band/row. This is a ConvNet-independent visualization. Scalp plots show spatial distributions of class-related spectral amplitude changes well in line with the literature.
 # ```
 
-# Before moving to ConvNet visualization, we examined the spectral amplitude changes associated with the different movement classes in the alpha, beta and gamma frequency bands. For that, we first computed the moving average of the squared envelope in narrow frequency bands via the Hilbert transform and then computed linear correlations of these moving averages with the class label. This results in frequency-resolved envelope/amplitude-class label correlations.
+# ## Amplitude Perturbation Visualizations
+
+# Before moving to ConvNet visualization, we examined the spectral amplitude changes associated with the different movement classes in the alpha, beta and gamma frequency bands. For that, we first computed the moving average of the squared envelope in narrow frequency bands via the Hilbert transform as a measure of the power in those frequency bands.Then we computed linear correlations of these moving averages with the class label. This results in frequency-resolved envelope-class label correlations.
 # 
-# We found the expected overall scalp topographies (see Figure \ref{fig:results-spectral-topo}). For example, for the alpha (7--13 Hz) frequency band, there was a class-related power decrease (anti-correlation in the class-envelope correlations) in the left and right pericentral regions with respect to the hand classes, stronger contralaterally to the side of the hand movement , i.e., the regions with pronounced power decreases lie around the primary sensorimotor hand representation areas. For the feet class, there was a power decrease located around the vertex, i.e.,  approx. above the primary motor foot area. As expected, opposite changes (power increases) with a similar topography were visible for the gamma band (71--91 Hz).
+# We found the expected overall scalp topographies (see Figure \ref{fig:results-spectral-topo}) to show physiologically plausible patterns. For example, for the alpha (7--13 Hz) frequency band, there was a class-related power decrease (anti-correlation in the class-envelope correlations) in the left and right pericentral regions with respect to the hand classes, stronger contralaterally to the side of the hand movement , i.e., the regions with pronounced power decreases lie around the primary sensorimotor hand representation areas. For the feet class, there was a power decrease located around the vertex, i.e.,  approx. above the primary motor foot area. As expected, opposite changes (power increases) with a similar topography were visible for the gamma band (71--91 Hz).
 
 # ![title](images/Bandpower_Perturbation.ipynb.0.pdf-1.png)
 
