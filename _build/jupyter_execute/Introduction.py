@@ -7,10 +7,9 @@
 # ```{admonition} Deep Learning (DL) is a very promising method to decode brain signals from EEG
 # * Deep learning may extract more information from EEG signals that humans can
 # * Deep learning may improve EEG-based diagnosis, enable new assistive technologies and advance scientific understanding of the EEG signal
-# * Deep learning ... (Results this thesis)
+# * Our EEG decoding deep learning models perform as good or better than feature-based methods
 # ```
-# 
-# 
+
 # Machine learning (ML), i.e., using data to learn programs that can solve specific tasks, has the potential to benefit medical applications. Compared to humans, machine-learning programs can process larger amounts of data and may extract different information. For example, machine-learning algorithms have processed the large amounts of signals recorded in an intensive-care unit to predict kidney failure {cite:p}`rank2020deep,tomavsev2019clinically`, diagnosed breast cancer using high-frequency features usually ignored by doctors {cite:p}`makino2022differences`, translated brain signals into control signals for external devices in real-time {cite:p}`abiri2019comprehensive` and detected pathology from long brain signal recordings {cite:p}`gemein2020machine,schirrmeisterdeeppathology`. Used in this way, machine learning may improve medical interventions, enable new assistive devices and advance scientific understanding.
 
 # Brain-signal decoding is an especially interesting problem to tackle with machine learning. Brain signals contain a lot of information, yet are hard to interpret for humans. Additionally, more brain signals can be recorded than humans could possibly process. Machine-learning algorithms can help doctors triage patients by quickly detecting stroke biomarkers from computed tomography (CT) {cite:p}`chavva2022deep` and enable brain-computer interfaces by recognizing people's intentions from electroencephalographic (EEG) in real time  {cite:p}`abiri2019comprehensive`. Also, as brain signals are far from being fully understood, machine-learning algorithms have the potential to advance scientific understanding by finding new brain-signal biomarkers for different pathologies {cite:p}`raghu2020survey`.

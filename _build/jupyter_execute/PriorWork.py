@@ -6,7 +6,7 @@
 
 # ```{admonition}  Prior to our work, research on deep-learning-based EEG decoding was limited
 # * Few studies compared to published well-tuned feature-based decoding results
-# * Most EEG DL architectures had only 1-3 convolutional layers and included dense layers
+# * Most EEG DL architectures had only 1-3 convolutional layers and included fully-connected layers
 # * Most work only considered very restricted frequency ranges
 # * Most studies only compared few design choices and training strategies
 # ```
@@ -26,11 +26,11 @@
 # |Driver Performance|1|0|
 # ```
 
-# Prior to 2017, when the first work presented in this thesis was published, there was only limited literature on EEG decoding with deep learning. From 19 studies we identified at the time, most were about movement-related decoding problems such as decoding which body part (hand, feet etc.) a person is imagining to move (see {numref}`prior-work-tasks-table`). Only 5 of the 19 studies compared their decoding results to an external published baseline result, making it hard to evaluate the quality of the decoding results. To advance the understanding of EEG deep learning decoding, we therefore decided to first focus on movement-related decoding, as it is a widely researched type decoding task. Also there are strong feature-based baselines and baseline results for movement-related decoding problems, making it a suitable problem type for evaluating the performance of EEG deep-learning decoding. 
+# Prior to 2017, when the first work presented in this thesis was published, there was only limited literature on EEG decoding with deep learning. From 19 studies we identified at the time, most were about movement-related decoding problems such as decoding which body part (hand, feet etc.) a person is imagining to move (see {numref}`prior-work-tasks-table`). Only 5 of the 19 studies compared their decoding results to an external baseline result, limiting the evaluation of the decoding results. To advance the understanding of EEG deep learning decoding, we therefore decided to first focus on widely researched movement-related decoding tasks with strong feature-based baselines.
 
 # ## Input Domains and Frequency Ranges
 
-# In[10]:
+# In[1]:
 
 
 import matplotlib
@@ -70,7 +70,7 @@ time_mask = np.array(['time' in s.lower() for s in domain_strings])
 
 fig = plt.figure(figsize=(8,4))
 rng = np.random.RandomState(98349384)
-color = 'grey'
+color = seaborn.color_palette()[0]
 i_sort = np.flatnonzero(time_mask)[np.argsort(end_fs[time_mask])]
 for i, (d,s,e) in enumerate(zip(
         domain_strings[i_sort], start_fs[i_sort], end_fs[i_sort])):
@@ -98,15 +98,14 @@ None
 # 
 # *Input domains and frequency ranges in prior work*. Grey lines represent frequency ranges of individual studies. Note that many studies only include frequencies below 50 Hz, some use very restricted ranges (alpha/beta band).
 # ```
-# %:figclass: margin-caption
 
 # Deep networks can either decode directly from the time-domain EEG or process the data in the frequency domain, for example after a Fourier transformation. 12 of the prior studies used time-domain inputs, 6 used frequency-domain inputs and one used both. We decided to work directly in the time domain, as the deep networks should be capable to learn to extract any needed spectral information from the time-domain input. 
 # 
-# Most prior studies that were working in the time domain only used frequencies below 50 Hz. We were also interested in how well deep networks can also extract lesser-used higher-frequency components of the EEG signal. We used a sampling rate of 250 Hz, which means we were able to analyze frequencies up to the Nyquist frequency of 125 Hz. As a suitable dataset where high-frequency information may help decoding, we included our high-gamma dataset in our study, since it was recorded specifically to allow extraction of higher-frequency (>50 Hz) information from scalp EEG.
+# Most prior studies that were working in the time domain only used frequencies below 50 Hz. We were interested in how well deep networks can also extract lesser-used higher-frequency components of the EEG signal. We used a sampling rate of 250 Hz, which means we were able to analyze frequencies up to the Nyquist frequency of 125 Hz. As a suitable dataset where high-frequency information may help decoding, we included our high-gamma dataset in our study, since it was recorded specifically to allow extraction of higher-frequency (>50 Hz) information from scalp EEG.
 
 # ## Network Architectures
 
-# In[1]:
+# In[2]:
 
 
 
@@ -133,7 +132,7 @@ all_dense_ls = np.concatenate([np.arange(low_c, high_c+1) for low_c, high_c in z
 bincount_conv = np.bincount(all_conv_ls)
 bincount_dense = np.bincount(all_dense_ls)
 rng = np.random.RandomState(98349384)
-color = 'grey'
+color = seaborn.color_palette()[0]
 fig = plt.figure(figsize=(8,4))
 for low_c, high_c in zip(low_conv_ls, high_conv_ls):
     offset = rng.randn(1) * 0.1
@@ -171,7 +170,7 @@ None
 # ```
 # 
 
-# The architectures used in prior work typically only included up to 3 layers, with only 2 studies considering more layers. As network architectures in other domains tend to be a lot deeper, we also evalauted architectures with a larger number of layers in our work. Several architectures from prior work also included fully-connected layers which had fallen out of favor in computer-vision deep-learning architectures and which we therefore also avoided.
+# The architectures used in prior work typically only included up to 3 layers, with only 2 studies considering more layers. As network architectures in other domains tend to be a lot deeper, we also evalauted architectures with a larger number of layers in our work. Several architectures from prior work also included fully-connected layers with larger number of parameters which had fallen out of favor in computer-vision deep-learning architectures due to their large compute and memory requirements with little accuracy benefit. Our architectures do not include traditional fully-connected layers with large number of parameters.
 
 # ## Hyperparameter Evaluations
 
@@ -195,7 +194,7 @@ None
 # |{cite}`cecotti_convolutional_2011` | Electrode subset (fixed or automatically determined) <br>Using only one spatial filter <br>Different ensembling strategies||
 # ```
 
-# Prior work varied widely in which design choices and training strategies were compared. 6 of the studies did not compare any design choices or  training strategy hyperparamters. The other 13 studies evaluated different hyperparameters, with the most common one the kernel size (see {numref}`prior-work-design-choices-table`). Only one study evaluated a wider range of hyperparameters {cite}`stober_using_2014`. We therefore compared a wider range of design choices and training strategies and specifically evaluated in how far improvements of computer vision architecture design choices and training strategies also lead to improvements in EEG decoding.
+# Prior work varied widely in which design choices and training strategies were compared. 6 of the studies did not compare any design choices or  training strategy hyperparamters. The other 13 studies evaluated different hyperparameters, with the most common one the kernel size (see {numref}`prior-work-design-choices-table`). Only one study evaluated a wider range of hyperparameters {cite}`stober_using_2014`. To fill this gap, we compared a wider range of design choices and training strategies and specifically evaluated in how far improvements of computer vision architecture design choices and training strategies also lead to improvements in EEG decoding.
 
 # ## Visualizations
 
@@ -216,11 +215,11 @@ None
 # |{cite}`cecotti_convolutional_2011` | Weights | Spatial filters were similar for different architectures <br>Spatial filters were different (more focal, more diffuse) for different subjects |
 # ```
 
-# Visualizations can help understand what information the networks are extracting from the EEG signal. 11 of the prior 19 studies presented any visualizations. These studies mostly focussed on analyzing weights and activations, see {numref}`prior-work-visualizations-table`. In our work, we focused on investigating how far the networks extract features known to work well for movement-related decoding, see section TODO.
+# Visualizations can help understand what information the networks are extracting from the EEG signal. 11 of the prior 19 studies presented any visualizations. These studies mostly focussed on analyzing weights and activations, see {numref}`prior-work-visualizations-table`. In our work, we focused on investigating how far the networks extract features known to work well for movement-related decoding, see {ref}`perturbation-visualization`.
 
 # ```{admonition} We aimed to thoroughly evaluate deep-learning-based EEG decoding by...
 # :class: tip
-# * using a well-researched EEG movement-related decoding tasks with strong baselines
+# * using well-researched EEG movement-related decoding tasks with strong baselines
 # * using a dataset suitable to analyze extraction of higher-frequency information
 # * trying shallower EEG-specific as well as deeper more generic architectures
 # * evaluating many design choices and two training strategies
