@@ -1,0 +1,560 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filterbank Common Spatial Patterns and Filterbank Network &#8212; Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "robintibor/eeg-deep-learning-phd-thesis");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Neural Network Architectures for EEG-Decoding" href="DeepArchitectures.html" />
+    <link rel="prev" title="Prior Work" href="PriorWork.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/braindecode-logo.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Abstract.html">
+                    Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="PriorWork.html">
+   Prior Work
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Filterbank Common Spatial Patterns and Filterbank Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DeepArchitectures.html">
+   Neural Network Architectures for EEG-Decoding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CroppedTraining.html">
+   Cropped Training
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="PerturbationVisualization.html">
+   Perturbation Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="MovementDecoding.html">
+   Decoding Movement-Related Brain Activity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TaskDecoding.html">
+   Generalization to Other Tasks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Pathology.html">
+   Decoding Pathology
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Invertible.html">
+   Invertible Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="FutureWork.html">
+   Future Work
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="References.html">
+   References
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/FBCSPAndFBCSPNet.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/FBCSPAndFBCSPNet.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filter-bank-common-spatial-patterns-as-a-starting-point">
+   Filter Bank Common Spatial Patterns as a Starting Point
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#common-spatial-patterns">
+   Common Spatial Patterns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filterbank">
+   Filterbank
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filterbank-network-architecture">
+   Filterbank network architecture
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Filterbank Common Spatial Patterns and Filterbank Network</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filter-bank-common-spatial-patterns-as-a-starting-point">
+   Filter Bank Common Spatial Patterns as a Starting Point
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#common-spatial-patterns">
+   Common Spatial Patterns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filterbank">
+   Filterbank
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#filterbank-network-architecture">
+   Filterbank network architecture
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="filterbank-common-spatial-patterns-and-filterbank-network">
+<span id="fbscp-and-filterbank-net"></span><h1>Filterbank Common Spatial Patterns and Filterbank Network<a class="headerlink" href="#filterbank-common-spatial-patterns-and-filterbank-network" title="Permalink to this headline">#</a></h1>
+<p>In a prior master thesis <span id="id1">[<a class="reference internal" href="References.html#id2" title="Robin Tibor Schirrmeister. Convolutional neural networks for movement decoding from eeg signals. Master's thesis, Albert-Ludwigs-Universität Freiburg, 2015.">Schirrmeister, 2015</a>]</span>, we had developed a neural network architecture closely resembling the feature-based decoding algorithm Filterbank Common Spatial Patterns. In this chapter I describe filter bank common spatial patterns as well as the corresponding filterbank network of the prior master thesis as the starting point for the network architectures developed in the context of this thesis.</p>
+<div class="section" id="filter-bank-common-spatial-patterns-as-a-starting-point">
+<h2>Filter Bank Common Spatial Patterns as a Starting Point<a class="headerlink" href="#filter-bank-common-spatial-patterns-as-a-starting-point" title="Permalink to this headline">#</a></h2>
+<p>We selected filter bank common spatial patterns (FBSCP <span id="id2">[<a class="reference internal" href="References.html#id65" title="Kai Keng Ang, Zheng Yang Chin, Haihong Zhang, and Cuntai Guan. Filter Bank Common Spatial Pattern (FBCSP) in Brain-Computer Interface. In IEEE International Joint Conference on Neural Networks, 2008. IJCNN 2008. (IEEE World Congress on Computational Intelligence), 2390–2397. June 2008. URL: http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4634130, doi:10.1109/IJCNN.2008.4634130.">Ang <em>et al.</em>, 2008</a>, <a class="reference internal" href="References.html#id67" title="Zheng Yang Chin, Kai Keng Ang, Chuanchu Wang, Cuntai Guan, and Haihong Zhang. Multi-class filter bank common spatial pattern for four-class motor imagery BCI. In Annual International Conference of the IEEE Engineering in Medicine and Biology Society, 2009. EMBC 2009, 571–574. September 2009. URL: http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=5332383, doi:10.1109/IEMBS.2009.5332383.">Chin <em>et al.</em>, 2009</a>]</span>) as the feature-based EEG-decoding algorithm our initial neural network architectures were designed to mimic. FBCSP is an EEG-decoding algorithm that has been successfully used in task-related EEG-decoding competitions <span id="id3">[<a class="reference internal" href="References.html#id80" title="Michael Tangermann, Klaus-Robert Müller, Ad Aertsen, Niels Birbaumer, Christoph Braun, Clemens Brunner, Robert Leeb, Carsten Mehring, Kai J. Miller, Gernot R. Müller-Putz, Guido Nolte, Gert Pfurtscheller, Hubert Preissl, Gerwin Schalk, Alois Schlögl, Carmen Vidaurre, Stephan Waldert, and Benjamin Blankertz. Review of the BCI Competition IV. Frontiers in Neuroscience, July 2012. URL: http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3396284/ (visited on 2015-08-20), doi:10.3389/fnins.2012.00055.">Tangermann <em>et al.</em>, 2012</a>]</span>. FBCSP aims to decode task-related changes in signal amplitude in different frequencies, such as a decrease in the amplitude of alpha and beta-band oscillations during movement imagination. In the following we will explain how FBCSP decodes two classes of EEG signals by finding frequency-specific spatial filters that transform the signal, such that it has relatively high variance for one class and low variance for the other class and vice versa.</p>
+</div>
+<div class="section" id="common-spatial-patterns">
+<h2>Common Spatial Patterns<a class="headerlink" href="#common-spatial-patterns" title="Permalink to this headline">#</a></h2>
+<div class="figure align-default" id="csp-figure">
+<img alt="_images/Methods_Common_Spatial_Patterns_18_0.png" src="_images/Methods_Common_Spatial_Patterns_18_0.png" />
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Common Spatial Patterns example taken from a master thesis <span id="id4">[<a class="reference internal" href="References.html#id2" title="Robin Tibor Schirrmeister. Convolutional neural networks for movement decoding from eeg signals. Master's thesis, Albert-Ludwigs-Universität Freiburg, 2015.">Schirrmeister, 2015</a>]</span>. Top parts show EEG signals for three electrodes during a left hand and  a right hand movement. Bottom parts show spatially filtered signals of two CSP filters. Green parts have lower variance and red parts have higher variance. Note that this difference is strongly amplified after CSP filtering.</span><a class="headerlink" href="#csp-figure" title="Permalink to this image">#</a></p>
+</div>
+<p>The basic building block of FBCSP is the Common Spatial Patterns (CSP) algorithm. CSP is used to decode brain signals that lead to a change in the amplitudes of the EEG signal with a specific spatial topography <span id="id5">[<a class="reference internal" href="References.html#id62" title="B. Blankertz, R. Tomioka, S. Lemm, M. Kawanabe, and K.-R. Muller. Optimizing Spatial filters for Robust EEG Single-Trial Analysis. IEEE Signal Processing Magazine, 25(1):41–56, 2008. URL: http://ieeexplore.ieee.org/xpls/icp.jsp?arnumber=4408441, doi:10.1109/MSP.2008.4408441.">Blankertz <em>et al.</em>, 2008</a>, <a class="reference internal" href="References.html#id157" title="Zoltan J. Koles, Michael S. Lazar, and Steven Z. Zhou. Spatial patterns underlying population differences in the background EEG. Brain Topography, 2(4):275–284, June 1990. URL: http://link.springer.com/article/10.1007/BF01129656 (visited on 2017-01-09), doi:10.1007/BF01129656.">Koles <em>et al.</em>, 1990</a>, <a class="reference internal" href="References.html#id113" title="H. Ramoser, J. Muller-Gerking, and G. Pfurtscheller. Optimal spatial filtering of single trial EEG during imagined hand movement. IEEE Transactions on Rehabilitation Engineering, 8(4):441–446, December 2000. doi:10.1109/86.895946.">Ramoser <em>et al.</em>, 2000</a>]</span>. To do that, CSP aims to maximize the ratio of the signal variance between spatially filtered signals of two classes, e.g. of the signal during two different movements. For example, the signal of a spatial filter computed by CSP may have a very large variance during movements of the left hand and a very small variance during movements of the right hand. Concretely, we are given signals <span class="math notranslate nohighlight">\(X_{1}, X_{2} \in \mathbb{R}^{n x k x t}\)</span> from <span class="math notranslate nohighlight">\(n\)</span> EEG trials (can be different for <span class="math notranslate nohighlight">\(X_1, X_2\)</span>), <span class="math notranslate nohighlight">\(k\)</span> EEG electrodes and <span class="math notranslate nohighlight">\(t\)</span> timepoints within each trial. CSP then finds a spatial filter <span class="math notranslate nohighlight">\(w\)</span> that maximize the ratio of the variances of the spatially filtered <span class="math notranslate nohighlight">\(X_1,X_2\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(w=\arg\!\max_w\frac{Var(w^T X_1)}{Var(w^T X_2)}= \arg\!\max_w\frac{||w^T X_1||^2}{||w^T X_2||^2}=\arg\!\max_w\frac{w^T X_1  X_1^T w}{w^T X_2  X_2^T w}\)</span></p>
+<p>Rather than just finding a single spatial filter <span class="math notranslate nohighlight">\(w\)</span>, CSP is typically used to find a whole matrix of spatial filters <span class="math notranslate nohighlight">\(W^{kxk}\)</span>, with spatial filters ordered by the above variance ratio and orthogonal to each other. So the first filter <span class="math notranslate nohighlight">\(w_1\)</span> results in the largest variance ratio and the last filter <span class="math notranslate nohighlight">\(w_k\)</span> results in the smallest variance ratio. Different algorithms can then be used to subselect some set of filters to filter signals for a subsequent decoding algorithm.</p>
+<p>The CSP-filtered signals can be used to construct features to train a classifier. Since the CSP-filtered signals should have very different variances for the different classes, the natural choice is to use the per-trial variances of the CSP-filtered signals as features. This results in as many features per trial as the number of CSP filters that were selected for decoding. Typically, one applies the logarithm to the variances to get more standard-normally distributed features.</p>
+</div>
+<div class="section" id="filterbank">
+<h2>Filterbank<a class="headerlink" href="#filterbank" title="Permalink to this headline">#</a></h2>
+<p>CSP is typically applied to an EEG signal that has been bandpass filtered to a specific frequency range. The filtering to a frequency range is useful as brain signals cause EEG signal amplitude changes that are temporally and spatially different for different frequencies <span id="id6">[<a class="reference internal" href="References.html#id2" title="Robin Tibor Schirrmeister. Convolutional neural networks for movement decoding from eeg signals. Master's thesis, Albert-Ludwigs-Universität Freiburg, 2015.">Schirrmeister, 2015</a>]</span>. For example, during movement the alpha rhythm may be suppressed for multiple electrodes covering a fairly large region on the scalp while the high gamma rhythm would be amplified for a few electrodes covering a smaller region.</p>
+<p>Filterbank Common Spatial Patterns applies CSP separately on signals bandpass-filtered to different frequency ranges <span id="id7">[<a class="reference internal" href="References.html#id65" title="Kai Keng Ang, Zheng Yang Chin, Haihong Zhang, and Cuntai Guan. Filter Bank Common Spatial Pattern (FBCSP) in Brain-Computer Interface. In IEEE International Joint Conference on Neural Networks, 2008. IJCNN 2008. (IEEE World Congress on Computational Intelligence), 2390–2397. June 2008. URL: http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4634130, doi:10.1109/IJCNN.2008.4634130.">Ang <em>et al.</em>, 2008</a>, <a class="reference internal" href="References.html#id67" title="Zheng Yang Chin, Kai Keng Ang, Chuanchu Wang, Cuntai Guan, and Haihong Zhang. Multi-class filter bank common spatial pattern for four-class motor imagery BCI. In Annual International Conference of the IEEE Engineering in Medicine and Biology Society, 2009. EMBC 2009, 571–574. September 2009. URL: http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=5332383, doi:10.1109/IEMBS.2009.5332383.">Chin <em>et al.</em>, 2009</a>]</span>. This allows to capture multiple frequency-specific changes in the EEG signal and can also make the decoding more robust to subject-specific signal characteristics, i.e., which frequency range is most informative for a given subject. The trial-log-variance features of each frequencyband and each CSP filter are then concatenated to form the entire trial feature vector. Typically, a feature selection procedure will select a subset of these features to train the final classifier.</p>
+<p>The overall FBCSP pipeline hence looks like this:</p>
+<ol class="simple">
+<li><p><strong>Bandpass filtering</strong>: Different bandpass filters are applied to separate the raw EEG signal into different frequency bands.</p></li>
+<li><p><strong>Epoching</strong>: The continuous EEG signal is cut into trials as explained in the section “Input and labels.”</p></li>
+<li><p><strong>CSP computation</strong>: Per frequency band, the common spatial patterns (CSP) algorithm is applied to extract spatial filters. CSP aims to extract spatial filters that make the trials discriminable by the power of the spatially filtered trial signal (see Koles et al. [1990], Ramoser et al. [2000], and Blankertz et al. [2008] for more details on the computation).</p></li>
+<li><p><strong>Spatial filtering</strong>: The spatial filters computed in Step 2 are applied to the EEG signal.</p></li>
+<li><p><strong>Feature construction</strong>: Feature vectors are constructed from the filtered signals: Specifically, feature vectors are the log-variance of the spatially filtered trial signal for each frequency band and for each spatial filter.</p></li>
+<li><p><strong>Classification</strong>: A classifier is trained to predict per-trial labels based on the feature vectors.</p></li>
+</ol>
+</div>
+<div class="section" id="filterbank-network-architecture">
+<h2>Filterbank network architecture<a class="headerlink" href="#filterbank-network-architecture" title="Permalink to this headline">#</a></h2>
+<p>The first neural network architecture was developed by us in a prior master thesis [ref] to jointly learn the same steps that are learned separately by FBCSP. Concretely, the network simultaneously learn the spatial filters across many frequency bands and the classification weights for the trial variances of all resulting spatially filtered signals. To be able to do that, the network is fed with several signals that were bandpass-filtered to different frequency ranges. The network then performs the following steps:</p>
+<ol class="simple">
+<li><p>Apply learnable spatial filter weights, resulting in spatially filtered signals</p></li>
+<li><p>Square the resulting signals</p></li>
+<li><p>Sum the squared signals across the trial</p></li>
+<li><p>Take the logarithm of the summed values</p></li>
+<li><p>Apply learnable classification weights on these “log-variance” features</p></li>
+<li><p>Take the softmax to produce per-class predictions.</p></li>
+</ol>
+<p>The spatial filter weights and the classification weights are trained jointly.</p>
+<div class="figure align-default" id="filterbank-net-figure">
+<img alt="_images/csp_as_a_net_explanation.png" src="_images/csp_as_a_net_explanation.png" />
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Filterbank network architecture overview.  Input signals were bandpass filtered to different frequency ranges. Signals are first transformed by learned spatial filters, then squared, summed and the log-transformed. The resulting features are transformed into class probabilities by a classification weights followed by the softmax function. Taken from from a master thesis <span id="id8">[<a class="reference internal" href="References.html#id2" title="Robin Tibor Schirrmeister. Convolutional neural networks for movement decoding from eeg signals. Master's thesis, Albert-Ludwigs-Universität Freiburg, 2015.">Schirrmeister, 2015</a>]</span>.</span><a class="headerlink" href="#filterbank-net-figure" title="Permalink to this image">#</a></p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="PriorWork.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Prior Work</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="DeepArchitectures.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Neural Network Architectures for EEG-Decoding</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
