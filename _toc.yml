@@ -3,6 +3,7 @@ root: Abstract
 sections:
 - file: Introduction
 - file: PriorWork
+- file: FBCSPAndFBCSPNet
 - file: DeepArchitectures
 - file: CroppedTraining
 - file: PerturbationVisualization

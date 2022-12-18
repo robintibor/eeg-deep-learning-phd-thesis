@@ -4,7 +4,7 @@
 # (pathology)=
 # # Decoding Pathology
 
-# > We also evaluated our deep ConvNets for automatic medical diagnosis from EEG. EEG is important for clinical practice both as a screening method as well as for hypothesis-based diagnostics, e.g., in epilepsy or stroke. One of the main limitations of using EEG for diagnostics is the required time and specialized knowledge of experts that need to be well-trained on EEG diagnostics to reach reliable results. Therefore, a deep-learning approach that aids in the diagnostic process could make EEG diagnosis more widely accessible, reduce time and effort for clinicians and potentially make diagnoses more accurate.
+# We also evaluated our deep ConvNets for automatic medical diagnosis from EEG. EEG is important for clinical practice both as a screening method as well as for hypothesis-based diagnostics, e.g., in epilepsy or stroke. One of the main limitations of using EEG for diagnostics is the required time and specialized knowledge of experts that need to be well-trained on EEG diagnostics to reach reliable results. Therefore, a deep-learning approach that aids in the diagnostic process could make EEG diagnosis more widely accessible, reduce time and effort for clinicians and potentially make diagnoses more accurate. Text and figures in this section are adapted from {cite:p}`schirrmeisterdeeppathology`.
 
 # ## Dataset and Preprocessing
 
@@ -26,20 +26,12 @@
 # 
 # ```
 
-# We used the Temple University Hospital (TUH) EEG Abnormal Corpus for evaluating our deep ConvNets on pathology detection from EEG.
-# > The Temple University Hospital (TUH) EEG Abnormal Corpus 1.1.2 is a dataset of manually labeled normal and pathological clinical EEG recordings.
-# It is taken from the TUH EEG Data Corpus which contains over 16000 clinical recordings of more than 10000 subjects from over 12 years `cite`{obeid_temple_2016}.
-# The Abnormal Corpus contains 3017 recordings, 1529 of which were labeled normal and 1488 of which were labeled pathological.
-# The Corpus was split into a training and evaluation set, see {numref}`table-tuh-dataset`.
-# 
-# > Recordings were acquired from  at least 21 standard electrode positions and with a sampling rate of in most cases 250 Hz.
-# Per recording, there are around 20 minutes of EEG data.
-# The inter-rater agreement on between the medical report of a certified neurologist and a medical student annotator was 99\% for the training recordings and 100\% for the evaluation recordings.
+# We used the Temple University Hospital (TUH) EEG Abnormal Corpus for evaluating our deep ConvNets on pathology detection from EEG. The Temple University Hospital (TUH) EEG Abnormal Corpus 1.1.2 is a dataset of manually labeled normal and pathological clinical EEG recordings. It is taken from the TUH EEG Data Corpus which contains over 16000 clinical recordings of more than 10000 subjects from over 12 years `cite`{obeid_temple_2016}. The Abnormal Corpus contains 3017 recordings, 1529 of which were labeled normal and 1488 of which were labeled pathological. The Corpus was split into a training and evaluation set, see {numref}`table-tuh-dataset`. Recordings were acquired from  at least 21 standard electrode positions and with a sampling rate of in most cases 250 Hz. Per recording, there are around 20 minutes of EEG data. The inter-rater agreement on between the medical report of a certified neurologist and a medical student annotator was 99\% for the training recordings and 100\% for the evaluation recordings, also see {numref}`table-tuh-dataset`.
 
 # ### Preprocessing
 
-# > We minimally preprocessed the data with these steps:
-# > 1. Select a subset of 21 electrodes present in all recordings.
+# We minimally preprocessed the data with these steps:
+# 1. Select a subset of 21 electrodes present in all recordings.
 # 2. Remove the first minute of each recording as it contained stronger artifacts.
 # 3. Use only up to 20 minutes of the remaining recording to speed up the computations.
 # 4. Clip the amplitude values to the range of $\pm800$ $\mu V$ to reduce the effects of strong artifacts.
@@ -48,18 +40,18 @@
 
 # ### Decoding from reduced EEG time segments
 
-# > We also evaluated the ConvNets on reduced versions of the datasets, using only the first 1, 2, 4, 8, or 16 minutes after the first minute of the recording (the first minute of the recordings was always excluded because it appeared to be more prone to artifact contamination than the later time windows).
+# We also evaluated the ConvNets on reduced versions of the datasets, using only the first 1, 2, 4, 8, or 16 minutes after the first minute of the recording (the first minute of the recordings was always excluded because it appeared to be more prone to artifact contamination than the later time windows).
 # We reduced either only the training data, only the test data, or both.
 # These analyses were carried out to study how long EEG recordings need to be for training and for predicting EEG pathologies with good accuracies.
 # 
 
 # ## Network architectures
 
-# > We used our deep and shallow ConvNets with only minor modifications to the architecture. To use larger time windows to make a single prediction, we adapted the architectures by changing the final layer filter length so the ConvNets have an input length of about 600 input samples, which correspond to 6 seconds for the 100 Hz EEG input. Additionally, we moved the pooling strides of the deep ConvNet to the convolutional layers directly before each pooling. This modification, which we initially considered a mistake, allowed us to grow the ConvNet input length without strongly increased computation times and
+# We used our deep and shallow ConvNets with only minor modifications to the architecture. To use larger time windows to make a single prediction, we adapted the architectures by changing the final layer filter length so the ConvNets have an input length of about 600 input samples, which correspond to 6 seconds for the 100 Hz EEG input. Additionally, we moved the pooling strides of the deep ConvNet to the convolutional layers directly before each pooling. This modification, which we initially considered a mistake, allowed us to grow the ConvNet input length without strongly increased computation times and
 # provided good accuracies in preliminary experiments on the training data; therefore we decided to keep it. 
 
 # ## Automatic architecture optimization
-# > We also carried out a preliminary study of automatic architecture optimization to further improve our ConvNet architectures. To that end, we used the automatic hyperparameter optimization algorithm SMAC \cite{hutter_sequential_2011} to optimize architecture hyperparameters of the deep and shallow ConvNets, such as filter lengths, strides and types of nonlinearities. As the objective function to optimize via SMAC, we used 10-fold cross-validation performance obtained on the first 1500 recordings of the training data (using each fold as an instance for SMAC to speed up the optimization).
+# We also carried out a preliminary study of automatic architecture optimization to further improve our ConvNet architectures. To that end, we used the automatic hyperparameter optimization algorithm SMAC \cite{hutter_sequential_2011} to optimize architecture hyperparameters of the deep and shallow ConvNets, such as filter lengths, strides and types of nonlinearities. As the objective function to optimize via SMAC, we used 10-fold cross-validation performance obtained on the first 1500 recordings of the training data (using each fold as an instance for SMAC to speed up the optimization).
 # We set a time limit of 3.5 hours for each configuration run on a single fold. Runs that timed out or crashed (e.g., networks configurations that did not fit in GPU memory) were scored with an accuracy of 0\%.
 
 # ## Deep and shallow ConvNets reached state-of-the-art results
@@ -80,53 +72,54 @@
 #  ```{margin}
 # Note that the baseline was evaluated on an older version of the corpus that has since been corrected to not contain the same patient in training and test recordings among other things.
 # ``` 
-# > Both the deep and the shallow ConvNet outperformed the only results that had been published on the TUH Abnormal EEG Corpus at the time (see Table \ref{tab:main-results}).
+
+# Both the deep and the shallow ConvNet outperformed the only results that had been published on the TUH Abnormal EEG Corpus at the time (see Table \ref{tab:main-results}).
 # Both ConvNets were more than 5\% better than the baseline method of a convolutional network that included multiple fully connected layers at the end and took precomputed EEG features of an entire recording as one input \cite{lopez_automated_2017}.
 # The ConvNets as applied here reduced the error rate from about 21\% to about 15\%. We also tested a linear classifier on the same 6-second inputs as our ConvNets. The linear classifier did not reach accuracies substantially different from chance (51.4\%).
-# 
-# >  Interestingly, both of our ConvNet architectures already reached higher accuracies than the baseline when evaluating single predictions from 6-second crops. The average per-crop accuracy of individual predictions was only about 3\% lower than average per-recording accuracy (averaged predictions of all crops in a recording). Furthermore, the individual prediction accuracies were already about 3\% higher than the per-recording accuracies of the baseline.
+
+# Interestingly, both of our ConvNet architectures already reached higher accuracies than the baseline when evaluating single predictions from 6-second crops. The average per-crop accuracy of individual predictions was only about 3\% lower than average per-recording accuracy (averaged predictions of all crops in a recording). Furthermore, the individual prediction accuracies were already about 3\% higher than the per-recording accuracies of the baseline.
 # This implies that predictions with high accuracies can be made from just 6 seconds of EEG data.
 
 # ![](images/ConfMatDeep.pdf-1.png)
 # ![](images/ConfMatShallow.pdf-1.png)
 
-# ````{panels}
-# :container: container-fluid 
-# :column: col-lg-6 col-md-6 col-sm-6 col-xs-12 
-# :card: shadow-none border-0
+# ::::{grid} 2
+# :gutter: 2
 # 
+# :::{grid-item}
 # ```{figure} images/ConfMatDeep.pdf-1.png
 # :width: 73%
 # :name: conf-mat-deep-pathology-fig
+# 
 # Confusion Matrix Deep ConvNet.
-# 
 # ```
+# :::
 # 
-# ---
-# 
+# :::{grid-item}
 # ```{figure} images/ConfMatShallow.pdf-1.png
 # :width: 100%
 # :name: conf-mat-shallow-pathology-fig
-# Confusion Matrix Shallow ConvNet.
 # 
+# Confusion Matrix Shallow ConvNet.
 # ```
-# ---
-# :column: col-lg-12 p-2
-# :card: shadow-none border-1
-# > Confusion Matrices for deep and shallow ConvNets}, summed over five independent runs {cite}`schirrmeisterdeeppathology`.
+# :::
+# :::{grid-item-card}
+# :columns: 12
+# 
+# 
+# Confusion Matrices for deep and shallow ConvNets}, summed over five independent runs {cite}`schirrmeisterdeeppathology`.
 # Each entry of row r and column c for upper-left 2x2-square: Number of trials of target r predicted as class c (also written in percent of all trials).
 # Bold diagonal corresponds to correctly predicted trials for both classes. Percentages and colors indicate fraction of trials in each cell relative to all trials.
 # The lower-right value: overall accuracy. The first two values in the bottom row correspond to sensitivity and specificity.
 # Rightmost column corresponds to precision defined as the number of trials correctly predicted for class r/number of trials predicted as class r.
-# ````
+# 
+# :::
+# ::::
 
-# > Both of our ConvNets made more errors on the pathological recordings, as can be seen from {numref\ `time-crop-pred-fig`. Both ConvNets reached a specificity of above 90\% and a sensitivity of about 75-78\%. Confusion matrices between both approaches were very similar. Relative to the baseline, they reached a similar sensitivity (0.3\% smaller for the deep ConvNet, 1.9\% higher for the shallow ConvNet), and a higher specificity (12.2\% higher for the deep ConvNet and 8.6\% higher for the shallow ConvNet).
+# Both of our ConvNets made more errors on the pathological recordings, as can be seen from {numref\ `time-crop-pred-fig`. Both ConvNets reached a specificity of above 90\% and a sensitivity of about 75-78\%. Confusion matrices between both approaches were very similar. Relative to the baseline, they reached a similar sensitivity (0.3\% smaller for the deep ConvNet, 1.9\% higher for the shallow ConvNet), and a higher specificity (12.2\% higher for the deep ConvNet and 8.6\% higher for the shallow ConvNet).
 
-# In[ ]:
-
-
-get_ipython().system('[](images/Time_Plot.pdf-1.png)')
-
+# ![](images/Time_Plot.pdf-1.png)
+# 
 
 # ```{figure} images/Time_Plot.pdf-1.png
 # :width: 100%
@@ -143,12 +136,7 @@ get_ipython().system('[](images/Time_Plot.pdf-1.png)')
 # Moving average of cropwise accuracies for the deep ConvNet. 5-minute moving averages of the cropwise accuracies of the deep ConvNet, averaged over all test set recordings. Dashed lines represent 5 individual training runs with different random seeds, solid black line represents mean over results for these runs. x-axis shows center of 5-minute averaging window.
 # ```
 
-# > Deep ConvNets already reached their best trialwise accuracies with only one minute of data used for the prediction. While the reduction of the amount of length  of the training data led to crop- and trialwise accuracy decreases on the test data, reductions in the test data did not have such an effect (see {numref}`pathology-time-fig`).
-# Remarkably, both crop- and trialwise accuracies slightly decreased when going from 1 minute to 2 or 4 minutes of test data.
-# To investigate whether earlier parts of the recordings might be more informative, we also computed a 5-minute moving average of the cropwise accuracies on the test data for the Deep ConvNet trained on the full data.
-# We show the average over all recordings for these moving averages in (see {numref}`time-crop-pred-fig`).
-# Noticeably, as expected, accuracies slightly decreased with increasing recording time.
-# However, the decrease is below 0.5\% and thus should be interpreted cautiously.
+# Deep ConvNets already reached their best trialwise accuracies with only one minute of data used for the prediction. While the reduction of the amount of length  of the training data led to crop- and trialwise accuracy decreases on the test data, reductions in the test data did not have such an effect (see {numref}`pathology-time-fig`). Remarkably, both crop- and trialwise accuracies slightly decreased when going from 1 minute to 2 or 4 minutes of test data. To investigate whether earlier parts of the recordings might be more informative, we also computed a 5-minute moving average of the cropwise accuracies on the test data for the Deep ConvNet trained on the full data. We show the average over all recordings for these moving averages in (see {numref}`time-crop-pred-fig`). Noticeably, as expected, accuracies slightly decreased with increasing recording time. However, the decrease is below 0.5\% and thus should be interpreted cautiously.
 
 # ## Architecture optimization yielded unexpected new models
 

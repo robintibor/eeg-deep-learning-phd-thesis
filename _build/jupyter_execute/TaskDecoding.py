@@ -2,15 +2,23 @@
 # coding: utf-8
 
 # (task-related)=
-# # Further Task-Related Decoding
+# # Generalization to Other Tasks
 
-# After our initial work designing and evaluating convolutional neural networks for movement decoding from EEG, we evaluated the resulting networks on a wide variety of other EEG decoding tasks.
-# 
-# * mention you helped with writing and setting up code for papers past xx
+# After our initial work designing and evaluating convolutional neural networks for movement decoding from EEG, we evaluated the resulting networks on a wide variety of other EEG decoding tasks, finding that they generalize well to a large number of settings.
 
 # ## Decoding different mental imageries
 
-# > The Mixed Imagery Dataset (MID) was obtained from 4 healthy subjects (3 female, all right-handed, age
+# 
+# ```{table} Accuracies on the Mixed-Imagery dataset. ConvNet accuracies show the difference to the FBCSP accuracy.
+# :name: mixed-imagery-dataset-results
+# 
+# | FBCSP   | Deep ConvNet | Shallow ConvNet |
+# |--|--|--|
+# |71.2|+1.0|-3.5|
+# {cite}`schirrmeisterdeephbm2017`
+# ```
+
+# The Mixed Imagery Dataset (MID) was obtained from 4 healthy subjects (3 female, all right-handed, age
 # 26.75±5.9 (mean±std)) with a varying number of trials (S1: 675, S2: 2172, S3: 698, S4: 464) of imagined
 # movements (right hand and feet), mental rotation and mental word generation. All details were the same as
 # for the High Gamma Dataset, except: a 64-electrode subset of electrodes was used for recording, recordings
@@ -22,22 +30,11 @@
 # 124, S4: 123).
 
 # For the mixed imagery dataset, we find the deep ConvNet to perform slightly better and the shallow ConvNet to perform slightly worse than the FBCSP algorithm, as can be seen in {numref}`mixed-imagery-dataset-results`.
-# 
-# 
-# ```{table} Accuracies on the Mixed-Imagery dataset. ConvNet accuracies show the difference to the FBCSP accuracy.
-# :name: mixed-imagery-dataset-results
-# 
-# | FBCSP   | Deep ConvNet | Shallow ConvNet |
-# |--|--|--|
-# |71.2|+1.0|-3.5|
-# ```
 
 # ## Decoding error-related signals
 
 # ### Decoding Observation of Robots Making Errors
 
-# In two datasets about observing robots making errors, subjects watched videos of a robot either successfully or unsuccessfully attempting one of two tasks: lifting ball from the ground (failure: letting it fall to the ground) or pouring liquid into a glass (failure: pouring the liquid outside of the glass).The decoding task was to classify whether the person watched a successful or an unsuccessful video from the EEG recorded during the observation of the corresponding video. 
-# Results for both tasks and two decoding intervals in {numref}`robot-ball-results` show that the deep ConvNet outperforms regularized linear discriminant analysis (rLDA) as well as FBCSP.
 # 
 # 
 # ```{table} Accuracies for decoding watching of successful or unsuccessful robot-liquid pouring or ball-lifting.
@@ -52,10 +49,10 @@
 # {cite}`behncke2018signature`
 # ```
 
+# In this study, we aimed to classify whether a person had watched a video of a successful or an unsuccessful attempt of a robot performing one of two tasks (lifting a ball or pouring liquid) based on EEG recorded during the video observation. We compared the performance of our deep ConvNet to that of regularized linear discriminant analysis (rLDA) and FBCSP in this task. Our results, presented in {numref}`robot-ball-results`, demonstrate that the deep ConvNet outperformed the other methods for both tasks and both decoding intervals.
+
 # (flanker-and-gui-section)=
 # ### Decoding of Eriksen Flanker Task Errors and Errors during Online GUI Control
-
-# In two further error-related decoding experiments, we evaluated an Eriksen flanker task and errors during an the online control of a graphical user interface through a brain-computer-interface. The Eriksen flanker task required the students to press a left or a right button on a gamepad depending on whether a 'L' or an 'R' was the middle character of a 5-letter string displayed on the screen. For the online GUI control the subjects were given an aim to reach using the GUI. They had to thinki of one of the classes of the aforementioned Mixed Imagery Dataset to choose one of four possible GUI actions. The correct GUI action was always determined by the specificed aim for the subject, hence an erroneous action could be detected. The decoding task in this paper was to distinguish whether the BCI-selected action was correct or erroneous. Results in {numref}`within-subject-flanker-gui-fig` and {numref}`cross-subject-flanker-gui-fig` show that deep ConvNets outperform rLDA in all settings except cross-subject error-decoding for online GUI control, where the low number of subjects (4) may prevent the ConvNets to learn enough to outperform rLDA.
 
 # ![title](images/within-subject-flanker-gui.png)
 
@@ -84,10 +81,9 @@
 # 
 # ::::
 
+# In two addtional error-related decoding experiments, we evaluated an Eriksen flanker task and errors during an the online control of a graphical user interface through a brain-computer-interface. In the Eriksen flanker task, the subjects were asked to press the left or right button on a gamepad depending on whether an 'L' or an 'R' was the middle character of a 5-letter string displayed on the screen. For the online graphical user interface (GUI) control, the subjects were given an aim to reach using the GUI. They had to think of one of the classes of the aforementioned Mixed Imagery Dataset to choose one of four possible GUI actions. The correct GUI action was always determined by the specificed aim for the subject, hence an erroneous action could be detected. The decoding task in this paper was to distinguish whether the BCI-selected action was correct or erroneous. Results in {numref}`within-subject-flanker-gui-fig` and {numref}`cross-subject-flanker-gui-fig` show that deep ConvNets outperform rLDA in all settings except cross-subject error-decoding for online GUI control, where the low number of subjects (4) may prevent the ConvNets to learn enough to outperform rLDA.
+
 # ## Proof-of-concept assistive system
-# 
-# We also evaluated the use of our deep ConvNet as part of a assistive robot system where the brain-computer interface was sending high-level commands to a robotic arm. In this proof of concept system, the robotic arm could be instructed by the user via the BCI to fetch a cup and directly move the cup to the persons mouth to drink from it. An overview can be seen in {numref}`robot-bci-overview-fig`. Results from {numref}`bci-robot-results` show that 3 out of 4 subjects had a command accuracy of more than 75% and were able to reach the target using less than twice the steps of the minimal path through the GUI (path optimality > %50%).
-# 
 
 # ![](images/robot-bci-overview.png)
 
@@ -112,10 +108,11 @@
 # {cite}`burget2017acting`
 # ```
 
+# We also evaluated the use of our deep ConvNet as part of an assistive robot system where the brain-computer interface was sending high-level commands to a robotic arm. In this proof-of-concept system, the robotic arm could be instructed by the user via the BCI to fetch a cup and directly move the cup to the persons mouth to drink from it. An overview can be seen in {numref}`robot-bci-overview-fig`. Results from {numref}`bci-robot-results` show that 3 out of 4 subjects had a command accuracy of more than 75% and were able to reach the target using less than twice the steps of the minimal path through the GUI (path optimality > %50%).
+
 # ## Intracranial EEG decoding
 
 # ### Intracranial EEG Decoding of Eriksen Flanker Task 
-# We further evaluated whether the same networks developed for noninvasive EEG decoding can successfully learn to decode intracranial EEG. Therefore, in one work we used the same Eriksen flanker task as described in {ref}`flanker-and-gui-section`, but recorded intracranial EEG from 23 patients who had pharmacoresistant epilepsy {cite}`volker2018intracranial`. 
 
 # ```{table} Results for single-channel intracranial decoding of errors during an Eriksen flanker task. Balanced Accuracy is the mean of the accuracies for correct class ground truth labels and error class ground truth labels.
 # :name: intracranial-error-results-table
@@ -138,6 +135,8 @@
 # Results for all-channel intracranial decoding of errors during an Eriksen flanker task {cite}`volker2018intracranial`.
 # ```
 
+# We further evaluated whether the same networks developed for noninvasive EEG decoding can successfully learn to decode intracranial EEG. Therefore, in one work we used the same Eriksen flanker task as described in {ref}`flanker-and-gui-section`, but recorded intracranial EEG from 23 patients who had pharmacoresistant epilepsy {cite}`volker2018intracranial`. 
+
 # ### Transfer Learning for Intracranial Error Decoding
 
 # ![](images/eriksen-flanker-car-driving-tasks.png)
@@ -148,8 +147,6 @@
 # Sketch of the Eriksen flanker task (A) and screenshot of the car driving task (B). {cite}`behncke2018cross`.
 # ```
 
-# We further tested the potential of ConvNets to transfer knowledge learned from decoding intracranial signals in error-decoding paradigm to decoding signals in another a different error-decoding paradigm {cite}`behncke2018cross`. The two error-decoding paradigms were the aforementioned Eriksen flanker task (EFT) and a car driving task (CDT), where subjects had to use a steering wheel to steer a car in a computer game and avoid hitting obstacles, where hitting an obstacle was considered an error event (see {numref}`eriksen-flanker-car-driving-tasks-fig`). Results in {numref}`cross-training-eft-cdt-results-fig` show that pretraining on CDT helps EFT decoding when few EDT data is available.
-
 # ![](images/cross-training-eft-cdt-results.png)
 
 # ```{figure} images/cross-training-eft-cdt-results.png
@@ -158,6 +155,8 @@
 # Results for transfer learning on the Eriksen flanker task (EFT) and the car driving task (CDT) {cite}`behncke2018cross`. All results are computed for a varying fraction of available data for the target decoding task (bottom row). **A** compares CDT accuracies after training only on CDT or pretraining on EFT and  finetuning on CDT. **B** compares EFT accuracies after only training on EFT or after  pretraining on CDT and finetuning on EFT. As a sanity check for the results in **B**, **C** compares EFT accuracies when pretraining on original CDT data and finetuning on EFT to pretraining on CDT data with shuffled labels (CDT*) and finetuning on EFT. Results show that pretraining on CDT helps EFT decoding when little EFT data is available. 
 # 
 # ```
+
+# We further tested the potential of ConvNets to transfer knowledge learned from decoding intracranial signals in error-decoding paradigm to decoding signals in another a different error-decoding paradigm {cite}`behncke2018cross`. The two error-decoding paradigms were the aforementioned Eriksen flanker task (EFT) and a car driving task (CDT), where subjects had to use a steering wheel to steer a car in a computer game and avoid hitting obstacles, where hitting an obstacle was considered an error event (see {numref}`eriksen-flanker-car-driving-tasks-fig`). Results in {numref}`cross-training-eft-cdt-results-fig` show that pretraining on CDT helps EFT decoding when few EDT data is available.
 
 # ### Microelectrocorticography decoding of auditory evoked responses in sheep
 
@@ -170,8 +169,6 @@
 # 
 # ```
 
-# In this study, we evaluated the ConvNets for decoding auditory evoked responses played to a sheep that was chronically implanted with  a μECoG-based neural interfacing device {cite}`wangsheep`. 3-seconds-long sounds were presented to the sheep and two decoding tasks were defined from those 3 seconds as well as the second immediately before and after the playing of the sound. The first decoding task was to distinguish the 3 seconds when the sound was playing from the second  immediately before and the second immediately after the sound. The second task was distinguishing the first, second and third second of the playing of the sound to discriminate early, intermediate and late auditory evoked response (see {numref}`sheep-sounds-fig`). Results in {numref}`sheep-accuracies-fig` show that the  deep ConvNet can perform as good as FBSCP and rLDA, and perform well on both tasks, whereas rLDA performs competitively only on the first and FBSCP only on the second task. 
-
 # ![](images/sheep-accuracies.png)
 
 # ```{figure} images/sheep-accuracies.png
@@ -180,6 +177,8 @@
 # Results of decoding auditory evoked responses from sheep with rlDA and FBSCP or the deep ConvNet. Open circles represent accuracies for individual experiment days and closed circles represent the average over these accuracies.
 # 
 # ```
+
+# In this study, we evaluated the ConvNets for decoding auditory evoked responses played to a sheep that was chronically implanted with  a μECoG-based neural interfacing device {cite}`wangsheep`. 3-seconds-long sounds were presented to the sheep and two decoding tasks were defined from those 3 seconds as well as the second immediately before and after the playing of the sound. The first decoding task was to distinguish the 3 seconds when the sound was playing from the second  immediately before and the second immediately after the sound. The second task was distinguishing the first, second and third second of the playing of the sound to discriminate early, intermediate and late auditory evoked response (see {numref}`sheep-sounds-fig`). Results in {numref}`sheep-accuracies-fig` show that the  deep ConvNet can perform as good as FBSCP and rLDA, and perform well on both tasks, whereas rLDA performs competitively only on the first and FBSCP only on the second task. 
 
 # ## Evaluation on large-scale task-diverse dataset
 
@@ -196,10 +195,6 @@
 # | Real vs. Pseudo Words | 2 | Speech imagery | 16 | 1000 | 3/1 |
 # {cite}`heilmeyer2018large`
 # ```
-# 
-# 
-# We also compared the deep and shallow ConvNet architectures as well as EEGNet on six classification tasks with more than 
-# 90000 trials in total (see {numref}`large-framework-overview-table`) {cite}`heilmeyer2018large`. The datasets tasks were all recorded in our lab and included the high-gamma dataset, three error-related tasks described before (Eriksen flanker task, robot grasping and robot pouring observations) as well as two tasks on semantic processing. In the semantic processing dataset, the classification tasks were to distinguish different types of words that a subject silently repeated {cite}`Rau:2015uk`. The first task was to distinguish existing real words from nonexisting pseudowords. The second classification task was to distingiush three semantic categories (food, animals, tools) the word may belong to. The evaluation code for all models always used the original code and hyperparameters from the original studies in order to ensure a fair comparison. Results show that the deep ConvNet and the more recent version of EEGNet (EEGNetv2) perform similarly well, with shallow and an older version of EEGNet performing slightly worse, see  {numref}`large-framework-per-dataset-results-fig`, {numref}`large-framework-averaged-results-fig`  and {numref}`large-framework-results-table`.
 
 # ![](images/large-framework-per-dataset-results.png)
 
@@ -232,4 +227,4 @@
 # ```
 # 
 
-# 
+# We also compared the deep and shallow ConvNet architectures as well as EEGNet on six classification tasks with more than 90000 trials in total (see {numref}`large-framework-overview-table`) {cite}`heilmeyer2018large`. The datasets tasks were all recorded in our lab and included the high-gamma dataset, three error-related tasks described before (Eriksen flanker task, robot grasping and robot pouring observations) as well as two tasks on semantic processing. In the semantic processing dataset, the classification tasks were to distinguish different types of words that a subject silently repeated {cite}`Rau:2015uk`. The first task was to distinguish existing real words from nonexisting pseudowords. The second classification task was to distingiush three semantic categories (food, animals, tools) the word may belong to. The evaluation code for all models always used the original code and hyperparameters from the original studies in order to ensure a fair comparison. Results show that the deep ConvNet and the more recent version of EEGNet (EEGNetv2) perform similarly well, with shallow and an older version of EEGNet performing slightly worse, see  {numref}`large-framework-per-dataset-results-fig`, {numref}`large-framework-averaged-results-fig`  and {numref}`large-framework-results-table`.

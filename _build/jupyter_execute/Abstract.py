@@ -3,20 +3,21 @@
 
 # # Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)
 
-# Machine learning, particularly deep learning, has the potential to improve medical applications by processing large amounts of data and extracting information that may not be easy to extract for medical doctors. In particular, brain-signal decoding from electroencephalographic (EEG) recordings is a promising area for machine learning due to the large amount of information contained in these signals and the difficulty of interpreting them manually. Deep neural networks (DNNs) have been successful at a variety of tasks, including object detection and speech recognition, and may be well-suited for decoding EEG signals due to their ability to handle high-dimensional hierarchical natural signals. However, prior to the work in this thesis, it was still unclear how well DNNs perform on EEG decoding compared to hand-engineered, feature-based approaches, and more research was needed to determine the optimal approaches for using deep learning in this context. This thesis describes constructing and training EEG-decoding deep learning networks that perform as well as feature-based approaches and developing visualizations that suggest they extract physiologically meaningful features.
+# Machine learning, particularly deep learning, has the potential to improve medical applications by processing large amounts of data and extracting information that may be difficult to extract for medical doctors. In particular, brain-signal decoding from electroencephalographic (EEG) recordings is a promising area for machine learning due to the relative ease of acquiring large amounts of EEG recordings and the difficulty of interpreting them manually. Deep neural networks (DNNs) have been successful at a variety of natural-signal decoding tasks like object recognition from images or speech recognition from audio and thus may be well-suited for decoding EEG signals. However, prior to the work in this thesis, it was still unclear how well DNNs perform on EEG decoding compared to hand-engineered, feature-based approaches, and more research was needed to determine the optimal approaches for using deep learning in this context. This thesis describes constructing and training EEG-decoding deep learning networks that perform as well as feature-based approaches and developing visualizations that suggest they extract physiologically meaningful features.
 
 # | Chapter    | Summary    |
 # | :--- | ---: |
-# | **Introduction**|
+# | **Introduction and Background**|
 # | [Introduction](introduction)   |  Deep learning on EEG is a very promising approach for brain-signal-based medical applications like automatic diagnosis  |
 # | [Prior Work](prior-work)   | Prior to 2017, research did not clearly show how competitive deep learning is compared with well-optimized feature baselines   |
+# | [Filterbank Common Spatial Patterns and Filterbank Network](fbscp-and-filterbank-net)   | Filter Bank Common Spatial Patterns as a starting point for network architectures|
 # | **Methods**|
-# | [Neural Network Architectures for EEG-Decoding](network-architectures)   | Starting from a network mimicking an established EEG decoding pipeline, progressively more generic neural network architectures for EEG decoding |
+# | [Neural Network Architectures for EEG-Decoding](network-architectures)   | Progressively more generic neural network architectures for EEG decoding |
 # | [Cropped Training](cropped-training)   | A training strategy to use many sliding windows in a computationally efficient manner |
 # | [Perturbation Visualization](perturbation-visualization)   | A visualization of how frequency features affect the trained network and its limitations |
-# | **Results**|
+# | **Applications and Results**|
 # | [Movement-Related Decoding](movement-related)   | Deep learning can be at least as good as feature-based baselines for movement-related decoding; deep networks also learn to extract known hand-engineered features|
-# | [Task-Related Decoding](task-related)   | Deep learning also performs well at other task-related decoding|
+# | [Generalization to Other Tasks](task-related)   | Our deep networks generalize well to decoding other decoding tasks|
 # | [Decoding Pathology](pathology)  | Deep networks designed for task-related decoding can also decode pathology well  |
 # | [Invertible Networks](invertible-networks) | Better Understanding and larger data through invertible networks |
 # | [Future Work](future-work)   | Newer DL architectures such as transformers or invertible networks may allow better performance and better interpretability   |

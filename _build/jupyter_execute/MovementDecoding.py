@@ -4,11 +4,11 @@
 # (movement-related)=
 # # Decoding Movement-Related Brain Activity
 
-# Task-related and especially movement-related decoding problems are among the most researched paradigms in EEG decoding and were hence our problem choice for the first evaluation of deep learning on EEG. A typical movement-related experimental setting is that subjects receive a cue for a specific body part (e.g. right hand, feet, tongue, etc.) and either move this body part (motor execution) or just imagine to move this part (motor imagery). The EEG signals acquired during the imagined or executed movements then often contain patterns specific to the body part that was moved or thought about. These patterns can then be decoded using machine learning. In the following, I will describe our study on movement-related EEG deccoding using deep learning, mostly using content adapted adapted from {cite:t}`schirrmeisterdeephbm2017`
+# Movement-related decoding problems are among the most researched in EEG decoding and were hence our problem of choice for the first evaluation of deep learning on EEG. A typical movement-related experimental setting is that subjects receive a cue for a specific body part (e.g. right hand, feet, tongue, etc.) and either move (motor execution) or imagine to move (motor imagery) this body part. The EEG signals recorded during the imagined or executed movements then often contain patterns specific to the body part being moved or thought about. These patterns can then be decoded using machine learning. In the following, I will describe our study on movement-related EEG decoding using deep learning, mostly using content adapted from {cite:t}`schirrmeisterdeephbm2017`.
 
 # ## Datasets
 
-# ## High-Gamma Dataset
+# ### High-Gamma Dataset
 
 # Our High-Gamma Dataset is a 128-electrode dataset (of which we later only use 44 sensors covering the motor cortex)
 # obtained from 14 healthy subjects (6 female, 2 left-handed, age 27.2$\pm$3.6 (mean$\pm$std)) with roughly 1000 (963.1$\pm$150.9, mean$\pm$std) four-second trials of executed movements divided into 13 runs per subject. The four classes of movements were movements of either the left hand, the right hand, both feet,
@@ -25,7 +25,7 @@
 
 # The BCI competition IV dataset 2a is a 22-electrode EEG motor-imagery dataset, with 9 subjects and 2
 # sessions, each with 288 four-second trials of imagined movements per subject (movements of the left hand,
-# the right hand, the feet and the tongue) {cite:p}`brunner_bci_2008`. The training set consists of the 288 trials of
+# the right hand, the feet and the tongue), for details see {cite:t}`brunner_bci_2008`. The training set consists of the 288 trials of
 # the first session, the test set of the 288 trials of the second session.
 
 # ### BCI Competition IV 2b
@@ -35,14 +35,14 @@
 
 # ## Preprocessing
 
-# We only minimally preprocessed the data to allow the networks to learn from as much information as possible while keeping the input distribution in a value range suitable for stable network training.
+# We only minimally preprocessed the data to allow the networks to extract as much information as possible while keeping the input distribution in a value range suitable for stable network training.
 # 
 # Concretely, our preprocessing steps were:
 # 
 # 1. **Remove outlier trials:** Any trial where at least one channel had a value outside +- 800 mV was removed to ensure stable training.
 # 2. **Channel selection:** For the high-gamma dataset, we selected only the 44 sensors covering the motor cortex for faster and more  accurate motor decoding.
-# 3. **Highpass (Optional) :** Highpass signal to above 4 Hz. This should partially remove potentially informative eye components from the signal and ensure that the decoding relies more on brain signals. For the BCI competition datasets, in this step we bandpassed to 4-38 Hz as using only frequencies until ~38-40 Hz was commonly done in prior work in this dataset.
-# 4. **Standardization:** Exponential moving standardization to make sure the input distribution value range is suitable for network training.
+# 3. **High/bandpass (Optional) :** Highpass signal to above 4 Hz. This should partially remove potentially informative eye components from the signal and ensure that the decoding relies more on brain signals. For the BCI competition datasets, in this step we bandpassed to 4-38 Hz as using only frequencies until ~38-40 Hz was commonly done in prior work in this dataset.
+# 4. **Standardization:** Exponential moving standardization as described below to make sure the input distribution value range is suitable for network training.
 # 
 # 
 # Our electrode-wise exponential moving standardization computes exponential moving means and variances with a decay factor of 0.999  for each channel and used these to standardize the continuous data.
@@ -56,23 +56,19 @@
 # 
 # where $x't$ and $x_t$ are the standardized and the original signal for one electrode at time $t$, respectively. As starting values for these recursive formulas we set the first 1000 mean values $\mu_t$ and first 1000 variance values $\sigma_t^2$ to the mean and the variance of the first 1000 samples, which were always completely inside the training set (so we never used future test data in our preprocessing). Some form of standardization is a commonly used procedure for ConvNets; exponentially moving standardization has the advantage that it is also applicable for an online BCI.
 # 
-# For FBCSP, this standardization always worsened accuracies in preliminary experiments, so we did not use it. Overall, the minimal preprocessing without any manual feature extraction ensured our end-to-end pipeline could in  principle be applied to a large number of brain-signal decoding tasks.
-# 
+# For FBCSP, this standardization always worsened accuracies in preliminary experiments, so we did not use it. Overall, the minimal preprocessing without any manual feature extraction ensured our end-to-end pipeline could in  principle be applied to a large number of brain-signal decoding tasks as we validated later, see {ref}`task-related`.
 
 # ## Training details
 
-# As optimization method, we used Adam {cite}`kingma_adam:_2014` together with a specific early stopping method, as this consistently yielded good accuracy in preliminary experiments on the training set. Adam is a variant of stochastic gradient descent designed to work well with high-dimensional parameters, which makes it  suitable for optimizing the large number of parameters of a ConvNet {cite}`kingma_adam:_2014`. The early stopping strategy that we use throughout these experiments, developed in the computer vision field [^earlystoppingurl], splits the training set into a training and validation fold and stops the first phase of the training when validation accuracy does not improve for a predefined number of epochs. The training continues on the combined training and validation fold starting from the parameter values that led to the  best accuracies on the validation fold so far. The training ends when the loss function on the validation fold drops to the same value as the loss function on the training fold at the end of the first training phase (we do not continue training in a third phase as in the original description). Early stopping in general  allows training on different types of networks and datasets without choosing the number of training epochs by hand. Our specific strategy uses the entire training data while only training once. In our study, all reported accuracies have been determined on an independent test set.
+# As our optimization method, we used Adam {cite}`kingma_adam:_2014` together with a specific early stopping method, as this consistently yielded good accuracy in preliminary experiments on the training set. Adam is a variant of stochastic gradient descent designed to work well with high-dimensional parameters, which makes it  suitable for optimizing the large number of parameters of a ConvNet {cite}`kingma_adam:_2014`. The early stopping strategy that we use throughout these experiments, developed in the computer vision field [^earlystoppingurl], splits the training set into a training and validation fold and stops the first phase of the training when validation accuracy does not improve for a predefined number of epochs. The training continues on the combined training and validation fold starting from the parameter values that led to the  best accuracies on the validation fold so far. The training ends when the loss function on the validation fold drops to the same value as the loss function on the training fold at the end of the first training phase (we do not continue training in a third phase as in the original description). Early stopping in general  allows training on different types of networks and datasets without choosing the number of training epochs by hand. Our specific strategy uses the entire training data while only training once. In our study, all reported accuracies have been determined on an independent test set.
 # 
 # 
 # [^earlystoppingurl]: https://web.archive.org/web/20160809230156/https://code.google.com/p/cuda-convnet/wiki/Methodology
 
-# Note that in later works we do not use this early stopping method anymore as we found training on the whole training set with a cosine learning rate schedule {cite}`DBLP:conf/iclr/LoshchilovH17` to lead to better final performance.
+# Note that in later works we do not use this early stopping method anymore as we found training on the whole training set with a cosine learning rate schedule {cite}`DBLP:conf/iclr/LoshchilovH17` to lead to better final decoding performance.
 
 # ## Design Choices
 
-# For the shallow and deep network, we evaluated how a number of design choices affect the final accuracies.
-# 
-# 
 # ```{table} Evaluated design choices.
 # :name: design-choices-table
 # 
@@ -86,6 +82,9 @@
 # {cite}`schirrmeisterdeephbm2017`
 # ```
 # 
+# For the shallow and deep network, we evaluated how a number of design choices affect the final accuracies.
+# 
+
 # ### Tied Loss Function
 # 
 # Our tied loss function penalizes the discrepancy between neighbouring predictions. Concretely, in this \textit{tied sample loss function}, we added the cross-entropy of two neighboring predictions to the usual loss 
@@ -99,7 +98,6 @@
 #  
 # 
 # This is meant to make the ConvNet focus on features which are stable for several neighboring input crops.
-# 
 
 # ## Results
 
@@ -120,10 +118,9 @@
 # |Filterbank Net|150|87.9|13.9|
 # ```
 
-# Prior to our more extensive study, we had evaluated the filterbank network on the High-Gamma Dataset in a master thesis [ref]. The evaluation was on a different version of the High-Gamma Dataset which version contained different subjects. Some subjects had not been recorded yet and other subjects were later excluded due to the presence of too many artifacts. Furthermore, we evaluated 150Hz and 300 Hz as sampling rates here, in the remainder we will use 250 Hz.
+# Prior to our more extensive study, we had evaluated the filterbank network on a different version of the High-Gamma Dataset in a master thesis {cite:p}`schirrmeister_msc_thesis_2015`. This version of the dataset included different subjects, as some subjects had not been recorded yet and other subjects were later excluded for the work here due to the presence of too many artifacts. Furthermore, we evaluated 150Hz and 300 Hz as sampling rates here, in the remainder we will use 250 Hz.
 # 
-# The results in {numref}`filterbank-net-results` show that the Filterbank net outperforms FBCSP by 2.4% (300Hz) and 1.3% (150 Hz) respectively. Despite the good performance, we did not evaluate this network further as our implementation had a very large GPU memory requirement and we were more interested in evaluating more expressive architectures that were not as fixed to implement FBCSP steps.
-# 
+# The results in {numref}`filterbank-net-results` show that the Filterbank net outperformed FBCSP by 2.4% (300 Hz) and 1.3% (150 Hz) respectively. Despite the good performance, we did not evaluate this network further due to the very large GPU memory requirement of our implementation and our interest in evaluating more expressive architectures not as tightly constrained to implement FBCSP steps.
 
 # ### ConvNets reached FBCSP accuracies
 
@@ -147,7 +144,7 @@
 # statistically significant differences were in direction of the ConvNets.
 # ```
 
-# Both the deep the shallow ConvNets, with appropriate design choices (see Result 5), reached similar accuracies as FBCSP-based decoding, with small but statistically significant advantages for the ConvNets in some settings. For the mean of all subjects of both datasets, accuracies of the shallow ConvNet on $0-f_\textrm{end}$ Hz and for the deep ConvNet on $4-f_\textrm{end} Hz$ were not statistically significantly different from FBCSP numref}`movement-decoding-result-comparison-figure`. The deep ConvNet on $0-f_\textrm{end}$ Hz and the shallow ConvNet on $4-f_\textrm{end} Hz$ reached slightly higher (1.9% and 3.3% higher, respectively) accuracies that were also statistically significantly different (P < 0.05, Wilcoxon signed-rank test). Note that all results in this section were obtained with cropped training. Note that all P values below 0.01 in this study remain significant when controlled with false-discovery-rate correction at $\alpha=0.05$ across all tests involving ConvNet accuracies.
+# Both the deep and the shallow ConvNets, with appropriate design choices (see {ref}`design-choices-results`), reached similar accuracies as FBCSP-based decoding, with small but statistically significant advantages for the ConvNets in some settings. For the mean of all subjects of both datasets, accuracies of the shallow ConvNet on $0-f_\textrm{end}$ Hz and for the deep ConvNet on $4-f_\textrm{end}$ Hz were not statistically significantly different from FBCSP (see {numref}`movement-decoding-result-comparison-figure`). The deep ConvNet on $0-f_\textrm{end}$ Hz and the shallow ConvNet on $4-f_\textrm{end}$ Hz reached slightly higher (1.9% and 3.3% higher, respectively) accuracies that were also statistically significantly different (P < 0.05, Wilcoxon signed-rank test). Note that all results in this section were obtained with cropped training. Note that all P values below 0.01 in this study remain significant when controlled with false-discovery-rate correction at $\alpha=0.05$ across all tests involving ConvNet accuracies.
 
 # ![title](images/Confusion_Mats.jpg)
 
@@ -156,9 +153,22 @@
 # name: confusion-mat-figure
 # width: 70%
 # ---
-# **Confusion matrices for FBCSP- and ConvNet-based decoding.** Results are shown for the High-Gamma Dataset, on 0–fend Hz. Each entry of row r and column c for upper-left 4×4-square: Number of trials of target r predicted as class c (also written in percent of all trials). Bold diagonal corresponds to correctly predicted trials of the different classes. Percentages and colors indicate fraction of trials in this cell from all trials of the corresponding column (i.e., from all trials of the corresponding target class). The lower-right value corresponds to overall accuracy. Bottom row corresponds to sensitivity defined as the number of trials correctly predicted for class c/number of trials for class c. Rightmost column corresponds to precision defined as the number of trials correctly predicted for class r/number of trials predicted as class r. Stars indicate statistically significantly different values of ConvNet decoding from FBCSP, diamonds indicate statistically significantly different values between the shallow and deep ConvNets. P<0.05: $\diamond$/\*, P<0.01: $\diamond\diamond$/\*\*, P<0.001: $\diamond\diamond\diamond$/***, Wilcoxon signed-rank test.
+# **Confusion matrices for FBCSP- and ConvNet-based decoding.** Results are shown for the High-Gamma Dataset, on $0–f_\textrm{end}$ Hz. Each entry of row r and column c for upper-left 4×4-square: Number of trials of target r predicted as class c (also written in percent of all trials). Bold diagonal corresponds to correctly predicted trials of the different classes. Percentages and colors indicate fraction of trials in this cell from all trials of the corresponding column (i.e., from all trials of the corresponding target class). The lower-right value corresponds to overall accuracy. Bottom row corresponds to sensitivity defined as the number of trials correctly predicted for class c/number of trials for class c. Rightmost column corresponds to precision defined as the number of trials correctly predicted for class r/number of trials predicted as class r. Stars indicate statistically significantly different values of ConvNet decoding from FBCSP, diamonds indicate statistically significantly different values between the shallow and deep ConvNets. P<0.05: $\diamond$/\*, P<0.01: $\diamond\diamond$/\*\*, P<0.001: $\diamond\diamond\diamond$/***, Wilcoxon signed-rank test.
 # ```
 
+# ```{table} Decoding errors between class pairs. Results for the High-Gamma Dataset.  Number of trials where one class  was mistaken for the other for each decoding method, summed per class pair. The largest number of errors was between Hand(L) and Hand (R) for all three decoding methods, the second largest between Feet and Rest (on average across the three decoding methods). Together, these two class pairs accounted for more than 50\% of all errors for all three decoding methods. In contrast, Hand (L and R) and Feet had a small number of errors irrespective of the decoding method used.
+# :name: hgd-class-mistakes-table
+# 
+# | | Hand (L) / Hand (R)| Hand (L) / Feet| Hand (L) / Rest| Hand (R) / Feet| Hand (R) / Rest| Feet / Rest|
+# |---|---|---|---|---|---|---|
+# | FBCSP | 82 | 28 | 31 | 3 | 12 | 42 |
+# | Deep | 70 | 13 | 27 | 13 | 21 | 26 |
+# | Shallow | 99 | 3 | 34 | 5 | 37 | 73 |
+# ```
+
+# Confusion matrices for the High-Gamma Dataset on 0--$f_{end}$ Hz were very similar for FBCSP and both ConvNets (see {numref}`confusion-mat-figure`). The majority of all mistakes were due to discriminating between Hand (L) / Hand (R) and Feet / Rest, see Table {numref}`hgd-class-mistakes-table`. Seven entries of the confusion matrix had a statistically significant difference (p<0.05, Wilcoxon signed-rank test) between the deep and the shallow ConvNet, in all of them the deep ConvNet performed better. Only two differences between the deep ConvNet and FBCSP were statistically significant (p<0.05), none for the shallow  ConvNet and FBCSP. Confusion matrices for the BCI competition IV dataset 2a showed a larger variability and hence a less consistent pattern, possibly because of the much smaller number of trials.
+
+# (design-choices-results)=
 # ## Design Choices affected decoding performance
 
 # ![title](images/Final_Comparison.ipynb.9.pdf-1.png)
@@ -174,11 +184,11 @@
 # ---
 # name: design-choices-b-fig
 # ---
-# Impact of ConvNet design choices on decoding accuracy. Accuracy differences of baseline and design choices on x-axis for the 0–fend-Hz and 4–fend-Hz datasets. Each small marker represents accuracy difference for one subject, and each larger marker represents mean accuracy difference across all subjects of both datasets. Bars: standard error of the differences across subjects. Stars indicate statistically significant differences to baseline (Wilcoxon signed-rank test, P < 0.05: $\diamond$\*, P < 0.01: $\diamond\diamond$\*\*, P < 0.001=\*\*\*). Top: Impact of design choices applicable to both ConvNets. Shown are the effects from the removal of one aspect from the architecture on decoding accuracies. All statistically significant differences were accuracy decreases. Notably, there was a clear negative effect of removing both dropout and batch normalization, seen in both ConvNets' accuracies and for both frequency ranges. Bottom: Impact of different types of nonlinearities, pooling modes and filter sizes. Results are given independently for the deep ConvNet and the shallow ConvNet. As before, all statistically significant differences were from accuracy decreases. Notably, replacing ELU by ReLU as nonlinearity led to decreases on both frequency ranges, which were both statistically significant.
+# Impact of ConvNet design choices on decoding accuracy. Accuracy differences of baseline and design choices on x-axis for the $0-f_\textrm{end}$ Hz and $4-f_\textrm{end}$ Hz datasets. Each small marker represents accuracy difference for one subject, and each larger marker represents mean accuracy difference across all subjects of both datasets. Bars: standard error of the differences across subjects. Stars indicate statistically significant differences to baseline (Wilcoxon signed-rank test, P < 0.05: $\diamond$\*, P < 0.01: $\diamond\diamond$\*\*, P < 0.001=\*\*\*). Top: Impact of design choices applicable to both ConvNets. Shown are the effects from the removal of one aspect from the architecture on decoding accuracies. All statistically significant differences were accuracy decreases. Notably, there was a clear negative effect of removing both dropout and batch normalization, seen in both ConvNets' accuracies and for both frequency ranges. Bottom: Impact of different types of nonlinearities, pooling modes and filter sizes. Results are given independently for the deep ConvNet and the shallow ConvNet. As before, all statistically significant differences were from accuracy decreases. Notably, replacing ELU by ReLU as nonlinearity led to decreases on both frequency ranges, which were both statistically significant.
 # ```
 # 
 
-# Design choices substantially affected deep network accuracies on both datasets, meaning BCI Competition IV 2a and the High Gamma Dataset. Batch normalization and dropout significantly increased accuracies. This became especially clear when omitting both simultaneously {numref}`design-choices-b-fig`. Batch normalization provided a larger accuracy increase for the shallow ConvNet, whereas dropout provided a larger increase for the deep ConvNet. For both networks and for both frequency bands, the only statistically significant accuracy differences were accuracy decreases after removing dropout for the deep ConvNet on 0–fend-Hz data or removing batch normalization and dropout for both networks and frequency ranges ($p<0.05$, Wilcoxon signed-rank test). Usage of tied loss did not affect the accuracies very much, never yielding statistically significant differences ($p>0.05$). Splitting the first layer into two convolutions had the strongest accuracy increase on the 0–fend-Hz data for the shallow ConvNet, where it is also the only statistically significant difference ($p<0.01$).
+# Design choices substantially affected deep network accuracies on both datasets, meaning BCI Competition IV 2a and the High Gamma Dataset. Batch normalization and dropout significantly increased accuracies. This became especially clear when omitting both simultaneously {numref}`design-choices-b-fig`. Batch normalization provided a larger accuracy increase for the shallow ConvNet, whereas dropout provided a larger increase for the deep ConvNet. For both networks and for both frequency bands, the only statistically significant accuracy differences were accuracy decreases after removing dropout for the deep ConvNet on $0-f_\textrm{end} $ Hz data or removing batch normalization and dropout for both networks and frequency ranges ($p<0.05$, Wilcoxon signed-rank test). Usage of tied loss did not affect the accuracies very much, never yielding statistically significant differences ($p>0.05$). Splitting the first layer into two convolutions had the strongest accuracy increase on the $0-f_\textrm{end} $ Hz data for the shallow ConvNet, where it is also the only statistically significant difference ($p<0.01$).
 
 # ## Cropped training strategy improved deep ConvNet on higher frequencies
 
@@ -186,12 +196,12 @@
 
 # ```{figure} images/Final_Comparison.ipynb.8.pdf-1.png
 # ---
-# name: cropped-training-figure
+# name: cropped-training-results-fig
 # ---
-# **Impact of training strategy (cropped vs trial-wise training) on accuracy.** Accuracy difference for both frequency ranges and both ConvNets when using cropped training instead of trial-wise training. Other conventions as in {numref}`design-choices-b-fig`. Cropped training led to better accuracies for almost all subjects for the deep ConvNet on the 4--$f_{end}$-Hz frequency range.
+# **Impact of training strategy (cropped vs trial-wise training) on accuracy.** Accuracy difference for both frequency ranges and both ConvNets when using cropped training instead of trial-wise training. Other conventions as in {numref}`design-choices-b-fig`. Cropped training led to better accuracies for almost all subjects for the deep ConvNet on the $4-f_\textrm{end}$-Hz frequency range.
 # ```
 
-# Cropped training increased accuracies statistically significantly for the deep ConvNet on the 4--$f_{end}$-Hz data (p<1e-5, Wilcoxon signed-rank test, see Figure \ref{fig:results-cropped}). In all other settings (0--$f_{end}$-Hz data, shallow ConvNet), the accuracy differences were not statistically
+# Cropped training increased accuracies statistically significantly for the deep ConvNet on the $4-f_\textrm{end}$-Hz data (p<1e-5, Wilcoxon signed-rank test, see {numref}`cropped-training-results-fig`). In all other settings ($0-f_\textrm{end}$-Hz data, shallow ConvNet), the accuracy differences were not statistically
 # significant (p>0.1) and showed a lot of variation between subjects.
 
 # ## Results on BCI Competition IV 2b
@@ -204,8 +214,7 @@
 # |0.599|−0.001|+0.030|
 # ```
 
-# To ensure that the results also generalize to further datasets and also rule out hyperparameter overfitting, the FBCSP pipeline and the deep network pipelines were applied with the exact same hyperparameters on BCI Competition IV 2b. A few choices like the use of the decoding time window had been done after already seeing results from the evaluation sets of the High-Gamma dataset and the BCIC IV 2a dataset, hence the BCIC IV 2b dataset seemed a suitable dataset for further validation of the pipelines. Results in {numref}`bcic-iv-2b-results` show that the networks perform as good or better than FBCSP. Results on further datasets, also non-movement-decoding datasets are presented in the next chapter.
-# 
+# To ensure that the results also generalize to further datasets and also rule out hyperparameter overfitting, the FBCSP pipeline and the deep network pipelines were applied with the exact same hyperparameters on BCI Competition IV 2b. A few choices like the use of the decoding time window had been done after already seeing results from the evaluation sets of the High-Gamma dataset and the BCIC IV 2a dataset, hence it was valuable to validate the results on the BCIC IV 2b dataset. Results in {numref}`bcic-iv-2b-results` show that the networks perform as good or better than FBCSP. Results on further datasets, also non-movement-decoding datasets are presented in the next chapter.
 
 # ## ConvNet-independent visualizations
 
@@ -218,11 +227,11 @@
 # Average over subjects from the High-Gamma Dataset. Colormaps are scaled per frequency band/row. This is a ConvNet-independent visualization. Scalp plots show spatial distributions of class-related spectral amplitude changes well in line with the literature.
 # ```
 
-# ## Amplitude Perturbation Visualizations
-
 # Before moving to ConvNet visualization, we examined the spectral amplitude changes associated with the different movement classes in the alpha, beta and gamma frequency bands. For that, we first computed the moving average of the squared envelope in narrow frequency bands via the Hilbert transform as a measure of the power in those frequency bands.Then we computed linear correlations of these moving averages with the class label. This results in frequency-resolved envelope-class label correlations.
 # 
 # We found the expected overall scalp topographies (see Figure \ref{fig:results-spectral-topo}) to show physiologically plausible patterns. For example, for the alpha (7--13 Hz) frequency band, there was a class-related power decrease (anti-correlation in the class-envelope correlations) in the left and right pericentral regions with respect to the hand classes, stronger contralaterally to the side of the hand movement , i.e., the regions with pronounced power decreases lie around the primary sensorimotor hand representation areas. For the feet class, there was a power decrease located around the vertex, i.e.,  approx. above the primary motor foot area. As expected, opposite changes (power increases) with a similar topography were visible for the gamma band (71--91 Hz).
+
+# ## Amplitude Perturbation Visualizations
 
 # ![title](images/Bandpower_Perturbation.ipynb.0.pdf-1.png)
 
@@ -255,4 +264,4 @@
 # Input-perturbation network-prediction correlation maps for the deep ConvNet. Correlation of class predictions and amplitude changes. Averaged over all subjects of the High-Gamma Dataset. Colormaps are scaled per scalp plot. Plausible scalp maps for all frequency bands, for example, contralateral positive correlations for the hand classes in the gamma band.
 # ```
 
-# Third, scalp maps of the input-perturbation effects on network predictions for the different frequency bands, as shown in Figure 19, show spatial distributions expected for motor tasks in the alpha, beta and—for the first time for such a noninvasive EEG decoding visualization—for the high gamma band. These scalp maps directly reflect the behavior of the ConvNets and one needs to be careful when making inferences about the data from them. For example, the positive correlation on the right side of the scalp for the Hand (R) class in the alpha band only means the ConvNet increased its prediction when the amplitude at these electrodes was increased independently of other frequency bands and electrodes. It does not imply that there was an increase of amplitude for the right hand class in the data. Rather, this correlation could be explained by the ConvNet reducing common noise between both locations, for more explanations of these effects in case of linear models, see {cite}`haufe_interpretation_2014`. Nevertheless, for the first time in noninvasive EEG, these maps clearly revealed the global somatotopic organization of causal contributions of motor cortical gamma band activity to decoding right and left hand and foot movements. Interestingly, these maps revealed highly focalized patterns, particularly during hand movement in the gamma frequency range ({numref}`bandpower-perturbation-topo-fig`, first plots in last row), in contrast to the more diffuse patterns in the conventional task-related spectral analysis as shown in {numref}`envelope-class-fig`.
+# Third, scalp maps of the input-perturbation effects on network predictions for the different frequency bands, as shown in {numref}`bandpower-perturbation-topo-fig`, show spatial distributions expected for motor tasks in the alpha, beta and—for the first time for such a noninvasive EEG decoding visualization—for the high gamma band. These scalp maps directly reflect the behavior of the ConvNets and one needs to be careful when making inferences about the data from them. For example, the positive correlation on the right side of the scalp for the Hand (R) class in the alpha band only means the ConvNet increased its prediction when the amplitude at these electrodes was increased independently of other frequency bands and electrodes. It does not imply that there was an increase of amplitude for the right hand class in the data. Rather, this correlation could be explained by the ConvNet reducing common noise between both locations, for more explanations of these effects in case of linear models, see {cite}`haufe_interpretation_2014`. Nevertheless, for the first time in noninvasive EEG, these maps clearly revealed the global somatotopic organization of causal contributions of motor cortical gamma band activity to decoding right and left hand and foot movements. Interestingly, these maps revealed highly focalized patterns, particularly during hand movement in the gamma frequency range ({numref}`bandpower-perturbation-topo-fig`, first plots in last row), in contrast to the more diffuse patterns in the conventional task-related spectral analysis as shown in {numref}`envelope-class-fig`.
