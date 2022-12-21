@@ -3,7 +3,11 @@
 
 # # Deep Learning for Brain-Signal Decoding from Electroencephalography
 
+# ## Abstract
+
 # Machine learning has the potential to improve medical applications by processing larger amounts of data and extracting different information from it than medical doctors. In particular, brain-signal decoding from electroencephalographic (EEG) recordings is a promising area for machine learning due to the relative ease of acquiring large amounts of EEG recordings and the difficulty of interpreting them manually. Deep neural networks (DNNs) have been successful at a variety of natural-signal decoding tasks like object recognition from images or speech recognition from audio and thus may be well-suited for decoding EEG signals. However, prior to the work in this thesis, it was still unclear how well DNNs perform on EEG decoding compared to hand-engineered, feature-based approaches, and more research was needed to determine the optimal approaches for using deep learning in this context. This thesis describes constructing and training EEG-decoding deep learning networks that perform as well as feature-based approaches and developing visualizations that suggest they extract physiologically meaningful features.
+
+# ## Contents
 
 # | Chapter    | Summary    |
 # | :--- | ---: |
