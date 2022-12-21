@@ -145,7 +145,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="Abstract.html">
-                    Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)
+                    Deep Learning for Brain-Signal Decoding from Electroencephalography
                 </a>
             </li>
         </ul>
@@ -432,31 +432,146 @@ title="Print to PDF"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="neural-network-architectures-for-eeg-decoding">
 <span id="network-architectures"></span><h1>Neural Network Architectures for EEG-Decoding<a class="headerlink" href="#neural-network-architectures-for-eeg-decoding" title="Permalink to this headline">#</a></h1>
-<p>We continued developing our neural network architectures with our EEG-specific development strategy of starting with networks that resemble feature-based algorithms. After the filterbank network from the master thesis, we adapted the so-called shallow network, initally also developed in the same master thesis. The shallow network still resembles filter bank common spatial patterns, but less closely than the filterbank network. After validating that these initial network architectures perform as well as filter bank common spatial patterns, we progressed to developing and evaluating more generic architectures.</p>
-<p>In this section, I describe the architectures presented in our first publication on EEG deep learning decoding <span id="id1">[<a class="reference internal" href="References.html#id34" title="Robin Tibor Schirrmeister, Jost Tobias Springenberg, Lukas Dominique Josef Fiederer, Martin Glasstetter, Katharina Eggensperger, Michael Tangermann, Frank Hutter, Wolfram Burgard, and Tonio Ball. Deep learning with convolutional neural networks for eeg decoding and visualization. Human Brain Mapping, aug 2017. URL: http://dx.doi.org/10.1002/hbm.23730, doi:10.1002/hbm.23730.">Schirrmeister <em>et al.</em>, 2017</a>]</span>. This part uses text and figures from <span id="id2">[<a class="reference internal" href="References.html#id34" title="Robin Tibor Schirrmeister, Jost Tobias Springenberg, Lukas Dominique Josef Fiederer, Martin Glasstetter, Katharina Eggensperger, Michael Tangermann, Frank Hutter, Wolfram Burgard, and Tonio Ball. Deep learning with convolutional neural networks for eeg decoding and visualization. Human Brain Mapping, aug 2017. URL: http://dx.doi.org/10.1002/hbm.23730, doi:10.1002/hbm.23730.">Schirrmeister <em>et al.</em>, 2017</a>]</span> adapted for readibility in this thesis.</p>
+<p>We continued developing our neural network architectures with our EEG-specific development strategy of starting with networks that resemble feature-based algorithms. After the filterbank network from the master thesis, we adapted the so-called shallow network, initally also developed in the same master thesis <span id="id1">[<a class="reference internal" href="References.html#id2" title="Robin Tibor Schirrmeister. Convolutional neural networks for movement decoding from eeg signals. Master's thesis, Albert-Ludwigs-Universität Freiburg, 2015.">Schirrmeister, 2015</a>]</span>. The shallow network still resembles filter bank common spatial patterns, but less closely than the filterbank network. After validating that these initial network architectures perform as well as filter bank common spatial patterns, we progressed to developing and evaluating more generic architectures.</p>
+<p>In this section, I describe the architectures presented in our first publication on EEG deep learning decoding <span id="id2">[<a class="reference internal" href="References.html#id34" title="Robin Tibor Schirrmeister, Jost Tobias Springenberg, Lukas Dominique Josef Fiederer, Martin Glasstetter, Katharina Eggensperger, Michael Tangermann, Frank Hutter, Wolfram Burgard, and Tonio Ball. Deep learning with convolutional neural networks for eeg decoding and visualization. Human Brain Mapping, aug 2017. URL: http://dx.doi.org/10.1002/hbm.23730, doi:10.1002/hbm.23730.">Schirrmeister <em>et al.</em>, 2017</a>]</span>. This part uses text and figures from <span id="id3">[<a class="reference internal" href="References.html#id34" title="Robin Tibor Schirrmeister, Jost Tobias Springenberg, Lukas Dominique Josef Fiederer, Martin Glasstetter, Katharina Eggensperger, Michael Tangermann, Frank Hutter, Wolfram Burgard, and Tonio Ball. Deep learning with convolutional neural networks for eeg decoding and visualization. Human Brain Mapping, aug 2017. URL: http://dx.doi.org/10.1002/hbm.23730, doi:10.1002/hbm.23730.">Schirrmeister <em>et al.</em>, 2017</a>]</span> adapted for readibility in this thesis.</p>
 <div class="section" id="shallow-network-architecture">
 <h2>Shallow Network Architecture<a class="headerlink" href="#shallow-network-architecture" title="Permalink to this headline">#</a></h2>
-<p>We developed the shallow network architecture, a more flexible architecture than the filterbank network that also learns temporal filters on the input signal and on the later representation. Instead of bandpass-filtered signals, it is fed the raw signals as input. The first step are learnable temporal filters that are indepedently convolved with the signals of each EEG electrode. Afterwards, the channel dimension of the network representation    contains <span class="math notranslate nohighlight">\(\mathrm{electrodes} \cdot \mathrm{temporal~ filters}\)</span> channels. In the next step that combines spatial filtering with mixing the outputs of the temporal filters, this network-channel dimension is linearly transformed by learned weights to a smaller dimensionality for further preprocessing. The resulting feature timeseries are then squared, average-pooled and log-transformed, which allows the network to more easily learn log-variance-based features. Unlike the filterbank network, the average pooling does not collapse the feature timeseries into one value per trial. So after these processing steps, still some temporal information about the timecourse of the variance throughout the trial can be preserved. Then, the final classification layer transforms these feature timecourses into class probabilities using a linear transformation and a softmax function.</p>
 <div class="figure align-default" id="shallow-net-figure">
 <a class="reference internal image-reference" href="_images/3D_Diagram_MatplotLib.ipynb.0.png"><img alt="_images/3D_Diagram_MatplotLib.ipynb.0.png" src="_images/3D_Diagram_MatplotLib.ipynb.0.png" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Shallow network architecture, figure from [ref].  EEG input (at the top) is progressively transformed toward the bottom, until the final classifier output. Black cuboids: inputs/feature maps; brown cuboids: convolution/pooling kernels. The corresponding sizes are indicated in black and brown, respectively. Note that the final dense layer operates only on a small remaining temporal dimension, making it similar to a regular convolutional layer.</span><a class="headerlink" href="#shallow-net-figure" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Shallow network architecture, figure from <span id="id4">[<a class="reference internal" href="References.html#id34" title="Robin Tibor Schirrmeister, Jost Tobias Springenberg, Lukas Dominique Josef Fiederer, Martin Glasstetter, Katharina Eggensperger, Michael Tangermann, Frank Hutter, Wolfram Burgard, and Tonio Ball. Deep learning with convolutional neural networks for eeg decoding and visualization. Human Brain Mapping, aug 2017. URL: http://dx.doi.org/10.1002/hbm.23730, doi:10.1002/hbm.23730.">Schirrmeister <em>et al.</em>, 2017</a>]</span>.  EEG input (at the top) is progressively transformed toward the bottom, until the final classifier output. Black cuboids: inputs/feature maps; brown cuboids: convolution/pooling kernels. The corresponding sizes are indicated in black and brown, respectively. Note that the final dense layer operates only on a small remaining temporal dimension, making it similar to a regular convolutional layer.</span><a class="headerlink" href="#shallow-net-figure" title="Permalink to this image">#</a></p>
 </div>
+<p>We developed the shallow network architecture, a more flexible architecture than the filterbank network that also learns temporal filters on the input signal and on the later representation. Instead of bandpass-filtered signals, it is fed the raw signals as input.
+The steps the architecture implements are as follows (also see <a class="reference internal" href="#shallow-net-figure"><span class="std std-numref">Fig. 5</span></a>):</p>
+<ol class="simple">
+<li><p><strong>Temporal Filtering</strong> Learnable temporal filters are indepedently convolved with the signals of each EEG electrode. Afterwards, the channel dimension of the network representation contains <span class="math notranslate nohighlight">\(\mathrm{electrodes} \cdot \mathrm{temporal~ filters}\)</span> channels.</p></li>
+<li><p><strong>Spatial Filtering</strong> Combining spatial filtering with mixing the outputs of the temporal filters, the network-channel dimension is linearly transformed by learned weights to a smaller dimensionality for further preprocessing.</p></li>
+<li><p><strong>Log Average Power</strong> The resulting feature timeseries are then squared, average-pooled and log-transformed, which allows the network to more easily learn log-power-based features. Unlike the filterbank network, the average pooling does not collapse the feature timeseries into one value per trial. So after these processing steps, still some temporal information about the timecourse of the variance throughout the trial can be preserved.</p></li>
+<li><p><strong>Classifier</strong> The final classification layer transforms these feature timecourses into class probabilities using a linear transformation and a softmax function.</p></li>
+</ol>
 </div>
 <div class="section" id="deep-network-architecture">
 <h2>Deep Network Architecture<a class="headerlink" href="#deep-network-architecture" title="Permalink to this headline">#</a></h2>
-<p>The deep architecture is a more generic architecture, closer to network architectures used in computer vision. The first two temporal convolution and spatial filtering layers are the same in the shallow network, which is followed by a ELU nonlinearity (ELUs, <span class="math notranslate nohighlight">\(f(x)=x\)</span> for <span class="math notranslate nohighlight">\(x &gt; 0\)</span> and <span class="math notranslate nohighlight">\(f(x) = e^x-1\)</span> for <span class="math notranslate nohighlight">\(x &lt;= 0\)</span> <span id="id3">[<a class="reference internal" href="References.html#id217" title="Djork-Arné Clevert, Thomas Unterthiner, and Sepp Hochreiter. Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs). In ArXiv e-prints, volume 1511, arXiv:1511.07289. 2016. URL: http://adsabs.harvard.edu/abs/2015arXiv151107289C (visited on 2016-12-21).">Clevert <em>et al.</em>, 2016</a>]</span>) and max pooling. The following three blocks simply consist of a convolution, a ELU nonlinearity and a max pooling. In the end, there is again a final linear classification layer with a softmax function. Due to its less specific and more generic computational steps, the deep architecture should be able to capture a large variety of features. Hence, the learned features may also be less biased towards the amplitude features commonly used in task-related EEG decoding.</p>
 <div class="figure align-default" id="deep-net-figure">
 <a class="reference internal image-reference" href="_images/3D_Diagram_MatplotLib.ipynb.1.png"><img alt="_images/3D_Diagram_MatplotLib.ipynb.1.png" src="_images/3D_Diagram_MatplotLib.ipynb.1.png" style="width: 75%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Deep network architecture, figure from <span id="id4">[<a class="reference internal" href="References.html#id34" title="Robin Tibor Schirrmeister, Jost Tobias Springenberg, Lukas Dominique Josef Fiederer, Martin Glasstetter, Katharina Eggensperger, Michael Tangermann, Frank Hutter, Wolfram Burgard, and Tonio Ball. Deep learning with convolutional neural networks for eeg decoding and visualization. Human Brain Mapping, aug 2017. URL: http://dx.doi.org/10.1002/hbm.23730, doi:10.1002/hbm.23730.">Schirrmeister <em>et al.</em>, 2017</a>]</span>. Conventions as in <a class="reference internal" href="#shallow-net-figure"><span class="std std-numref">Fig. 5</span></a>.</span><a class="headerlink" href="#deep-net-figure" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Deep network architecture, figure from <span id="id5">[<a class="reference internal" href="References.html#id34" title="Robin Tibor Schirrmeister, Jost Tobias Springenberg, Lukas Dominique Josef Fiederer, Martin Glasstetter, Katharina Eggensperger, Michael Tangermann, Frank Hutter, Wolfram Burgard, and Tonio Ball. Deep learning with convolutional neural networks for eeg decoding and visualization. Human Brain Mapping, aug 2017. URL: http://dx.doi.org/10.1002/hbm.23730, doi:10.1002/hbm.23730.">Schirrmeister <em>et al.</em>, 2017</a>]</span>. Conventions as in <a class="reference internal" href="#shallow-net-figure"><span class="std std-numref">Fig. 5</span></a>.</span><a class="headerlink" href="#deep-net-figure" title="Permalink to this image">#</a></p>
 </div>
+<p>The deep architecture is a more generic architecture, closer to network architectures used in computer vision, see  <a class="reference internal" href="#deep-net-figure"><span class="std std-numref">Fig. 6</span></a> for a schematic overview. The first two temporal convolution and spatial filtering layers are the same in the shallow network, which is followed by a ELU nonlinearity (ELUs, <span class="math notranslate nohighlight">\(f(x)=x\)</span> for <span class="math notranslate nohighlight">\(x &gt; 0\)</span> and <span class="math notranslate nohighlight">\(f(x) = e^x-1\)</span> for <span class="math notranslate nohighlight">\(x &lt;= 0\)</span> <span id="id6">[<a class="reference internal" href="References.html#id217" title="Djork-Arné Clevert, Thomas Unterthiner, and Sepp Hochreiter. Fast and Accurate Deep Network Learning by Exponential Linear Units (ELUs). In ArXiv e-prints, volume 1511, arXiv:1511.07289. 2016. URL: http://adsabs.harvard.edu/abs/2015arXiv151107289C (visited on 2016-12-21).">Clevert <em>et al.</em>, 2016</a>]</span>) and max pooling. The following three blocks simply consist of a convolution, a ELU nonlinearity and a max pooling. In the end, there is again a final linear classification layer with a softmax function. Due to its less specific and more generic computational steps, the deep architecture should be able to capture a large variety of features. Hence, the learned features may also be less biased towards the amplitude features commonly used in task-related EEG decoding.</p>
 </div>
 <div class="section" id="residual-network">
 <h2>Residual Network<a class="headerlink" href="#residual-network" title="Permalink to this headline">#</a></h2>
-<p>We also developed a residual network (ResNet <span id="id5">[<a class="reference internal" href="References.html#id110" title="Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep Residual Learning for Image Recognition. arXiv:1512.03385 [cs], December 2015. arXiv: 1512.03385. URL: http://arxiv.org/abs/1512.03385 (visited on 2016-05-11).">He <em>et al.</em>, 2015</a>]</span>) for EEG decoding. We use the same residual blocks as the original paper, described in Figure <a class="reference internal" href="#residual-net-figure"><span class="std std-numref">Fig. 7</span></a>. Our ResNet used ELU activation functions throughout the network (same as the deep ConvNet) and also starts with a splitted temporal and spatial convolution (same as the deep and shallow ConvNets), followed by 14 residual blocks, mean pooling and a final softmax dense classification layer (for further details, see Supporting Information, Section A.3 in <span id="id6">[<a class="reference internal" href="References.html#id34" title="Robin Tibor Schirrmeister, Jost Tobias Springenberg, Lukas Dominique Josef Fiederer, Martin Glasstetter, Katharina Eggensperger, Michael Tangermann, Frank Hutter, Wolfram Burgard, and Tonio Ball. Deep learning with convolutional neural networks for eeg decoding and visualization. Human Brain Mapping, aug 2017. URL: http://dx.doi.org/10.1002/hbm.23730, doi:10.1002/hbm.23730.">Schirrmeister <em>et al.</em>, 2017</a>]</span>).</p>
 <div class="figure align-default" id="residual-net-figure">
 <img alt="_images/residual_block.png" src="_images/residual_block.png" />
 <p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Residual block, Figure from <span id="id7">[<a class="reference internal" href="References.html#id34" title="Robin Tibor Schirrmeister, Jost Tobias Springenberg, Lukas Dominique Josef Fiederer, Martin Glasstetter, Katharina Eggensperger, Michael Tangermann, Frank Hutter, Wolfram Burgard, and Tonio Ball. Deep learning with convolutional neural networks for eeg decoding and visualization. Human Brain Mapping, aug 2017. URL: http://dx.doi.org/10.1002/hbm.23730, doi:10.1002/hbm.23730.">Schirrmeister <em>et al.</em>, 2017</a>]</span>. “Residual block used in the ResNet architecture and as described in original paper (<span id="id8">[<a class="reference internal" href="References.html#id110" title="Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep Residual Learning for Image Recognition. arXiv:1512.03385 [cs], December 2015. arXiv: 1512.03385. URL: http://arxiv.org/abs/1512.03385 (visited on 2016-05-11).">He <em>et al.</em>, 2015</a>]</span>; see Fig. 2) with identity shortcut option A, except using ELU instead of ReLU nonlinearities.”</span><a class="headerlink" href="#residual-net-figure" title="Permalink to this image">#</a></p>
 </div>
+<table class="colwidths-auto table" id="residual-architectures-table">
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">Residual network architecture hyperparameters. Number of kernels, kernel and output size for all subparts of the network. Output size is always time x height x channels. Note that channels here refers to input channels of a network layer, not to EEG channels; EEG channels are in the height dimension. Output size is only shown if it changes from the previous block. Second convolution and all residual blocks used ELU nonlinearities. Note that in the end we had seven outputs, i.e., predictions for the four classes, in the time dimension (<strong>7</strong>x1x4 final output size). In practice, when using cropped training as explained in the following chapter, we even had 424 predictions, and used the mean of these to predict the trial.</span><a class="headerlink" href="#residual-architectures-table" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Layer/Block</p></th>
+<th class="head"><p>Number of Kernels</p></th>
+<th class="head"><p>Kernel Size</p></th>
+<th class="head"><p>Output Size</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Input</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>1000x44x1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Convolution (linear)</p></td>
+<td><p>48</p></td>
+<td><p>3x1</p></td>
+<td><p>1000x44x48</p></td>
+</tr>
+<tr class="row-even"><td><p>Convolution (ELU)</p></td>
+<td><p>48</p></td>
+<td><p>1x44</p></td>
+<td><p>1000x1x48</p></td>
+</tr>
+<tr class="row-odd"><td><p>ResBlock (ELU)</p></td>
+<td><p>48</p></td>
+<td><p>3x1</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>ResBlock (ELU)</p></td>
+<td><p>48</p></td>
+<td><p>3x1</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>ResBlock (ELU)</p></td>
+<td><p>96</p></td>
+<td><p>3x1 (Stride 2x1)</p></td>
+<td><p>500x1x96</p></td>
+</tr>
+<tr class="row-even"><td><p>ResBlock (ELU)</p></td>
+<td><p>96</p></td>
+<td><p>3x1</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>ResBlock (ELU)</p></td>
+<td><p>144</p></td>
+<td><p>3x1 (Stride 2x1)</p></td>
+<td><p>250x1x96</p></td>
+</tr>
+<tr class="row-even"><td><p>ResBlock (ELU)</p></td>
+<td><p>144</p></td>
+<td><p>3x1</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>ResBlock (ELU)</p></td>
+<td><p>144</p></td>
+<td><p>3x1 (Stride 2x1)</p></td>
+<td><p>125x1x96</p></td>
+</tr>
+<tr class="row-even"><td><p>ResBlock (ELU)</p></td>
+<td><p>144</p></td>
+<td><p>3x1</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>ResBlock (ELU)</p></td>
+<td><p>144</p></td>
+<td><p>3x1 (Stride 2x1)</p></td>
+<td><p>63x1x96</p></td>
+</tr>
+<tr class="row-even"><td><p>ResBlock (ELU)</p></td>
+<td><p>144</p></td>
+<td><p>3x1</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>ResBlock (ELU)</p></td>
+<td><p>144</p></td>
+<td><p>3x1 (Stride 2x1)</p></td>
+<td><p>32x1x96</p></td>
+</tr>
+<tr class="row-even"><td><p>ResBlock (ELU)</p></td>
+<td><p>144</p></td>
+<td><p>3x1</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>ResBlock (ELU)</p></td>
+<td><p>144</p></td>
+<td><p>3x1 (Stride 2x1)</p></td>
+<td><p>16x1x96</p></td>
+</tr>
+<tr class="row-even"><td><p>ResBlock (ELU)</p></td>
+<td><p>144</p></td>
+<td><p>3x1</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Mean Pooling</p></td>
+<td><p></p></td>
+<td><p>10x1</p></td>
+<td><p>7x1x144</p></td>
+</tr>
+<tr class="row-even"><td><p>Convolution + Softmax</p></td>
+<td><p>4</p></td>
+<td><p>1x1</p></td>
+<td><p>7x1x4</p></td>
+</tr>
+</tbody>
+</table>
+<p>We also developed a residual network (ResNet <span id="id9">[<a class="reference internal" href="References.html#id110" title="Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep Residual Learning for Image Recognition. arXiv:1512.03385 [cs], December 2015. arXiv: 1512.03385. URL: http://arxiv.org/abs/1512.03385 (visited on 2016-05-11).">He <em>et al.</em>, 2015</a>]</span>) for EEG decoding. Residual networks add the input of a residual computational block back to its output, and empirically this allows to stably train much deeper networks. We use the same residual blocks as the original paper, described in Figure <a class="reference internal" href="#residual-net-figure"><span class="std std-numref">Fig. 7</span></a>. Our ResNet used ELU activation functions throughout the network (same as the deep ConvNet) and also starts with a splitted temporal and spatial convolution (same as the deep and shallow ConvNets), followed by 14 residual blocks, mean pooling and a final softmax dense classification layer.</p>
+<p>In total, the ResNet has 31 convolutional layers, a depth where ConvNets without residual blocks started to show problems converging in the original ResNet paper <span id="id10">[<a class="reference internal" href="References.html#id110" title="Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep Residual Learning for Image Recognition. arXiv:1512.03385 [cs], December 2015. arXiv: 1512.03385. URL: http://arxiv.org/abs/1512.03385 (visited on 2016-05-11).">He <em>et al.</em>, 2015</a>]</span>. In layers where the number of channels is increased, we padded the incoming feature map with zeros to match the new channel dimensionality for the shortcut, as in option A of the original paper <span id="id11">[<a class="reference internal" href="References.html#id110" title="Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep Residual Learning for Image Recognition. arXiv:1512.03385 [cs], December 2015. arXiv: 1512.03385. URL: http://arxiv.org/abs/1512.03385 (visited on 2016-05-11).">He <em>et al.</em>, 2015</a>]</span>. The overall architecture is also shown in <a class="reference internal" href="#residual-architectures-table"><span class="std std-numref">Table 4</span></a>.</p>
 </div>
 </div>
 

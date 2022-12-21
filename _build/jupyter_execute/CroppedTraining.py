@@ -4,7 +4,7 @@
 # (cropped-training)=
 # # Cropped Training
 
-# In this chapter, we describe a training strategy called "cropped training" for regularizing deep networks on EEG data. The goal of this strategy is to improve the performance of deep networks on the often relatively small EEG datasets by training them on many sliding temporal windows within the data. This approach had been similarly used as spatial cropping in computer vision, where networks are trained on multiple cropped versions of images. We first describe the concept of regular, non-cropped training and then introduce cropped training on a conceptual level. Finally, we discuss how to implement this approach efficiently. Our aim is to demonstrate the effectiveness and computational efficiency of cropped training as a regularization technique for deep networks on EEG data.
+# In this chapter, we describe a training strategy called "cropped training" which addresses the problem of the relatively low number of training examples in typical EEG datasets. The goal of this strategy is to improve the performance of deep networks by training them on many sliding temporal windows within the data. This approach had been similarly used as spatial cropping in computer vision, where networks are trained on multiple cropped versions of images. We first describe the concept of regular, non-cropped training and then introduce cropped training on a conceptual level. Finally, we discuss how to implement this approach efficiently. Our aim is to demonstrate the effectiveness and computational efficiency of cropped training as a regularization technique for deep networks on EEG data.
 
 # ## Non-Cropped/Trialwise Training
 

@@ -48,7 +48,7 @@
 
 # ## Filterbank network architecture
 
-# The first neural network architecture was developed by us in a prior master thesis [ref] to jointly learn the same steps that are learned separately by FBCSP. Concretely, the network simultaneously learn the spatial filters across many frequency bands and the classification weights for the trial variances of all resulting spatially filtered signals. To be able to do that, the network is fed with several signals that were bandpass-filtered to different frequency ranges. The network then performs the following steps:
+# The first neural network architecture was developed by us in a prior master thesis {cite:p}`schirrmeister_msc_thesis_2015` to jointly learn the same steps that are learned separately by FBCSP. Concretely, the network simultaneously learn the spatial filters across many frequency bands and the classification weights for the trial variances of all resulting spatially filtered signals. To be able to do that, the network is fed with several signals that were bandpass-filtered to different frequency ranges. The network then performs the following steps:
 # 
 # 1. Apply learnable spatial filter weights, resulting in spatially filtered signals
 # 2. Square the resulting signals

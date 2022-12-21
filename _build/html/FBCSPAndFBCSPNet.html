@@ -145,7 +145,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="Abstract.html">
-                    Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)
+                    Deep Learning for Brain-Signal Decoding from Electroencephalography
                 </a>
             </li>
         </ul>
@@ -474,7 +474,7 @@ title="Print to PDF"
 </div>
 <div class="section" id="filterbank-network-architecture">
 <h2>Filterbank network architecture<a class="headerlink" href="#filterbank-network-architecture" title="Permalink to this headline">#</a></h2>
-<p>The first neural network architecture was developed by us in a prior master thesis [ref] to jointly learn the same steps that are learned separately by FBCSP. Concretely, the network simultaneously learn the spatial filters across many frequency bands and the classification weights for the trial variances of all resulting spatially filtered signals. To be able to do that, the network is fed with several signals that were bandpass-filtered to different frequency ranges. The network then performs the following steps:</p>
+<p>The first neural network architecture was developed by us in a prior master thesis <span id="id8">[<a class="reference internal" href="References.html#id2" title="Robin Tibor Schirrmeister. Convolutional neural networks for movement decoding from eeg signals. Master's thesis, Albert-Ludwigs-Universität Freiburg, 2015.">Schirrmeister, 2015</a>]</span> to jointly learn the same steps that are learned separately by FBCSP. Concretely, the network simultaneously learn the spatial filters across many frequency bands and the classification weights for the trial variances of all resulting spatially filtered signals. To be able to do that, the network is fed with several signals that were bandpass-filtered to different frequency ranges. The network then performs the following steps:</p>
 <ol class="simple">
 <li><p>Apply learnable spatial filter weights, resulting in spatially filtered signals</p></li>
 <li><p>Square the resulting signals</p></li>
@@ -486,7 +486,7 @@ title="Print to PDF"
 <p>The spatial filter weights and the classification weights are trained jointly.</p>
 <div class="figure align-default" id="filterbank-net-figure">
 <img alt="_images/csp_as_a_net_explanation.png" src="_images/csp_as_a_net_explanation.png" />
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Filterbank network architecture overview.  Input signals were bandpass filtered to different frequency ranges. Signals are first transformed by learned spatial filters, then squared, summed and the log-transformed. The resulting features are transformed into class probabilities by a classification weights followed by the softmax function. Taken from from a master thesis <span id="id8">[<a class="reference internal" href="References.html#id2" title="Robin Tibor Schirrmeister. Convolutional neural networks for movement decoding from eeg signals. Master's thesis, Albert-Ludwigs-Universität Freiburg, 2015.">Schirrmeister, 2015</a>]</span>.</span><a class="headerlink" href="#filterbank-net-figure" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Filterbank network architecture overview.  Input signals were bandpass filtered to different frequency ranges. Signals are first transformed by learned spatial filters, then squared, summed and the log-transformed. The resulting features are transformed into class probabilities by a classification weights followed by the softmax function. Taken from from a master thesis <span id="id9">[<a class="reference internal" href="References.html#id2" title="Robin Tibor Schirrmeister. Convolutional neural networks for movement decoding from eeg signals. Master's thesis, Albert-Ludwigs-Universität Freiburg, 2015.">Schirrmeister, 2015</a>]</span>.</span><a class="headerlink" href="#filterbank-net-figure" title="Permalink to this image">#</a></p>
 </div>
 </div>
 </div>

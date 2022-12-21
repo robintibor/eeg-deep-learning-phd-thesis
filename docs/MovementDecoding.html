@@ -145,7 +145,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="Abstract.html">
-                    Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)
+                    Deep Learning for Brain-Signal Decoding from Electroencephalography
                 </a>
             </li>
         </ul>
@@ -637,7 +637,7 @@ Formally,</p>
 <div class="section" id="design-choices">
 <h2>Design Choices<a class="headerlink" href="#design-choices" title="Permalink to this headline">#</a></h2>
 <table class="colwidths-auto table" id="design-choices-table">
-<caption><span class="caption-number">Table 4 </span><span class="caption-text">Evaluated design choices.</span><a class="headerlink" href="#design-choices-table" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">Evaluated design choices.</span><a class="headerlink" href="#design-choices-table" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="text-align:left head"><p>Design aspect</p></th>
 <th class="text-align:left head"><p>Our Choice</p></th>
@@ -700,7 +700,7 @@ predicted probabilties for the next crop  <span class="math notranslate nohighli
 <div class="section" id="filterbank-network">
 <h3>Filterbank Network<a class="headerlink" href="#filterbank-network" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table" id="filterbank-net-results">
-<caption><span class="caption-number">Table 5 </span><span class="caption-text">Filterbank Net vs FBCSP Accuracies. Std is standard deviation over the 18 subjects used here.</span><a class="headerlink" href="#filterbank-net-results" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 6 </span><span class="caption-text">Filterbank Net vs FBCSP Accuracies. Std is standard deviation over the 18 subjects used here.</span><a class="headerlink" href="#filterbank-net-results" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Decoding Method</p></th>
 <th class="head"><p>Sampling rate</p></th>
@@ -732,7 +732,7 @@ predicted probabilties for the next crop  <span class="math notranslate nohighli
 </tbody>
 </table>
 <p>Prior to our more extensive study, we had evaluated the filterbank network on a different version of the High-Gamma Dataset in a master thesis <span id="id13">[<a class="reference internal" href="References.html#id2" title="Robin Tibor Schirrmeister. Convolutional neural networks for movement decoding from eeg signals. Master's thesis, Albert-Ludwigs-Universität Freiburg, 2015.">Schirrmeister, 2015</a>]</span>. This version of the dataset included different subjects, as some subjects had not been recorded yet and other subjects were later excluded for the work here due to the presence of too many artifacts. Furthermore, we evaluated 150Hz and 300 Hz as sampling rates here, in the remainder we will use 250 Hz.</p>
-<p>The results in <a class="reference internal" href="#filterbank-net-results"><span class="std std-numref">Table 5</span></a> show that the Filterbank net outperformed FBCSP by 2.4% (300 Hz) and 1.3% (150 Hz) respectively. Despite the good performance, we did not evaluate this network further due to the very large GPU memory requirement of our implementation and our interest in evaluating more expressive architectures not as tightly constrained to implement FBCSP steps.</p>
+<p>The results in <a class="reference internal" href="#filterbank-net-results"><span class="std std-numref">Table 6</span></a> show that the Filterbank net outperformed FBCSP by 2.4% (300 Hz) and 1.3% (150 Hz) respectively. Despite the good performance, we did not evaluate this network further due to the very large GPU memory requirement of our implementation and our interest in evaluating more expressive architectures not as tightly constrained to implement FBCSP steps.</p>
 </div>
 <div class="section" id="convnets-reached-fbcsp-accuracies">
 <h3>ConvNets reached FBCSP accuracies<a class="headerlink" href="#convnets-reached-fbcsp-accuracies" title="Permalink to this headline">#</a></h3>
@@ -756,7 +756,7 @@ statistically significant differences were in direction of the ConvNets.</span><
 <p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text"><strong>Confusion matrices for FBCSP- and ConvNet-based decoding.</strong> Results are shown for the High-Gamma Dataset, on <span class="math notranslate nohighlight">\(0–f_\textrm{end}\)</span> Hz. Each entry of row r and column c for upper-left 4×4-square: Number of trials of target r predicted as class c (also written in percent of all trials). Bold diagonal corresponds to correctly predicted trials of the different classes. Percentages and colors indicate fraction of trials in this cell from all trials of the corresponding column (i.e., from all trials of the corresponding target class). The lower-right value corresponds to overall accuracy. Bottom row corresponds to sensitivity defined as the number of trials correctly predicted for class c/number of trials for class c. Rightmost column corresponds to precision defined as the number of trials correctly predicted for class r/number of trials predicted as class r. Stars indicate statistically significantly different values of ConvNet decoding from FBCSP, diamonds indicate statistically significantly different values between the shallow and deep ConvNets. P&lt;0.05: <span class="math notranslate nohighlight">\(\diamond\)</span>/*, P&lt;0.01: <span class="math notranslate nohighlight">\(\diamond\diamond\)</span>/**, P&lt;0.001: <span class="math notranslate nohighlight">\(\diamond\diamond\diamond\)</span>/***, Wilcoxon signed-rank test.</span><a class="headerlink" href="#confusion-mat-figure" title="Permalink to this image">#</a></p>
 </div>
 <table class="colwidths-auto table" id="hgd-class-mistakes-table">
-<caption><span class="caption-number">Table 6 </span><span class="caption-text">Decoding errors between class pairs. Results for the High-Gamma Dataset.  Number of trials where one class  was mistaken for the other for each decoding method, summed per class pair. The largest number of errors was between Hand(L) and Hand (R) for all three decoding methods, the second largest between Feet and Rest (on average across the three decoding methods). Together, these two class pairs accounted for more than 50% of all errors for all three decoding methods. In contrast, Hand (L and R) and Feet had a small number of errors irrespective of the decoding method used.</span><a class="headerlink" href="#hgd-class-mistakes-table" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 7 </span><span class="caption-text">Decoding errors between class pairs. Results for the High-Gamma Dataset.  Number of trials where one class  was mistaken for the other for each decoding method, summed per class pair. The largest number of errors was between Hand(L) and Hand (R) for all three decoding methods, the second largest between Feet and Rest (on average across the three decoding methods). Together, these two class pairs accounted for more than 50% of all errors for all three decoding methods. In contrast, Hand (L and R) and Feet had a small number of errors irrespective of the decoding method used.</span><a class="headerlink" href="#hgd-class-mistakes-table" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>Hand (L) / Hand (R)</p></th>
@@ -794,7 +794,7 @@ statistically significant differences were in direction of the ConvNets.</span><
 </tr>
 </tbody>
 </table>
-<p>Confusion matrices for the High-Gamma Dataset on 0–<span class="math notranslate nohighlight">\(f_{end}\)</span> Hz were very similar for FBCSP and both ConvNets (see <a class="reference internal" href="#confusion-mat-figure"><span class="std std-numref">Fig. 14</span></a>). The majority of all mistakes were due to discriminating between Hand (L) / Hand (R) and Feet / Rest, see Table <a class="reference internal" href="#hgd-class-mistakes-table"><span class="std std-numref">Table 6</span></a>. Seven entries of the confusion matrix had a statistically significant difference (p&lt;0.05, Wilcoxon signed-rank test) between the deep and the shallow ConvNet, in all of them the deep ConvNet performed better. Only two differences between the deep ConvNet and FBCSP were statistically significant (p&lt;0.05), none for the shallow  ConvNet and FBCSP. Confusion matrices for the BCI competition IV dataset 2a showed a larger variability and hence a less consistent pattern, possibly because of the much smaller number of trials.</p>
+<p>Confusion matrices for the High-Gamma Dataset on 0–<span class="math notranslate nohighlight">\(f_{end}\)</span> Hz were very similar for FBCSP and both ConvNets (see <a class="reference internal" href="#confusion-mat-figure"><span class="std std-numref">Fig. 14</span></a>). The majority of all mistakes were due to discriminating between Hand (L) / Hand (R) and Feet / Rest, see Table <a class="reference internal" href="#hgd-class-mistakes-table"><span class="std std-numref">Table 7</span></a>. Seven entries of the confusion matrix had a statistically significant difference (p&lt;0.05, Wilcoxon signed-rank test) between the deep and the shallow ConvNet, in all of them the deep ConvNet performed better. Only two differences between the deep ConvNet and FBCSP were statistically significant (p&lt;0.05), none for the shallow  ConvNet and FBCSP. Confusion matrices for the BCI competition IV dataset 2a showed a larger variability and hence a less consistent pattern, possibly because of the much smaller number of trials.</p>
 </div>
 </div>
 <div class="section" id="design-choices-affected-decoding-performance">
@@ -820,7 +820,7 @@ significant (p&gt;0.1) and showed a lot of variation between subjects.</p>
 <div class="section" id="results-on-bci-competition-iv-2b">
 <h2>Results on BCI Competition IV 2b<a class="headerlink" href="#results-on-bci-competition-iv-2b" title="Permalink to this headline">#</a></h2>
 <table class="colwidths-auto table" id="bcic-iv-2b-results">
-<caption><span class="caption-number">Table 7 </span><span class="caption-text">Kappa values on the BCIC IV 2b dataset. ConvNet kappa values show the difference to the FBCSP kappa value.</span><a class="headerlink" href="#bcic-iv-2b-results" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 8 </span><span class="caption-text">Kappa values on the BCIC IV 2b dataset. ConvNet kappa values show the difference to the FBCSP kappa value.</span><a class="headerlink" href="#bcic-iv-2b-results" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>FBCSP</p></th>
 <th class="head"><p>Deep ConvNet</p></th>
@@ -834,7 +834,7 @@ significant (p&gt;0.1) and showed a lot of variation between subjects.</p>
 </tr>
 </tbody>
 </table>
-<p>To ensure that the results also generalize to further datasets and also rule out hyperparameter overfitting, the FBCSP pipeline and the deep network pipelines were applied with the exact same hyperparameters on BCI Competition IV 2b. A few choices like the use of the decoding time window had been done after already seeing results from the evaluation sets of the High-Gamma dataset and the BCIC IV 2a dataset, hence it was valuable to validate the results on the BCIC IV 2b dataset. Results in <a class="reference internal" href="#bcic-iv-2b-results"><span class="std std-numref">Table 7</span></a> show that the networks perform as good or better than FBCSP. Results on further datasets, also non-movement-decoding datasets are presented in the next chapter.</p>
+<p>To ensure that the results also generalize to further datasets and also rule out hyperparameter overfitting, the FBCSP pipeline and the deep network pipelines were applied with the exact same hyperparameters on BCI Competition IV 2b. A few choices like the use of the decoding time window had been done after already seeing results from the evaluation sets of the High-Gamma dataset and the BCIC IV 2a dataset, hence it was valuable to validate the results on the BCIC IV 2b dataset. Results in <a class="reference internal" href="#bcic-iv-2b-results"><span class="std std-numref">Table 8</span></a> show that the networks perform as good or better than FBCSP. Results on further datasets, also non-movement-decoding datasets are presented in the next chapter.</p>
 </div>
 <div class="section" id="convnet-independent-visualizations">
 <h2>ConvNet-independent visualizations<a class="headerlink" href="#convnet-independent-visualizations" title="Permalink to this headline">#</a></h2>

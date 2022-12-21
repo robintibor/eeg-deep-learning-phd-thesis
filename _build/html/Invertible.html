@@ -84,6 +84,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Future Work" href="FutureWork.html" />
@@ -143,7 +145,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="Abstract.html">
-                    Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)
+                    Deep Learning for Brain-Signal Decoding from Electroencephalography
                 </a>
             </li>
         </ul>
@@ -373,6 +375,27 @@ title="Print to PDF"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="invertible-networks">
 <span id="id1"></span><h1>Invertible Networks<a class="headerlink" href="#invertible-networks" title="Permalink to this headline">#</a></h1>
+<p>Invertible networks are networks that are invertible by design, i.e., any network output can be bijectively mapped back to a corresponding input [refs]. The ability to invert any output back to the input enables different interpretability methods and furthermore allows training invertible networks as generative models via maximum likelhood.</p>
+<ul class="simple">
+<li><p>[todo explain]</p></li>
+</ul>
+<p><img alt="" src="_images/bcic_iv_2a_right_vs_rest.png" /></p>
+<div class="figure align-default" id="bcic-iv-2a-right-vs-rest">
+<img alt="_images/bcic_iv_2a_right_vs_rest.png" src="_images/bcic_iv_2a_right_vs_rest.png" />
+<p class="caption"><span class="caption-number">Fig. 38 </span><span class="caption-text">Right hand vs resting state class prototypes learned by an invertible network on the BCIC IV 2a dataset. Note the increased alpha oscillation for resting state, especially on the left side.</span><a class="headerlink" href="#bcic-iv-2a-right-vs-rest" title="Permalink to this image">#</a></p>
+</div>
+<p><img alt="" src="_images/bcic_iv_2a_right_vs_rest_C3.png" /></p>
+<div class="figure align-default" id="bcic-iv-2a-right-vs-rest-c3">
+<img alt="_images/bcic_iv_2a_right_vs_rest.png" src="_images/bcic_iv_2a_right_vs_rest.png" />
+<p class="caption"><span class="caption-number">Fig. 39 </span><span class="caption-text">Right hand vs resting state class prototypes learned by an invertible network on the BCIC IV 2a dataset, showing the C3 electrode. Note the increased alpha oscillation.</span><a class="headerlink" href="#bcic-iv-2a-right-vs-rest-c3" title="Permalink to this image">#</a></p>
+</div>
+<p>Class prototypes are one directly obtainable visualization of the trained invertible network. Here, the invertible network was trained as a class-conditional generative model via maximum likelihood with an extra classification loss [refs etc.]. To obtain the class protypes we first found the maxima of each class  distribution, i.e., of the learned class-conditional distribution <span class="math notranslate nohighlight">\(p_{\theta}(x|y_c)\)</span>. From that starting point, the synthetic prototypes were further optimized to minimize <span class="math notranslate nohighlight">\(L_{proto}(x) = -w_{prob}\log_{}\left(p_{\theta}\left(x\mid y_{c}\right)\right)\,-w_{class}\,\log_{}\left(p_{\theta}\left(y_{c}\mid x\right)\right)\)</span>.</p>
+<p>Prototypes for right hand vs resting state show a plausible discriminative pattern with increasing alpha oscillation of resting state compared to right hand, see <a class="reference internal" href="#bcic-iv-2a-right-vs-rest"><span class="std std-numref">Fig. 38</span></a>. Note that due to the discriminative training and the discriminative term in the optimization, these visualizations may show discriminative patterns that do not directly correspond to how actual signals for these classes look like. For example, in the actual data there may a decreasing right hand oscillation and a stable oscillation for resting state. See also the discussion in <a class="reference internal" href="PerturbationVisualization.html#perturbation-visualization-interpretation"><span class="std std-ref">Interpretation and limitations</span></a>.</p>
+<p>Todo:</p>
+<ul class="simple">
+<li><p>Neural architecture search</p></li>
+<li><p>Simplebits</p></li>
+</ul>
 </div>
 
     <script type="text/x-thebe-config">

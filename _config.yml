@@ -16,3 +16,9 @@ sphinx:
    - sphinx_subfigure
   config:
     bibtex_reference_style: author_year 
+    exclude_patterns:
+     - not-included-yet
+     - not-to-be-included
+     - _build
+     - docs
+     - images

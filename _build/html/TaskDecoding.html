@@ -143,7 +143,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="Abstract.html">
-                    Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)
+                    Deep Learning for Brain-Signal Decoding from Electroencephalography
                 </a>
             </li>
         </ul>
@@ -512,7 +512,7 @@ title="Print to PDF"
 <div class="section" id="decoding-different-mental-imageries">
 <h2>Decoding different mental imageries<a class="headerlink" href="#decoding-different-mental-imageries" title="Permalink to this headline">#</a></h2>
 <table class="colwidths-auto table" id="mixed-imagery-dataset-results">
-<caption><span class="caption-number">Table 8 </span><span class="caption-text">Accuracies on the Mixed-Imagery dataset. ConvNet accuracies show the difference to the FBCSP accuracy.</span><a class="headerlink" href="#mixed-imagery-dataset-results" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 9 </span><span class="caption-text">Accuracies on the Mixed-Imagery dataset. ConvNet accuracies show the difference to the FBCSP accuracy.</span><a class="headerlink" href="#mixed-imagery-dataset-results" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>FBCSP</p></th>
 <th class="head"><p>Deep ConvNet</p></th>
@@ -540,14 +540,14 @@ by cutting out time windows of 2 seconds with 1.5 second overlap from all trials
 6074 windows, S2: 21339, S3: 6197, S4: 4220), and both methods were evaluated using the accuracy of the
 predictions for all the 2-second windows for the last two runs of roughly 130 trials (S1: 129, S2: 160, S3:
 124, S4: 123).</p>
-<p>For the mixed imagery dataset, we find the deep ConvNet to perform slightly better and the shallow ConvNet to perform slightly worse than the FBCSP algorithm, as can be seen in <a class="reference internal" href="#mixed-imagery-dataset-results"><span class="std std-numref">Table 8</span></a>.</p>
+<p>For the mixed imagery dataset, we find the deep ConvNet to perform slightly better and the shallow ConvNet to perform slightly worse than the FBCSP algorithm, as can be seen in <a class="reference internal" href="#mixed-imagery-dataset-results"><span class="std std-numref">Table 9</span></a>.</p>
 </div>
 <div class="section" id="decoding-error-related-signals">
 <h2>Decoding error-related signals<a class="headerlink" href="#decoding-error-related-signals" title="Permalink to this headline">#</a></h2>
 <div class="section" id="decoding-observation-of-robots-making-errors">
 <h3>Decoding Observation of Robots Making Errors<a class="headerlink" href="#decoding-observation-of-robots-making-errors" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table" id="robot-ball-results">
-<caption><span class="caption-number">Table 9 </span><span class="caption-text">Accuracies for decoding watching of successful or unsuccessful robot-liquid pouring or ball-lifting.</span><a class="headerlink" href="#robot-ball-results" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 10 </span><span class="caption-text">Accuracies for decoding watching of successful or unsuccessful robot-liquid pouring or ball-lifting.</span><a class="headerlink" href="#robot-ball-results" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>robot task</p></th>
 <th class="head"><p>time interval</p></th>
@@ -589,7 +589,7 @@ predictions for all the 2-second windows for the last two runs of roughly 130 tr
 </tr>
 </tbody>
 </table>
-<p>In this study, we aimed to classify whether a person had watched a video of a successful or an unsuccessful attempt of a robot performing one of two tasks (lifting a ball or pouring liquid) based on EEG recorded during the video observation. We compared the performance of our deep ConvNet to that of regularized linear discriminant analysis (rLDA) and FBCSP in this task. Our results, presented in <a class="reference internal" href="#robot-ball-results"><span class="std std-numref">Table 9</span></a>, demonstrate that the deep ConvNet outperformed the other methods for both tasks and both decoding intervals.</p>
+<p>In this study, we aimed to classify whether a person had watched a video of a successful or an unsuccessful attempt of a robot performing one of two tasks (lifting a ball or pouring liquid) based on EEG recorded during the video observation. We compared the performance of our deep ConvNet to that of regularized linear discriminant analysis (rLDA) and FBCSP in this task. Our results, presented in <a class="reference internal" href="#robot-ball-results"><span class="std std-numref">Table 10</span></a>, demonstrate that the deep ConvNet outperformed the other methods for both tasks and both decoding intervals.</p>
 </div>
 <div class="section" id="decoding-of-eriksen-flanker-task-errors-and-errors-during-online-gui-control">
 <span id="flanker-and-gui-section"></span><h3>Decoding of Eriksen Flanker Task Errors and Errors during Online GUI Control<a class="headerlink" href="#decoding-of-eriksen-flanker-task-errors-and-errors-during-online-gui-control" title="Permalink to this headline">#</a></h3>
@@ -619,7 +619,7 @@ predictions for all the 2-second windows for the last two runs of roughly 130 tr
 <p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Overview of the proof-of-concept assistive system from <span id="id5">[<a class="reference internal" href="References.html#id41" title="Felix Burget, Lukas Dominique Josef Fiederer, Daniel Kuhner, Martin Völker, Johannes Aldinger, Robin Tibor Schirrmeister, Chau Do, Joschka Boedecker, Bernhard Nebel, Tonio Ball, and others. Acting thoughts: towards a mobile robotic service assistant for users with limited communication skills. In 2017 European Conference on Mobile Robots (ECMR), 1–6. IEEE, 2017.">Burget <em>et al.</em>, 2017</a>]</span> using the deep ConvNet in the BCI component. Robotic arm could be given high-level commands via the BCI, high-level commands were extracted from a knowledge base. The commands were then autonomously planned and executed by the robotic arm.</span><a class="headerlink" href="#robot-bci-overview-fig" title="Permalink to this image">#</a></p>
 </div>
 <table class="colwidths-auto table" id="bci-robot-results">
-<caption><span class="caption-number">Table 10 </span><span class="caption-text">Results for BCI control of the GUI. Accuracy is fraction of correct commands, time is time per command, steps is steps needed to reach the aim, path optimality is ratio of miniminally needed  nubmer of steps to actually used number of steps when every step is optimal, and time/step is time per step.</span><a class="headerlink" href="#bci-robot-results" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 11 </span><span class="caption-text">Results for BCI control of the GUI. Accuracy is fraction of correct commands, time is time per command, steps is steps needed to reach the aim, path optimality is ratio of miniminally needed  nubmer of steps to actually used number of steps when every step is optimal, and time/step is time per step.</span><a class="headerlink" href="#bci-robot-results" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Subject</p></th>
 <th class="head"><p>Runs</p></th>
@@ -681,14 +681,14 @@ predictions for all the 2-second windows for the last two runs of roughly 130 tr
 </tr>
 </tbody>
 </table>
-<p>We also evaluated the use of our deep ConvNet as part of an assistive robot system where the brain-computer interface was sending high-level commands to a robotic arm. In this proof-of-concept system, the robotic arm could be instructed by the user via the BCI to fetch a cup and directly move the cup to the persons mouth to drink from it. An overview can be seen in <a class="reference internal" href="#robot-bci-overview-fig"><span class="std std-numref">Fig. 23</span></a>. Results from <a class="reference internal" href="#bci-robot-results"><span class="std std-numref">Table 10</span></a> show that 3 out of 4 subjects had a command accuracy of more than 75% and were able to reach the target using less than twice the steps of the minimal path through the GUI (path optimality &gt; %50%).</p>
+<p>We also evaluated the use of our deep ConvNet as part of an assistive robot system where the brain-computer interface was sending high-level commands to a robotic arm. In this proof-of-concept system, the robotic arm could be instructed by the user via the BCI to fetch a cup and directly move the cup to the persons mouth to drink from it. An overview can be seen in <a class="reference internal" href="#robot-bci-overview-fig"><span class="std std-numref">Fig. 23</span></a>. Results from <a class="reference internal" href="#bci-robot-results"><span class="std std-numref">Table 11</span></a> show that 3 out of 4 subjects had a command accuracy of more than 75% and were able to reach the target using less than twice the steps of the minimal path through the GUI (path optimality &gt; %50%).</p>
 </div>
 <div class="section" id="intracranial-eeg-decoding">
 <h2>Intracranial EEG decoding<a class="headerlink" href="#intracranial-eeg-decoding" title="Permalink to this headline">#</a></h2>
 <div class="section" id="intracranial-eeg-decoding-of-eriksen-flanker-task">
 <h3>Intracranial EEG Decoding of Eriksen Flanker Task<a class="headerlink" href="#intracranial-eeg-decoding-of-eriksen-flanker-task" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table" id="intracranial-error-results-table">
-<caption><span class="caption-number">Table 11 </span><span class="caption-text">Results for single-channel intracranial decoding of errors during an Eriksen flanker task. Balanced Accuracy is the mean of the accuracies for correct class ground truth labels and error class ground truth labels.</span><a class="headerlink" href="#intracranial-error-results-table" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 12 </span><span class="caption-text">Results for single-channel intracranial decoding of errors during an Eriksen flanker task. Balanced Accuracy is the mean of the accuracies for correct class ground truth labels and error class ground truth labels.</span><a class="headerlink" href="#intracranial-error-results-table" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Classifier</p></th>
 <th class="head"><p>Balanced Accuracy  [%]</p></th>
@@ -763,7 +763,7 @@ predictions for all the 2-second windows for the last two runs of roughly 130 tr
 <div class="section" id="evaluation-on-large-scale-task-diverse-dataset">
 <h2>Evaluation on large-scale task-diverse dataset<a class="headerlink" href="#evaluation-on-large-scale-task-diverse-dataset" title="Permalink to this headline">#</a></h2>
 <table class="colwidths-auto table" id="large-framework-overview-table">
-<caption><span class="caption-number">Table 12 </span><span class="caption-text">Datasets for the large-scale evaluation framework.</span><a class="headerlink" href="#large-framework-overview-table" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 13 </span><span class="caption-text">Datasets for the large-scale evaluation framework.</span><a class="headerlink" href="#large-framework-overview-table" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name (Acronym)</p></th>
 <th class="head"><p>#Classes</p></th>
@@ -834,7 +834,7 @@ predictions for all the 2-second windows for the last two runs of roughly 130 tr
 <p class="caption"><span class="caption-number">Fig. 30 </span><span class="caption-text">Dataset-averaged results for the large-scale evaluation of deep ConvNet, shallow ConvNet and two versions of EEGNet. Accuracies are normalized to the average of the accuracies of all models.</span><a class="headerlink" href="#large-framework-averaged-results-fig" title="Permalink to this image">#</a></p>
 </div>
 <table class="colwidths-auto table" id="large-framework-results-table">
-<caption><span class="caption-number">Table 13 </span><span class="caption-text">Dataset-averaged results for the large-scale evaluation of deep ConvNet, shallow ConvNet and two versions of EEGNet. Accuracies are normalized to the average of the accuracies of all models.</span><a class="headerlink" href="#large-framework-results-table" title="Permalink to this table">#</a></caption>
+<caption><span class="caption-number">Table 14 </span><span class="caption-text">Dataset-averaged results for the large-scale evaluation of deep ConvNet, shallow ConvNet and two versions of EEGNet. Accuracies are normalized to the average of the accuracies of all models.</span><a class="headerlink" href="#large-framework-results-table" title="Permalink to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>Mean accuracy</p></th>
@@ -864,7 +864,7 @@ predictions for all the 2-second windows for the last two runs of roughly 130 tr
 </tr>
 </tbody>
 </table>
-<p>We also compared the deep and shallow ConvNet architectures as well as EEGNet on six classification tasks with more than 90000 trials in total (see <a class="reference internal" href="#large-framework-overview-table"><span class="std std-numref">Table 12</span></a>) <span id="id18">[<a class="reference internal" href="References.html#id35" title="Felix A Heilmeyer, Robin T Schirrmeister, Lukas DJ Fiederer, Martin Volker, Joos Behncke, and Tonio Ball. A large-scale evaluation framework for eeg deep learning architectures. In 2018 IEEE International Conference on Systems, Man, and Cybernetics (SMC), 1039–1045. IEEE, 2018.">Heilmeyer <em>et al.</em>, 2018</a>]</span>. The datasets tasks were all recorded in our lab and included the high-gamma dataset, three error-related tasks described before (Eriksen flanker task, robot grasping and robot pouring observations) as well as two tasks on semantic processing. In the semantic processing dataset, the classification tasks were to distinguish different types of words that a subject silently repeated <span id="id19">[<a class="reference internal" href="References.html#id33" title="V. Rau. Eeg correlates of inner speech. Bachelor's Thesis, University of Freiburg, DOI, 2015.">Rau, 2015</a>]</span>. The first task was to distinguish existing real words from nonexisting pseudowords. The second classification task was to distingiush three semantic categories (food, animals, tools) the word may belong to. The evaluation code for all models always used the original code and hyperparameters from the original studies in order to ensure a fair comparison. Results show that the deep ConvNet and the more recent version of EEGNet (EEGNetv2) perform similarly well, with shallow and an older version of EEGNet performing slightly worse, see  <a class="reference internal" href="#large-framework-per-dataset-results-fig"><span class="std std-numref">Fig. 29</span></a>, <a class="reference internal" href="#large-framework-averaged-results-fig"><span class="std std-numref">Fig. 30</span></a>  and <a class="reference internal" href="#large-framework-results-table"><span class="std std-numref">Table 13</span></a>.</p>
+<p>We also compared the deep and shallow ConvNet architectures as well as EEGNet on six classification tasks with more than 90000 trials in total (see <a class="reference internal" href="#large-framework-overview-table"><span class="std std-numref">Table 13</span></a>) <span id="id18">[<a class="reference internal" href="References.html#id35" title="Felix A Heilmeyer, Robin T Schirrmeister, Lukas DJ Fiederer, Martin Volker, Joos Behncke, and Tonio Ball. A large-scale evaluation framework for eeg deep learning architectures. In 2018 IEEE International Conference on Systems, Man, and Cybernetics (SMC), 1039–1045. IEEE, 2018.">Heilmeyer <em>et al.</em>, 2018</a>]</span>. The datasets tasks were all recorded in our lab and included the high-gamma dataset, three error-related tasks described before (Eriksen flanker task, robot grasping and robot pouring observations) as well as two tasks on semantic processing. In the semantic processing dataset, the classification tasks were to distinguish different types of words that a subject silently repeated <span id="id19">[<a class="reference internal" href="References.html#id33" title="V. Rau. Eeg correlates of inner speech. Bachelor's Thesis, University of Freiburg, DOI, 2015.">Rau, 2015</a>]</span>. The first task was to distinguish existing real words from nonexisting pseudowords. The second classification task was to distingiush three semantic categories (food, animals, tools) the word may belong to. The evaluation code for all models always used the original code and hyperparameters from the original studies in order to ensure a fair comparison. Results show that the deep ConvNet and the more recent version of EEGNet (EEGNetv2) perform similarly well, with shallow and an older version of EEGNet performing slightly worse, see  <a class="reference internal" href="#large-framework-per-dataset-results-fig"><span class="std std-numref">Fig. 29</span></a>, <a class="reference internal" href="#large-framework-averaged-results-fig"><span class="std std-numref">Fig. 30</span></a>  and <a class="reference internal" href="#large-framework-results-table"><span class="std std-numref">Table 14</span></a>.</p>
 </div>
 </div>
 

@@ -143,7 +143,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="Abstract.html">
-                    Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)
+                    Deep Learning for Brain-Signal Decoding from Electroencephalography
                 </a>
             </li>
         </ul>
@@ -430,7 +430,7 @@ title="Print to PDF"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="cropped-training">
 <span id="id1"></span><h1>Cropped Training<a class="headerlink" href="#cropped-training" title="Permalink to this headline">#</a></h1>
-<p>In this chapter, we describe a training strategy called “cropped training” for regularizing deep networks on EEG data. The goal of this strategy is to improve the performance of deep networks on the often relatively small EEG datasets by training them on many sliding temporal windows within the data. This approach had been similarly used as spatial cropping in computer vision, where networks are trained on multiple cropped versions of images. We first describe the concept of regular, non-cropped training and then introduce cropped training on a conceptual level. Finally, we discuss how to implement this approach efficiently. Our aim is to demonstrate the effectiveness and computational efficiency of cropped training as a regularization technique for deep networks on EEG data.</p>
+<p>In this chapter, we describe a training strategy called “cropped training” which addresses the problem of the relatively low number of training examples in typical EEG datasets. The goal of this strategy is to improve the performance of deep networks by training them on many sliding temporal windows within the data. This approach had been similarly used as spatial cropping in computer vision, where networks are trained on multiple cropped versions of images. We first describe the concept of regular, non-cropped training and then introduce cropped training on a conceptual level. Finally, we discuss how to implement this approach efficiently. Our aim is to demonstrate the effectiveness and computational efficiency of cropped training as a regularization technique for deep networks on EEG data.</p>
 <div class="section" id="non-cropped-trialwise-training">
 <h2>Non-Cropped/Trialwise Training<a class="headerlink" href="#non-cropped-trialwise-training" title="Permalink to this headline">#</a></h2>
 <div class="figure align-default" id="trialwise-figure">
