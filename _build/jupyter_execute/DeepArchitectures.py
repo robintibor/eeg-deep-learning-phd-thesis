@@ -4,6 +4,12 @@
 # (network-architectures)=
 # # Neural Network Architectures for EEG-Decoding
 
+# ```{admonition} Three progressively more generic architectures
+# * Shallow network learns temporal filters and later average-pools over large timeregions
+# * Deep network uses smaller temporal filters and max-pooling over small timeregions
+# * Residual network uses many layers with even smaller temporal filters
+# ```
+
 # We continued developing our neural network architectures with our EEG-specific development strategy of starting with networks that resemble feature-based algorithms. After the filterbank network from the master thesis, we adapted the so-called shallow network, initally also developed in the same master thesis {cite:p}`schirrmeister_msc_thesis_2015`. The shallow network still resembles filter bank common spatial patterns, but less closely than the filterbank network. After validating that these initial network architectures perform as well as filter bank common spatial patterns, we progressed to developing and evaluating more generic architectures.
 # 
 # In this section, I describe the architectures presented in our first publication on EEG deep learning decoding {cite:p}`schirrmeisterdeephbm2017`. This part uses text and figures from {cite:p}`schirrmeisterdeephbm2017` adapted for readibility in this thesis.
@@ -84,3 +90,8 @@
 # We also developed a residual network (ResNet {cite:p}`he_deep_2015`) for EEG decoding. Residual networks add the input of a residual computational block back to its output, and empirically this allows to stably train much deeper networks. We use the same residual blocks as the original paper, described in Figure {numref}`residual-net-figure`. Our ResNet used ELU activation functions throughout the network (same as the deep ConvNet) and also starts with a splitted temporal and spatial convolution (same as the deep and shallow ConvNets), followed by 14 residual blocks, mean pooling and a final softmax dense classification layer. 
 # 
 # In total, the ResNet has 31 convolutional layers, a depth where ConvNets without residual blocks started to show problems converging in the original ResNet paper {cite}`he_deep_2015`. In layers where the number of channels is increased, we padded the incoming feature map with zeros to match the new channel dimensionality for the shortcut, as in option A of the original paper {cite:p}`he_deep_2015`. The overall architecture is also shown in {numref}`residual-architectures-table`.
+
+# ```{admonition} Three diverse architectures...
+# :class: tip
+# * to be evaluated on motor-related decoding and other tasks
+# ```

@@ -4,6 +4,13 @@
 # (pathology)=
 # # Decoding Pathology
 
+# ```{admonition} ConvNets diagnose pathology with good accuracy even from very short amounts of time
+# * ConvNets reach around 85% accuracy
+# * Can reach high accuracies using a single minute per recording during inference
+# * Struggle with recordings where contextual features like age and sleep affect the doctors diagnosis
+# * Seem to learn temporal slowing indicates pathology, strong occipital alpha indicates healthy
+# ```
+
 # We also evaluated our deep ConvNets for automatic medical diagnosis from EEG. EEG is important in clinical practice both as a screening method as well as for hypothesis-based diagnostics, e.g., in epilepsy or stroke. One of the main limitations of using EEG for diagnostics is the required time and specialized knowledge of experts that need to be well-trained on EEG diagnostics to reach reliable results. Therefore, a deep-learning approach that aids in the diagnostic process could make EEG diagnosis more widely accessible, reduce time and effort for clinicians and potentially make diagnoses more accurate. Text and figures in this section are adapted from {cite:p}`schirrmeisterdeeppathology`.
 
 # ## Dataset and Preprocessing
@@ -49,6 +56,11 @@
 
 # We used our deep and shallow ConvNets with only minor modifications to the architecture. To use larger time windows to make a single prediction, we adapted the architectures by changing the final layer kernel length so the ConvNets have an input length of about 600 input samples, which correspond to 6 seconds for the 100 Hz EEG input. Additionally, we moved the pooling strides of the deep ConvNet to the convolutional layers directly before each pooling. This modification, which we initially considered a mistake, allowed us to grow the ConvNet input length without strongly increased computation times and
 # provided good accuracies in preliminary experiments on the training data; therefore we decided to keep it. 
+
+# ## Network training
+
+# As in other studies, we optimized the ConvNet parameters using stochastic gradient descent with the optimizer Adam  {cite}`kingma_adam:_2014`. To make best use of the available
+# data, we trained the ConvNets on maximally overlapping time crops using cropped training as described in {ref}`cropped-training`. Code to reproduce the results of this study is available under https://github.com/robintibor/auto-eeg-diagnosis-example.
 
 # ## Automatic architecture optimization
 
@@ -257,3 +269,8 @@
 # Still, to yield more clinically useful insights and diagnosis explanations, further improvements in ConvNet visualizations are needed.
 # Deep learning models that use an attention mechanism might be more interpretable, since these models can highlight which parts of the recording were most important for the decoding decision.
 # Other deep learning visualization methods like recent saliency map methods {cite}`kindermans_patternnet_2017, montavon_methods_2017` to explain individual decisions or conditional generative adversarial networks  {cite}`mirza_conditional_2014, springenberg_unsupervised_2015` to understand what makes a recording pathological or normal might further improve the clinical benefit of deep learning methods that decode pathological EEG.
+
+# ```{admonition}  Open Questions
+# :class: tip
+# * How to further visualize the features networks learn to diagnose pathology?
+# ```

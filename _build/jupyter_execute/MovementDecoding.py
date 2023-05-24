@@ -4,7 +4,15 @@
 # (movement-related)=
 # # Decoding Movement-Related Brain Activity
 
-# Movement-related decoding problems are among the most researched in EEG decoding and were hence our problem of choice for the first evaluation of deep learning on EEG. A typical movement-related experimental setting is that subjects receive a cue for a specific body part (e.g. right hand, feet, tongue, etc.) and either move (motor execution) or imagine to move (motor imagery) this body part. The EEG signals recorded during the imagined or executed movements then often contain patterns specific to the body part being moved or thought about. These patterns can then be decoded using machine learning. In the following, I will describe our study on movement-related EEG decoding using deep learning, mostly using content adapted from {cite:t}`schirrmeisterdeephbm2017`.
+# ```{admonition} ConvNets can perform as well as FBCSP on movement-related decoding
+# * Shallow network performs best on highpassed data
+# * Deep network strongly benefits from cropped training on non-highpassed data
+# * Residual network performs well with right initialization
+# * Methodological improvements from computer vision improve EEG deep learning decoding
+# * Visualizations reveal use of spectral power features with neurophysiologically plausible patterns
+# ```
+
+# Movement-related decoding problems are among the most researched in EEG decoding and were hence our problem of choice for the first evaluation of deep learning on EEG. A typical movement-related experimental setting is that subjects receive a cue for a specific body part (e.g. right hand, feet, tongue, etc.) and either move (motor execution) or imagine to move (motor imagery) this body part. The EEG signals recorded during the imagined or executed movements then often contain patterns specific to the body part being moved or thought about. These patterns can then be decoded using machine learning. In the following, I will describe our study on movement-related EEG decoding using deep learning, mostly using content adapted from {cite:t}`schirrmeisterdeephbm2017` and from {cite:p}`hartmann2018hierarchical`.
 
 # ## Datasets
 
@@ -168,6 +176,8 @@
 
 # Confusion matrices for the High-Gamma Dataset on 0--$f_{end}$ Hz were very similar for FBCSP and both ConvNets (see {numref}`confusion-mat-figure`). The majority of all mistakes were due to discriminating between Hand (L) / Hand (R) and Feet / Rest, see Table {numref}`hgd-class-mistakes-table`. Seven entries of the confusion matrix had a statistically significant difference (p<0.05, Wilcoxon signed-rank test) between the deep and the shallow ConvNet, in all of them the deep ConvNet performed better. Only two differences between the deep ConvNet and FBCSP were statistically significant (p<0.05), none for the shallow  ConvNet and FBCSP. Confusion matrices for the BCI competition IV dataset 2a showed a larger variability and hence a less consistent pattern, possibly because of the much smaller number of trials.
 
+# ## TODO: residual network results
+
 # (design-choices-results)=
 # ## Design Choices affected decoding performance
 
@@ -265,3 +275,102 @@
 # ```
 
 # Third, scalp maps of the input-perturbation effects on network predictions for the different frequency bands, as shown in {numref}`bandpower-perturbation-topo-fig`, show spatial distributions expected for motor tasks in the alpha, beta and—for the first time for such a noninvasive EEG decoding visualization—for the high gamma band. These scalp maps directly reflect the behavior of the ConvNets and one needs to be careful when making inferences about the data from them. For example, the positive correlation on the right side of the scalp for the Hand (R) class in the alpha band only means the ConvNet increased its prediction when the amplitude at these electrodes was increased independently of other frequency bands and electrodes. It does not imply that there was an increase of amplitude for the right hand class in the data. Rather, this correlation could be explained by the ConvNet reducing common noise between both locations, for more explanations of these effects in case of linear models, see {cite}`haufe_interpretation_2014`. Nevertheless, for the first time in noninvasive EEG, these maps clearly revealed the global somatotopic organization of causal contributions of motor cortical gamma band activity to decoding right and left hand and foot movements. Interestingly, these maps revealed highly focalized patterns, particularly during hand movement in the gamma frequency range ({numref}`bandpower-perturbation-topo-fig`, first plots in last row), in contrast to the more diffuse patterns in the conventional task-related spectral analysis as shown in {numref}`envelope-class-fig`.
+
+# ## Internal Representations of Amplitude and Phase
+
+# ![title](images/PhaseAmpDev_.pdf-1.png)
+
+# ```{figure} images/PhaseAmpDev_.pdf-1.png
+# ---
+# name: phase-amp-dev-layer-fig
+# ---
+# Mean phase and amplitude perturbation correlations over layers. Curves show mean perturbation correlation over all frequencies for each layer. Scales are different and written on the left and right y-axes. The error bars show the standard error over the subjects. Standard errors for phase and amplitude are similar, but much higher relatively in the amplitude correlation scale and therefore only visible there. In their respective scale, curves show a clearly inverse behavior over the layers with increasing amplitude correlations and decreasing phase correlations.
+# ```
+
+# ![title](images/PhaseAmp.pdf-1.png)
+
+# ```{figure} images/PhaseAmp.pdf-1.png
+# ---
+# name: phase-amp-layer-fig
+# ---
+# Mean of absolute phase and amplitude perturbation correlations for individual frequencies. The two correlation types have different scales, denoted by the left and right y-axis. As in {numref}`phase-amp-dev-layer-fig`, a clearly inverse relation between amplitude and phase correlations is visible. This visualization additionally showed that alpha (7-13 Hz), beta (13-30 Hz), and high gamma (50-100 Hz) frequency ranges each have a specific layer in which their phase correlation vanishes and their amplitude correlation saturates (high gamma in layer 2, beta in layer 3, and alpha in layer 4). Figure from {cite:t}`hartmann2018hierarchical`.
+# ```
+
+# The perturbation analysis showed that the earlier layers represent  more phase-specific features than later layers, while the later layers represent more phase-invariant amplitude features than the early layers. {numref}`phase-amp-dev-layer-fig` shows the average absolute phase perturbation correlation and amplitude perturbation correlation over the 4 convolutional layers. The figure shows a clearly opposing development of their respective average values across layers, with increasing amplitude perturbation correlations and decreasing phase perturbation correlations. 
+# 
+# The perturbation correlations for individual frequencies showed a strong phase perturbation correlation in the earlier layers 1 and 2 to phases in the alpha, beta, and high gamma range (see {numref}`phase-amp-layer-fig` ). The overall phase perturbation correlation was highest in layer 1 and gradually became lower over layers 2, 3, and 4. Interestingly, for each frequency band (alpha, beta, and high gamma), there was one specific layer in which the phase perturbation correlations vanished completely. Phase perturbation correlations for high gamma vanished in layer 2, correlations for beta vanished in layer 3, and correlations for alpha vanished in layer 4. This vanishing of phase correlations for high gamma in layer 2 could be observed in all subjects. For 4 subjects, alpha did already vanish together with beta in layer 3.
+# 
+# An opposite behavior could be observed for amplitude correlations. Notable phase insensitive amplitude perturbation correlations are only emerging in layer 2. Amplitude correlations of individual frequency bands peaked and saturated in the same layers in which the phase correlation vanished: High gamma amplitude perturbation correlation saturated in layer 2, beta in layer 3, and alpha in layer 4.
+# 
+# A potential underlying reason may be the use of max pooling with stride 3 after layers 1,2 and 3. The resulting temporal frequency resolutions of the intermediate representations when only taking into account the pooling strides are $\frac{250 \textrm{Hz}}{3} \approx 83\textrm{Hz}$,  $\frac{250 \textrm{Hz}}{3^2} \approx 28\textrm{Hz}$ and $\frac{250 \textrm{Hz}}{3^3} \approx 9\textrm{Hz}$. The corresponding Nyquist frequencies of approximately $41.5\textrm{Hz}$, $14\textrm{Hz}$ and $4.5\textrm{Hz}$ seem to correspond to frequency cutoffs above which the network is no longer phase-sensitive. However, note that the network is in principle capable of retaining phase sensitivity even in the presence of max pooling by shifting temporal information to its channel dimension.
+
+# ## Maximally activating units
+
+# ![title](images/Inputs1_struct.pdf-1.png)
+# ![title](images/Inputs2_struct.pdf-1.png)
+# ![title](images/Inputs3_struct.pdf-1.png)
+# ![title](images/Inputs4_struct.pdf-1.png)
+
+# .. subfigure:: AA|BC
+#    :layout-sm: A|B|C
+#    :gap: 8px
+#    :subcaptions: above
+#    :name: myfigure
+#    :class-grid: outline
+# 
+#    .. image:: images/Inputs1_struct.pdf-1.png
+#       :alt: Image A
+# 
+#    .. image:: images/Inputs2_struct.pdf-1.png
+#       :alt: Image B
+# 
+#    .. image:: images/Inputs3_struct.pdf-1.png
+#       :alt: Image C
+# 
+#     Figure Caption
+
+# ::::{grid}
+# :gutter: 2
+# 
+# :::{grid-item}
+# ```{figure} images/Inputs1_struct.pdf-1.png
+# :width: 100%
+# :name: maximally-activating-l1-fig
+# ```
+# :::
+# 
+# :::{grid-item}
+# ```{figure} images/Inputs2_struct.pdf-1.png
+# :width: 100%
+# :name: maximally-activating-l2-fig
+# 
+# ```
+# :::
+# ::::
+# ::::{grid}
+# :gutter: 2
+# 
+# :::{grid-item}
+# ```{figure} images/Inputs2_struct.pdf-1.png
+# :width: 100%
+# :name: maximally-activating-l3-fig
+# ```
+# :::
+# 
+# :::{grid-item}
+# ```{figure} images/Inputs3_struct.pdf-1.png
+# :width: 100%
+# :name: maximally-activating-l4-fig
+# 
+# ```
+# :::
+# ::::
+
+# In addition to examining how the individual layers respond to frequency-specific phase and amplitude, we were also interested in other characteristic features that might be learned by filters. To investigate other features than frequency-specific phase or amplitude of sinusoidal signals, we visually inspected the most-activating input windows of a filter and their median values for each timepoint.  igure \ref{fig:windows} shows the most-activating input windows of one randomly sampled filter for each subject and layer. We show each such set of most activating input windows here at a representative electrode.
+
+# ```{admonition} Open questions
+# :class: tip
+# * How well do ConvNets perform on other decoding tasks?
+# * Do they work on tasks where oscillatory features are less important?
+# * Do they work on non-trial based tasks like decoding pathology?
+# ```

@@ -22,3 +22,8 @@ sphinx:
      - _build
      - docs
      - images
+    html_context:
+      default_mode: "light"
+    html_theme_options:
+      navbar_end:
+        - "navbar-icon-links"

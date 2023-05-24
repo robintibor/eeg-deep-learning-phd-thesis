@@ -1,42 +1,53 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-theme="light">
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cropped Training &#8212; Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -76,7 +87,7 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -84,371 +95,292 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'CroppedTraining';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Perturbation Visualization" href="PerturbationVisualization.html" />
     <link rel="prev" title="Neural Network Architectures for EEG-Decoding" href="DeepArchitectures.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
-      
-      
-      <img src="_static/braindecode-logo.svg" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="Abstract.html">
-                    Deep Learning for Brain-Signal Decoding from Electroencephalography
-                </a>
-            </li>
-        </ul>
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="Abstract.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/braindecode-logo.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/braindecode-logo.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Introduction.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="PriorWork.html">
-   Prior Work
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FBCSPAndFBCSPNet.html">
-   Filterbank Common Spatial Patterns and Filterbank Network
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DeepArchitectures.html">
-   Neural Network Architectures for EEG-Decoding
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Cropped Training
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="PerturbationVisualization.html">
-   Perturbation Visualization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="MovementDecoding.html">
-   Decoding Movement-Related Brain Activity
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="TaskDecoding.html">
-   Generalization to Other Tasks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Pathology.html">
-   Decoding Pathology
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Invertible.html">
-   Invertible Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FutureWork.html">
-   Future Work
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="References.html">
-   References
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PriorWork.html">Prior Work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FBCSPAndFBCSPNet.html">Filter Bank Common Spatial Patterns and Filterbank Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DeepArchitectures.html">Neural Network Architectures for EEG-Decoding</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Cropped Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PerturbationVisualization.html">Perturbation Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MovementDecoding.html">Decoding Movement-Related Brain Activity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TaskDecoding.html">Generalization to Other Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pathology.html">Decoding Pathology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Invertible.html">Invertible Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FutureWork.html">Future Work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/CroppedTraining.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/CroppedTraining.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/CroppedTraining.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#non-cropped-trialwise-training">
-   Non-Cropped/Trialwise Training
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   Cropped Training
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computationally-faster-cropped-training">
-   Computationally Faster Cropped Training
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Cropped Training</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#non-cropped-trialwise-training">
-   Non-Cropped/Trialwise Training
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   Cropped Training
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computationally-faster-cropped-training">
-   Computationally Faster Cropped Training
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Cropped Training</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-cropped-trialwise-training">Non-Cropped/Trialwise Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Cropped Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computationally-faster-cropped-training">Computationally Faster Cropped Training</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <div class="tex2jax_ignore mathjax_ignore section" id="cropped-training">
-<span id="id1"></span><h1>Cropped Training<a class="headerlink" href="#cropped-training" title="Permalink to this headline">#</a></h1>
+<span id="id1"></span><h1>Cropped Training<a class="headerlink" href="#cropped-training" title="Permalink to this heading">#</a></h1>
+<div class="admonition-cropped-training-means-training-on-many-temporal-windows-within-one-input-example admonition">
+<p class="admonition-title">Cropped training means training on many temporal windows within one input example </p>
+<ul class="simple">
+<li><p>Greatly increases the number of training examples</p></li>
+<li><p>Can be made computationally efficient by avoiding redundant computations</p></li>
+</ul>
+</div>
 <p>In this chapter, we describe a training strategy called “cropped training” which addresses the problem of the relatively low number of training examples in typical EEG datasets. The goal of this strategy is to improve the performance of deep networks by training them on many sliding temporal windows within the data. This approach had been similarly used as spatial cropping in computer vision, where networks are trained on multiple cropped versions of images. We first describe the concept of regular, non-cropped training and then introduce cropped training on a conceptual level. Finally, we discuss how to implement this approach efficiently. Our aim is to demonstrate the effectiveness and computational efficiency of cropped training as a regularization technique for deep networks on EEG data.</p>
 <div class="section" id="non-cropped-trialwise-training">
-<h2>Non-Cropped/Trialwise Training<a class="headerlink" href="#non-cropped-trialwise-training" title="Permalink to this headline">#</a></h2>
+<h2>Non-Cropped/Trialwise Training<a class="headerlink" href="#non-cropped-trialwise-training" title="Permalink to this heading">#</a></h2>
 <div class="figure align-default" id="trialwise-figure">
 <img alt="_images/trialwise_explanation.png" src="_images/trialwise_explanation.png" />
 <p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Trialwise training example. An entire single trial is fed through the network and the network’s prediction is compared to the trial target to train the network.</span><a class="headerlink" href="#trialwise-figure" title="Permalink to this image">#</a></p>
 </div>
-<p>In the trialwise training of deep networks on EEG data, each example consists of the EEG signals from a single trial and its corresponding label. Due to the typically small size of EEG datasets, networks trained in this way may only be trained on a few hundred to a few thousand examples per subject. This is significantly fewer examples than those used to train networks in computer vision, where tens of thousands or even millions of images are commonly used.</p>
+<p>In the trialwise training of deep networks on EEG data, each example consists of the EEG signals from a single trial and its corresponding label. This might for example be a 4-second-trial where a subject moved the left hand, with the 4-second-signal as the input and the left hand as a label. Due to the typically small size of EEG datasets, networks trained in this way may only be trained on a few hundred to a few thousand examples per subject. This is significantly fewer examples than those used to train networks in computer vision, where tens of thousands or even millions of images are commonly used.</p>
 </div>
 <div class="section" id="id2">
-<h2>Cropped Training<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2>Cropped Training<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <div class="figure align-default" id="cropped-figure">
 <img alt="_images/cropped_explanation.png" src="_images/cropped_explanation.png" />
 <p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Cropped training example. A compute window contains many temporal windows (crops) inside that are used as individual examples to train the network.</span><a class="headerlink" href="#cropped-figure" title="Permalink to this image">#</a></p>
 </div>
-<p>Cropped training increases the number of training examples by training on many crops, i.e., temporal windows, within the trial.  For example, in a 4-second trial, all possible 2-second windows within the trial could be used as “independent” examples. This  approach drastically increases the number of training examples, although many of the examples are highly overlapping. This can be seen as an extreme version of the method to use random crops of images that is used to train deep networks in computer vision. However, a naive implementation of cropped training would greatly increase the computational cost per epoch due to the highly increased number of examples. Thankfully, the high overlap between neighbouring crops can be exploited for a more efficient implementation.</p>
+<p>Cropped training increases the number of training examples by training on many crops, i.e., temporal windows, within the trial.  For example, in a 4-second trial, all possible 2-second windows within the trial could be used as “independent” examples. This  approach drastically increases the number of training examples, although many of the examples are highly overlapping. This can be seen as an extreme version of the method to use random crops of images that is used to train deep networks in computer vision. A naive implementation of cropped training would greatly increase the computational cost per epoch due to the highly increased number of examples. Thankfully, the high overlap between neighbouring crops can be exploited for a more efficient implementation.</p>
 </div>
 <div class="section" id="computationally-faster-cropped-training">
-<h2>Computationally Faster Cropped Training<a class="headerlink" href="#computationally-faster-cropped-training" title="Permalink to this headline">#</a></h2>
+<h2>Computationally Faster Cropped Training<a class="headerlink" href="#computationally-faster-cropped-training" title="Permalink to this heading">#</a></h2>
 <div class="figure align-default" id="cropped-naive-computation-figure">
 <img alt="_images/Multiple_Prediction_Matplotlib_Graphics.ipynb.2.png" src="_images/Multiple_Prediction_Matplotlib_Graphics.ipynb.2.png" />
 <p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Naive cropped training toy example. Each possible length-5 crop is taken from the original length-7 trial and independently processed by the Conv-Conv-Linear projection network. All filter values of the network are assumed to be ones. Each crop is processed independently. The values in red are identical and unnecessarily computed independently for each crop.</span><a class="headerlink" href="#cropped-naive-computation-figure" title="Permalink to this image">#</a></p>
@@ -457,9 +389,15 @@ title="Print to PDF"
 <a class="reference internal image-reference" href="_images/Multiple_Prediction_Matplotlib_Graphics.ipynb.3.png"><img alt="_images/Multiple_Prediction_Matplotlib_Graphics.ipynb.3.png" src="_images/Multiple_Prediction_Matplotlib_Graphics.ipynb.3.png" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Efficient cropped training.</span><a class="headerlink" href="#cropped-efficient-computation-figure" title="Permalink to this image">#</a></p>
 </div>
-<p>Cropped training can be implemented with substantially less computations by exploiting that highly overlapping crops result in highly overlapping intermediate network activations. By passing a group of neighbouring crops together to the network, we can reuse intermediate computations. See <a class="reference internal" href="#cropped-naive-computation-figure"><span class="std std-numref">Fig. 10</span></a> and  <a class="reference internal" href="#cropped-efficient-computation-figure"><span class="std std-numref">Fig. 11</span></a> for a concrete example of this speedup method. This idea had been used in the same way for dense predictions on images, e.g. for segmentation <span id="id3">[<a class="reference internal" href="References.html#id177" title="A. Giusti, D. C. Cireşan, J. Masci, L. M. Gambardella, and J. Schmidhuber. Fast image scanning with deep max-pooling convolutional neural networks. In 2013 IEEE International Conference on Image Processing, 4034–4038. September 2013. doi:10.1109/ICIP.2013.6738831.">Giusti <em>et al.</em>, 2013</a>, <a class="reference internal" href="References.html#id210" title="Fabian Nasse, Christian Thurau, and Gernot A. Fink. Face detection using gpu-based convolutional neural networks. In International Conference on Computer Analysis of Images and Patterns, 83–90. Springer, 2009. URL: http://link.springer.com/chapter/10.1007/978-3-642-03767-2_10 (visited on 2017-01-09).">Nasse <em>et al.</em>, 2009</a>, <a class="reference internal" href="References.html#id139" title="Pierre Sermanet, David Eigen, Xiang Zhang, Michael Mathieu, Rob Fergus, and Yann LeCun. OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks. arXiv:1312.6229 [cs], December 2013. arXiv: 1312.6229. URL: http://arxiv.org/abs/1312.6229 (visited on 2016-08-12).">Sermanet <em>et al.</em>, 2013</a>, <a class="reference internal" href="References.html#id181" title="E. Shelhamer, J. Long, and T. Darrell. Fully Convolutional Networks for Semantic Segmentation. IEEE Transactions on Pattern Analysis and Machine Intelligence, PP(99):1–1, 2016. doi:10.1109/TPAMI.2016.2572683.">Shelhamer <em>et al.</em>, 2016</a>]</span>.</p>
+<p>Cropped training can be implemented with substantially less computations by exploiting that highly overlapping crops result in highly overlapping intermediate network activations. By passing a group of neighbouring crops together to the network, we can reuse intermediate computations. See <a class="reference internal" href="#cropped-naive-computation-figure"><span class="std std-numref">Fig. 10</span></a> and  <a class="reference internal" href="#cropped-efficient-computation-figure"><span class="std std-numref">Fig. 11</span></a> for a concrete example of this speedup method. This idea had been used in the same way for dense predictions on images, e.g. for segmentation <span id="id3">[<a class="reference internal" href="References.html#id179" title="A. Giusti, D. C. Cireşan, J. Masci, L. M. Gambardella, and J. Schmidhuber. Fast image scanning with deep max-pooling convolutional neural networks. In 2013 IEEE International Conference on Image Processing, 4034–4038. September 2013. doi:10.1109/ICIP.2013.6738831.">Giusti <em>et al.</em>, 2013</a>, <a class="reference internal" href="References.html#id212" title="Fabian Nasse, Christian Thurau, and Gernot A. Fink. Face detection using gpu-based convolutional neural networks. In International Conference on Computer Analysis of Images and Patterns, 83–90. Springer, 2009. URL: http://link.springer.com/chapter/10.1007/978-3-642-03767-2_10 (visited on 2017-01-09).">Nasse <em>et al.</em>, 2009</a>, <a class="reference internal" href="References.html#id141" title="Pierre Sermanet, David Eigen, Xiang Zhang, Michael Mathieu, Rob Fergus, and Yann LeCun. OverFeat: Integrated Recognition, Localization and Detection using Convolutional Networks. arXiv:1312.6229 [cs], December 2013. arXiv: 1312.6229. URL: http://arxiv.org/abs/1312.6229 (visited on 2016-08-12).">Sermanet <em>et al.</em>, 2013</a>, <a class="reference internal" href="References.html#id183" title="E. Shelhamer, J. Long, and T. Darrell. Fully Convolutional Networks for Semantic Segmentation. IEEE Transactions on Pattern Analysis and Machine Intelligence, PP(99):1–1, 2016. doi:10.1109/TPAMI.2016.2572683.">Shelhamer <em>et al.</em>, 2016</a>]</span>.</p>
 <p>Efficient cropped training then results in the exact same predictions and training as if the neighbouring crops were passed separately through the network. This is only true for networks that either use left-padding or no padding at all to the input and the intermediate activations. In the deep and shallow network described here, we do not use any padding. In the residual network, we use padding, hence the training is not exactly identical to passing neighbouring crops separately, but we still found it to improve over trial-wise training.</p>
-<p>The more efficient way to do cropped training introduces a new hyperparameter, the number of neighbouring crops that are decoded together. The larger this hyperparameter, the more computations are saved and the more speedup one gets (see <span id="id4">[<a class="reference internal" href="References.html#id177" title="A. Giusti, D. C. Cireşan, J. Masci, L. M. Gambardella, and J. Schmidhuber. Fast image scanning with deep max-pooling convolutional neural networks. In 2013 IEEE International Conference on Image Processing, 4034–4038. September 2013. doi:10.1109/ICIP.2013.6738831.">Giusti <em>et al.</em>, 2013</a>]</span> for a more detailed speedup analysis on images). Larger numbers of neighbouring crops that are trained on simultanaeously require more memory and may also affect the training dynamics due to more neighbouring crops being in the same mini-batch. However, we did not find negative effects on the training dynamics from larger number of simultaneously decoded neighbouring crops, consistent with prior work in computer vision <span id="id5">[<a class="reference internal" href="References.html#id181" title="E. Shelhamer, J. Long, and T. Darrell. Fully Convolutional Networks for Semantic Segmentation. IEEE Transactions on Pattern Analysis and Machine Intelligence, PP(99):1–1, 2016. doi:10.1109/TPAMI.2016.2572683.">Shelhamer <em>et al.</em>, 2016</a>]</span>.</p>
+<p>The more efficient way to do cropped training introduces a new hyperparameter, the number of neighbouring crops that are decoded together. The larger this hyperparameter, the more computations are saved and the more speedup one gets (see <span id="id4">[<a class="reference internal" href="References.html#id179" title="A. Giusti, D. C. Cireşan, J. Masci, L. M. Gambardella, and J. Schmidhuber. Fast image scanning with deep max-pooling convolutional neural networks. In 2013 IEEE International Conference on Image Processing, 4034–4038. September 2013. doi:10.1109/ICIP.2013.6738831.">Giusti <em>et al.</em>, 2013</a>]</span> for a more detailed speedup analysis on images). Larger numbers of neighbouring crops that are trained on simultanaeously require more memory and may also affect the training dynamics due to more neighbouring crops being in the same mini-batch. However, we did not find negative effects on the training dynamics from larger number of simultaneously decoded neighbouring crops, consistent with prior work in computer vision <span id="id5">[<a class="reference internal" href="References.html#id183" title="E. Shelhamer, J. Long, and T. Darrell. Fully Convolutional Networks for Semantic Segmentation. IEEE Transactions on Pattern Analysis and Machine Intelligence, PP(99):1–1, 2016. doi:10.1109/TPAMI.2016.2572683.">Shelhamer <em>et al.</em>, 2016</a>]</span>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Cropped training has potential to improve performance on small EEG datasets</p>
+<ul class="simple">
+<li><p>In which settings (datasets/architectures) does it help or hurt?</p></li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -475,7 +413,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -483,50 +421,107 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="DeepArchitectures.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Neural Network Architectures for EEG-Decoding</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DeepArchitectures.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Neural Network Architectures for EEG-Decoding</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="PerturbationVisualization.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="PerturbationVisualization.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Perturbation Visualization</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By The Jupyter Book community<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-cropped-trialwise-training">Non-Cropped/Trialwise Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Cropped Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computationally-faster-cropped-training">Computationally Faster Cropped Training</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

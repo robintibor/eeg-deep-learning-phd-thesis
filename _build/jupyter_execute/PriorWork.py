@@ -11,6 +11,8 @@
 # * Most studies only compared few design choices and training strategies
 # ```
 
+# Prior to 2017, when the first work presented in this thesis was published, there was only limited literature on EEG decoding with deep learning. In this chapter, I outline what decoding problems, input representations, network architectures, hyperparameter choices and visualizations were evaluated in prior work. This is based on the literature research that we presented in (cite:p}`schirrmeisterdeephbm2017`.
+
 # ## Decoding Problems and Baselines
 
 # ```{table} Decoding problems in deep-learning EEG decoding studies prior to our work. Studies with external baseline compared their decoding results to an external baseline result by other authors.
@@ -26,7 +28,7 @@
 # |Driver Performance|1|0|
 # ```
 
-# Prior to 2017, when the first work presented in this thesis was published, there was only limited literature on EEG decoding with deep learning. From 19 studies we identified at the time, only 5 compared their decoding results to an external baseline result, limiting the evaluation of the decoding results.  The most widely studied decoding problems were mvoement-related decoding problems such as decoding which body part (hand, feet etc.) a person is moving or imagining to move (see {numref}`prior-work-tasks-table`). To advance the understanding of EEG deep learning decoding, we therefore decided to first focus on widely researched movement-related decoding tasks and compare to a strong feature-based baseline (see {ref}`fbscp-and-filterbank-net`).
+# The most widely studied decoding problems were movement-related decoding problems such as decoding which body part (hand, feet etc.) a person is moving or imagining to move (see {numref}`prior-work-tasks-table`). From the 19 studies we identified at the time, only 5 compared their decoding results to an external baseline result, limiting how much one can learn about the deep-learning decoding performance. To advance the understanding of decoding EEG using deep learning, we therefore decided to first focus on those widely researched movement-related decoding tasks and include a comparison to a strong feature-based baseline (see {ref}`fbscp-and-filterbank-net`).
 
 # ## Input Domains and Frequency Ranges
 
@@ -214,11 +216,11 @@ None
 # |{cite}`cecotti_convolutional_2011` | Weights | Spatial filters were similar for different architectures <br>Spatial filters were different (more focal, more diffuse) for different subjects |
 # ```
 
-# Visualizations can help understand what information the networks are extracting from the EEG signal. 11 of the prior 19 studies presented any visualizations. These studies mostly focussed on analyzing weights and activations, see {numref}`prior-work-visualizations-table`. In our work, we focused on investigating how far the networks extract features known to work well for movement-related decoding, see {ref}`perturbation-visualization`.
+# Visualizations can help understand what information the networks are extracting from the EEG signal. 11 of the prior 19 studies presented any visualizations. These studies mostly focused on analyzing weights and activations, see {numref}`prior-work-visualizations-table`. In our work, we first focused on investigating how far the networks extract spectral features known to work well for movement-related decoding, see {ref}`perturbation-visualization`. Later, we also developed more sophisticated visualization methods and applied them both to movement-related decoding as well as to pathology decoding, see {ref}`invertible-networks`.
 
 # ```{admonition} We aimed to thoroughly evaluate deep-learning-based EEG decoding by...
 # :class: tip
-# * using well-researched EEG movement-related decoding tasks with strong baselines
+# * using well-researched EEG movement-related decoding tasks with strong feature-based baselines
 # * using a dataset suitable to analyze extraction of higher-frequency information
 # * trying shallower EEG-specific as well as deeper more generic architectures
 # * evaluating many design choices and two training strategies
