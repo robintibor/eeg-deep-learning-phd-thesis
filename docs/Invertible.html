@@ -1,42 +1,53 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-theme="light">
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Invertible Networks &#8212; Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -76,7 +87,7 @@ var addUtterances = () => {
 }
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -86,314 +97,386 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Invertible';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Future Work" href="FutureWork.html" />
     <link rel="prev" title="Decoding Pathology" href="Pathology.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
-      
-      
-      <img src="_static/braindecode-logo.svg" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="Abstract.html">
-                    Deep Learning for Brain-Signal Decoding from Electroencephalography
-                </a>
-            </li>
-        </ul>
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="Abstract.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/braindecode-logo.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/braindecode-logo.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Introduction.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="PriorWork.html">
-   Prior Work
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FBCSPAndFBCSPNet.html">
-   Filterbank Common Spatial Patterns and Filterbank Network
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DeepArchitectures.html">
-   Neural Network Architectures for EEG-Decoding
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CroppedTraining.html">
-   Cropped Training
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="PerturbationVisualization.html">
-   Perturbation Visualization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="MovementDecoding.html">
-   Decoding Movement-Related Brain Activity
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="TaskDecoding.html">
-   Generalization to Other Tasks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Pathology.html">
-   Decoding Pathology
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Invertible Networks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="FutureWork.html">
-   Future Work
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="References.html">
-   References
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PriorWork.html">Prior Work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FBCSPAndFBCSPNet.html">Filter Bank Common Spatial Patterns and Filterbank Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DeepArchitectures.html">Neural Network Architectures for EEG-Decoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CroppedTraining.html">Cropped Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PerturbationVisualization.html">Perturbation Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MovementDecoding.html">Decoding Movement-Related Brain Activity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TaskDecoding.html">Generalization to Other Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pathology.html">Decoding Pathology</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Invertible Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FutureWork.html">Future Work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/Invertible.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Invertible.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/Invertible.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
       
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
+    </div>
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
 </div>
-
-    </div>
 </div>
+              
+              
 
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-</div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Invertible Networks</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Invertible Networks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-models-via-maximum-likelihood">Generative models via maximum likelihood</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-classifiers">Generative classifiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invertible-network-for-eeg-decoding">Invertible Network for EEG Decoding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-invertible-networks-for-pathology-decoding">Generative Invertible Networks for Pathology Decoding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-a-small-interpretable-network">Learning a small interpretable network</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <div class="tex2jax_ignore mathjax_ignore section" id="invertible-networks">
-<span id="id1"></span><h1>Invertible Networks<a class="headerlink" href="#invertible-networks" title="Permalink to this headline">#</a></h1>
-<p>Invertible networks are networks that are invertible by design, i.e., any network output can be bijectively mapped back to a corresponding input [refs]. The ability to invert any output back to the input enables different interpretability methods and furthermore allows training invertible networks as generative models via maximum likelhood.</p>
+<span id="id1"></span><h1>Invertible Networks<a class="headerlink" href="#invertible-networks" title="Permalink to this heading">#</a></h1>
+<p>Invertible networks are networks that are invertible by design, i.e., any network output can be mapped back to a corresponding input [refs] bijectively. The ability to invert any output back to the input enables different interpretability methods and furthermore allows training invertible networks as generative models via maximum likelihood.</p>
+<p>The background chapter starts by explaining how to design invertible networks, proceeds to detail their training methodologies as generative models or classifiers, and goes on to outline interpretability techniques that help reveal the learned features crucial for their classification tasks. We then present the results of invertible networks trained to decode pathology from EEG, showing competitive results with regular deep convolutional networks. Our visualizations show the network uses slowing, i.e. increased amplitudes in the lower frequencies as well as spikes/burts as markers that indicate pathology and a strong stable alpha rhythm, especially on the posterior electrodes as markers for normal EEG.</p>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<p>[Figure coupling blocks]</p>
 <ul class="simple">
-<li><p>[todo explain]</p></li>
+<li><p>you could have a figure here with time series and half of time series computed sth, then additive coefficient added</p></li>
+</ul>
+<p>Invertible networks, a type of neural networks, use layers constructed specifically to maintain invertibility, thereby rendering the entire network structure invertible. Often-used invertible layers are coupling layers, invertible linear layers and activation normalization layers as explained in the following.</p>
+<p>Coupling layers work by splitting a d-dimensional input <span class="math notranslate nohighlight">\(x\)</span> into two parts <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> of <span class="math notranslate nohighlight">\(d_1\)</span> and <span class="math notranslate nohighlight">\(d_2\)</span> dimensions with <span class="math notranslate nohighlight">\(d_1 + d_2 = d\)</span>. For example in a timeseries one may take the input at all the even time indices as <span class="math notranslate nohighlight">\(x_1\)</span> and all the odd time indices as <span class="math notranslate nohighlight">\(x_2\)</span> odd time indices. Then, one transforms <span class="math notranslate nohighlight">\(x_1\)</span> in an invertible way (e.g., by adding something to it) based on computations only performed on <span class="math notranslate nohighlight">\(x_2\)</span>, while leaving <span class="math notranslate nohighlight">\(x_2\)</span> unchanged. For, example additive coupling works as follows:
+<span class="math notranslate nohighlight">\(y_1 = x_1 + f(x_2); y_2=x_2\)</span>, with <span class="math notranslate nohighlight">\(f\)</span> being an arbitrary function, e.g., any (potentially non-invertible) neural network. It can be inverted given <span class="math notranslate nohighlight">\(y_1\)</span> and <span class="math notranslate nohighlight">\(y_2\)</span> as follows: <span class="math notranslate nohighlight">\(x_1 = y_1 - f(y_2); x_2=y_2\)</span>. Instead of addition one may use any other invertible function, a common one is an affine transformation where <span class="math notranslate nohighlight">\(f\)</span> produces translation and scaling coefficients <span class="math notranslate nohighlight">\(f_t\)</span> and <span class="math notranslate nohighlight">\(f_s\)</span>:
+<span class="math notranslate nohighlight">\(y_1 = x_1 \cdot f_s(x_2) + f_t(x_2); y_2=x_2\)</span>, with inversion <span class="math notranslate nohighlight">\(x_1 = \frac{(y_1  - f_t(x_2))}{f_s(x_2)}; y_2=x_2\)</span>.
+The splitting of dimensions can be done in multiply ways, like using odd or even indices or using difference and mean between two neighbouring samples (akin to one stage of a Haar Wavelet).</p>
+<p>Invertible linear layers compute an invertible linear transformation (an automorphism) of their input. Concretely they multiply a <span class="math notranslate nohighlight">\(d\)</span>-dimensional vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> with a <span class="math notranslate nohighlight">\(dxd\)</span>-dimensional matrix <span class="math notranslate nohighlight">\(W\)</span>, where the <span class="math notranslate nohighlight">\(W\)</span> has to be invertible, i.e., have nonzero determinant.
+<span class="math notranslate nohighlight">\(y=W \mathbf{x}\)</span> with inverse <span class="math notranslate nohighlight">\(x=W^{-1} \mathbf{y}\)</span>. For multidimensional arrays like feature maps in a convolutional network, these linear transformations are usually done per-position, as so-called invertible 1x1 convolutions in the 2d case.</p>
+<p>Activation normalization layers perform an affine transformation with learned parameters, e.g., <span class="math notranslate nohighlight">\(y=x\cdot s+t\)</span>, with <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span> learned scaling and translation parameters. These have also been used to replace batch normalization and initialized data-dependently to maintain unit variance at the beginning of training.</p>
+</div>
+<div class="section" id="generative-models-via-maximum-likelihood">
+<h2>Generative models via maximum likelihood<a class="headerlink" href="#generative-models-via-maximum-likelihood" title="Permalink to this heading">#</a></h2>
+<p>Invertible networks can also be trained as generative models via maximum likelihood. In maximum likelihood training, the network is optimized to maximize the probability densities of the training inputs. For that, the network maps the inputs into a latent space such that the probability densities are maximized under a predefined prior within this latent space, e.g., a Gaussian distribution. In addition, for these probability densities to form a valid probability distribution in the input space, one has to account for how much the network’s mapping function squeezes and expands volume. We’ll proceed to illustrate this in an example below.</p>
+<p><span class="math notranslate nohighlight">\(p(x) = p_\textrm{prior}(f(x)) \cdot  | \det \left( \frac{\partial \mathbf{f}}{\partial \mathbf{x}} \right)|\)</span></p>
+<ul class="simple">
+<li><p>figure for that (map samples to latent space, shift achagne volume, latent dist just 3 bars, invert show how dist looks in input soace, what it integrates to</p></li>
+<li><p>etc.</p></li>
+</ul>
+</div>
+<div class="section" id="generative-classifiers">
+<h2>Generative classifiers<a class="headerlink" href="#generative-classifiers" title="Permalink to this heading">#</a></h2>
+<p>Invertible networks trained as class-conditional generative models can also be used as classifiers. Class-conditional generative networks may be implemented in different ways, for example with a separate prior in latent space for each class. Given the class-conditional probability densities <span class="math notranslate nohighlight">\(p(x|c_i)\)</span>, one can obtain class probabilities via Bayes formula as <span class="math notranslate nohighlight">\(p(c_i|x)=\frac{p(x|c_i)}{\sum_jp(x|c_j)}\)</span>.</p>
+<p>Pure class-conditional generative training may not yield networks that perform well as classifiers. The reason is that at least in theory, the relative reductions in maximum likelihood loss one obtains from knowing the class label are very small for high-dimensional inputs, for example much smaller than typical differences between two runs of the same network [REF]. This is understandable from a compression perspective, so using that under Shannon’s theorem more probable inputs need less bits to encode than less likely inputs, or more precisely <span class="math notranslate nohighlight">\(\textrm{Number of bits needed}(x) = \log_2 p(x)\)</span>. Even if you assume some one needs only 1 bit per dimension, a high-dimensional input like our 2688-dimensional EEG signal will need 2688 bits to encode. How many bits are needed for the class information? To distinguish between n classes, one needs only <span class="math notranslate nohighlight">\(\log_2(n)\)</span> bits, so in case of binary pathology classification, only 1 bit is needed, therefore the optimal class-conditional model will only be 1 bit better than the optimal class-independent model. In contrast, the loss difference between two training runs of the same network will typically be at least 1 to two orders of magnitude larger. In practice, the gains from using a class-conditional model, by e.g., using a separate prior per class in latent space, are usually larger, but it is not a priori clear if the reductions in loss from exploiting the class label are high enough to result in a good classification model.</p>
+<p>Various methods have been proposed to improve the performance of using generative classifiers. For example, people have fixed the per-class latent gaussian priors so that they retain the same distance throughout training [Ref Pavel] or added a classification loss term <span class="math notranslate nohighlight">\(L_class(x)=\log_2 (...etc softmax) \)</span> to the training [Ref VIB heidelberg]. In our work, we experimented with adding a classification loss term to the training, and also found using a learned temperature before the softmax helps the training.</p>
+</div>
+<div class="section" id="invertible-network-for-eeg-decoding">
+<h2>Invertible Network for EEG Decoding<a class="headerlink" href="#invertible-network-for-eeg-decoding" title="Permalink to this heading">#</a></h2>
+<p>We designed an invertible network for EEG Decoding using invertible components used in the literature, primarily from the Glow architecture [REF]. Our architecture consists of three stages that operate on sequentially lower temporal resolutions. Similar to glow, the individual stages consists of several blocks of Activation Normalization, Invertible Linear Channel Transformations and Coupling Layers. Between each stage, we downsample by computing the mean and difference of two neighbouring timepoints and moving these into the channel dimension. Unlike Glow, we keep processing all dimensions throughout all stages, finding this architecture to reach competitive accuracy on pathology decoding.</p>
+<p>[diagram]</p>
+<div class="section" id="generative-invertible-networks-for-pathology-decoding">
+<h3>Generative Invertible Networks for Pathology Decoding<a class="headerlink" href="#generative-invertible-networks-for-pathology-decoding" title="Permalink to this heading">#</a></h3>
+<p>We apply our EEG-InvNet to pathology decoding as in .. We chose pathology decoding as  (i)n the question which learned features the networks uses to diagnose pathology seemed especially fascinating to us (ii) the TUH dataset is especially large.</p>
+<ul class="simple">
+<li><p>Same accuracy as other good networks</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Deep</p></th>
+<th class="head"><p>Shallow</p></th>
+<th class="head"><p>TCN</p></th>
+<th class="head"><p>EEGNet</p></th>
+<th class="head"><p>EEG-InvNet Disc</p></th>
+<th class="head"><p>EEG-InvNet Gen</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>84.6</p></td>
+<td><p>84.1</p></td>
+<td><p>86.2</p></td>
+<td><p>83.4</p></td>
+<td><p>85.5</p></td>
+<td><p>77.2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="figure align-default" id="disc-invnet-prototypes">
+<img alt="_images/net-disc-prototypes.png" src="_images/net-disc-prototypes.png" />
+<p class="caption"><span class="caption-number">Fig. 40 </span><span class="caption-text">Learned Class Prototypes from Invertible Network. Obtained by inverting learned means of class-conditional gaussian distributions from latent space to input space through the invertible network trained for pathology decoding.</span><a class="headerlink" href="#disc-invnet-prototypes" title="Permalink to this image">#</a></p>
+</div>
+<div class="figure align-default" id="marginal-chan">
+<img alt="_images/marginal-chan.png" src="_images/marginal-chan.png" />
+<p class="caption"><span class="caption-number">Fig. 41 </span><span class="caption-text">Learned Per-Channel Prototypes from Invertible Network. Each channels’ input is optimized independently to increase the invertible networks prediction for the respective class. During that optimization, signals for the other non-optimized channels are sampled from the training data.</span><a class="headerlink" href="#marginal-chan" title="Permalink to this image">#</a></p>
+</div>
+</div>
+<div class="section" id="learning-a-small-interpretable-network">
+<h3>Learning a small interpretable network<a class="headerlink" href="#learning-a-small-interpretable-network" title="Permalink to this heading">#</a></h3>
+<div class="figure align-default" id="id2">
+<img alt="_images/cos-sim-net-pattern.png" src="_images/cos-sim-net-pattern.png" />
+<p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">Visualization of small interpretable network trained to mimic the EEG-InvNet. Signals are colored by weights of a model that learns to predict strength of output of that signals cosine similarity from overall output.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</div>
+<p>Results:</p>
+<ul class="simple">
+<li><p>Best results</p>
+<ul>
+<li><p>Try recreating all results for n_class_independent</p></li>
+<li><p>Show that it works as good as others</p>
+<ul>
+<li><p>Small table for that</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Prototypes for pathological</p></li>
+<li><p>Optimize per Chan Marginal Probability</p></li>
+<li><p>Small Cos Net that recreates</p></li>
+<li><p>(low freq?)</p></li>
+<li><p>Mean Zs for medications etc.?excessive beta/excessive theta? and one medication</p></li>
+</ul>
+<ul class="simple">
+<li></li>
 </ul>
 <div class="figure align-default" id="bcic-iv-2a-right-vs-rest">
 <img alt="_images/bcic_iv_2a_right_vs_rest.png" src="_images/bcic_iv_2a_right_vs_rest.png" />
-<p class="caption"><span class="caption-number">Fig. 38 </span><span class="caption-text">Right hand vs resting state class prototypes learned by an invertible network on the BCIC IV 2a dataset. Note the increased alpha oscillation for resting state, especially on the left side.</span><a class="headerlink" href="#bcic-iv-2a-right-vs-rest" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text">Right hand vs resting state class prototypes learned by an invertible network on the BCIC IV 2a dataset. Note the increased alpha oscillation for resting state, especially on the left side.</span><a class="headerlink" href="#bcic-iv-2a-right-vs-rest" title="Permalink to this image">#</a></p>
 </div>
 <div class="figure align-default" id="bcic-iv-2a-right-vs-rest-c3">
 <img alt="_images/bcic_iv_2a_right_vs_rest.png" src="_images/bcic_iv_2a_right_vs_rest.png" />
-<p class="caption"><span class="caption-number">Fig. 39 </span><span class="caption-text">Right hand vs resting state class prototypes learned by an invertible network on the BCIC IV 2a dataset, showing the C3 electrode. Note the increased alpha oscillation.</span><a class="headerlink" href="#bcic-iv-2a-right-vs-rest-c3" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 44 </span><span class="caption-text">Right hand vs resting state class prototypes learned by an invertible network on the BCIC IV 2a dataset, showing the C3 electrode. Note the increased alpha oscillation.</span><a class="headerlink" href="#bcic-iv-2a-right-vs-rest-c3" title="Permalink to this image">#</a></p>
 </div>
-<p>Class prototypes are one directly obtainable visualization of the trained invertible network. Here, the invertible network was trained as a class-conditional generative model via maximum likelihood with an extra classification loss [refs etc.]. To obtain the class protypes we first found the maxima of each class  distribution, i.e., of the learned class-conditional distribution <span class="math notranslate nohighlight">\(p_{\theta}(x|y_c)\)</span>. From that starting point, the synthetic prototypes were further optimized to minimize <span class="math notranslate nohighlight">\(L_{proto}(x) = -w_{prob}\log_{}\left(p_{\theta}\left(x\mid y_{c}\right)\right)\,-w_{class}\,\log_{}\left(p_{\theta}\left(y_{c}\mid x\right)\right)\)</span>.</p>
-<p>Prototypes for right hand vs resting state show a plausible discriminative pattern with increasing alpha oscillation of resting state compared to right hand, see <a class="reference internal" href="#bcic-iv-2a-right-vs-rest"><span class="std std-numref">Fig. 38</span></a>. Note that due to the discriminative training and the discriminative term in the optimization, these visualizations may show discriminative patterns that do not directly correspond to how actual signals for these classes look like. For example, in the actual data there may a decreasing right hand oscillation and a stable oscillation for resting state. See also the discussion in <a class="reference internal" href="PerturbationVisualization.html#perturbation-visualization-interpretation"><span class="std std-ref">Interpretation and limitations</span></a>.</p>
+<p>Class prototypes are a visualization obtainable from the trained invertible network. Here, the invertible network was trained as a class-conditional generative model via maximum likelihood with an extra classification loss [refs etc.]. To obtain the class protypes we first found the maxima of each class  distribution, i.e., of the learned class-conditional distribution <span class="math notranslate nohighlight">\(p_{\theta}(x|y_c)\)</span>. From that starting point, the synthetic prototypes were further optimized to minimize <span class="math notranslate nohighlight">\(L_{proto}(x) = -w_{prob}\log_{}\left(p_{\theta}\left(x\mid y_{c}\right)\right)\,-w_{class}\,\log_{}\left(p_{\theta}\left(y_{c}\mid x\right)\right)\)</span>.</p>
+<p>Prototypes for right hand vs resting state show a plausible discriminative pattern with increasing alpha oscillation of resting state compared to right hand, see <a class="reference internal" href="#bcic-iv-2a-right-vs-rest"><span class="std std-numref">Fig. 43</span></a>. Note that due to the discriminative training and the discriminative term in the optimization, these visualizations may show discriminative patterns that do not directly correspond to how actual signals for these classes look like. For example, in the actual data there may a decreasing right hand oscillation and a stable oscillation for resting state. See also the discussion in <a class="reference internal" href="PerturbationVisualization.html#perturbation-visualization-interpretation"><span class="std std-ref">Interpretation and limitations</span></a>.</p>
 <p>Todo:</p>
 <ul class="simple">
 <li><p>Neural architecture search</p></li>
 <li><p>Simplebits</p></li>
 </ul>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -408,7 +491,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -416,50 +499,112 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Pathology.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Decoding Pathology</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Pathology.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Decoding Pathology</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="FutureWork.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="FutureWork.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Future Work</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By The Jupyter Book community<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-models-via-maximum-likelihood">Generative models via maximum likelihood</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-classifiers">Generative classifiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invertible-network-for-eeg-decoding">Invertible Network for EEG Decoding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-invertible-networks-for-pathology-decoding">Generative Invertible Networks for Pathology Decoding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-a-small-interpretable-network">Learning a small interpretable network</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
