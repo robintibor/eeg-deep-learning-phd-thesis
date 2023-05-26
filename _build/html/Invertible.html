@@ -100,8 +100,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Invertible';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Future Work" href="FutureWork.html" />
-    <link rel="prev" title="Decoding Pathology" href="Pathology.html" />
+    <link rel="next" title="Perturbation Visualization" href="PerturbationVisualization.html" />
+    <link rel="prev" title="Cropped Training" href="CroppedTraining.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -188,11 +188,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="FBCSPAndFBCSPNet.html">Filter Bank Common Spatial Patterns and Filterbank Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DeepArchitectures.html">Neural Network Architectures for EEG-Decoding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CroppedTraining.html">Cropped Training</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Invertible Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PerturbationVisualization.html">Perturbation Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MovementDecoding.html">Decoding Movement-Related Brain Activity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TaskDecoding.html">Generalization to Other Tasks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Pathology.html">Decoding Pathology</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Invertible Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UnderstandingPathology.html">Understanding Pathology Decoding With Invertible Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FutureWork.html">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
 </ul>
@@ -341,14 +342,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-models-via-maximum-likelihood">Generative models via maximum likelihood</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-classifiers">Generative classifiers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invertible-network-for-eeg-decoding">Invertible Network for EEG Decoding</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-invertible-networks-for-pathology-decoding">Generative Invertible Networks for Pathology Decoding</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-a-small-interpretable-network">Learning a small interpretable network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#invertible-layers">Invertible layers</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-models-via-maximum-likelihood">Generative models via maximum likelihood</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-classifiers">Generative classifiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invertible-network-for-eeg-decoding">Invertible Network for EEG Decoding</a></li>
 </ul>
             </nav>
         </div>
@@ -363,21 +363,68 @@ document.write(`
   <div class="tex2jax_ignore mathjax_ignore section" id="invertible-networks">
 <span id="id1"></span><h1>Invertible Networks<a class="headerlink" href="#invertible-networks" title="Permalink to this heading">#</a></h1>
 <p>Invertible networks are networks that are invertible by design, i.e., any network output can be mapped back to a corresponding input [refs] bijectively. The ability to invert any output back to the input enables different interpretability methods and furthermore allows training invertible networks as generative models via maximum likelihood.</p>
-<p>The background chapter starts by explaining how to design invertible networks, proceeds to detail their training methodologies as generative models or classifiers, and goes on to outline interpretability techniques that help reveal the learned features crucial for their classification tasks. We then present the results of invertible networks trained to decode pathology from EEG, showing competitive results with regular deep convolutional networks. Our visualizations show the network uses slowing, i.e. increased amplitudes in the lower frequencies as well as spikes/burts as markers that indicate pathology and a strong stable alpha rhythm, especially on the posterior electrodes as markers for normal EEG.</p>
+<p>This chapter starts by explaining what invertible layers are used to design invertible networks, proceeds to detail their training methodologies as generative models or classifiers, and goes on to outline interpretability techniques that help reveal the learned features crucial for their classification tasks.</p>
 <div class="section" id="background">
 <h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>invertible layers</p>
+<ul>
+<li><p>explain invertible layers, maybe bold part in front</p></li>
+<li><p>(mention wavelet permutation also)</p></li>
+</ul>
+</li>
+<li><p>example for volume change, do make it (use seaborn colors, in <a class="reference external" href="http://draw.io">draw.io</a>)</p>
+<ul>
+<li><p>do consider making some bar plots with matplotlib why not</p></li>
+</ul>
+</li>
+<li><p>architecture diagram</p>
+<ul>
+<li><p>what is one block? Haar Wavelet addition</p></li>
+<li><p>Latent gaussian at end, no don’t show</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="invertible-layers">
+<h3>Invertible layers<a class="headerlink" href="#invertible-layers" title="Permalink to this heading">#</a></h3>
+<p>\begin{equation*}
+\begin{aligned}</p>
+<p>y_1 &amp;= x_1 + f(x_2); \quad \text{Forward comment 1} \
+y_2 &amp;= x_2; \quad \text{Forward comment 2} \</p>
+<p>x_1 &amp;= y_1 - f(y_2); \quad \text{Inverse comment 1} \
+x_2 &amp;= y_2; \quad \text{Inverse comment 2} \
+\end{aligned}
+\end{equation*}</p>
+<p><span class="math notranslate nohighlight">\(\require{color}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\definecolor{commentcolor}{RGB} {70,130,180}\)</span></p>
 <p>[Figure coupling blocks]</p>
 <ul class="simple">
 <li><p>you could have a figure here with time series and half of time series computed sth, then additive coefficient added</p></li>
 </ul>
-<p>Invertible networks, a type of neural networks, use layers constructed specifically to maintain invertibility, thereby rendering the entire network structure invertible. Often-used invertible layers are coupling layers, invertible linear layers and activation normalization layers as explained in the following.</p>
-<p>Coupling layers work by splitting a d-dimensional input <span class="math notranslate nohighlight">\(x\)</span> into two parts <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> of <span class="math notranslate nohighlight">\(d_1\)</span> and <span class="math notranslate nohighlight">\(d_2\)</span> dimensions with <span class="math notranslate nohighlight">\(d_1 + d_2 = d\)</span>. For example in a timeseries one may take the input at all the even time indices as <span class="math notranslate nohighlight">\(x_1\)</span> and all the odd time indices as <span class="math notranslate nohighlight">\(x_2\)</span> odd time indices. Then, one transforms <span class="math notranslate nohighlight">\(x_1\)</span> in an invertible way (e.g., by adding something to it) based on computations only performed on <span class="math notranslate nohighlight">\(x_2\)</span>, while leaving <span class="math notranslate nohighlight">\(x_2\)</span> unchanged. For, example additive coupling works as follows:
+<p>Invertible networks use layers constructed specifically to maintain invertibility, thereby rendering the entire network structure invertible. Often-used invertible layers are coupling layers, invertible linear layers and activation normalization layers.</p>
+<p><strong>Coupling layers</strong> split a multidimensional input <span class="math notranslate nohighlight">\(x\)</span> into two parts  <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> with disjoint dimensions and use <span class="math notranslate nohighlight">\(x_2\)</span> to compute an invertible transformation to apply to <span class="math notranslate nohighlight">\(x_1\)</span>. Concretely, for an additive coupling block, the forward computation is like this:</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{align*}
+    y_1 &amp;= x_1 + f(x_2); &amp;&amp; \color{commentcolor}{\text{Compute \)</span>y_1<span class="math notranslate nohighlight">\( from \)</span>x_1<span class="math notranslate nohighlight">\( and arbitrary function of \)</span>x_2<span class="math notranslate nohighlight">\(}} \\
+    y_2 &amp;= x_2 &amp;&amp; \color{commentcolor}{\text{Leave } x_2 \text{ unchanged}} \\
+\end{align*}
+\)</span></p>
+<p>The inverse computation is:</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{align*}
+    x_1 &amp;= y_1 - f(y_2) &amp;&amp; \color{commentcolor}{\text{Invert to } x_1 \text{ using unchanged } y_2=x_2} \\
+    x_2 &amp;= y_2 &amp;&amp;  \color{commentcolor}{x_2 \text{ was unchanged}}\\
+\end{align*}
+\)</span></p>
+<p>of <span class="math notranslate nohighlight">\(d_1\)</span> and <span class="math notranslate nohighlight">\(d_2\)</span> dimensions with <span class="math notranslate nohighlight">\(d_1 + d_2 = d\)</span>.</p>
+<p>For example in a timeseries one may take the input at all the even time indices as <span class="math notranslate nohighlight">\(x_1\)</span> and all the odd time indices as <span class="math notranslate nohighlight">\(x_2\)</span> odd time indices. Then, one transforms <span class="math notranslate nohighlight">\(x_1\)</span> in an invertible way (e.g., by adding something to it) based on computations only performed on <span class="math notranslate nohighlight">\(x_2\)</span>, while leaving <span class="math notranslate nohighlight">\(x_2\)</span> unchanged. For, example additive coupling works as follows:
 <span class="math notranslate nohighlight">\(y_1 = x_1 + f(x_2); y_2=x_2\)</span>, with <span class="math notranslate nohighlight">\(f\)</span> being an arbitrary function, e.g., any (potentially non-invertible) neural network. It can be inverted given <span class="math notranslate nohighlight">\(y_1\)</span> and <span class="math notranslate nohighlight">\(y_2\)</span> as follows: <span class="math notranslate nohighlight">\(x_1 = y_1 - f(y_2); x_2=y_2\)</span>. Instead of addition one may use any other invertible function, a common one is an affine transformation where <span class="math notranslate nohighlight">\(f\)</span> produces translation and scaling coefficients <span class="math notranslate nohighlight">\(f_t\)</span> and <span class="math notranslate nohighlight">\(f_s\)</span>:
 <span class="math notranslate nohighlight">\(y_1 = x_1 \cdot f_s(x_2) + f_t(x_2); y_2=x_2\)</span>, with inversion <span class="math notranslate nohighlight">\(x_1 = \frac{(y_1  - f_t(x_2))}{f_s(x_2)}; y_2=x_2\)</span>.
 The splitting of dimensions can be done in multiply ways, like using odd or even indices or using difference and mean between two neighbouring samples (akin to one stage of a Haar Wavelet).</p>
 <p>Invertible linear layers compute an invertible linear transformation (an automorphism) of their input. Concretely they multiply a <span class="math notranslate nohighlight">\(d\)</span>-dimensional vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> with a <span class="math notranslate nohighlight">\(dxd\)</span>-dimensional matrix <span class="math notranslate nohighlight">\(W\)</span>, where the <span class="math notranslate nohighlight">\(W\)</span> has to be invertible, i.e., have nonzero determinant.
 <span class="math notranslate nohighlight">\(y=W \mathbf{x}\)</span> with inverse <span class="math notranslate nohighlight">\(x=W^{-1} \mathbf{y}\)</span>. For multidimensional arrays like feature maps in a convolutional network, these linear transformations are usually done per-position, as so-called invertible 1x1 convolutions in the 2d case.</p>
 <p>Activation normalization layers perform an affine transformation with learned parameters, e.g., <span class="math notranslate nohighlight">\(y=x\cdot s+t\)</span>, with <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span> learned scaling and translation parameters. These have also been used to replace batch normalization and initialized data-dependently to maintain unit variance at the beginning of training.</p>
+</div>
 </div>
 <div class="section" id="generative-models-via-maximum-likelihood">
 <h2>Generative models via maximum likelihood<a class="headerlink" href="#generative-models-via-maximum-likelihood" title="Permalink to this heading">#</a></h2>
@@ -398,84 +445,10 @@ The splitting of dimensions can be done in multiply ways, like using odd or even
 <h2>Invertible Network for EEG Decoding<a class="headerlink" href="#invertible-network-for-eeg-decoding" title="Permalink to this heading">#</a></h2>
 <p>We designed an invertible network for EEG Decoding using invertible components used in the literature, primarily from the Glow architecture [REF]. Our architecture consists of three stages that operate on sequentially lower temporal resolutions. Similar to glow, the individual stages consists of several blocks of Activation Normalization, Invertible Linear Channel Transformations and Coupling Layers. Between each stage, we downsample by computing the mean and difference of two neighbouring timepoints and moving these into the channel dimension. Unlike Glow, we keep processing all dimensions throughout all stages, finding this architecture to reach competitive accuracy on pathology decoding.</p>
 <p>[diagram]</p>
-<div class="section" id="generative-invertible-networks-for-pathology-decoding">
-<h3>Generative Invertible Networks for Pathology Decoding<a class="headerlink" href="#generative-invertible-networks-for-pathology-decoding" title="Permalink to this heading">#</a></h3>
-<p>We apply our EEG-InvNet to pathology decoding as in .. We chose pathology decoding as  (i)n the question which learned features the networks uses to diagnose pathology seemed especially fascinating to us (ii) the TUH dataset is especially large.</p>
-<ul class="simple">
-<li><p>Same accuracy as other good networks</p></li>
-</ul>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Deep</p></th>
-<th class="head"><p>Shallow</p></th>
-<th class="head"><p>TCN</p></th>
-<th class="head"><p>EEGNet</p></th>
-<th class="head"><p>EEG-InvNet Disc</p></th>
-<th class="head"><p>EEG-InvNet Gen</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>84.6</p></td>
-<td><p>84.1</p></td>
-<td><p>86.2</p></td>
-<td><p>83.4</p></td>
-<td><p>85.5</p></td>
-<td><p>77.2</p></td>
-</tr>
-</tbody>
-</table>
-<div class="figure align-default" id="disc-invnet-prototypes">
-<img alt="_images/net-disc-prototypes.png" src="_images/net-disc-prototypes.png" />
-<p class="caption"><span class="caption-number">Fig. 40 </span><span class="caption-text">Learned Class Prototypes from Invertible Network. Obtained by inverting learned means of class-conditional gaussian distributions from latent space to input space through the invertible network trained for pathology decoding.</span><a class="headerlink" href="#disc-invnet-prototypes" title="Permalink to this image">#</a></p>
-</div>
-<div class="figure align-default" id="marginal-chan">
-<img alt="_images/marginal-chan.png" src="_images/marginal-chan.png" />
-<p class="caption"><span class="caption-number">Fig. 41 </span><span class="caption-text">Learned Per-Channel Prototypes from Invertible Network. Each channels’ input is optimized independently to increase the invertible networks prediction for the respective class. During that optimization, signals for the other non-optimized channels are sampled from the training data.</span><a class="headerlink" href="#marginal-chan" title="Permalink to this image">#</a></p>
-</div>
-</div>
-<div class="section" id="learning-a-small-interpretable-network">
-<h3>Learning a small interpretable network<a class="headerlink" href="#learning-a-small-interpretable-network" title="Permalink to this heading">#</a></h3>
-<div class="figure align-default" id="id2">
-<img alt="_images/cos-sim-net-pattern.png" src="_images/cos-sim-net-pattern.png" />
-<p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">Visualization of small interpretable network trained to mimic the EEG-InvNet. Signals are colored by weights of a model that learns to predict strength of output of that signals cosine similarity from overall output.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
-</div>
-<p>Results:</p>
-<ul class="simple">
-<li><p>Best results</p>
-<ul>
-<li><p>Try recreating all results for n_class_independent</p></li>
-<li><p>Show that it works as good as others</p>
-<ul>
-<li><p>Small table for that</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Prototypes for pathological</p></li>
-<li><p>Optimize per Chan Marginal Probability</p></li>
-<li><p>Small Cos Net that recreates</p></li>
-<li><p>(low freq?)</p></li>
-<li><p>Mean Zs for medications etc.?excessive beta/excessive theta? and one medication</p></li>
-</ul>
-<ul class="simple">
-<li></li>
-</ul>
-<div class="figure align-default" id="bcic-iv-2a-right-vs-rest">
-<img alt="_images/bcic_iv_2a_right_vs_rest.png" src="_images/bcic_iv_2a_right_vs_rest.png" />
-<p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text">Right hand vs resting state class prototypes learned by an invertible network on the BCIC IV 2a dataset. Note the increased alpha oscillation for resting state, especially on the left side.</span><a class="headerlink" href="#bcic-iv-2a-right-vs-rest" title="Permalink to this image">#</a></p>
-</div>
-<div class="figure align-default" id="bcic-iv-2a-right-vs-rest-c3">
-<img alt="_images/bcic_iv_2a_right_vs_rest.png" src="_images/bcic_iv_2a_right_vs_rest.png" />
-<p class="caption"><span class="caption-number">Fig. 44 </span><span class="caption-text">Right hand vs resting state class prototypes learned by an invertible network on the BCIC IV 2a dataset, showing the C3 electrode. Note the increased alpha oscillation.</span><a class="headerlink" href="#bcic-iv-2a-right-vs-rest-c3" title="Permalink to this image">#</a></p>
-</div>
-<p>Class prototypes are a visualization obtainable from the trained invertible network. Here, the invertible network was trained as a class-conditional generative model via maximum likelihood with an extra classification loss [refs etc.]. To obtain the class protypes we first found the maxima of each class  distribution, i.e., of the learned class-conditional distribution <span class="math notranslate nohighlight">\(p_{\theta}(x|y_c)\)</span>. From that starting point, the synthetic prototypes were further optimized to minimize <span class="math notranslate nohighlight">\(L_{proto}(x) = -w_{prob}\log_{}\left(p_{\theta}\left(x\mid y_{c}\right)\right)\,-w_{class}\,\log_{}\left(p_{\theta}\left(y_{c}\mid x\right)\right)\)</span>.</p>
-<p>Prototypes for right hand vs resting state show a plausible discriminative pattern with increasing alpha oscillation of resting state compared to right hand, see <a class="reference internal" href="#bcic-iv-2a-right-vs-rest"><span class="std std-numref">Fig. 43</span></a>. Note that due to the discriminative training and the discriminative term in the optimization, these visualizations may show discriminative patterns that do not directly correspond to how actual signals for these classes look like. For example, in the actual data there may a decreasing right hand oscillation and a stable oscillation for resting state. See also the discussion in <a class="reference internal" href="PerturbationVisualization.html#perturbation-visualization-interpretation"><span class="std std-ref">Interpretation and limitations</span></a>.</p>
-<p>Todo:</p>
-<ul class="simple">
-<li><p>Neural architecture search</p></li>
-<li><p>Simplebits</p></li>
-</ul>
-</div>
+<p>Training and dataset details</p>
+<p>Prototypes</p>
+<p>Per-Chan Prototypes</p>
+<p>EEG CosNet</p>
 </div>
 </div>
 
@@ -511,20 +484,20 @@ The splitting of dimensions can be done in multiply ways, like using odd or even
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Pathology.html"
+       href="CroppedTraining.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Decoding Pathology</p>
+        <p class="prev-next-title">Cropped Training</p>
       </div>
     </a>
     <a class="right-next"
-       href="FutureWork.html"
+       href="PerturbationVisualization.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Future Work</p>
+        <p class="prev-next-title">Perturbation Visualization</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -546,14 +519,13 @@ The splitting of dimensions can be done in multiply ways, like using odd or even
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-models-via-maximum-likelihood">Generative models via maximum likelihood</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-classifiers">Generative classifiers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invertible-network-for-eeg-decoding">Invertible Network for EEG Decoding</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-invertible-networks-for-pathology-decoding">Generative Invertible Networks for Pathology Decoding</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-a-small-interpretable-network">Learning a small interpretable network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#invertible-layers">Invertible layers</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-models-via-maximum-likelihood">Generative models via maximum likelihood</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-classifiers">Generative classifiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invertible-network-for-eeg-decoding">Invertible Network for EEG Decoding</a></li>
 </ul>
   </nav></div>
 

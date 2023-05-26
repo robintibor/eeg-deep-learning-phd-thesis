@@ -188,11 +188,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="FBCSPAndFBCSPNet.html">Filter Bank Common Spatial Patterns and Filterbank Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DeepArchitectures.html">Neural Network Architectures for EEG-Decoding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CroppedTraining.html">Cropped Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Invertible.html">Invertible Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PerturbationVisualization.html">Perturbation Visualization</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Decoding Movement-Related Brain Activity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TaskDecoding.html">Generalization to Other Tasks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Pathology.html">Decoding Pathology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Invertible.html">Invertible Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UnderstandingPathology.html">Understanding Pathology Decoding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FutureWork.html">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
 </ul>
@@ -360,7 +361,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrices-are-similar-between-fbcsp-and-convnets">Confusion Matrices are Similar between FBCSP and ConvNets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#residual-convnets-can-be-competitive-with-good-training">Residual ConvNets can be Competitive with Good Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#residual-convnets-can-be-competitive-with-improved-training">Residual ConvNets can be Competitive with Improved Training</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-choices-affected-decoding-performance">Design Choices affected decoding performance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cropped-training-strategy-improved-deep-convnet-on-higher-frequencies">Cropped training strategy improved deep ConvNet on higher frequencies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results-on-bci-competition-iv-2b">Results on BCI Competition IV 2b</a></li>
@@ -660,8 +661,8 @@ statistically significant differences were in direction of the ConvNets.</span><
 </table>
 <p>Confusion matrices for the High-Gamma Dataset on 0–<span class="math notranslate nohighlight">\(f_{end}\)</span> Hz were very similar for FBCSP and both ConvNets (see <a class="reference internal" href="#confusion-mat-figure"><span class="std std-numref">Fig. 14</span></a>). The majority of all mistakes were due to discriminating between Hand (L) / Hand (R) and Feet / Rest, see Table <a class="reference internal" href="#hgd-class-mistakes-table"><span class="std std-numref">Table 8</span></a>. Seven entries of the confusion matrix had a statistically significant difference (p&lt;0.05, Wilcoxon signed-rank test) between the deep and the shallow ConvNet, in all of them the deep ConvNet performed better. Only two differences between the deep ConvNet and FBCSP were statistically significant (p&lt;0.05), none for the shallow  ConvNet and FBCSP. Confusion matrices for the BCI competition IV dataset 2a showed a larger variability and hence a less consistent pattern, possibly because of the much smaller number of trials.</p>
 </div>
-<div class="section" id="residual-convnets-can-be-competitive-with-good-training">
-<h2>Residual ConvNets can be Competitive with Good Training<a class="headerlink" href="#residual-convnets-can-be-competitive-with-good-training" title="Permalink to this heading">#</a></h2>
+<div class="section" id="residual-convnets-can-be-competitive-with-improved-training">
+<h2>Residual ConvNets can be Competitive with Improved Training<a class="headerlink" href="#residual-convnets-can-be-competitive-with-improved-training" title="Permalink to this heading">#</a></h2>
 <table class="colwidths-auto table" id="residual-hgd-results">
 <caption><span class="caption-number">Table 9 </span><span class="caption-text">Residual ConvNet vs. FBCSP Accuracies. Accuracies and significance stars have same meaning as before.</span><a class="headerlink" href="#residual-hgd-results" title="Permalink to this table">#</a></caption>
 <thead>
@@ -674,40 +675,40 @@ statistically significant differences were in direction of the ConvNets.</span><
 </thead>
 <tbody>
 <tr class="row-even"><td><p>BCIC IV 2a</p></td>
-<td><p>0–38</p></td>
 <td><p>68.0</p></td>
 <td><p>-0.3</p></td>
-<td><p>+3.6</p></td>
+<td><p>+3.7</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p>BCIC IV 2a</p></td>
-<td><p>4–38</p></td>
 <td><p>67.8</p></td>
 <td><p>-7.0*</p></td>
-<td><p>-0.5</p></td>
+<td><p>-0.9</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p>HGD</p></td>
 <td><p>0–125</p></td>
 <td><p>91.2</p></td>
 <td><p>-2.3*</p></td>
-<td><p>+0.0</p></td>
+<td><p>+1.1</p></td>
 </tr>
 <tr class="row-odd"><td><p>HGD</p></td>
 <td><p>4–125</p></td>
 <td><p>90.9</p></td>
 <td><p>-1.1</p></td>
-<td><p>-0.1</p></td>
+<td><p>0.0</p></td>
 </tr>
 <tr class="row-even"><td><p>Combined</p></td>
 <td><p>0–<span class="math notranslate nohighlight">\(f_{end}\)</span></p></td>
 <td><p>82.1</p></td>
 <td><p>-1.1</p></td>
-<td><p>+1.4</p></td>
+<td><p>+2.2</p></td>
 </tr>
 <tr class="row-odd"><td><p>Combined</p></td>
 <td><p>4–<span class="math notranslate nohighlight">\(f_{end}\)</span></p></td>
 <td><p>81.9</p></td>
 <td><p>-3.5*</p></td>
-<td><p>-0.3</p></td>
+<td><p>-0.4</p></td>
 </tr>
 </tbody>
 </table>
@@ -918,7 +919,7 @@ significant (p&gt;0.1) and showed a lot of variation between subjects.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrices-are-similar-between-fbcsp-and-convnets">Confusion Matrices are Similar between FBCSP and ConvNets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#residual-convnets-can-be-competitive-with-good-training">Residual ConvNets can be Competitive with Good Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#residual-convnets-can-be-competitive-with-improved-training">Residual ConvNets can be Competitive with Improved Training</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-choices-affected-decoding-performance">Design Choices affected decoding performance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cropped-training-strategy-improved-deep-convnet-on-higher-frequencies">Cropped training strategy improved deep ConvNet on higher frequencies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results-on-bci-competition-iv-2b">Results on BCI Competition IV 2b</a></li>
