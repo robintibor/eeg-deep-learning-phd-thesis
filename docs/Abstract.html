@@ -186,10 +186,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DeepArchitectures.html">Neural Network Architectures for EEG-Decoding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CroppedTraining.html">Cropped Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PerturbationVisualization.html">Perturbation Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Invertible.html">Invertible Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MovementDecoding.html">Decoding Movement-Related Brain Activity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TaskDecoding.html">Generalization to Other Tasks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Pathology.html">Decoding Pathology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Invertible.html">Invertible Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UnderstandingPathology.html">Understanding Pathology Decoding With Invertible Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FutureWork.html">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
 </ul>
@@ -355,7 +356,7 @@ document.write(`
 <h1>Deep Learning for Brain-Signal Decoding from Electroencephalography<a class="headerlink" href="#deep-learning-for-brain-signal-decoding-from-electroencephalography" title="Permalink to this heading">#</a></h1>
 <div class="section" id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
-<p>Machine learning has the potential to improve medical applications by processing larger amounts of data and extracting different information than medical doctors. In particular, brain-signal decoding from electroencephalographic (EEG) recordings is a promising area for machine learning due to the relative ease of acquiring large amounts of EEG recordings and the difficulty of interpreting them manually. Deep neural networks are a natural choice to train to decode EEG signals as they have been successful at a variety of natural-signal decoding tasks like object recognition from images or speech recognition from audio. However, prior to the work in this thesis, it was still unclear how well deep neural networks perform on EEG decoding compared to hand-engineered, feature-based approaches, and more research was needed to determine the optimal approaches for using deep learning to decode EEG. This thesis describes constructing and training deep neural networks for EEG decoding that perform as well as feature-based approaches and developing visualizations that suggest they extract physiologically meaningful features.</p>
+<p>Brain-signal decoding using machine learning can process larger amounts of signals and extract different information than humans can, for example in medical diagnosis or brain-computer interfaces. In particular, brain-signal decoding from electroencephalographic (EEG) recordings is a promising area for machine learning due to the relative ease of acquiring large amounts of EEG recordings and the difficulty of interpreting them manually. Deep neural networks are a natural choice to train to decode EEG signals as they have been successful at a variety of natural-signal decoding tasks like object recognition from images or speech recognition from audio. However, prior to the work in this thesis, it was still unclear how well deep neural networks perform on EEG decoding compared to hand-engineered, feature-based approaches, and more research was needed to determine the optimal approaches for using deep learning to decode EEG. This thesis describes constructing and training deep neural networks for EEG decoding that perform as well as feature-based approaches and developing visualizations that suggest they extract physiologically meaningful features.</p>
 </div>
 <div class="section" id="contents">
 <h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">#</a></h2>
@@ -390,22 +391,25 @@ document.write(`
 <tr class="row-odd"><td class="text-left"><p><a class="reference internal" href="PerturbationVisualization.html#perturbation-visualization"><span class="std std-ref">Perturbation Visualization</span></a></p></td>
 <td class="text-right"><p>A visualization of how frequency features affect the trained network was developed</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><strong>Applications and Results</strong></p></td>
+<tr class="row-even"><td class="text-left"><p><a class="reference internal" href="Invertible.html#invertible-networks"><span class="std std-ref">Invertible Networks</span></a></p></td>
+<td class="text-right"><p>Invertible networks as more interpretable EEG classifiers</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Applications and Results</strong></p></td>
 <td class="text-right"><p></p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><a class="reference internal" href="MovementDecoding.html#movement-related"><span class="std std-ref">Movement-Related Decoding</span></a></p></td>
+<tr class="row-even"><td class="text-left"><p><a class="reference internal" href="MovementDecoding.html#movement-related"><span class="std std-ref">Movement-Related Decoding</span></a></p></td>
 <td class="text-right"><p>Deep learning can be at least as good as feature-based baselines for movement-related decoding; deep networks also learn to extract known hand-engineered features</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><a class="reference internal" href="TaskDecoding.html#task-related"><span class="std std-ref">Generalization to Other Tasks</span></a></p></td>
+<tr class="row-odd"><td class="text-left"><p><a class="reference internal" href="TaskDecoding.html#task-related"><span class="std std-ref">Generalization to Other Tasks</span></a></p></td>
 <td class="text-right"><p>Our deep networks generalize well to decoding other decoding tasks</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><a class="reference internal" href="Pathology.html#pathology"><span class="std std-ref">Decoding Pathology</span></a></p></td>
+<tr class="row-even"><td class="text-left"><p><a class="reference internal" href="Pathology.html#pathology"><span class="std std-ref">Decoding Pathology</span></a></p></td>
 <td class="text-right"><p>Deep networks designed for task-related decoding can also decode pathology well</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p><a class="reference internal" href="Invertible.html#invertible-networks"><span class="std std-ref">Understanding Pathology Decoding with Invertible Networks</span></a></p></td>
-<td class="text-right"><p>Better Understanding and larger data through invertible networks</p></td>
+<tr class="row-odd"><td class="text-left"><p><a class="reference internal" href="UnderstandingPathology.html#understanding-pathology"><span class="std std-ref">Understanding Pathology Decoding with Invertible Networks</span></a></p></td>
+<td class="text-right"><p>Better understanding of pathology decoding with invertible networks</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p><a class="reference internal" href="FutureWork.html#future-work"><span class="std std-ref">Future Work</span></a></p></td>
+<tr class="row-even"><td class="text-left"><p><a class="reference internal" href="FutureWork.html#future-work"><span class="std std-ref">Future Work</span></a></p></td>
 <td class="text-right"><p>Newer DL architectures such as transformers may allow better performance and better interpretability</p></td>
 </tr>
 </tbody>

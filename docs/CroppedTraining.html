@@ -187,10 +187,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DeepArchitectures.html">Neural Network Architectures for EEG-Decoding</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Cropped Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PerturbationVisualization.html">Perturbation Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Invertible.html">Invertible Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MovementDecoding.html">Decoding Movement-Related Brain Activity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TaskDecoding.html">Generalization to Other Tasks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Pathology.html">Decoding Pathology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Invertible.html">Invertible Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UnderstandingPathology.html">Understanding Pathology Decoding With Invertible Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FutureWork.html">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
 </ul>
@@ -393,9 +394,9 @@ document.write(`
 <p>Efficient cropped training then results in the exact same predictions and training as if the neighbouring crops were passed separately through the network. This is only true for networks that either use left-padding or no padding at all to the input and the intermediate activations. In the deep and shallow network described here, we do not use any padding. In the residual network, we use padding, hence the training is not exactly identical to passing neighbouring crops separately, but we still found it to improve over trial-wise training.</p>
 <p>The more efficient way to do cropped training introduces a new hyperparameter, the number of neighbouring crops that are decoded together. The larger this hyperparameter, the more computations are saved and the more speedup one gets (see <span id="id4">[<a class="reference internal" href="References.html#id179" title="A. Giusti, D. C. Cireşan, J. Masci, L. M. Gambardella, and J. Schmidhuber. Fast image scanning with deep max-pooling convolutional neural networks. In 2013 IEEE International Conference on Image Processing, 4034–4038. September 2013. doi:10.1109/ICIP.2013.6738831.">Giusti <em>et al.</em>, 2013</a>]</span> for a more detailed speedup analysis on images). Larger numbers of neighbouring crops that are trained on simultanaeously require more memory and may also affect the training dynamics due to more neighbouring crops being in the same mini-batch. However, we did not find negative effects on the training dynamics from larger number of simultaneously decoded neighbouring crops, consistent with prior work in computer vision <span id="id5">[<a class="reference internal" href="References.html#id183" title="E. Shelhamer, J. Long, and T. Darrell. Fully Convolutional Networks for Semantic Segmentation. IEEE Transactions on Pattern Analysis and Machine Intelligence, PP(99):1–1, 2016. doi:10.1109/TPAMI.2016.2572683.">Shelhamer <em>et al.</em>, 2016</a>]</span>.</p>
 <div class="tip admonition">
-<p class="admonition-title">Cropped training has potential to improve performance on small EEG datasets</p>
+<p class="admonition-title">Open Questions</p>
 <ul class="simple">
-<li><p>In which settings (datasets/architectures) does it help or hurt?</p></li>
+<li><p>For which datasets and architectures does cropped training help or hurt?</p></li>
 </ul>
 </div>
 </div>

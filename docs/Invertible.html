@@ -100,8 +100,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Invertible';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Future Work" href="FutureWork.html" />
-    <link rel="prev" title="Decoding Pathology" href="Pathology.html" />
+    <link rel="next" title="Decoding Movement-Related Brain Activity" href="MovementDecoding.html" />
+    <link rel="prev" title="Perturbation Visualization" href="PerturbationVisualization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,10 +189,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DeepArchitectures.html">Neural Network Architectures for EEG-Decoding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CroppedTraining.html">Cropped Training</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PerturbationVisualization.html">Perturbation Visualization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Invertible Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MovementDecoding.html">Decoding Movement-Related Brain Activity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TaskDecoding.html">Generalization to Other Tasks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Pathology.html">Decoding Pathology</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Invertible Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UnderstandingPathology.html">Understanding Pathology Decoding With Invertible Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FutureWork.html">Future Work</a></li>
 <li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
 </ul>
@@ -341,14 +342,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-models-via-maximum-likelihood">Generative models via maximum likelihood</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-classifiers">Generative classifiers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invertible-network-for-eeg-decoding">Invertible Network for EEG Decoding</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-invertible-networks-for-pathology-decoding">Generative Invertible Networks for Pathology Decoding</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-a-small-interpretable-network">Learning a small interpretable network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invertible-layers">Invertible Layers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-models-via-maximum-likelihood">Generative models via maximum likelihood</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-quantization">(De)quantization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-of-volume">Change of Volume</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-classifiers">Generative classifiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invertible-network-for-eeg-decoding">Invertible Network for EEG Decoding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prototypes">Prototypes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-electrode-prototypes">Per-Electrode Prototypes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eeg-cosnet">EEG CosNet</a></li>
 </ul>
             </nav>
         </div>
@@ -363,119 +367,128 @@ document.write(`
   <div class="tex2jax_ignore mathjax_ignore section" id="invertible-networks">
 <span id="id1"></span><h1>Invertible Networks<a class="headerlink" href="#invertible-networks" title="Permalink to this heading">#</a></h1>
 <p>Invertible networks are networks that are invertible by design, i.e., any network output can be mapped back to a corresponding input [refs] bijectively. The ability to invert any output back to the input enables different interpretability methods and furthermore allows training invertible networks as generative models via maximum likelihood.</p>
-<p>The background chapter starts by explaining how to design invertible networks, proceeds to detail their training methodologies as generative models or classifiers, and goes on to outline interpretability techniques that help reveal the learned features crucial for their classification tasks. We then present the results of invertible networks trained to decode pathology from EEG, showing competitive results with regular deep convolutional networks. Our visualizations show the network uses slowing, i.e. increased amplitudes in the lower frequencies as well as spikes/burts as markers that indicate pathology and a strong stable alpha rhythm, especially on the posterior electrodes as markers for normal EEG.</p>
-<div class="section" id="background">
-<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
-<p>[Figure coupling blocks]</p>
-<ul class="simple">
-<li><p>you could have a figure here with time series and half of time series computed sth, then additive coefficient added</p></li>
-</ul>
-<p>Invertible networks, a type of neural networks, use layers constructed specifically to maintain invertibility, thereby rendering the entire network structure invertible. Often-used invertible layers are coupling layers, invertible linear layers and activation normalization layers as explained in the following.</p>
-<p>Coupling layers work by splitting a d-dimensional input <span class="math notranslate nohighlight">\(x\)</span> into two parts <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> of <span class="math notranslate nohighlight">\(d_1\)</span> and <span class="math notranslate nohighlight">\(d_2\)</span> dimensions with <span class="math notranslate nohighlight">\(d_1 + d_2 = d\)</span>. For example in a timeseries one may take the input at all the even time indices as <span class="math notranslate nohighlight">\(x_1\)</span> and all the odd time indices as <span class="math notranslate nohighlight">\(x_2\)</span> odd time indices. Then, one transforms <span class="math notranslate nohighlight">\(x_1\)</span> in an invertible way (e.g., by adding something to it) based on computations only performed on <span class="math notranslate nohighlight">\(x_2\)</span>, while leaving <span class="math notranslate nohighlight">\(x_2\)</span> unchanged. For, example additive coupling works as follows:
-<span class="math notranslate nohighlight">\(y_1 = x_1 + f(x_2); y_2=x_2\)</span>, with <span class="math notranslate nohighlight">\(f\)</span> being an arbitrary function, e.g., any (potentially non-invertible) neural network. It can be inverted given <span class="math notranslate nohighlight">\(y_1\)</span> and <span class="math notranslate nohighlight">\(y_2\)</span> as follows: <span class="math notranslate nohighlight">\(x_1 = y_1 - f(y_2); x_2=y_2\)</span>. Instead of addition one may use any other invertible function, a common one is an affine transformation where <span class="math notranslate nohighlight">\(f\)</span> produces translation and scaling coefficients <span class="math notranslate nohighlight">\(f_t\)</span> and <span class="math notranslate nohighlight">\(f_s\)</span>:
-<span class="math notranslate nohighlight">\(y_1 = x_1 \cdot f_s(x_2) + f_t(x_2); y_2=x_2\)</span>, with inversion <span class="math notranslate nohighlight">\(x_1 = \frac{(y_1  - f_t(x_2))}{f_s(x_2)}; y_2=x_2\)</span>.
-The splitting of dimensions can be done in multiply ways, like using odd or even indices or using difference and mean between two neighbouring samples (akin to one stage of a Haar Wavelet).</p>
-<p>Invertible linear layers compute an invertible linear transformation (an automorphism) of their input. Concretely they multiply a <span class="math notranslate nohighlight">\(d\)</span>-dimensional vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> with a <span class="math notranslate nohighlight">\(dxd\)</span>-dimensional matrix <span class="math notranslate nohighlight">\(W\)</span>, where the <span class="math notranslate nohighlight">\(W\)</span> has to be invertible, i.e., have nonzero determinant.
-<span class="math notranslate nohighlight">\(y=W \mathbf{x}\)</span> with inverse <span class="math notranslate nohighlight">\(x=W^{-1} \mathbf{y}\)</span>. For multidimensional arrays like feature maps in a convolutional network, these linear transformations are usually done per-position, as so-called invertible 1x1 convolutions in the 2d case.</p>
-<p>Activation normalization layers perform an affine transformation with learned parameters, e.g., <span class="math notranslate nohighlight">\(y=x\cdot s+t\)</span>, with <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span> learned scaling and translation parameters. These have also been used to replace batch normalization and initialized data-dependently to maintain unit variance at the beginning of training.</p>
+<p>This chapter starts by explaining invertible layers that are used to design invertible networks, proceeds to detail training methodologies for invertible networks as generative models or classifiers, and goes on to outline interpretability techniques that help reveal the learned features crucial for their classification tasks.
+<span class="math notranslate nohighlight">\(\require{color}\)</span>
+<span class="math notranslate nohighlight">\(\definecolor{commentcolor}{RGB} {70,130,180}\)</span></p>
+<div class="section" id="invertible-layers">
+<h2>Invertible Layers<a class="headerlink" href="#invertible-layers" title="Permalink to this heading">#</a></h2>
+<p>Invertible networks use layers constructed specifically to maintain invertibility, thereby rendering the entire network structure invertible. Often-used invertible layers are coupling layers, invertible linear layers and activation normalization layers.</p>
+<p><strong>Coupling layers</strong> split a multidimensional input <span class="math notranslate nohighlight">\(x\)</span> into two parts  <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> with disjoint dimensions and then use <span class="math notranslate nohighlight">\(x_2\)</span> to compute an invertible transformation for <span class="math notranslate nohighlight">\(x_1\)</span>. Concretely, for an additive coupling layer, the forward computation is:</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{align*}
+    y_1 &amp;= x_1 + f(x_2) &amp;&amp; \color{commentcolor}{\text{Compute } y_1 \text{ from } x_1 \text{ and arbitrary function f of } x_2} \\
+    y_2 &amp;= x_2 &amp;&amp; \color{commentcolor}{\text{Leave } x_2 \text{ unchanged}} \\
+\end{align*}
+\)</span></p>
+<p>The inverse computation is:</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{align*}
+    x_1 &amp;= y_1 - f(y_2) &amp;&amp; \color{commentcolor}{\text{Invert to } x_1 \text{ using unchanged } y_2=x_2} \\
+    x_2 &amp;= y_2 &amp;&amp;  \color{commentcolor}{x_2 \text{ was unchanged}}\\
+\end{align*}
+\)</span></p>
+<p>For the splitting of the dimensions in a timeseries, there are multiple ways, such as using the even time indices as <span class="math notranslate nohighlight">\(x_1\)</span> and all the odd time indices as <span class="math notranslate nohighlight">\(x_2\)</span> or using difference and mean between two neighbouring samples (akin to one stage of a Haar Wavelet). The function <span class="math notranslate nohighlight">\(f\)</span> is usually implemented by a neural network, in our cases it will be small convolutional networks. Instead of addition any other invertible function can be used, affine transformation are commonly used, where <span class="math notranslate nohighlight">\(f\)</span> produces translation and scaling coefficients <span class="math notranslate nohighlight">\(f_t\)</span> and <span class="math notranslate nohighlight">\(f_s\)</span>:</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{align*}
+    y_1 &amp;= x_1 \cdot f_s(x_2) + f_t(x_2) &amp;&amp; \text{ } y_2=x_2 &amp;&amp; \color{commentcolor}{\text{Affine Forward }} \\
+    \\
+    x_1 &amp;= \frac{(y_1  - f_t(y_2))}{f_s(y_2)} &amp;&amp; \text{ } x_2=y_2 &amp;&amp; \color{commentcolor}{\text{Affine Inverse}} \\
+\end{align*}
+\)</span></p>
+<p><strong>Invertible linear layers</strong> compute an invertible linear transformation (an automorphism) of their input. Concretely they multiply a <span class="math notranslate nohighlight">\(d\)</span>-dimensional vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> with a <span class="math notranslate nohighlight">\(dxd\)</span>-dimensional matrix <span class="math notranslate nohighlight">\(W\)</span>, where <span class="math notranslate nohighlight">\(W\)</span> has to be invertible, i.e., have nonzero determinant.</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{align*}
+    y&amp;=W \mathbf{x} &amp;&amp; \color{commentcolor}{\text{Linear Forward }} \\
+    x&amp;=W^{-1} \mathbf{y} &amp;&amp; \color{commentcolor}{\text{Linear Inverse}} \\
+\end{align*}
+\)</span></p>
+<p>For multidimensional arrays like feature maps in a convolutional network, these linear transformations are usually done per-position, as so-called invertible 1x1 convolutions in the 2d case.</p>
+<p><strong>Activation normalization layers</strong> perform an affine transformation with learned parameters with <span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span> learned scaling and translation parameters (independent of the input <span class="math notranslate nohighlight">\(x\)</span>):</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{align*}
+    y&amp;=x \cdot{s} + t &amp;&amp; \color{commentcolor}{\text{ActNorm Forward }} \\
+    x&amp;=\frac{y - t}{s} &amp;&amp; \color{commentcolor}{\text{ActNorm Inverse}} \\
+\end{align*}
+\)</span></p>
+<p>These have also been used to replace batch normalization and are often initialized data-dependently to have standard-normalized activations at the beginning of training.</p>
 </div>
 <div class="section" id="generative-models-via-maximum-likelihood">
 <h2>Generative models via maximum likelihood<a class="headerlink" href="#generative-models-via-maximum-likelihood" title="Permalink to this heading">#</a></h2>
-<p>Invertible networks can also be trained as generative models via maximum likelihood. In maximum likelihood training, the network is optimized to maximize the probability densities of the training inputs. For that, the network maps the inputs into a latent space such that the probability densities are maximized under a predefined prior within this latent space, e.g., a Gaussian distribution. In addition, for these probability densities to form a valid probability distribution in the input space, one has to account for how much the network’s mapping function squeezes and expands volume. We’ll proceed to illustrate this in an example below.</p>
+<p>Invertible networks can also be trained as generative models via maximum likelihood. In maximum likelihood training, the network is optimized to maximize the probabilities of the training inputs. Invertible networks assign probabilities to training inputs by mapping them to a latent space and computing their probabilities under a predefined prior in that latent space. However, for real-valued inputs, one has to account for quantization and volume change to ensure this results in a proper probability distribution in the input space. Quantization  refers to the fact that training data often consists of quantized measureuements of underlying continuous data, e.g. digital images can only represent a distinct set of color values. Volume change refers to how the invertible networks’ mapping function expands or squeezes volume from input space to latent space.</p>
+<div class="section" id="de-quantization">
+<h3>(De)quantization<a class="headerlink" href="#de-quantization" title="Permalink to this heading">#</a></h3>
+<p>Often, training data consists of quantized measurements like discrete integer color values from 0 to 255, which are mapped to real-world floating point numbers for training a network. Naively maximizing the probability densities of these quantized values with a continuous probability distribution would lead to pathological behavior as the quantized inputs do not cover any volume. Hence it would be possible for the learned distribution to assign infinitely high probability densities to individual training points. As an example, given a gaussian mixture distribution with two components, one component may cover all the training points with nonzero densities while the other one could assign infinitely high densities to one single point [mackay ref?].</p>
+<p>Hence, one needs to “dequantize” the data such that each datapoint occupies volume in the input space. The simplest way here is to add uniform noise to each data point with a volume corresponding to the gap between two data points. For example, if the 256 color values are mapped to 256 floating values between 0 and 1, one may add uniform noise  <span class="math notranslate nohighlight">\(u\sim(0,\frac{1}{256})\)</span> to the inputs. If a new noise sample is drawn for each new forward pass of the network, then optimizing the resulting continuous distribution lower bounds optimizing the original discrete distribution [ref]. TODO: correct a bit maybe, like what is lower bounding what and ref also. maybe also formula Since in our case, we are not primarily interested in the exact performance as generative model in number of bits, we simply add gaussian noise with a fixed small standard deviation <span class="math notranslate nohighlight">\(N(0,0.005I)\)</span> during training.</p>
+</div>
+<div class="section" id="change-of-volume">
+<h3>Change of Volume<a class="headerlink" href="#change-of-volume" title="Permalink to this heading">#</a></h3>
+<p>In addition, for these probability densities to form a valid probability distribution in the input space, one has to account for how much the network’s mapping function squeezes and expands volume. Otherwise, the network can increase densities by squeezing all the inputs closely together in latent space.
+To correctly account for the volume change during the forward pass of <span class="math notranslate nohighlight">\(f\)</span> one needs to multiply the probability density with the volume change of <span class="math notranslate nohighlight">\(f\)</span>, descreasing the densities if the volume is squeezed from input to latent space and increasing it if the volume is expanded. As the volume change at a given point <span class="math notranslate nohighlight">\(x\)</span> is given by the absolute determinant of the jacobian of f at that point  <span class="math notranslate nohighlight">\(\det \left( \frac{\partial \mathbf{f}}{\partial \mathbf{x}} \right)\)</span>, the overall formula looks like this:</p>
 <p><span class="math notranslate nohighlight">\(p(x) = p_\textrm{prior}(f(x)) \cdot  | \det \left( \frac{\partial \mathbf{f}}{\partial \mathbf{x}} \right)|\)</span></p>
-<ul class="simple">
-<li><p>figure for that (map samples to latent space, shift achagne volume, latent dist just 3 bars, invert show how dist looks in input soace, what it integrates to</p></li>
-<li><p>etc.</p></li>
-</ul>
+<p>Usually, one optimizes the log-densities, leading to:</p>
+<p><span class="math notranslate nohighlight">\(\log p(x) = \log p_\textrm{prior}(f(x)) \cdot  + \log |\det \left( \frac{\partial \mathbf{f}}{\partial \mathbf{x}} \right)|\)</span></p>
+</div>
 </div>
 <div class="section" id="generative-classifiers">
 <h2>Generative classifiers<a class="headerlink" href="#generative-classifiers" title="Permalink to this heading">#</a></h2>
 <p>Invertible networks trained as class-conditional generative models can also be used as classifiers. Class-conditional generative networks may be implemented in different ways, for example with a separate prior in latent space for each class. Given the class-conditional probability densities <span class="math notranslate nohighlight">\(p(x|c_i)\)</span>, one can obtain class probabilities via Bayes formula as <span class="math notranslate nohighlight">\(p(c_i|x)=\frac{p(x|c_i)}{\sum_jp(x|c_j)}\)</span>.</p>
-<p>Pure class-conditional generative training may not yield networks that perform well as classifiers. The reason is that at least in theory, the relative reductions in maximum likelihood loss one obtains from knowing the class label are very small for high-dimensional inputs, for example much smaller than typical differences between two runs of the same network [REF]. This is understandable from a compression perspective, so using that under Shannon’s theorem more probable inputs need less bits to encode than less likely inputs, or more precisely <span class="math notranslate nohighlight">\(\textrm{Number of bits needed}(x) = \log_2 p(x)\)</span>. Even if you assume some one needs only 1 bit per dimension, a high-dimensional input like our 2688-dimensional EEG signal will need 2688 bits to encode. How many bits are needed for the class information? To distinguish between n classes, one needs only <span class="math notranslate nohighlight">\(\log_2(n)\)</span> bits, so in case of binary pathology classification, only 1 bit is needed, therefore the optimal class-conditional model will only be 1 bit better than the optimal class-independent model. In contrast, the loss difference between two training runs of the same network will typically be at least 1 to two orders of magnitude larger. In practice, the gains from using a class-conditional model, by e.g., using a separate prior per class in latent space, are usually larger, but it is not a priori clear if the reductions in loss from exploiting the class label are high enough to result in a good classification model.</p>
-<p>Various methods have been proposed to improve the performance of using generative classifiers. For example, people have fixed the per-class latent gaussian priors so that they retain the same distance throughout training [Ref Pavel] or added a classification loss term <span class="math notranslate nohighlight">\(L_class(x)=\log_2 (...etc softmax) \)</span> to the training [Ref VIB heidelberg]. In our work, we experimented with adding a classification loss term to the training, and also found using a learned temperature before the softmax helps the training.</p>
+<p>Pure class-conditional generative training may not yield networks that perform well as classifiers. One proposed reason is the relatively small reduction in generative maximum likelihood loss obtainable from providing the class label to the network for high-dimensional inputs, for example much smaller than typical differences between two runs of the same network [REF]. How much one can reduce the loss through providing the class label can be derived from a compression perspective, so using that under Shannon’s theorem more probable inputs need less bits to encode than less probable inputs, or more precisely <span class="math notranslate nohighlight">\(\textrm{Number of bits needed}(x) = \log_2 p(x)\)</span>. How many of these bits are needed for the class label in case it is not given? To distinguish between n classes, one needs only <span class="math notranslate nohighlight">\(\log_2(n)\)</span> bits, so in case of binary pathology classification, only 1 bit is needed. However, the inputs themselves typically need at least 1 bit per dimension, so already, a 21 channel x 128 timepoints EEG-signal may need at least 2688 bits to encode. Therefore the optimal class-conditional model will only be 1 bit better than the optimal class-independent model and contribute very little to the overall encoding size. In contrast, the loss difference between two training runs of the same network will typically be at least 1 to two orders of magnitude larger. In practice, the gains from using a class-conditional model, by e.g., using a separate prior per class in latent space, are usually larger, but it is not a priori clear if the reductions in loss from exploiting the class label are high enough to result in a good classification model.</p>
+<p>Various methods have been proposed to improve the performance of using generative classifiers. For example, people have fixed the per-class latent gaussian priors so that they retain the same distance throughout training [Ref Pavel] or added a classification loss term <span class="math notranslate nohighlight">\(L_\textrm{class}(x,c_i)=-\log p(c_i|x) = -\log \frac{p(x|ci)}{\sum_j p(x|cj)}=-\log \frac{e^{\log p(x|ci)}}{\sum_j e^{\log p(x|cj)}}\)</span> to the training loss [Ref VIB heidelberg]. In our work, we experimented with adding a classification loss term to the training, and also found using a learned temperature before the softmax helps the training, so leading to:</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{align*}
+   L_\textrm{class}(x,c_i,t)&amp;= -\log \frac{e^{\frac{\log p(x|ci)}{t}}}{\sum_j e^{\frac{\log p(x|cj)}{t}}} \\
+\end{align*}
+\)</span></p>
 </div>
 <div class="section" id="invertible-network-for-eeg-decoding">
 <h2>Invertible Network for EEG Decoding<a class="headerlink" href="#invertible-network-for-eeg-decoding" title="Permalink to this heading">#</a></h2>
-<p>We designed an invertible network for EEG Decoding using invertible components used in the literature, primarily from the Glow architecture [REF]. Our architecture consists of three stages that operate on sequentially lower temporal resolutions. Similar to glow, the individual stages consists of several blocks of Activation Normalization, Invertible Linear Channel Transformations and Coupling Layers. Between each stage, we downsample by computing the mean and difference of two neighbouring timepoints and moving these into the channel dimension. Unlike Glow, we keep processing all dimensions throughout all stages, finding this architecture to reach competitive accuracy on pathology decoding.</p>
+<p>We designed an invertible network for EEG Decoding using invertible components used in the literature, primarily from the Glow architecture [REF]. Our architecture consists of three stages that operate on sequentially lower temporal resolutions. Similar to glow, the individual stages consists of several blocks of Activation Normalization, Invertible Linear Channel Transformations and Coupling Layers. Between each stage, we downsample by computing the mean and difference of two neighbouring timepoints and moving these into the channel dimension. Unlike Glow, we keep processing all dimensions throughout all stages, finding this architecture to reach competitive accuracy on pathology decoding. We use one gaussian distribution per class in the latent space. We experimented with affine and additive coupling layers, and report results for additive layers as the restricted expressiveness may make them easier to interpret.</p>
 <p>[diagram]</p>
-<div class="section" id="generative-invertible-networks-for-pathology-decoding">
-<h3>Generative Invertible Networks for Pathology Decoding<a class="headerlink" href="#generative-invertible-networks-for-pathology-decoding" title="Permalink to this heading">#</a></h3>
-<p>We apply our EEG-InvNet to pathology decoding as in .. We chose pathology decoding as  (i)n the question which learned features the networks uses to diagnose pathology seemed especially fascinating to us (ii) the TUH dataset is especially large.</p>
+<p>Our training loss is simply a weighted sum of generative loss and classification loss:</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{align*}
+   L(x,c_i,t)&amp;= L_\textrm{class}(x,c_i,t) + L_\textrm{gen}(x,c_i) &amp;= -\log \frac{e^{\frac{\log p(x|ci)}{t}}}{\sum_j e^{\frac{\log p(x|cj)}{t}}} - \alpha \log p(x|ci)\\
+\end{align*}
+\)</span></p>
+<p>where we choose the hyperparameter <span class="math notranslate nohighlight">\(\alpha\)</span> as the inverse of the number of dimensions <span class="math notranslate nohighlight">\(\alpha=\frac{1}{\textrm{Number of dimensions of x}}\)</span>.</p>
+</div>
+<div class="section" id="prototypes">
+<h2>Prototypes<a class="headerlink" href="#prototypes" title="Permalink to this heading">#</a></h2>
+<p>In our first visualization, we show the inputs resulting from inverting the means of the gaussian distributions for each class. These can be seen as prototypical examples of each class and may give hints as what discriminative features have been learned. As these are only single examples, they need to be interpreted cautiously. For example, individual patterns within the examples may have a variety of relationships with the actual prediction function. Consider if a prototype contains a large alpha-band oscillation at two electrodes, then these may be indepedendently predictive predictive of that class or only in combination or only in some combination with other features. Nevertheless, the prototypes can already reveal potential discriminative features for further investigation.</p>
+</div>
+<div class="section" id="per-electrode-prototypes">
+<h2>Per-Electrode Prototypes<a class="headerlink" href="#per-electrode-prototypes" title="Permalink to this heading">#</a></h2>
+<p>TODO: maybe show one example of T3 optimized electrode</p>
+<p>One way to get more interpetable prototypes is to synthesize them per electrode. Here, we synthesize a signal for a specific electrode <span class="math notranslate nohighlight">\(e_i\)</span> such that the class prediction is high for one class, independent of the signals at the other electrodes. So for electrode <span class="math notranslate nohighlight">\(e_k\)</span> and class <span class="math notranslate nohighlight">\(c_i\)</span>, we aim to optimize the signal <span class="math notranslate nohighlight">\(x^*_{e_i}\)</span> by maximizing the marginals and <span class="math notranslate nohighlight">\(p(x^*_{e_k}|c_i)=\int p(x|c_i;x_{e_k}=x^*_{e_k}) dx\)</span> and <span class="math notranslate nohighlight">\(p(c_i|x^*_{e_k})=\frac{p(x^*_{e_k}|c_i)}{\sum_j p(x^*_{e_k}|c_j)}\)</span>. To approximate this, we sample signals of the training distribution and replace the signal the corresponding electrodes signal <span class="math notranslate nohighlight">\(x_{e_k}\)</span> by the optimized <span class="math notranslate nohighlight">\(x^*_{e_k}\)</span>. As we sample the remaining electrodes signals from the full distribution and not from the actual conditional distribution <span class="math notranslate nohighlight">\(p(x|c_i;x_{e_k}=x^*_{e_k})\)</span>, this is only an approximation, but already able to yield insightful visualizations. In practice, when computing the approximation of the integral <span class="math notranslate nohighlight">\(\int p(x|c_i;x_{e_k}=x^*_{e_k}\)</span> from our log probabilities, we found it helpful to divide the log probabilities by the learned temperature of the classifier.</p>
+</div>
+<div class="section" id="eeg-cosnet">
+<h2>EEG CosNet<a class="headerlink" href="#eeg-cosnet" title="Permalink to this heading">#</a></h2>
+<p>Finally, we also implemented a small convolutional network EEG-CosNet that we designed to be directly interpretable. We aimed to distill the trained EEG-InvNet into the EEG-CosNet by training the EEG-CosNet using the EEG-InvNet class probabilities as the targets for the classification loss <span class="math notranslate nohighlight">\(L_\textrm{class}\)</span>. Our EEG-CosNet consists of just three steps:</p>
+<ol class="arabic simple">
+<li><p>Linear spatial filtering</p></li>
+<li><p>Average of rolling absolute cosine similarity of spatially filtered signals with temporal filters, with one temporal filter per spatial filter</p></li>
+<li><p>Linear classification</p></li>
+</ol>
+<p>Steps 1 and 2 yield spatiotemporal patterns that can be visualized as waveforms and scalp plots, and that are weighted by the linear classifier for the respective classes. We chose cosine similarity to ensure that high output values correspond to spatially filtered signals that resemble the corresponding temporal filter. The linear operations in step 1 and 3 also allow to make the network’s learned features even more interpretable through transforming the discriminative weights into generative patterns post-hoc by multiplying them with the covariance of the electrodes/averaged absolute cosine similarities, see for <span id="id2">Haufe <em>et al.</em> [<a class="reference internal" href="References.html#id65" title="Stefan Haufe, Frank Meinecke, Kai Görgen, Sven Dähne, John-Dylan Haynes, Benjamin Blankertz, and Felix Bießmann. On the interpretation of weight vectors of linear models in multivariate neuroimaging. NeuroImage, 87:96–110, February 2014. URL: http://www.sciencedirect.com/science/article/pii/S1053811913010914 (visited on 2015-08-07), doi:10.1016/j.neuroimage.2013.10.067.">2014</a>]</span> for a discussion on this technique. We use 64 spatiotemporal filters with filters of length 64 corresponding to one second at 64 Hz.</p>
 <ul class="simple">
-<li><p>Same accuracy as other good networks</p></li>
+<li><p>invertible layers</p>
+<ul>
+<li><p>explain invertible layers, maybe bold part in front</p></li>
+<li><p>(mention wavelet permutation also)</p></li>
 </ul>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Deep</p></th>
-<th class="head"><p>Shallow</p></th>
-<th class="head"><p>TCN</p></th>
-<th class="head"><p>EEGNet</p></th>
-<th class="head"><p>EEG-InvNet Disc</p></th>
-<th class="head"><p>EEG-InvNet Gen</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>84.6</p></td>
-<td><p>84.1</p></td>
-<td><p>86.2</p></td>
-<td><p>83.4</p></td>
-<td><p>85.5</p></td>
-<td><p>77.2</p></td>
-</tr>
-</tbody>
-</table>
-<div class="figure align-default" id="disc-invnet-prototypes">
-<img alt="_images/net-disc-prototypes.png" src="_images/net-disc-prototypes.png" />
-<p class="caption"><span class="caption-number">Fig. 40 </span><span class="caption-text">Learned Class Prototypes from Invertible Network. Obtained by inverting learned means of class-conditional gaussian distributions from latent space to input space through the invertible network trained for pathology decoding.</span><a class="headerlink" href="#disc-invnet-prototypes" title="Permalink to this image">#</a></p>
-</div>
-<div class="figure align-default" id="marginal-chan">
-<img alt="_images/marginal-chan.png" src="_images/marginal-chan.png" />
-<p class="caption"><span class="caption-number">Fig. 41 </span><span class="caption-text">Learned Per-Channel Prototypes from Invertible Network. Each channels’ input is optimized independently to increase the invertible networks prediction for the respective class. During that optimization, signals for the other non-optimized channels are sampled from the training data.</span><a class="headerlink" href="#marginal-chan" title="Permalink to this image">#</a></p>
-</div>
-</div>
-<div class="section" id="learning-a-small-interpretable-network">
-<h3>Learning a small interpretable network<a class="headerlink" href="#learning-a-small-interpretable-network" title="Permalink to this heading">#</a></h3>
-<div class="figure align-default" id="id2">
-<img alt="_images/cos-sim-net-pattern.png" src="_images/cos-sim-net-pattern.png" />
-<p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">Visualization of small interpretable network trained to mimic the EEG-InvNet. Signals are colored by weights of a model that learns to predict strength of output of that signals cosine similarity from overall output.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
-</div>
-<p>Results:</p>
-<ul class="simple">
-<li><p>Best results</p>
+</li>
+<li><p>example for volume change, do make it (use seaborn colors, in <a class="reference external" href="http://draw.io">draw.io</a>)</p>
 <ul>
-<li><p>Try recreating all results for n_class_independent</p></li>
-<li><p>Show that it works as good as others</p>
+<li><p>do consider making some bar plots with matplotlib why not</p></li>
+</ul>
+</li>
+<li><p>architecture diagram</p>
 <ul>
-<li><p>Small table for that</p></li>
+<li><p>what is one block? Haar Wavelet addition</p></li>
+<li><p>Latent gaussian at end, no don’t show</p></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Prototypes for pathological</p></li>
-<li><p>Optimize per Chan Marginal Probability</p></li>
-<li><p>Small Cos Net that recreates</p></li>
-<li><p>(low freq?)</p></li>
-<li><p>Mean Zs for medications etc.?excessive beta/excessive theta? and one medication</p></li>
-</ul>
-<ul class="simple">
-<li></li>
-</ul>
-<div class="figure align-default" id="bcic-iv-2a-right-vs-rest">
-<img alt="_images/bcic_iv_2a_right_vs_rest.png" src="_images/bcic_iv_2a_right_vs_rest.png" />
-<p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text">Right hand vs resting state class prototypes learned by an invertible network on the BCIC IV 2a dataset. Note the increased alpha oscillation for resting state, especially on the left side.</span><a class="headerlink" href="#bcic-iv-2a-right-vs-rest" title="Permalink to this image">#</a></p>
-</div>
-<div class="figure align-default" id="bcic-iv-2a-right-vs-rest-c3">
-<img alt="_images/bcic_iv_2a_right_vs_rest.png" src="_images/bcic_iv_2a_right_vs_rest.png" />
-<p class="caption"><span class="caption-number">Fig. 44 </span><span class="caption-text">Right hand vs resting state class prototypes learned by an invertible network on the BCIC IV 2a dataset, showing the C3 electrode. Note the increased alpha oscillation.</span><a class="headerlink" href="#bcic-iv-2a-right-vs-rest-c3" title="Permalink to this image">#</a></p>
-</div>
-<p>Class prototypes are a visualization obtainable from the trained invertible network. Here, the invertible network was trained as a class-conditional generative model via maximum likelihood with an extra classification loss [refs etc.]. To obtain the class protypes we first found the maxima of each class  distribution, i.e., of the learned class-conditional distribution <span class="math notranslate nohighlight">\(p_{\theta}(x|y_c)\)</span>. From that starting point, the synthetic prototypes were further optimized to minimize <span class="math notranslate nohighlight">\(L_{proto}(x) = -w_{prob}\log_{}\left(p_{\theta}\left(x\mid y_{c}\right)\right)\,-w_{class}\,\log_{}\left(p_{\theta}\left(y_{c}\mid x\right)\right)\)</span>.</p>
-<p>Prototypes for right hand vs resting state show a plausible discriminative pattern with increasing alpha oscillation of resting state compared to right hand, see <a class="reference internal" href="#bcic-iv-2a-right-vs-rest"><span class="std std-numref">Fig. 43</span></a>. Note that due to the discriminative training and the discriminative term in the optimization, these visualizations may show discriminative patterns that do not directly correspond to how actual signals for these classes look like. For example, in the actual data there may a decreasing right hand oscillation and a stable oscillation for resting state. See also the discussion in <a class="reference internal" href="PerturbationVisualization.html#perturbation-visualization-interpretation"><span class="std std-ref">Interpretation and limitations</span></a>.</p>
-<p>Todo:</p>
-<ul class="simple">
-<li><p>Neural architecture search</p></li>
-<li><p>Simplebits</p></li>
-</ul>
-</div>
 </div>
 </div>
 
@@ -511,20 +524,20 @@ The splitting of dimensions can be done in multiply ways, like using odd or even
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Pathology.html"
+       href="PerturbationVisualization.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Decoding Pathology</p>
+        <p class="prev-next-title">Perturbation Visualization</p>
       </div>
     </a>
     <a class="right-next"
-       href="FutureWork.html"
+       href="MovementDecoding.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Future Work</p>
+        <p class="prev-next-title">Decoding Movement-Related Brain Activity</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -546,14 +559,17 @@ The splitting of dimensions can be done in multiply ways, like using odd or even
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-models-via-maximum-likelihood">Generative models via maximum likelihood</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-classifiers">Generative classifiers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invertible-network-for-eeg-decoding">Invertible Network for EEG Decoding</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-invertible-networks-for-pathology-decoding">Generative Invertible Networks for Pathology Decoding</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-a-small-interpretable-network">Learning a small interpretable network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invertible-layers">Invertible Layers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-models-via-maximum-likelihood">Generative models via maximum likelihood</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-quantization">(De)quantization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-of-volume">Change of Volume</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-classifiers">Generative classifiers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invertible-network-for-eeg-decoding">Invertible Network for EEG Decoding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prototypes">Prototypes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-electrode-prototypes">Per-Electrode Prototypes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eeg-cosnet">EEG CosNet</a></li>
 </ul>
   </nav></div>
 
