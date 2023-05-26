@@ -6,8 +6,8 @@ sections:
 - file: FBCSPAndFBCSPNet
 - file: DeepArchitectures
 - file: CroppedTraining
-- file: Invertible
 - file: PerturbationVisualization
+- file: Invertible
 - file: MovementDecoding
 - file: TaskDecoding
 - file: Pathology
