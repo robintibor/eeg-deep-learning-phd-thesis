@@ -27,3 +27,5 @@ sphinx:
     html_theme_options:
       navbar_end:
         - "navbar-icon-links"
+html_static_path:
+  - '_static'
