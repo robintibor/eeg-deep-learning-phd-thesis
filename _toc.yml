@@ -12,5 +12,5 @@ sections:
 - file: TaskDecoding
 - file: Pathology
 - file: UnderstandingPathology
-- file: FutureWork
+- file: Discussion
 - file: References

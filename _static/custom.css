@@ -2,3 +2,7 @@
     text-align: left;
     /* text-justify: inter-word; */
 }
+table caption, caption {
+    text-align: left;
+    /* text-justify: inter-word; */
+}
