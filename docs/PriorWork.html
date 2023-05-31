@@ -363,8 +363,8 @@ document.write(`
 <div class="admonition-prior-to-our-work-research-on-deep-learning-based-eeg-decoding-was-limited admonition">
 <p class="admonition-title">Prior to our work, research on deep-learning-based EEG decoding was limited</p>
 <ul class="simple">
-<li><p>Few studies compared to published well-tuned feature-based decoding results</p></li>
-<li><p>Most EEG DL architectures had only 1-3 convolutional layers and included fully-connected layers</p></li>
+<li><p>Few studies compared to published feature-based decoding results</p></li>
+<li><p>Most EEG DL architectures had only 1-3 convolutional layers and included fully-connected layers with many parameters</p></li>
 <li><p>Most work only considered very restricted frequency ranges</p></li>
 <li><p>Most studies only compared few design choices and training strategies</p></li>
 </ul>
@@ -407,7 +407,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<p>The most widely studied decoding problems were movement-related decoding problems such as decoding which body part (hand, feet etc.) a person is moving or imagining to move (see <a class="reference internal" href="#prior-work-tasks-table"><span class="std std-numref">Table 1</span></a>). From the 19 studies we identified at the time, only 5 compared their decoding results to an external published baseline result, limiting how much one can learn about the deep-learning decoding performance. To advance the understanding of decoding EEG using deep learning, we therefore decided to first focus on those widely researched movement-related decoding tasks and include a comparison to a strong feature-based baseline (see <a class="reference internal" href="FBCSPAndFBCSPNet.html#fbscp-and-filterbank-net"><span class="std std-ref">Filter Bank Common Spatial Patterns and Filterbank Network</span></a>).</p>
+<p>The most widely studied decoding problems were movement-related decoding problems such as decoding which body part (hand, feet etc.) a person is moving or imagining to move (see <a class="reference internal" href="#prior-work-tasks-table"><span class="std std-numref">Table 1</span></a>). From the 19 studies we identified at the time, only 5 compared their decoding results to an external published baseline result, limiting the insights about deep-learning EEG decoding performance. We therefore decided to compare deep-learning EEG decoding to a strong feature-based baseline (see <a class="reference internal" href="FBCSPAndFBCSPNet.html#fbscp-and-filterbank-net"><span class="std std-ref">Filter Bank Common Spatial Patterns and Filterbank Network</span></a>) on widely researched movement-related decoding tasks.</p>
 </div>
 <div class="section" id="input-domains-and-frequency-ranges">
 <h2>Input Domains and Frequency Ranges<a class="headerlink" href="#input-domains-and-frequency-ranges" title="Permalink to this heading">#</a></h2>
@@ -624,7 +624,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<p>Prior work varied widely in which design choices and training strategies were compared. 6 of the studies did not compare any design choices or  training strategy hyperparameters. The other 13 studies evaluated different hyperparameters, with the most common one the kernel size (see <a class="reference internal" href="#prior-work-design-choices-table"><span class="std std-numref">Table 2</span></a>). Only one study evaluated a wider range of hyperparameters <span id="id17">[<a class="reference internal" href="References.html#id186" title="Sebastian Stober, Daniel J. Cameron, and Jessica A. Grahn. Using Convolutional Neural Networks to Recognize Rhythm Stimuli from Electroencephalography Recordings. In Proceedings of the 27th International Conference on Neural Information Processing Systems, NIPS'14, 1449–1457. Cambridge, MA, USA, 2014. MIT Press. URL: http://dl.acm.org/citation.cfm?id=2968826.2968988 (visited on 2016-12-20).">Stober <em>et al.</em>, 2014</a>]</span>. To fill this gap, we compared a wider range of design choices and training strategies and specifically evaluated in how far improvements of computer vision architecture design choices and training strategies also lead to improvements in EEG decoding.</p>
+<p>Prior work varied widely in their comparison of design choices and training strategies. 6 of the studies did not compare any design choices or  training strategy hyperparameters. The other 13 studies evaluated different hyperparameters, with the most common one the kernel size (see <a class="reference internal" href="#prior-work-design-choices-table"><span class="std std-numref">Table 2</span></a>). Only one study evaluated a wider range of hyperparameters <span id="id17">[<a class="reference internal" href="References.html#id186" title="Sebastian Stober, Daniel J. Cameron, and Jessica A. Grahn. Using Convolutional Neural Networks to Recognize Rhythm Stimuli from Electroencephalography Recordings. In Proceedings of the 27th International Conference on Neural Information Processing Systems, NIPS'14, 1449–1457. Cambridge, MA, USA, 2014. MIT Press. URL: http://dl.acm.org/citation.cfm?id=2968826.2968988 (visited on 2016-12-20).">Stober <em>et al.</em>, 2014</a>]</span>. To fill this gap, we compared a wider range of design choices and training strategies and specifically evaluated whether improvements of computer vision architecture design choices and training strategies also lead to improvements in EEG decoding.</p>
 </div>
 <div class="section" id="visualizations">
 <h2>Visualizations<a class="headerlink" href="#visualizations" title="Permalink to this heading">#</a></h2>
@@ -683,14 +683,14 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<p>Visualizations can help understand what information the networks are extracting from the EEG signal. 11 of the prior 19 studies presented any visualizations. These studies mostly focused on analyzing weights and activations, see <a class="reference internal" href="#prior-work-visualizations-table"><span class="std std-numref">Table 3</span></a>. In our work, we first focused on investigating how far the networks extract spectral features known to work well for movement-related decoding, see <a class="reference internal" href="PerturbationVisualization.html#perturbation-visualization"><span class="std std-ref">Perturbation Visualization</span></a>. Later, we also developed more sophisticated visualization methods and applied them both to movement-related decoding as well as to pathology decoding, see <a class="reference internal" href="Invertible.html#invertible-networks"><span class="std std-ref">Invertible Networks</span></a>.</p>
+<p>Visualizations can help understand what information the networks are extracting from the EEG signal. 11 of the prior 19 studies presented any visualizations. These studies mostly focused on analyzing weights and activations, see <a class="reference internal" href="#prior-work-visualizations-table"><span class="std std-numref">Table 3</span></a>. In our work, we first focused on investigating how far the networks extract spectral features known to work well for movement-related decoding, see <a class="reference internal" href="PerturbationVisualization.html#perturbation-visualization"><span class="std std-ref">Perturbation Visualization</span></a>. Later, we also developed more sophisticated visualization methods and applied them both to pathology decoding, see <a class="reference internal" href="Invertible.html#invertible-networks"><span class="std std-ref">Invertible Networks</span></a> and <a class="reference internal" href="UnderstandingPathology.html#understanding-pathology"><span class="std std-ref">Understanding Pathology Decoding With Invertible Networks</span></a>.</p>
 <div class="tip admonition">
 <p class="admonition-title">Open Questions</p>
 <ul class="simple">
 <li><p>How do ConvNets perform on well-researched EEG movement-related decoding tasks against strong feature-based baselines?</p></li>
 <li><p>How do shallower and deeper architectures compare?</p></li>
 <li><p>How do design choices and training strategies affect the decoding performance?</p></li>
-<li><p>What features do the deep networks learn to extract from the EEG signals?</p></li>
+<li><p>What features do the deep networks learn on the EEG signals?</p></li>
 <li><p>Do they learn to use higher-frequency (&gt;50 Hz) information?</p></li>
 </ul>
 </div>
