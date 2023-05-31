@@ -1,0 +1,518 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discussion &#8212; Deep Learning for Brain-Signal Decoding from Electroencephalography (EEG)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "robintibor/eeg-deep-learning-phd-thesis");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Discussion';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="References" href="References.html" />
+    <link rel="prev" title="Understanding Pathology Decoding With Invertible Networks" href="UnderstandingPathology.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="light">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="Abstract.html">
+  
+  
+  
+  
+    
+    
+    
+    <img src="_static/braindecode-logo.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/braindecode-logo.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PriorWork.html">Prior Work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FBCSPAndFBCSPNet.html">Filter Bank Common Spatial Patterns and Filterbank Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DeepArchitectures.html">Neural Network Architectures for EEG-Decoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CroppedTraining.html">Cropped Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PerturbationVisualization.html">Perturbation Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Invertible.html">Invertible Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MovementDecoding.html">Decoding Movement-Related Brain Activity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TaskDecoding.html">Generalization to Other Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Pathology.html">Decoding Pathology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UnderstandingPathology.html">Understanding Pathology Decoding With Invertible Networks</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Discussion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Discussion.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Discussion</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#state-of-eeg-decoding-with-our-networks">State of EEG Decoding With Our Networks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-work">Future Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="discussion">
+<span id="id1"></span><h1>Discussion<a class="headerlink" href="#discussion" title="Permalink to this heading">#</a></h1>
+<div class="admonition-deep-learning-based-eeg-decoding-performance-and-interpretability-can-be-further-improved admonition">
+<p class="admonition-title">Deep-learning-based EEG decoding performance and interpretability can be further improved</p>
+<ul class="simple">
+<li><p>Deep networks presented in this thesis already have competitive decoding performance</p></li>
+<li><p>Visualizations show networks learn well-known features and surprising features</p></li>
+<li><p>Decoding performance gap between deep networks and feature-based decoding smaller than in other fields</p></li>
+<li><p>Cross-dataset cross-electrode-configuration models may improve decoding performance</p></li>
+<li><p>In-context-learning may help decoding and interpretability</p></li>
+<li><p>Multimodal models can exploit more information for decoding and offer EEG-&gt;text and text-&gt;EEG synthesis</p></li>
+</ul>
+</div>
+<p>Finally, I conclude with my thoughts on the current state of EEG deep learning decoding from the results in this thesis and promising avenues for further work like cross-dataset decoding models as well as models that can process larger timescales of EEG signals.</p>
+<div class="section" id="state-of-eeg-decoding-with-our-networks">
+<h2>State of EEG Decoding With Our Networks<a class="headerlink" href="#state-of-eeg-decoding-with-our-networks" title="Permalink to this heading">#</a></h2>
+<p>Overall, our deep networks have shown good performance on a wide variety and settings of EEG brain-signal-decoding tasks, from classical movement-related trial-based decoding recording-based automatic pathology diagnosis. They can perform as well or better than feature-based baselines both on scalp and intracranial EEG. Here, fairly generic architectures like our deep ConvNet show robust performance across a wide variety of settings provided they are given enough training data.</p>
+<p>Visualizations show these deep networks to learn well-known features like spectral amplitude, while also being capable of learning more complex features. Existing visualizations both reveal more complex waveforms than pure sinusoidal filters, as well as hierarchical features like a temporal increase in the amplitude of a learned frequency feature. Using invertible networks, we were even able to discover predictive features in less commonly used parts of the frequency spectrum.</p>
+<p>On several datasets, the decoding performance gap between deeper networks and either smaller networks or even feature-based approaches it not as substantial as in other fields of machine learning like computer vision. Still, results show one advantage of deep networks, namely the possibility to use the same model across many tasks and settings, as the more generic network architectures can learn a wide variety of features suitable for different EEG decoding problems. Also, the results presented in this thesis show some promise to discover different learned EEG features through the use of deep learning.</p>
+</div>
+<div class="section" id="future-work">
+<h2>Future Work<a class="headerlink" href="#future-work" title="Permalink to this heading">#</a></h2>
+<p>Using neural network architectures that can learn across datasets with different electrode configurations may help improve decoding performance. Here, transformer-based architectures are a promising option, as they can be fed electrode coordinates as position encodings, potentially allowing to train them across datasets with different electrode configurations by simply supplying them the electrode coordinates of the current input. This could help to further increase the training data and thereby increase the EEG decoding performance.</p>
+<p>Another architectural innovation for better decoding performance could be architectures that process larger time scales. Here, again transformed-based architectures may be promising, as recent research has enabled them to process longer temporal sequences. This way, these architectures may for example look at an entire EEG recording at once to determine whether it is pathological. One challenge for this appraoch is  that processing larger time windows instead of smaller ones decreases the training data again and more regularization may be needed.</p>
+<p>[REFS for below, PFN, TABPFN and also <a class="reference external" href="http://ai.stanford.edu/blog/understanding-incontext/#a4">http://ai.stanford.edu/blog/understanding-incontext/#a4</a>]
+In-context learning is a method that might also lead to better EEG decoding performance by learning across different datasets and still exploiting the distribution of a specific dataset during inference. In-context-learning refers to trained networks that can learn to solve a novel task simply by being given input/output examples without further training. Prominently observed in large language models, such behavior can also be explicitly trained for by training a model on entire labeled training datasets and unlabeled test datasets as input, optimizing to predict the correct test labels. Given a sufficiently large EEG dataset, one may train such a model to process all the training data of a single subject to predict the test data of the same subject. Trained this way, it can learn robust features that work across subjects while still being able to exploit subject-specific features for prediction. One may also consider training on synthetic EEG data to have an unlimited number of datasets during training.</p>
+<p>[also ref, take from simplebits?]
+Additionally, combining in-context-learning with dataset condensation methods may help interpretability. Here, after training the in-context-learning model across many datasets, one could synthesize a small labeled training dataset that yields good performance on a given test dataset. Simply visualizing the examples in this synthesized training set may already reveal discriminative features, similar in spirit, but potentially more powerful than the class prototypes we showed in <a class="reference internal" href="UnderstandingPathology.html#understanding-pathology"><span class="std std-ref">Understanding Pathology Decoding With Invertible Networks</span></a>.</p>
+<p>Finally, multimodal neural networks that can process the EEG signal as well as a textual description or other metadata could also improve decoding performance or used as interpretability tools. While models that get both text and signal as input could simply be used to improve decoding performance, models that go from textual description to EEG signal or vice versa may also help interpretability by textually summarizing a given EEG signal or visualizing a typical EEG signal corresponding to a specific textual report. [ref to this eeeg2doc or sth]</p>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>Overall, EEG decoding using deep learning already works well, showing competitive decoding performance and revealing interesting learned features. Adopting more recent deep learning methods as the ones mentioned above may improve both aspects further.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="UnderstandingPathology.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Understanding Pathology Decoding With Invertible Networks</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="References.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">References</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#state-of-eeg-decoding-with-our-networks">State of EEG Decoding With Our Networks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-work">Future Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
