@@ -34,6 +34,8 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/.ipynb_checkpoints/custom-checkpoint.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -345,12 +347,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invertible-layers">Invertible Layers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-models-via-maximum-likelihood">Generative models via maximum likelihood</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-quantization">(De)quantization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-of-volume">Change of Volume</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volume-change">Volume Change</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-classifiers">Generative classifiers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invertible-network-for-eeg-decoding">Invertible Network for EEG Decoding</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prototypes">Prototypes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-prototypes">Class Prototypes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-electrode-prototypes">Per-Electrode Prototypes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eeg-cosnet">EEG CosNet</a></li>
 </ul>
@@ -364,7 +366,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="invertible-networks">
+  
+<style>
+  .ss-layout-default-AB_CD { grid-template-areas: 'A B' 'C D'; }
+  .ss-layout-default-AB { grid-template-areas: 'A B'; }
+</style>
+<div class="tex2jax_ignore mathjax_ignore section" id="invertible-networks">
 <span id="id1"></span><h1>Invertible Networks<a class="headerlink" href="#invertible-networks" title="Permalink to this heading">#</a></h1>
 <p>Invertible networks are networks that are invertible by design, i.e., any network output can be mapped back to a corresponding input [refs] bijectively. The ability to invert any output back to the input enables different interpretability methods and furthermore allows training invertible networks as generative models via maximum likelihood.</p>
 <p>This chapter starts by explaining invertible layers that are used to design invertible networks, proceeds to detail training methodologies for invertible networks as generative models or classifiers, and goes on to outline interpretability techniques that help reveal the learned features crucial for their classification tasks.
@@ -417,12 +424,23 @@ document.write(`
 <p>Invertible networks can also be trained as generative models via maximum likelihood. In maximum likelihood training, the network is optimized to maximize the probabilities of the training inputs. Invertible networks assign probabilities to training inputs by mapping them to a latent space and computing their probabilities under a predefined prior in that latent space. However, for real-valued inputs, one has to account for quantization and volume change to ensure this results in a proper probability distribution in the input space. Quantization  refers to the fact that training data often consists of quantized measureuements of underlying continuous data, e.g. digital images can only represent a distinct set of color values. Volume change refers to how the invertible networks’ mapping function expands or squeezes volume from input space to latent space.</p>
 <div class="section" id="de-quantization">
 <h3>(De)quantization<a class="headerlink" href="#de-quantization" title="Permalink to this heading">#</a></h3>
-<p>Often, training data consists of quantized measurements like discrete integer color values from 0 to 255, which are mapped to real-world floating point numbers for training a network. Naively maximizing the probability densities of these quantized values with a continuous probability distribution would lead to pathological behavior as the quantized inputs do not cover any volume. Hence it would be possible for the learned distribution to assign infinitely high probability densities to individual training points. As an example, given a gaussian mixture distribution with two components, one component may cover all the training points with nonzero densities while the other one could assign infinitely high densities to one single point [mackay ref?].</p>
-<p>Hence, one needs to “dequantize” the data such that each datapoint occupies volume in the input space. The simplest way here is to add uniform noise to each data point with a volume corresponding to the gap between two data points. For example, if the 256 color values are mapped to 256 floating values between 0 and 1, one may add uniform noise  <span class="math notranslate nohighlight">\(u\sim(0,\frac{1}{256})\)</span> to the inputs. If a new noise sample is drawn for each new forward pass of the network, then optimizing the resulting continuous distribution lower bounds optimizing the original discrete distribution [ref]. TODO: correct a bit maybe, like what is lower bounding what and ref also. maybe also formula Since in our case, we are not primarily interested in the exact performance as generative model in number of bits, we simply add gaussian noise with a fixed small standard deviation <span class="math notranslate nohighlight">\(N(0,0.005I)\)</span> during training.</p>
+<div class="figure align-default" id="dequantization-fig">
+<img alt="_images/dequantization.png" src="_images/dequantization.png" />
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text"><strong>Density-maximizing distributions without and with dequantization.</strong> Examples show result of fitting  quantized values like discrete integer color values with a continuous probability distribution. Example training distributions have 3 data points at <span class="math notranslate nohighlight">\(x_1=1\)</span>, <span class="math notranslate nohighlight">\(x_2=2\)</span> and <span class="math notranslate nohighlight">\(x_3=5\)</span>. On the left, fitting quantized values directly leads to a pathological solution as the learned distribution <span class="math notranslate nohighlight">\(p\)</span> can assign arbitrarily high probability densities on the data points. On the right, adding uniform noise <span class="math notranslate nohighlight">\(U(0,1)\)</span> to the datapoints leads to a distribution that also recovers the correct discrete distribution, that means integrating over the probability densities in the volume of each point leads to <span class="math notranslate nohighlight">\(P(x_i)=\frac{1}{3}\)</span>.</span><a class="headerlink" href="#dequantization-fig" title="Permalink to this image">#</a></p>
 </div>
-<div class="section" id="change-of-volume">
-<h3>Change of Volume<a class="headerlink" href="#change-of-volume" title="Permalink to this heading">#</a></h3>
-<p>In addition, for these probability densities to form a valid probability distribution in the input space, one has to account for how much the network’s mapping function squeezes and expands volume. Otherwise, the network can increase densities by squeezing all the inputs closely together in latent space.
+<p>Often, training data for neural networks consists of quantized measurements like discrete integer color values from 0 to 255, which are mapped to real-world floating point numbers for training. Naively maximizing the probability densities of these quantized values with a continuous probability distribution would lead to pathological behavior as the quantized training data points do not cover any volume. Hence it would be possible for the learned distribution to assign infinitely high probability densities to individual data points, see <a class="reference internal" href="#dequantization-fig"><span class="std std-numref">Fig. 13</span></a> on the left side.</p>
+<p>Todo (this ref): As an example, given a gaussian mixture distribution with two components, one component may cover all the training points with nonzero densities while the other one could assign infinitely high densities to one single point [mackay ref?].</p>
+<p>Hence, one needs to “dequantize” the data such that each datapoint occupies volume in the input space. The simplest way here is to add uniform noise to each data point with a volume corresponding to the gap between two data points. For example, if the 256 color values are mapped to 256 floating values between 0 and 1, one may add uniform noise  <span class="math notranslate nohighlight">\(u\sim(0,\frac{1}{256})\)</span> to the inputs. If a new noise sample is drawn for each new forward pass of the network, then optimizing the resulting continuous distribution lower bounds optimizing the original discrete distribution [ref]. TODO: correct a bit maybe, like what is lower bounding what and ref also. maybe also formula
+Since in our case, we are not primarily interested in the exact performance as generative model in number of bits, we simply add gaussian noise with a fixed small standard deviation <span class="math notranslate nohighlight">\(N(0,0.005I)\)</span> during training.</p>
+</div>
+<div class="section" id="volume-change">
+<h3>Volume Change<a class="headerlink" href="#volume-change" title="Permalink to this heading">#</a></h3>
+<div class="figure align-default" id="change-of-volume-fig">
+<img alt="_images/change-of-volume.png" src="_images/change-of-volume.png" />
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text"><strong>Computing probability densities accounting for volume changes by a function.</strong> Input <span class="math notranslate nohighlight">\(x\)</span> with probability distribution <span class="math notranslate nohighlight">\(p_\text{x}(x)\)</span> on the left is scaled by 0.5 to <span class="math notranslate nohighlight">\(z=f(x)=0.5x\)</span> with probability distribution <span class="math notranslate nohighlight">\(p_\text{z}(z)\)</span> on the right. Naively integrating <span class="math notranslate nohighlight">\(p_\text{z}(f(x))\)</span> over x would lead to a non-valid probability distribution with <span class="math notranslate nohighlight">\(\int_x p_\mathrm{z}(f(x)) \, dx=2\)</span>. To get the prober probability densities in input space from <span class="math notranslate nohighlight">\(p_\text{z}(z)\)</span>, one has to multiply with the volume changes, in this case the scaling factor of the mapping <span class="math notranslate nohighlight">\(f(x)\)</span> from x to z, giving <span class="math notranslate nohighlight">\(p_\text{x}(x)=p_\mathrm{z}(f(x)) \cdot \frac{df}{dx}=p_\mathrm{z}(f(x))\cdot 0.5\)</span> which correctly integrates to 1.</span><a class="headerlink" href="#change-of-volume-fig" title="Permalink to this image">#</a></p>
+</div>
+<p>TODO: probably change to p_x and p_z, make more consistent by moving also right side formula out maybe make font above arrow a bit bigger</p>
+<p>In addition, for these probability densities to form a valid probability distribution in the input space, one has to account for how much the network’s mapping function squeezes and expands volume Otherwise, the network can increase densities by squeezing all the inputs closely together in latent space, see also <a class="reference internal" href="#change-of-volume-fig"><span class="std std-numref">Fig. 14</span></a> for a onedimensional example.
 To correctly account for the volume change during the forward pass of <span class="math notranslate nohighlight">\(f\)</span> one needs to multiply the probability density with the volume change of <span class="math notranslate nohighlight">\(f\)</span>, descreasing the densities if the volume is squeezed from input to latent space and increasing it if the volume is expanded. As the volume change at a given point <span class="math notranslate nohighlight">\(x\)</span> is given by the absolute determinant of the jacobian of f at that point  <span class="math notranslate nohighlight">\(\det \left( \frac{\partial \mathbf{f}}{\partial \mathbf{x}} \right)\)</span>, the overall formula looks like this:</p>
 <p><span class="math notranslate nohighlight">\(p(x) = p_\textrm{prior}(f(x)) \cdot  | \det \left( \frac{\partial \mathbf{f}}{\partial \mathbf{x}} \right)|\)</span></p>
 <p>Usually, one optimizes the log-densities, leading to:</p>
@@ -442,8 +460,11 @@ To correctly account for the volume change during the forward pass of <span clas
 </div>
 <div class="section" id="invertible-network-for-eeg-decoding">
 <h2>Invertible Network for EEG Decoding<a class="headerlink" href="#invertible-network-for-eeg-decoding" title="Permalink to this heading">#</a></h2>
-<p>We designed an invertible network for EEG Decoding using invertible components used in the literature, primarily from the Glow architecture [REF]. Our architecture consists of three stages that operate on sequentially lower temporal resolutions. Similar to glow, the individual stages consists of several blocks of Activation Normalization, Invertible Linear Channel Transformations and Coupling Layers. Between each stage, we downsample by computing the mean and difference of two neighbouring timepoints and moving these into the channel dimension. Unlike Glow, we keep processing all dimensions throughout all stages, finding this architecture to reach competitive accuracy on pathology decoding. We use one gaussian distribution per class in the latent space. We experimented with affine and additive coupling layers, and report results for additive layers as the restricted expressiveness may make them easier to interpret.</p>
-<p>[diagram]</p>
+<div class="figure align-default" id="eeg-invnet-fig">
+<img alt="_images/EEG-InvNet.png" src="_images/EEG-InvNet.png" />
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text"><strong>EEG-InvNet architecture</strong>. Our EEG-InvNet architecture consists of three stages that operate at sequentially lower temporal resolutions. Input is two seconds of 21 electrodes at 64 Hz so 21x128 dimensions. These are downsampled using Haar Wavelets to 42x32 for the first, 84x16 for the second and 164x8 for the last stage. One stage consists of 4 blocks, each block has an activation normalization, an invertible linear and a coupling layer. The activation normalization and invertible linear layer act on the channel dimension, so perform the same operation across channels on timepoint in the feature map. The coupling layer uses two convolutions with an exponential linear unit activation inbetween.</span><a class="headerlink" href="#eeg-invnet-fig" title="Permalink to this image">#</a></p>
+</div>
+<p>We designed an invertible network for EEG Decoding using invertible components used in the literature, primarily from the Glow architecture [REF]. Our architecture consists of three stages that operate on sequentially lower temporal resolutions. Similar to Glow, the individual stages consists of several blocks of Activation Normalization, Invertible Linear Channel Transformations and Coupling Layers, see <a class="reference internal" href="#eeg-invnet-fig"><span class="std std-numref">Fig. 15</span></a>. Between each stage, we downsample by computing the mean and difference of two neighbouring timepoints and moving these into the channel dimension. Unlike Glow, we keep processing all dimensions throughout all stages, finding this architecture to reach competitive accuracy on pathology decoding. We use one gaussian distribution per class in the latent space. We experimented with affine and additive coupling layers, and report results for additive layers as the restricted expressiveness may make them easier to interpret.</p>
 <p>Our training loss is simply a weighted sum of generative loss and classification loss:</p>
 <p><span class="math notranslate nohighlight">\(
 \begin{align*}
@@ -451,44 +472,72 @@ To correctly account for the volume change during the forward pass of <span clas
 \end{align*}
 \)</span></p>
 <p>where we choose the hyperparameter <span class="math notranslate nohighlight">\(\alpha\)</span> as the inverse of the number of dimensions <span class="math notranslate nohighlight">\(\alpha=\frac{1}{\textrm{Number of dimensions of x}}\)</span>.</p>
+<p>TODO: add temperature sentence</p>
 </div>
-<div class="section" id="prototypes">
-<h2>Prototypes<a class="headerlink" href="#prototypes" title="Permalink to this heading">#</a></h2>
-<p>In our first visualization, we show the inputs resulting from inverting the means of the gaussian distributions for each class. These can be seen as prototypical examples of each class and may give hints as what discriminative features have been learned. As these are only single examples, they need to be interpreted cautiously. For example, individual patterns within the examples may have a variety of relationships with the actual prediction function. Consider if a prototype contains a large alpha-band oscillation at two electrodes, then these may be indepedendently predictive predictive of that class or only in combination or only in some combination with other features. Nevertheless, the prototypes can already reveal potential discriminative features for further investigation.</p>
+<div class="section" id="class-prototypes">
+<h2>Class Prototypes<a class="headerlink" href="#class-prototypes" title="Permalink to this heading">#</a></h2>
+<div class="figure align-default" id="eeg-prototypes-fig">
+<img alt="_images/EEGInvNetClassPrototypes.png" src="_images/EEGInvNetClassPrototypes.png" />
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text"><strong>EEG-InvNet class prototypes</strong>. Class prototypes are synthesized by inverting the means <span class="math notranslate nohighlight">\(z_\mathrm{healthy}\)</span> and <span class="math notranslate nohighlight">\(z_\mathrm{pathological}\)</span> of the per-class gaussian distributions.</span><a class="headerlink" href="#eeg-prototypes-fig" title="Permalink to this image">#</a></p>
+</div>
+<p>In our first visualization, we show the inputs resulting from inverting the means of the gaussian distributions for each class. These can be seen as prototypical examples of each class and may give hint about the the discriminative features that have been learned. As these are only single examples, they need to be interpreted cautiously. For example, individual features within the examples may have a variety of relationships with the actual prediction function. Consider if a prototype contains a large alpha-band oscillation at two electrodes, then these may be indepedendently predictive predictive of that class or only in combination or even only in some combination with other features. Nevertheless, the prototypes can already suggest potential discriminative features for further investigation.</p>
 </div>
 <div class="section" id="per-electrode-prototypes">
 <h2>Per-Electrode Prototypes<a class="headerlink" href="#per-electrode-prototypes" title="Permalink to this heading">#</a></h2>
-<p>TODO: maybe show one example of T3 optimized electrode</p>
-<p>One way to get more interpetable prototypes is to synthesize them per electrode. Here, we synthesize a signal for a specific electrode <span class="math notranslate nohighlight">\(e_i\)</span> such that the class prediction is high for one class, independent of the signals at the other electrodes. So for electrode <span class="math notranslate nohighlight">\(e_k\)</span> and class <span class="math notranslate nohighlight">\(c_i\)</span>, we aim to optimize the signal <span class="math notranslate nohighlight">\(x^*_{e_i}\)</span> by maximizing the marginals and <span class="math notranslate nohighlight">\(p(x^*_{e_k}|c_i)=\int p(x|c_i;x_{e_k}=x^*_{e_k}) dx\)</span> and <span class="math notranslate nohighlight">\(p(c_i|x^*_{e_k})=\frac{p(x^*_{e_k}|c_i)}{\sum_j p(x^*_{e_k}|c_j)}\)</span>. To approximate this, we sample signals of the training distribution and replace the signal the corresponding electrodes signal <span class="math notranslate nohighlight">\(x_{e_k}\)</span> by the optimized <span class="math notranslate nohighlight">\(x^*_{e_k}\)</span>. As we sample the remaining electrodes signals from the full distribution and not from the actual conditional distribution <span class="math notranslate nohighlight">\(p(x|c_i;x_{e_k}=x^*_{e_k})\)</span>, this is only an approximation, but already able to yield insightful visualizations. In practice, when computing the approximation of the integral <span class="math notranslate nohighlight">\(\int p(x|c_i;x_{e_k}=x^*_{e_k}\)</span> from our log probabilities, we found it helpful to divide the log probabilities by the learned temperature of the classifier.</p>
+<div class="sphinx-subfigure figure align-default" id="invnet-marginal-chan-explanation-fig">
+<div class="sphinx-subfigure-grid ss-layout-default-AB_CD outline" style="display: grid; gap: 10px; grid-gap: 10px;">
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: A;">
+<img alt="_images/marginal-chan-explanation_0.png" src="_images/marginal-chan-explanation_0.png" />
+</div>
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: B;">
+<img alt="_images/marginal-chan-explanation_1.png" src="_images/marginal-chan-explanation_1.png" />
+</div>
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: C;">
+<img alt="_images/marginal-chan-explanation_2.png" src="_images/marginal-chan-explanation_2.png" />
+</div>
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: D;">
+<img alt="_images/marginal-chan-explanation_3.png" src="_images/marginal-chan-explanation_3.png" />
+</div>
+</div>
+<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text"><strong>EEG-InvNet per-electrode class prototypes</strong>. For getting per-electrode prototypes, class-specific signals for one electrode are synthesized while signals at other electrodes are sampled from training data. In the example, prototypes for T3 for the healthy and pathological class are learned, four samples for remaining electrodes are shown. In practice, a much larger number of samples would be used. Class signal probabilities are marginalized over the non-optimized channels as explained in text.</span><a class="headerlink" href="#invnet-marginal-chan-explanation-fig" title="Permalink to this image">#</a></p>
+</div>
+<p>One way to get more interpretable prototypes is to synthesize them per electrode. Here, we synthesize a signal for a specific electrode <span class="math notranslate nohighlight">\(e_i\)</span> such that the class prediction is high for one class, independent of the signals at the other electrodes. So for electrode <span class="math notranslate nohighlight">\(e_k\)</span> and class <span class="math notranslate nohighlight">\(c_i\)</span>, we aim to optimize the signal <span class="math notranslate nohighlight">\(x^*_{e_i}\)</span> by maximizing the marginals and <span class="math notranslate nohighlight">\(p(x^*_{e_k}|c_i)=\int p(x|c_i;x_{e_k}=x^*_{e_k}) dx\)</span> and <span class="math notranslate nohighlight">\(p(c_i|x^*_{e_k})=\frac{p(x^*_{e_k}|c_i)}{\sum_j p(x^*_{e_k}|c_j)}\)</span>. To approximate this, we sample signals of the training distribution and replace the signal <span class="math notranslate nohighlight">\(x_{e_k}\)</span> of the electrode <span class="math notranslate nohighlight">\(e_k\)</span> we are synthesizing  by the optimized <span class="math notranslate nohighlight">\(x^*_{e_k}\)</span>. As we sample the remaining electrodes signals from the full distribution and not from the actual conditional distribution <span class="math notranslate nohighlight">\(p(x|c_i;x_{e_k}=x^*_{e_k})\)</span>, this is only an approximation, but already yields insightful visualizations. In practice, when computing the approximation of the integral <span class="math notranslate nohighlight">\(\int p(x|c_i;x_{e_k}=x^*_{e_k})\)</span> from our log probabilities, we found it helpful to divide the log probabilities by the learned temperature of the classifier.</p>
 </div>
 <div class="section" id="eeg-cosnet">
 <h2>EEG CosNet<a class="headerlink" href="#eeg-cosnet" title="Permalink to this heading">#</a></h2>
-<p>Finally, we also implemented a small convolutional network EEG-CosNet that we designed to be directly interpretable. We aimed to distill the trained EEG-InvNet into the EEG-CosNet by training the EEG-CosNet using the EEG-InvNet class probabilities as the targets for the classification loss <span class="math notranslate nohighlight">\(L_\textrm{class}\)</span>. Our EEG-CosNet consists of just three steps:</p>
-<ol class="arabic simple">
-<li><p>Linear spatial filtering</p></li>
-<li><p>Average of rolling absolute cosine similarity of spatially filtered signals with temporal filters, with one temporal filter per spatial filter</p></li>
-<li><p>Linear classification</p></li>
-</ol>
-<p>Steps 1 and 2 yield spatiotemporal patterns that can be visualized as waveforms and scalp plots, and that are weighted by the linear classifier for the respective classes. We chose cosine similarity to ensure that high output values correspond to spatially filtered signals that resemble the corresponding temporal filter. The linear operations in step 1 and 3 also allow to make the network’s learned features even more interpretable through transforming the discriminative weights into generative patterns post-hoc by multiplying them with the covariance of the electrodes/averaged absolute cosine similarities, see for <span id="id2">Haufe <em>et al.</em> [<a class="reference internal" href="References.html#id65" title="Stefan Haufe, Frank Meinecke, Kai Görgen, Sven Dähne, John-Dylan Haynes, Benjamin Blankertz, and Felix Bießmann. On the interpretation of weight vectors of linear models in multivariate neuroimaging. NeuroImage, 87:96–110, February 2014. URL: http://www.sciencedirect.com/science/article/pii/S1053811913010914 (visited on 2015-08-07), doi:10.1016/j.neuroimage.2013.10.067.">2014</a>]</span> for a discussion on this technique. We use 64 spatiotemporal filters with filters of length 64 corresponding to one second at 64 Hz.</p>
-<ul class="simple">
-<li><p>invertible layers</p>
-<ul>
-<li><p>explain invertible layers, maybe bold part in front</p></li>
-<li><p>(mention wavelet permutation also)</p></li>
-</ul>
-</li>
-<li><p>example for volume change, do make it (use seaborn colors, in <a class="reference external" href="http://draw.io">draw.io</a>)</p>
-<ul>
-<li><p>do consider making some bar plots with matplotlib why not</p></li>
-</ul>
-</li>
-<li><p>architecture diagram</p>
-<ul>
-<li><p>what is one block? Haar Wavelet addition</p></li>
-<li><p>Latent gaussian at end, no don’t show</p></li>
-</ul>
-</li>
-</ul>
+<div class="sphinx-subfigure figure align-default" id="cos-net-example-fig">
+<div class="sphinx-subfigure-grid ss-layout-default-AB outline" style="display: grid; gap: 0px; grid-gap: 0px;">
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: A;">
+<img alt="_images/cos-net-example-input.png" src="_images/cos-net-example-input.png" />
+</div>
+<div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: B;">
+<img alt="_images/cos-net-example-processing.png" src="_images/cos-net-example-processing.png" />
+</div>
+</div>
+<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Example Processing of the EEG-CosNet. Example EEG input on the left, then processing steps on the right: spatial filtering, absolute cosine similarity with temporal filters, temporal averaging, then weighting with linear classifier weights for class prediction. Note the EEG-CosNet in this visualization only uses 8 filters, whereas later we will use 64 filters.</span><a class="headerlink" href="#cos-net-example-fig" title="Permalink to this image">#</a></p>
+</div>
+<p>Finally, we also implemented a small convolutional network EEG-CosNet that we designed to be directly interpretable. We tried to distill the trained EEG-InvNet into the EEG-CosNet by training the EEG-CosNet using the EEG-InvNet class probabilities as the targets for the classification loss <span class="math notranslate nohighlight">\(L_\textrm{class}\)</span>. Our EEG-CosNet consists of just three steps:</p>
+<p><strong>Spatial Filtering</strong></p>
+<p><span class="math notranslate nohighlight">\(
+\begin{align*}
+    h_1 &amp;= W_s^Tx &amp;&amp; \color{commentcolor}{\text{Apply learnable spatial filter weights } W_s \text{ to  inputs }} \\
+\end{align*}
+\)</span></p>
+<p><strong>Absolute Temporal Cosine Similarity with Temporal Filters</strong></p>
+<p><span class="math notranslate nohighlight">\(
+\begin{align*}
+    h_2 &amp;= |\mathrm{moving\_cos\_sim}(h_1, \mathrm{temporal\_filters})| &amp;&amp; \color{commentcolor}{\text{Moving absolute cosine similarity with temporal filters, one temporal filter per spatial filter }} \\
+    h_3 &amp;=\frac{\sum_t (h_2)}{n_\mathrm{times}} &amp;&amp; \color{commentcolor}{\text{Average over timepoints in trial}} \\
+\end{align*}
+\)</span></p>
+<p><strong>Classification</strong></p>
+<p><span class="math notranslate nohighlight">\(
+\begin{align*}
+    h_4 &amp;= W_c^Th_3 &amp;&amp; \color{commentcolor}{\text{Apply learnable classification weights } W_c \text{ on these spatiotemporal features }} \\
+    p(c_i|h_4) &amp;= \frac{e^{h_{4,i}}}{\sum_j e^h_{4,j}} &amp;&amp; \color{commentcolor}{\text{Take the softmax to produce per-class predictions }} \\
+\end{align*}
+\)</span></p>
+<p>Steps 1 and 2 yield spatiotemporal patterns that can be visualized as waveforms and scalp plots, and that are weighted by the linear classifier for the respective classes. We chose cosine similarity to ensure that high output values correspond to spatially filtered signals that resemble the corresponding temporal filter. The spatial filter weights and linear classifier weights can be made even more interpretable through transforming the discriminative weights into generative patterns  by multiplying them with the covariance of the electrodes/averaged absolute cosine similarities after training, see <span id="id2">Haufe <em>et al.</em> [<a class="reference internal" href="References.html#id65" title="Stefan Haufe, Frank Meinecke, Kai Görgen, Sven Dähne, John-Dylan Haynes, Benjamin Blankertz, and Felix Bießmann. On the interpretation of weight vectors of linear models in multivariate neuroimaging. NeuroImage, 87:96–110, February 2014. URL: http://www.sciencedirect.com/science/article/pii/S1053811913010914 (visited on 2015-08-07), doi:10.1016/j.neuroimage.2013.10.067.">2014</a>]</span> for a discussion on this technique. We use 64 spatiotemporal filters with temporal length 64 corresponding to one second at 64 Hz.</p>
 </div>
 </div>
 
@@ -562,12 +611,12 @@ To correctly account for the volume change during the forward pass of <span clas
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invertible-layers">Invertible Layers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-models-via-maximum-likelihood">Generative models via maximum likelihood</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-quantization">(De)quantization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-of-volume">Change of Volume</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volume-change">Volume Change</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-classifiers">Generative classifiers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invertible-network-for-eeg-decoding">Invertible Network for EEG Decoding</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prototypes">Prototypes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-prototypes">Class Prototypes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-electrode-prototypes">Per-Electrode Prototypes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eeg-cosnet">EEG CosNet</a></li>
 </ul>

@@ -34,6 +34,8 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/.ipynb_checkpoints/custom-checkpoint.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -340,13 +342,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-training-details-and-performance-of-invertible-network">Dataset, Training Details and Performance of Invertible Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-training-details-and-decoding-performance">Dataset, Training Details and Decoding Performance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-prototypes">Class Prototypes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-channel-prototypes">Per-Channel Prototypes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eeg-cosnet-visualizations">EEG-CosNet Visualizations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-channel-prototypes">Per-Channel Prototypes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eeg-cosnet-visualizations">EEG-CosNet Visualizations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#investigation-of-very-low-frequencies">Investigation of Very Low Frequencies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eeg-invnet-visualizations">EEG-InvNet Visualizations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">EEG-CosNet Visualizations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-gmm-visualizations">Fourier-GMM Visualizations</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#investigation-of-very-low-frequencies">Investigation of Very Low Frequencies</a></li>
 </ul>
             </nav>
         </div>
@@ -368,8 +373,8 @@ document.write(`
 We chose pathology decoding as  (i)n the question which learned features the networks uses to diagnose pathology seemed especially fascinating to us (ii) the TUH dataset is especially large.</p>
 <p>We then present the results of invertible networks trained to decode pathology from EEG, showing competitive results with regular deep convolutional networks. Our visualizations show the network uses slowing, i.e. increased amplitudes in the lower frequencies as well as spikes/burts as markers that indicate pathology and a strong stable alpha rhythm, especially on the posterior electrodes as markers for normal EEG.</p>
 <p>After our initial work on pathology decoding, we wanted to gain a deeper understanding of the features deep networks learn to distinguish healthy from pathological recordings. For that, we used invertible networks as generative classifiers since they offer more ways to visualize their learned prediction function in input space. We visualize prototypes of the two classes as well as individual electrode signals predictive of a certain class independent of the signals at other electrodes. These visualizations revealed both well-known features as well as surprising patterns in the very low frequencies. To gain an even better understanding, we distilled the invertible network’s knowledge into a very small network that is interpretable by design. These visualizations showed regular patterns in the alpha and beta range associated with healthy recordings and a diverse set of more irregular waveforms associated with pathology. All work presented here is novel unpublished work performed in the context of this thesis.</p>
-<div class="section" id="dataset-training-details-and-performance-of-invertible-network">
-<h2>Dataset, Training Details and Performance of Invertible Network<a class="headerlink" href="#dataset-training-details-and-performance-of-invertible-network" title="Permalink to this heading">#</a></h2>
+<div class="section" id="dataset-training-details-and-decoding-performance">
+<h2>Dataset, Training Details and Decoding Performance<a class="headerlink" href="#dataset-training-details-and-decoding-performance" title="Permalink to this heading">#</a></h2>
 <table class="colwidths-auto table" id="table-tuh-invertible-accuracy">
 <caption><span class="caption-number">Table 20 </span><span class="caption-text">Accuracy of Invertible Network in comparison with accuracies of regular ConvNets.</span><a class="headerlink" href="#table-tuh-invertible-accuracy" title="Permalink to this table">#</a></caption>
 <thead>
@@ -395,7 +400,7 @@ We chose pathology decoding as  (i)n the question which learned features the net
 <h2>Class Prototypes<a class="headerlink" href="#class-prototypes" title="Permalink to this heading">#</a></h2>
 <div class="figure align-default" id="disc-invnet-prototypes">
 <img alt="_images/net-disc-prototypes.png" src="_images/net-disc-prototypes.png" />
-<p class="caption"><span class="caption-number">Fig. 40 </span><span class="caption-text">Learned Class Prototypes from Invertible Network. Obtained by inverting learned means of class-conditional gaussian distributions from latent space to input space through the invertible network trained for pathology decoding.</span><a class="headerlink" href="#disc-invnet-prototypes" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 46 </span><span class="caption-text">Learned Class Prototypes from Invertible Network. Obtained by inverting learned means of class-conditional gaussian distributions from latent space to input space through the invertible network trained for pathology decoding.</span><a class="headerlink" href="#disc-invnet-prototypes" title="Permalink to this image">#</a></p>
 </div>
 <p>Class prototypes reveal known oscillatory features and surprisingly hint at the use of very-low-frequency information by the invertible network. We inverted the learned latent means of the healthy and the pathological class distributions back to the input space to visualize the most likely healthy and most likely pathological examples under the learned distribution. We differences in the alpha rhythm like a stronger alpha rhythm at O1 in the healthy example. We also see further differences with a variety of different oscillatory patterns present for both classes. Surprisingly, there are also differences in the very low frequencies like substantially different mean values for FP1 and FP2 for the two class prototypes, which we will further investigate later. One challenge of this visualization is that one has to look at each prototype as one complete example and cannot interpret signals at individiual electrodes independently. This is what we tackle in our next visualization.</p>
 </div>
@@ -403,11 +408,12 @@ We chose pathology decoding as  (i)n the question which learned features the net
 <h2>Per-Channel Prototypes<a class="headerlink" href="#per-channel-prototypes" title="Permalink to this heading">#</a></h2>
 <div class="figure align-default" id="marginal-chan">
 <img alt="_images/marginal-chan-6.png" src="_images/marginal-chan-6.png" />
-<p class="caption"><span class="caption-number">Fig. 41 </span><span class="caption-text">Learned Per-Channel Prototypes from Invertible Network. Each channels’ input is optimized independently to increase the invertible networks prediction for the respective class. During that optimization, signals for the other non-optimized channels are sampled from the training data.  Color indicates average softmax prediction over 10000 samples for the other channels. Very prominent slowing patterns appear for the pathological class at mjultiple electrodes.</span><a class="headerlink" href="#marginal-chan" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 47 </span><span class="caption-text">Learned Per-Channel Prototypes from Invertible Network. Each channels’ input is optimized independently to increase the invertible networks prediction for the respective class. During that optimization, signals for the other non-optimized channels are sampled from the training data.  Color indicates average softmax prediction over 10000 samples for the other channels. Very prominent slowing patterns appear for the pathological class at mjultiple electrodes.</span><a class="headerlink" href="#marginal-chan" title="Permalink to this image">#</a></p>
 </div>
 <p>The per-channel prototypes reveal interesting learned features for the two classes. The pathological prototypes show strong low-frequency activity, for example at T3 and T4, consistent with slowing as a biomarker for pathology. The healthy signal shows alpha activity, for example at C4 and T6.  Besides these patterns, a lot of other interesting patterns may be interesting to further investigate. One of them, the differences in the very low frequencies will be further explored below. Note that it was not possible to synthesize a signal that is clearly indicative of one class independent of the other electrodes for all electrodes. This is to be expected if the network may for example use the degree of synchrony between signals at different  electrodes as a feature.</p>
+</div>
 <div class="section" id="eeg-cosnet-visualizations">
-<h3>EEG-CosNet Visualizations<a class="headerlink" href="#eeg-cosnet-visualizations" title="Permalink to this heading">#</a></h3>
+<h2>EEG-CosNet Visualizations<a class="headerlink" href="#eeg-cosnet-visualizations" title="Permalink to this heading">#</a></h2>
 <table class="colwidths-auto table" id="table-tuh-cos-net-accuracy">
 <caption><span class="caption-number">Table 21 </span><span class="caption-text">Accuracy of small interpretable network on invertible network predictions and original labels.</span><a class="headerlink" href="#table-tuh-cos-net-accuracy" title="Permalink to this table">#</a></caption>
 <thead>
@@ -429,11 +435,10 @@ We chose pathology decoding as  (i)n the question which learned features the net
 </table>
 <div class="figure align-default" id="cos-sim-net-pattern-fig">
 <img alt="_images/cos-sim-net-pattern-with-hspace.png" src="_images/cos-sim-net-pattern-with-hspace.png" />
-<p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">Visualization of small interpretable EEG-CosNet trained to mimic the EEG-InvNet. Scalp Plots are spatial filter weights transformed to patterns, signals below each scalp plot show corresponding convolutional filter. Signal colors represent the weights of the linear classification layer, transformed to patterns (see TODO for explanation). Plots are sorted by these colors. Note that polarities of the scalp plots and temporal waveforms are arbitrary as absolute cosine similarities are computed on the spatially filtered and temporally convolved signals.</span><a class="headerlink" href="#cos-sim-net-pattern-fig" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 48 </span><span class="caption-text">Visualization of small interpretable EEG-CosNet trained to mimic the EEG-InvNet. Scalp Plots are spatial filter weights transformed to patterns, signals below each scalp plot show corresponding convolutional filter. Signal colors represent the weights of the linear classification layer, transformed to patterns (see TODO for explanation). Plots are sorted by these colors. Note that polarities of the scalp plots and temporal waveforms are arbitrary as absolute cosine similarities are computed on the spatially filtered and temporally convolved signals.</span><a class="headerlink" href="#cos-sim-net-pattern-fig" title="Permalink to this image">#</a></p>
 </div>
 <p>Results for the EEG-CosNet show that a large fraction of the predictions of the invertible network can be predicted from a relatively small number of mostly neurophysiologically plausible spatio-temporal patterns. EEG-CosNet predicts 88.8% of the recordings in the same way as the EEG-InvNet and retains a test set label accuracy of 82.6% (see <a class="reference internal" href="#table-tuh-cos-net-accuracy"><span class="std std-numref">Table 21</span></a>. This shows that from just 64 spatiotemporal features, the EEG-CosNet is able to predict the vast majority of the EEG-InvNet predictions. Still, the remaining gap indicates that the EEG-InvNet has learned some features that the EEG-CosNet cannot represent.</p>
-<p>Visualizations in <a class="reference internal" href="#cos-sim-net-pattern-fig"><span class="std std-numref">Fig. 42</span></a> show more regular waveforms in the alpha and beta-frequency ranges with higher association for the healthy class and more waveforms in other frequency ranges and less regular waveforms with higher association for the pathological class. As examples for the healthy class, plots 1 and 3 show oscillations with a strong alpha component and plots 15-17 show oscillations with strong beta components. For the pathological class, we see slower oscillations, e.g., in plots 53 and 60, and also more irregular waveforms in, e.g., plots 49 and 52.</p>
-</div>
+<p>Visualizations in <a class="reference internal" href="#cos-sim-net-pattern-fig"><span class="std std-numref">Fig. 48</span></a> show more regular waveforms in the alpha and beta-frequency ranges with higher association for the healthy class and more waveforms in other frequency ranges and less regular waveforms with higher association for the pathological class. As examples for the healthy class, plots 1 and 3 show oscillations with a strong alpha component and plots 15-17 show oscillations with strong beta components. For the pathological class, we see slower oscillations, e.g., in plots 53 and 60, and also more irregular waveforms in, e.g., plots 49 and 52.</p>
 </div>
 <div class="section" id="investigation-of-very-low-frequencies">
 <h2>Investigation of Very Low Frequencies<a class="headerlink" href="#investigation-of-very-low-frequencies" title="Permalink to this heading">#</a></h2>
@@ -453,19 +458,29 @@ We chose pathology decoding as  (i)n the question which learned features the net
 </tr>
 </tbody>
 </table>
-<p>For this, we first trained an invertible network on data lowpassed to be below 0.5 Hz via first removing all Fourier components above 0.5 Hz for both each recording and also each 2-second input window for the network. This retain 75.4% accuracy, indicating even these very low frequencies remain fairly informative about the pathologicality of the recording. We additionally trained the EEG_CosNet with a temporal filter spanning the entire input window length of 2 seconds and found it to retain 75% test accuracy. Finally, we also directly trained a 8-component gaussian mixture model Fourier-GMM in Fourier space as only 3 dimensions per electrode remain (summed value of the input window as well as real and imaginary value of the 0.5-Hz Fourier component). Each of the 8 mixture components also had learnable class weights. The Fourier-GMM also retains 75.4% test accuracy.</p>
+<p>For this, we first trained an invertible network on data lowpassed to be below 0.5 Hz. For the lowpass, we first removed all Fourier components above 0.5 Hz for each recording and also for each 2-second input window for the network. This retained 75.4% accuracy with the EEG-InvNet, indicating even these very low frequencies remain fairly informative about the pathologicality of the recording. We additionally trained the EEG-CosNet with a temporal filter spanning the entire input window length of 2 seconds and found it to retain 75% test accuracy. Finally, we also directly trained a 8-component gaussian mixture model Fourier-GMM in Fourier space. Only 3 dimensions per electrode remain (real value of the 0-Hz component, which is the summed value of the input window, as well as real and imaginary value of the 0.5-Hz Fourier component). Each of the 8 mixture components also had learnable class weights. The Fourier-GMM also retains 75.4% test accuracy.</p>
+<div class="section" id="eeg-invnet-visualizations">
+<h3>EEG-InvNet Visualizations<a class="headerlink" href="#eeg-invnet-visualizations" title="Permalink to this heading">#</a></h3>
 <div class="figure align-default" id="net-low-freq-prototypes-fig">
 <img alt="_images/net-lowfreq-prototypes.png" src="_images/net-lowfreq-prototypes.png" />
-<p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text">Class prototypes for the EEG-InvNet trained on data lowpassed to be below 0.5 Hz.</span><a class="headerlink" href="#net-low-freq-prototypes-fig" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 49 </span><span class="caption-text">Class prototypes for the EEG-InvNet trained on data lowpassed to be below 0.5 Hz.</span><a class="headerlink" href="#net-low-freq-prototypes-fig" title="Permalink to this image">#</a></p>
 </div>
 <div class="figure align-default" id="marginal-chan-low-freq-fig">
 <img alt="_images/marginal-chan-low-freq.png" src="_images/marginal-chan-low-freq.png" />
-<p class="caption"><span class="caption-number">Fig. 44 </span><span class="caption-text">Per-Electrode Prototypes for EEG-InvNet trained on data lowpassed below 0.5 Hz. Note strongly predictive signals at T3,T4,T6.</span><a class="headerlink" href="#marginal-chan-low-freq-fig" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 50 </span><span class="caption-text">Per-Electrode Prototypes for EEG-InvNet trained on data lowpassed below 0.5 Hz. Note strongly predictive signals at T3,T4,T6.</span><a class="headerlink" href="#marginal-chan-low-freq-fig" title="Permalink to this image">#</a></p>
 </div>
+<p>The visualizations of the EEG-InvNet show several interesting features. The class prototypes in <a class="reference internal" href="#net-low-freq-prototypes-fig"><span class="std std-numref">Fig. 49</span></a> show differences at most electrodes, especially pronounced for A1 and A2. The per-electrode prototypes in   <a class="reference internal" href="#net-low-freq-prototypes-fig"><span class="std std-numref">Fig. 49</span></a> show predictive information in the T3,T4 and T6 electrodes.</p>
+</div>
+<div class="section" id="id1">
+<h3>EEG-CosNet Visualizations<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <div class="figure align-default" id="cos-sim-net-low-freq-pattern-fig">
 <img alt="_images/cos-sim-net-low-freq-pattern-with-hspace.png" src="_images/cos-sim-net-low-freq-pattern-with-hspace.png" />
-<p class="caption"><span class="caption-number">Fig. 45 </span><span class="caption-text">Spatiotemporal patterns for EEG-CosNet trained on lowpassed data below 0.5 Hz.</span><a class="headerlink" href="#cos-sim-net-low-freq-pattern-fig" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 51 </span><span class="caption-text">Spatiotemporal patterns for EEG-CosNet trained on lowpassed data below 0.5 Hz.</span><a class="headerlink" href="#cos-sim-net-low-freq-pattern-fig" title="Permalink to this image">#</a></p>
 </div>
+<p>Visualization of the EEG-CosNet in <a class="reference internal" href="#cos-sim-net-low-freq-pattern-fig"><span class="std std-numref">Fig. 51</span></a> contain strong frontally components associated with the healthy class and  components in temporal areas associated with the pathological class. The temporal components are in line with the per-electrode visualization, and the frontal components were already visible as differences in mean signal values in the class prototypes on the original data.</p>
+</div>
+<div class="section" id="fourier-gmm-visualizations">
+<h3>Fourier-GMM Visualizations<a class="headerlink" href="#fourier-gmm-visualizations" title="Permalink to this heading">#</a></h3>
 <div class="sphinx-subfigure figure align-default" id="low-freq-input-space-prototypes-fig">
 <div class="sphinx-subfigure-grid ss-layout-default-ABCD_EFGH outline" style="display: grid; gap: 0px; grid-gap: 0px;">
 <div class="sphinx-subfigure-area" style="display: flex; flex-direction: column; justify-content: center; align-items: center; grid-area: A;">
@@ -493,13 +508,15 @@ We chose pathology decoding as  (i)n the question which learned features the net
 <img alt="_images/low-freq-prototypes-7.png" src="_images/low-freq-prototypes-7.png" />
 </div>
 </div>
-<p class="caption"><span class="caption-number">Fig. 46 </span><span class="caption-text">Means of the Fourier-GMM  mixture components shown after inversion into input space.</span><a class="headerlink" href="#low-freq-input-space-prototypes-fig" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 52 </span><span class="caption-text">Means of the Fourier-GMM  mixture components shown after inversion into input space.</span><a class="headerlink" href="#low-freq-input-space-prototypes-fig" title="Permalink to this image">#</a></p>
 </div>
 <div class="figure align-default" id="fourier-gmm-low-freq-fig">
 <img alt="_images/low-freq-gmm-prototypes-scaled-per-freq-with-class-color-and-bar.png" src="_images/low-freq-gmm-prototypes-scaled-per-freq-with-class-color-and-bar.png" />
-<p class="caption"><span class="caption-number">Fig. 47 </span><span class="caption-text">Means of the Fourier-GMM mixture components in Fourier space. Scal plots for 0-Hz bin, real and imaginary values of 0.5-Hz bin. Components sorted by pathological class weight, also shown as colored text in top right of each component. Colormaps scaled per plot. Note strong frontal components for mixture components associated with healthy class.</span><a class="headerlink" href="#fourier-gmm-low-freq-fig" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 53 </span><span class="caption-text">Means of the Fourier-GMM mixture components in Fourier space. Scalp plots for 0-Hz bin, real and imaginary values of 0.5-Hz bin. Components sorted by pathological class weight, also shown as colored text in top right of each component. Colormaps scaled per frequency bin. Note strong frontal components for mixture components associated with healthy class.</span><a class="headerlink" href="#fourier-gmm-low-freq-fig" title="Permalink to this image">#</a></p>
 </div>
-<p>Overall, class prototypes show A1 and A1 play a role, per-electrode prototypes show temporal electrodes are relevant, EEG-CosNet and GMM show importance of frontal electrodes. All together, one can hopefully understand.</p>
+<p>Visualizations of the Fourier-GMM in <a class="reference internal" href="#fourier-gmm-low-freq-fig"><span class="std std-numref">Fig. 53</span></a> again show frontal components associated with the healthy class and other components, with spatial topographies that include temporal areas, associated with the pathological class.</p>
+<p>Overall, the visualizations consistently indicate a frontal component predictive for the healthy class and other components, with a spatial topography that often includes temporal and nearby areas, predictive for the pathological class.</p>
+</div>
 </div>
 </div>
 
@@ -570,13 +587,16 @@ We chose pathology decoding as  (i)n the question which learned features the net
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-training-details-and-performance-of-invertible-network">Dataset, Training Details and Performance of Invertible Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-training-details-and-decoding-performance">Dataset, Training Details and Decoding Performance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-prototypes">Class Prototypes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-channel-prototypes">Per-Channel Prototypes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eeg-cosnet-visualizations">EEG-CosNet Visualizations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#per-channel-prototypes">Per-Channel Prototypes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eeg-cosnet-visualizations">EEG-CosNet Visualizations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#investigation-of-very-low-frequencies">Investigation of Very Low Frequencies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eeg-invnet-visualizations">EEG-InvNet Visualizations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">EEG-CosNet Visualizations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-gmm-visualizations">Fourier-GMM Visualizations</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#investigation-of-very-low-frequencies">Investigation of Very Low Frequencies</a></li>
 </ul>
   </nav></div>
 
