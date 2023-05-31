@@ -1,3 +1,351 @@
+@InProceedings{pmlr-v106-biswal19a,
+  title = 	 {EEGtoText: Learning to Write Medical Reports from EEG Recordings},
+  author =       {Biswal, Siddharth and Xiao, Cao and Westover, M. Brandon and Sun, Jimeng},
+  booktitle = 	 {Proceedings of the 4th Machine Learning for Healthcare Conference},
+  pages = 	 {513--531},
+  year = 	 {2019},
+  editor = 	 {Doshi-Velez, Finale and Fackler, Jim and Jung, Ken and Kale, David and Ranganath, Rajesh and Wallace, Byron and Wiens, Jenna},
+  volume = 	 {106},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {09--10 Aug},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v106/biswal19a/biswal19a.pdf},
+  url = 	 {https://proceedings.mlr.press/v106/biswal19a.html},
+  abstract = 	 {Electroencephalography (EEG) is widely used in hospitals and clinics for the diagnosis of many neurological conditions. Such diagnoses require accurate and timely clinical reports to summarize the findings from raw EEG data. In this paper, we investigate whether it is possible to automatically generate text reports directly from EEG data. To address the challenges, we proposed EEGtoText , which first extracted shift invariant and temporal patterns using stacked convolutional neural networks and recurrent neural networks (RCNN). These temporal patterns are used to classify key phenotypes including EEG normality, sleep, generalized and focal slowing, epileptiform discharges, spindles, vertex waves and seizures. Based on these phenotypes, the impression section of the EEG report is generated. Next, we adopted a hierarchical long short-term memory network(LSTM) that comprises of paragraph-level and sentence-level LSTMs to generate the detail explanation of the impression. Within the hierarchical LSTM, we used an attention module to localize the abnormal areas in the EEG which provide another explanation and justification of the extracted phenotypes. We conducted large-scale evaluations on two different EEG datasets Dataset1 (n=12,980) and TUH (n=16,950). We achieved an area under the ROC curve (AUC) between .658 to .915 on phenotype classification, which is significantly higher than CRNN and RCNN with attention. We also conducted a quantitative evaluation of the detailed explanation, which achieved METEOR score .371 and BLEU score 4.583. Finally, our initial clinical reviews confirmed the effectiveness of the generated reports.}
+}
+
+
+@article{de2022learning,
+  title={Learning to write medical reports from EEG data},
+  author={de Sousa, Ana Maria Amaro},
+  year={2022}
+}
+
+
+@inproceedings{DBLP:conf/icml/MaclaurinDA15,
+  author       = {Dougal Maclaurin and
+                  David Duvenaud and
+                  Ryan P. Adams},
+  editor       = {Francis R. Bach and
+                  David M. Blei},
+  title        = {Gradient-based Hyperparameter Optimization through Reversible Learning},
+  booktitle    = {Proceedings of the 32nd International Conference on Machine Learning,
+                  {ICML} 2015, Lille, France, 6-11 July 2015},
+  series       = {{JMLR} Workshop and Conference Proceedings},
+  volume       = {37},
+  pages        = {2113--2122},
+  publisher    = {JMLR.org},
+  year         = {2015},
+  url          = {http://proceedings.mlr.press/v37/maclaurin15.html},
+  timestamp    = {Mon, 22 Jul 2019 14:09:24 +0200},
+  biburl       = {https://dblp.org/rec/conf/icml/MaclaurinDA15.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+
+@article{DBLP:journals/corr/abs-1811-10959,
+  author       = {Tongzhou Wang and
+                  Jun{-}Yan Zhu and
+                  Antonio Torralba and
+                  Alexei A. Efros},
+  title        = {Dataset Distillation},
+  journal      = {CoRR},
+  volume       = {abs/1811.10959},
+  year         = {2018},
+  url          = {http://arxiv.org/abs/1811.10959},
+  eprinttype    = {arXiv},
+  eprint       = {1811.10959},
+  timestamp    = {Tue, 19 May 2020 11:25:34 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-1811-10959.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+
+@inproceedings{DBLP:conf/iclr/ZhaoMB21,
+  author       = {Bo Zhao and
+                  Konda Reddy Mopuri and
+                  Hakan Bilen},
+  title        = {Dataset Condensation with Gradient Matching},
+  booktitle    = {9th International Conference on Learning Representations, {ICLR} 2021,
+                  Virtual Event, Austria, May 3-7, 2021},
+  publisher    = {OpenReview.net},
+  year         = {2021},
+  url          = {https://openreview.net/forum?id=mSAKhLYLSsl},
+  timestamp    = {Wed, 23 Jun 2021 17:36:39 +0200},
+  biburl       = {https://dblp.org/rec/conf/iclr/ZhaoMB21.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+
+@inproceedings{DBLP:conf/icml/ZhaoB21,
+  author       = {Bo Zhao and
+                  Hakan Bilen},
+  editor       = {Marina Meila and
+                  Tong Zhang},
+  title        = {Dataset Condensation with Differentiable Siamese Augmentation},
+  booktitle    = {Proceedings of the 38th International Conference on Machine Learning,
+                  {ICML} 2021, 18-24 July 2021, Virtual Event},
+  series       = {Proceedings of Machine Learning Research},
+  volume       = {139},
+  pages        = {12674--12685},
+  publisher    = {{PMLR}},
+  year         = {2021},
+  url          = {http://proceedings.mlr.press/v139/zhao21a.html},
+  timestamp    = {Wed, 25 Aug 2021 17:11:17 +0200},
+  biburl       = {https://dblp.org/rec/conf/icml/ZhaoB21.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+
+@article{DBLP:journals/corr/abs-2302-10866,
+  author       = {Michael Poli and
+                  Stefano Massaroli and
+                  Eric Nguyen and
+                  Daniel Y. Fu and
+                  Tri Dao and
+                  Stephen Baccus and
+                  Yoshua Bengio and
+                  Stefano Ermon and
+                  Christopher R{\'{e}}},
+  title        = {Hyena Hierarchy: Towards Larger Convolutional Language Models},
+  journal      = {CoRR},
+  volume       = {abs/2302.10866},
+  year         = {2023},
+  url          = {https://doi.org/10.48550/arXiv.2302.10866},
+  doi          = {10.48550/arXiv.2302.10866},
+  eprinttype    = {arXiv},
+  eprint       = {2302.10866},
+  timestamp    = {Fri, 24 Feb 2023 11:55:23 +0100},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-2302-10866.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+
+@article{DBLP:journals/corr/abs-2302-06646,
+  author       = {Daniel Y. Fu and
+                  Elliot L. Epstein and
+                  Eric Nguyen and
+                  Armin W. Thomas and
+                  Michael Zhang and
+                  Tri Dao and
+                  Atri Rudra and
+                  Christopher R{\'{e}}},
+  title        = {Simple Hardware-Efficient Long Convolutions for Sequence Modeling},
+  journal      = {CoRR},
+  volume       = {abs/2302.06646},
+  year         = {2023},
+  url          = {https://doi.org/10.48550/arXiv.2302.06646},
+  doi          = {10.48550/arXiv.2302.06646},
+  eprinttype    = {arXiv},
+  eprint       = {2302.06646},
+  timestamp    = {Mon, 20 Feb 2023 14:27:28 +0100},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-2302-06646.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+
+@inproceedings{DBLP:conf/nips/DaoFERR22,
+  author       = {Tri Dao and
+                  Daniel Y. Fu and
+                  Stefano Ermon and
+                  Atri Rudra and
+                  Christopher R{\'{e}}},
+  title        = {FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness},
+  booktitle    = {NeurIPS},
+  year         = {2022},
+  url          = {http://papers.nips.cc/paper\_files/paper/2022/hash/67d57c32e20fd0a7a302cb81d36e40d5-Abstract-Conference.html},
+  timestamp    = {Thu, 11 May 2023 17:08:21 +0200},
+  biburl       = {https://dblp.org/rec/conf/nips/DaoFERR22.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+
+@article{DBLP:journals/tacl/RoySVG21,
+  author       = {Aurko Roy and
+                  Mohammad Saffar and
+                  Ashish Vaswani and
+                  David Grangier},
+  title        = {Efficient Content-Based Sparse Attention with Routing Transformers},
+  journal      = {Trans. Assoc. Comput. Linguistics},
+  volume       = {9},
+  pages        = {53--68},
+  year         = {2021},
+  url          = {https://doi.org/10.1162/tacl\_a\_00353},
+  doi          = {10.1162/tacl\_a\_00353},
+  timestamp    = {Fri, 10 Jun 2022 10:35:17 +0200},
+  biburl       = {https://dblp.org/rec/journals/tacl/RoySVG21.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@inproceedings{block_recurrent_transformers,
+title	= {Block-Recurrent Transformers},
+author	= {Delesley Stuart Hutchins and Imanol Schlag and Yuhuai Wu and Ethan S Dyer and Behnam Neyshabur},
+year	= {2022},
+URL	= {https://arxiv.org/abs/2203.07852},
+booktitle	= {NeurIPS}
+}
+
+
+
+
+@inproceedings{etc,
+title	= {ETC: Encoding Long and Structured Inputs in Transformers},
+author	= {Anirudh Ravula and Chris Alberti and Joshua Ainslie and Li Yang and Philip Minh Pham and Qifan Wang and Santiago Ontanon and Sumit Kumar Sanghai and Vaclav Cvicek and Zach Fisher},
+year	= {2020},
+URL	= {https://www.aclweb.org/anthology/2020.emnlp-main.19.pdf},
+booktitle	= {2020 Conference on Empirical Methods in Natural Language Processing (EMNLP 2020)}
+}
+
+
+
+@inproceedings{longt5,
+title	= {LongT5: Efficient Text-To-Text Transformer for Long Sequences},
+author	= {Mandy Guo and Joshua Ainslie and David Uthus and Santiago Ontanon and Jianmo Ni and Yun-Hsuan Sung and Yinfei Yang},
+year	= {2022},
+booktitle	= {Findings of the Association for Computational Linguistics: NAACL 2022}
+}
+
+
+
+@article{DBLP:journals/corr/abs-2004-05150,
+  author       = {Iz Beltagy and
+                  Matthew E. Peters and
+                  Arman Cohan},
+  title        = {Longformer: The Long-Document Transformer},
+  journal      = {CoRR},
+  volume       = {abs/2004.05150},
+  year         = {2020},
+  url          = {https://arxiv.org/abs/2004.05150},
+  eprinttype    = {arXiv},
+  eprint       = {2004.05150},
+  timestamp    = {Tue, 14 Apr 2020 16:40:34 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-2004-05150.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+
+@inproceedings{bigbird,
+title	= {Big Bird: Transformers for Longer Sequences},
+author	= {Manzil Zaheer and Guru Prashanth Guruganesh and Avinava Dubey and Joshua Ainslie and Chris Alberti and Santiago Ontanon and Philip Minh Pham and Anirudh Ravula and Qifan Wang and Li Yang and Amr Mahmoud El Houssieny Ahmed},
+year	= {2020},
+URL	= {https://proceedings.neurips.cc/paper/2020/file/c8512d142a2d849725f31a9a7a361ab9-Paper.pdf}
+}
+
+
+
+@inproceedings{DBLP:conf/nips/VaswaniSPUJGKP17,
+  author       = {Ashish Vaswani and
+                  Noam Shazeer and
+                  Niki Parmar and
+                  Jakob Uszkoreit and
+                  Llion Jones and
+                  Aidan N. Gomez and
+                  Lukasz Kaiser and
+                  Illia Polosukhin},
+  editor       = {Isabelle Guyon and
+                  Ulrike von Luxburg and
+                  Samy Bengio and
+                  Hanna M. Wallach and
+                  Rob Fergus and
+                  S. V. N. Vishwanathan and
+                  Roman Garnett},
+  title        = {Attention is All you Need},
+  booktitle    = {Advances in Neural Information Processing Systems 30: Annual Conference
+                  on Neural Information Processing Systems 2017, December 4-9, 2017,
+                  Long Beach, CA, {USA}},
+  pages        = {5998--6008},
+  year         = {2017},
+  url          = {https://proceedings.neurips.cc/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html},
+  timestamp    = {Thu, 21 Jan 2021 15:15:21 +0100},
+  biburl       = {https://dblp.org/rec/conf/nips/VaswaniSPUJGKP17.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+
+@misc{tabpfn,
+  doi = {10.48550/ARXIV.2207.01848},
+  url = {https://arxiv.org/abs/2207.01848},
+  author = {Hollmann, Noah and Müller, Samuel and Eggensperger, Katharina and Hutter, Frank},
+  keywords = {Machine Learning (cs.LG), Machine Learning (stat.ML), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  title = {TabPFN: A Transformer That Solves Small Tabular Classification Problems in a Second},
+  publisher = {arXiv},
+  year = {2022},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+
+@inproceedings{DBLP:conf/iclr/0005HPGH22,
+  author       = {Samuel M{\"{u}}ller and
+                  Noah Hollmann and
+                  Sebastian Pineda{-}Arango and
+                  Josif Grabocka and
+                  Frank Hutter},
+  title        = {Transformers Can Do Bayesian Inference},
+  booktitle    = {The Tenth International Conference on Learning Representations, {ICLR}
+                  2022, Virtual Event, April 25-29, 2022},
+  publisher    = {OpenReview.net},
+  year         = {2022},
+  url          = {https://openreview.net/forum?id=KSugKcbNf9},
+  timestamp    = {Sat, 20 Aug 2022 01:15:42 +0200},
+  biburl       = {https://dblp.org/rec/conf/iclr/0005HPGH22.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+
+@inproceedings{DBLP:conf/emnlp/MinLHALHZ22,
+  author       = {Sewon Min and
+                  Xinxi Lyu and
+                  Ari Holtzman and
+                  Mikel Artetxe and
+                  Mike Lewis and
+                  Hannaneh Hajishirzi and
+                  Luke Zettlemoyer},
+  editor       = {Yoav Goldberg and
+                  Zornitsa Kozareva and
+                  Yue Zhang},
+  title        = {Rethinking the Role of Demonstrations: What Makes In-Context Learning
+                  Work?},
+  booktitle    = {Proceedings of the 2022 Conference on Empirical Methods in Natural
+                  Language Processing, {EMNLP} 2022, Abu Dhabi, United Arab Emirates,
+                  December 7-11, 2022},
+  pages        = {11048--11064},
+  publisher    = {Association for Computational Linguistics},
+  year         = {2022},
+  url          = {https://aclanthology.org/2022.emnlp-main.759},
+  timestamp    = {Tue, 07 Feb 2023 17:10:51 +0100},
+  biburl       = {https://dblp.org/rec/conf/emnlp/MinLHALHZ22.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+
+@inproceedings{DBLP:conf/iclr/XieRL022,
+  author       = {Sang Michael Xie and
+                  Aditi Raghunathan and
+                  Percy Liang and
+                  Tengyu Ma},
+  title        = {An Explanation of In-context Learning as Implicit Bayesian Inference},
+  booktitle    = {The Tenth International Conference on Learning Representations, {ICLR}
+                  2022, Virtual Event, April 25-29, 2022},
+  publisher    = {OpenReview.net},
+  year         = {2022},
+  url          = {https://openreview.net/forum?id=RdJVFCHjUMI},
+  timestamp    = {Sat, 20 Aug 2022 01:15:42 +0200},
+  biburl       = {https://dblp.org/rec/conf/iclr/XieRL022.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+
 @inproceedings{DBLP:conf/icml/HoCSDA19,
   author       = {Jonathan Ho and
                   Xi Chen and
