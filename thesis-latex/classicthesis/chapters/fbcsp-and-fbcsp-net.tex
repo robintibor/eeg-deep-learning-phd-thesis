@@ -1,6 +1,6 @@
 %************************************************
 \chapter{Filter Bank Common Spatial Patterns and
-Filterbank Network}\label{ch:fbscp-and-filterbank-net}
+Filterbank Network}\label{fbscp-and-filterbank-net}
 %**************************************
 
 \todotext{textbox}
@@ -37,7 +37,7 @@ other class and vice versa.
 \section{Common Spatial Patterns}\label{common-spatial-patterns}
 
 
-\begin{figure}[th]
+\begin{figure}[ht]
     \myfloatalign
     \includegraphics[width=1\linewidth]{images/Methods_Common_Spatial_Patterns_18_0.png}
     \caption[Common Spatial Patterns example.]{
@@ -114,7 +114,6 @@ these features to train the final classifier.
     The overall FBCSP pipeline hence looks like this:
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
 \item
   \textbf{Bandpass filtering}: Different bandpass filters are applied to
   separate the raw EEG signal into different frequency bands.
@@ -145,7 +144,7 @@ these features to train the final classifier.
 Architecture}\label{filter-bank-network-architecture}
 
 
-\begin{figure}[th]
+\begin{figure}[ht]
     \myfloatalign
     \includegraphics[width=1\linewidth]{images/csp_as_a_net_explanation.png}
     \caption[Filter bank network architecture overview.]{
@@ -174,14 +173,14 @@ frequency ranges. The network then performs the following steps:
 
 \begin{align*}
     \intertext{\textbf{Spatial Filtering}}
-    h_1 &= W_s^Tx && \color{commentcolor}{\small \text{Apply spatial filter weights } W_s \text{ to  inputs }} \\
+    h_1 &= W_s^Tx && \codecomment{\text{Apply spatial filter weights } W_s \text{ to  inputs }} \\
     \intertext{\textbf{Feature Construction}}
-    h_2 &= h_1^2 && \color{commentcolor}{\small \text{Square the spatially filtered signals }} \\
-    h_3 &=\sum_t (h_2) && \color{commentcolor}{\small \text{Sum the squared signals across trial timepoints } t} \\
-    h_4 &= \log(h_3) && \color{commentcolor}{\small\text{Take the logarithm of the summed values}}\\
+    h_2 &= h_1^2 && \codecomment{\text{Square the spatially filtered signals }} \\
+    h_3 &=\sum_t (h_2) && \codecomment{\text{Sum the squared signals across trial timepoints } t} \\
+    h_4 &= \log(h_3) && \codecomment{\text{Take the logarithm of the summed values}}\\
     \intertext{\textbf{Classification}}
-    h_5 &= W_c^Th_4 && \color{commentcolor}{\small \text{Apply classifier weights } W_c \text{ on these features }} \\
-    p(c_i|h_5) &= \frac{e^{h_{5,i}}}{\sum_j e^h_{5,j}} && \color{commentcolor}{\small \text{Take the softmax to compute class probabilities}} \\
+    h_5 &= W_c^Th_4 && \codecomment{\text{Apply classifier weights } W_c \text{ on these features }} \\
+    p(c_i|h_5) &= \frac{e^{h_{5,i}}}{\sum_j e^h_{5,j}} && \codecomment{\text{Take the softmax to compute class probabilities}} \\
 \end{align*}
 
     The spatial filter weights and the classification weights are trained

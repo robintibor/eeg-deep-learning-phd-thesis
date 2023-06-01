@@ -11,6 +11,8 @@ replacements = {
     r"\subsection{": r"\section{",
     r"\{numref\}\texttt{": r"\Cref{",
     r"\{ref\}\texttt{": r"\Cref{",
+    r"\(": r"$",
+    r"\)": r"$",
     }
 for val_to_replace, replace_val in replacements.items():
     clean_text = clean_text.replace(val_to_replace, replace_val)

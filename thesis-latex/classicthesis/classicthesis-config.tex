@@ -165,6 +165,7 @@
 \newcommand{\todotext}[1]{\textcolor{red}{TODO: #1}}
 \newcommand{\tableheadlinewithwidth}[2]{\multicolumn{1}{p{#1}}{\spacedlowsmallcaps{#2}}}
 
+
 % ****************************************************************************************************
 % 6. Last calls before the bar closes
 % ****************************************************************************************************
@@ -243,6 +244,12 @@
 % \usepackage{amsmath}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand{\codecomment}[1]{\color{commentcolor}{\small #1}}
+
+\usepackage{booktabs,siunitx}
+
+\usepackage[utf8]{inputenc} % To be able to write ⌀ in the first place
 % ********************************************************************
 % Development Stuff
 % ********************************************************************
