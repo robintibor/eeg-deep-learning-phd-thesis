@@ -1,0 +1,122 @@
+%************************************************
+\chapter{Introduction}\label{ch:introduction}
+%************************************************
+
+\todotext{textbox}
+
+Machine learning (ML), i.e., using data to learn programs that perform a
+desired task, has the potential to benefit medical brain-signal-decoding
+applications. Compared to humans, machine-learning programs can process
+larger amounts of brain-signal data and may extract different
+information. For example, machine-learning algorithms have been
+developed to help doctors triage patients by quickly detecting stroke
+biomarkers from computed tomography (CT)
+\citep{chavva2022deep}, to enable brain-computer interfaces
+by recognizing people's intentions from electroencephalographic (EEG) in
+real time \citep{abiri2019comprehensive} and to detect
+pathology from long brain signal recordings
+\citep{gemein2020machine,schirrmeisterdeeppathology}. Also,
+as brain signals are far from being fully understood, machine-learning
+algorithms have the potential to advance scientific understanding by
+finding new brain-signal biomarkers for different pathologies
+\citep{raghu2020survey}.
+
+
+
+    Electroencephalographic (EEG) brain-signal recordings are well-suited
+for machine learning since they are easy to acquire, while being
+time-consuming and challenging to manually interpret by doctors.
+Generating large EEG datasets is relatively simple compared to other
+medical recordings because of the low cost and minimal side effects of
+performing EEG recordings. Furthermore, EEG recordings are particularly
+challenging for humans to interpret, making them a promising target for
+information extraction through machine learning. Some clinical
+applications of EEG such as pathology diagnosis may be improved by
+machine learning, while others such as brain-computer interfaces are
+even only possible because of it. Finally, since the information
+contained in the EEG signal is far from being fully understood, machine
+learning may even help understand the EEG signal itself better.
+
+Deep learning is a very promising approach for brain-signal decoding
+from EEG. The term deep learning describes machine-learning models with
+multiple computational stages, where the computational stages are
+typically trained jointly to solve a given task
+\citep{lecun_deep_2015,schmidhuber_deep_2015}.
+Convolutional neural networks (ConvNets) are deep learning models that
+are inspired by computational structures in the visual cortex of the
+brain. ConvNets only have very
+general assumptions about the properties of their training signals
+embedded into them (such as smoothness and local-to-global hierarchical
+structure) and have shown great success on a variety of  decoding tasks 
+on natural signals, including object detection in images, speech recognition from audio or machine translation.
+Therefore, ConvNets are very promising to apply to hard-to-understand
+natural signals like EEG signals.
+
+    Prior to the work presented in this thesis, it was unclear how well
+ConvNet architectures can decode EEG signals compared to
+hand-engineered, feature-based approaches. The high dimensionality, low
+signal-to-noise ratio and large signal variability (e.g., from person to
+person or even session to session for the same person) of EEG data
+present challenges that may be better addressed by feature-based
+approaches that exploit more specific assumptions about the EEG signal.
+While there had been previous efforts to apply deep learning to EEG, a
+systematic study of the performance of modern ConvNets on EEG decoding
+compared with a strong feature-based baseline and including the impact
+of network architecture and training hyperparameters, was lacking.
+Furthermore, research into understanding what features the ConvNets
+extract from the EEG signal had been limited.
+
+    We therefore created several ConvNet architectures to thoroughly
+evaluate on EEG decoding. We first evaluated our ConvNet's decoding
+performance under a range of different hyperparameter choices on widely
+studied movement-related decoding tasks like decoding which limb a
+person is thinking of moving. On those tasks, we found our ConvNets to
+perform at least as good as a strong feature-based baseline. The
+ConvNets also generalized well to a range of other decoding tasks,
+including other mental imageries, decoding whether a person made or
+perceived an error, as well as pathology diagnosis.
+
+We also developed visualizations to understand the features the ConvNets
+extract from the EEG signal, finding that their predictions are
+sensitive to plausible neurophysiological features. Using perturbations
+of spectral features like amplitude and phase, we show topographies of
+the causal effects of spectral changes on the networks predictions. For
+decoding of executed movements, these topographies are consistent with
+known movement-related spectral brain-signal changes like contralateral
+alpha power decreases (e.g., decrease in alpha power on the right side
+of the head when moving the left hand). They also suggest that networks
+learn to use high-gamma information to predict the performed movement.
+Visualizations of inputs that maximally activate specific units in one
+of our ConvNets further reveals that the ConvNet has also learned
+specific timecourses of amplitude changes, going beyond using just
+averaged spectral features.
+
+Later, we more deeply investigated features learned for pathology
+decoding. Here, we made use of invertible networks, networks that are
+designed such that you can invert intermediate and final network outputs
+back to a corresponding input, allowing to visualize output changes in
+input space. Further, we also developed a smaller network that is
+specifically designed to be interpretable and train it to mimic the
+invertible network. Using these methods we could directly show and
+investigate temporal waveforms with spatial topographies that are
+associated with pathological or healthy recordings. These visualizatiosn
+revealed both neurophysiologically plausible features like temporal
+slowing as a marker for a pathological EEG or occipital alpha as a
+marker for healthy EEG, as well as surprising features like frontal and
+temporal very-low-frequency 0.5 Hz components.
+
+    In this thesis, I will first describe the research on deep learning EEG
+decoding prior to our work, then proceed to describe the deep network
+architectures and training methods we developed to rival or surpass
+feature-based EEG decoding approaches on movement- and other
+task-related EEG decoding tasks as well as pathology diagnosis.
+Furthermore, I also describe the visualization methods we developed that
+suggest the networks are using plausible neurophysiological patterns to
+solve their tasks. In two separate method and result chapters, I will
+delve more deeply into understanding the learned features for pathology
+decoding, including by using invertible networks. Finally, I conclude
+with my thoughts on the current state of EEG deep learning decoding and
+promising avenues for further work like cross-dataset decoding models as
+well as models that can process larger timescales of EEG signals.
+
+\todotext{textbox}
