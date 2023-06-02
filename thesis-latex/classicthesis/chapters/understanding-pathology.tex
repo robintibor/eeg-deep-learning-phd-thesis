@@ -2,7 +2,13 @@
 \chapter{Understanding Pathology Decoding With
 Invertible Networks}\label{understanding-pathology}
 %**************************************
-\todotext{colorbox}
+
+\begin{startbox}{EEG-InvNet and EEG-CosNet can reveal learned features for EEG pathology decoding}
+\item EEG-InvNet can reach 85.5% accuracy, competitive with regular ConvNets
+\item Visualizations show networks learn well-known features like temporal slowing or occipital alpha
+\item Visualizations also reveal surprising learned features in the very low frequencies up to 0.5 Hz
+\end{startbox}
+
 
     After our initial work on pathology decoding, we wanted to gain a deeper
 understanding of the features deep networks learn to distinguish healthy
@@ -345,4 +351,6 @@ healthy class.
 \label{fourier-gmm-low-freq-fig}
 \end{figure}
 
-\todotext{colorbox}
+\begin{openbox}
+\item What other methods may in the future help understand discriminative features in the EEG signal?
+\end{openbox}

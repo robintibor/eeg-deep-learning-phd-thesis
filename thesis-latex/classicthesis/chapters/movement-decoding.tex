@@ -1,7 +1,13 @@
 %************************************************
 \chapter{Decoding Movement-Related Brain Activity}\label{movement-related}
 %**************************************
-\todotext{textbox}
+\begin{startbox}{ConvNets can perform as well as FBCSP on movement-related decoding}
+\item Shallow network performs best on highpassed data
+\item Deep network strongly benefits from cropped training on non-highpassed data
+\item Residual network performs well with right initialization
+\item Methodological improvements from computer vision improve EEG deep learning decoding
+\item Visualizations reveal use of spectral power features with neurophysiologically plausible patterns
+\end{startbox}
 
     Movement-related decoding problems are among the most researched in EEG
 decoding and were hence our problem of choice for the first evaluation
@@ -434,7 +440,7 @@ $\diamond\diamond\diamond$/***, Wilcoxon signed-rank test. Figure from
   \bottomrule
 \hline
 \end{tabular}
-\caption{\textbf{Decoding errors between class pairs.} Results for the High-Gamma Dataset.
+\caption[Decoding errors between class pairs]{\textbf{Decoding errors between class pairs.} Results for the High-Gamma Dataset.
 Number of trials where one class  was mistaken for the
 other for each decoding method, summed per class pair. The largest
 number of errors was between Hand(L) and Hand (R) for all three
@@ -902,4 +908,9 @@ Work performed for this study also later led to the creation of the
 open-source EEG deep learning library Braindecode, now with
 contributions from multiple research groups and available at
 \url{https://github.com/braindecode/braindecode/}.
-\todotext{textbox}
+
+\begin{openbox}
+\item How well do ConvNets perform on other decoding tasks?
+\item Do they work on tasks where oscillatory features are less important?
+\item Do they work on non-trial based tasks like decoding pathology?
+\end{openbox}

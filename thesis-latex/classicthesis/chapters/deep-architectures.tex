@@ -3,7 +3,11 @@
 EEG Decoding}\label{network-architectures}
 %**************************************
 
-\todotext{textbox}
+\begin{startbox}{Three progressively more generic architectures}
+\item Shallow ConvNet learns temporal filters and later average-pools over large timeregions
+\item Deep ConvNet uses smaller temporal filters and max-pooling over small timeregions
+\item Residual network uses many layers with even smaller temporal filters
+\end{startbox}
 
 
 We continued developing our neural network architectures with our
@@ -179,4 +183,6 @@ new channel dimensionality for the shortcut, as in option A of the
 original paper \citep{he_deep_2015}. The overall architecture is also shown in
 \Cref{residual-architectures-table}.
 
-\todotext{textbox}
+\begin{openbox}
+\item How do these three architectures compare against each other on movement-related decoding tasks?
+\end{openbox}

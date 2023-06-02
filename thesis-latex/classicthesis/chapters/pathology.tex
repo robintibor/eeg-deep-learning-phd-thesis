@@ -1,7 +1,14 @@
 %************************************************
 \chapter{Decoding Pathology}\label{pathology}
 %**************************************
-\todotext{colorbox}
+
+\begin{startbox}{ConvNets diagnose pathology with good accuracy even from very short amounts of time} 
+\item ConvNets reach around 85% accuracy
+\item Can reach high accuracies using a single minute per recording during inference
+\item Struggle with recordings where contextual features like age and sleep affect the doctors diagnosis
+\item Seem to learn temporal slowing indicates pathology, strong occipital alpha indicates healthy
+\end{startbox}
+
 
     We also evaluated our deep ConvNets for automatic medical diagnosis from
 EEG. EEG is important in clinical practice both as a screening method as
@@ -214,7 +221,7 @@ higher for the shallow ConvNet).
 \begin{figure}[htbp]
 \myfloatalign
 \includegraphics[width=\linewidth]{images/Time_Plot.pdf-1.png}
-\caption{\textbf{Results on reduced datasets for deep ConvNet.} Train and/or test (evaluation) dataset was reduced from 20 minutes per recording to 1,2,4,8, or 16 minutes per recording, results are shown on the test set. Notably, when only reducing the duration of the test set recordings, maximal accuracies were observed  when using just 1 minute. We note that these results are each based on one run only; the slightly better performance than in \Cref{pathology-convnet-results} may thus be due to noise. Figure from \citet{schirrmeisterdeeppathology}.}
+\caption[Results on reduced datasets for deep ConvNet]{\textbf{Results on reduced datasets for deep ConvNet.} Train and/or test (evaluation) dataset was reduced from 20 minutes per recording to 1,2,4,8, or 16 minutes per recording, results are shown on the test set. Notably, when only reducing the duration of the test set recordings, maximal accuracies were observed  when using just 1 minute. We note that these results are each based on one run only; the slightly better performance than in \Cref{pathology-convnet-results} may thus be due to noise. Figure from \citet{schirrmeisterdeeppathology}.}
 \label{pathology-time-fig}
 \end{figure}
 
@@ -251,7 +258,7 @@ Models}\label{architecture-optimization-yielded-unexpected-new-models}
 \begin{figure}[htbp]
 \myfloatalign
 \includegraphics[width=\linewidth]{images/ShallowSmacNet.pdf-1.png}
-\caption{\textbf{Final shallow ConvNet architecture selected by SMAC.}
+\caption[Final shallow ConvNet architecture selected by SMAC]{\textbf{Final shallow ConvNet architecture selected by SMAC.}
 Conventions as in Fig. \ref{fig:shallow-convnet}.
 Note that max pooling is the only nonlinearity SMAC decided to use. Figure from \citet{schirrmeisterdeeppathology}.}
 \label{pathology-smac-results}
@@ -343,7 +350,7 @@ visualization method described in
 \label{perturbation-network-pathology-fig}
 \includegraphics[width=0.8\textwidth]{images/PerturbationShallow.pdf-1.png}
 }
-\caption{\textbf{Spectral power differences and input-perturbation network-prediction correlation maps.} Figure from \citet{schirrmeisterdeeppathology}.}
+\caption[Spectral power differences and input-perturbation network-prediction correlation maps]{\textbf{Spectral power differences and input-perturbation network-prediction correlation maps.} Figure from \citet{schirrmeisterdeeppathology}.}
 \label{fig:visualization-results}
 \end{figure*}
 
@@ -517,5 +524,7 @@ chapter of this thesis are invertible networks, neural networks that are
 designed to be invertible, see \Cref{invertible-networks} for
 methods and \Cref{understanding-pathology} for results.
 
-\todotext{colorbox}
+\begin{openbox}
+\item How to further visualize the features networks learn to diagnose pathology?      
+\end{openbox}
     

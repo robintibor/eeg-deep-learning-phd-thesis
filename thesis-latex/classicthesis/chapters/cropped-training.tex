@@ -2,7 +2,11 @@
 \chapter{Cropped Training}\label{cropped-training}
 %**************************************
 
-\todotext{textbox}
+\begin{startbox}{Cropped training means training on many temporal windows within one input example}  
+\item Greatly increases the number of training examples
+\item Can be made computationally efficient by avoiding redundant computations
+\end{startbox}
+
 
     In this chapter, we describe a training strategy called ``cropped
 training'' which addresses the problem of the relatively low number of
@@ -136,4 +140,6 @@ not find negative effects on the training dynamics from larger number of
 simultaneously decoded neighbouring crops, consistent with prior work in
 computer vision \citep{shelhamer_fully_2016}.
 
-\todotext{textbox}
+\begin{openbox}
+\item For which datasets and architectures does cropped training help or hurt? 
+\end{openbox}

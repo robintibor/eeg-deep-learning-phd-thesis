@@ -1,0 +1,128 @@
+ %************************************************
+\chapter{Discussion}\label{discussion}
+%**************************************
+
+\begin{startbox}{Deep-learning-based EEG decoding performance and interpretability can be further improved}
+\item Deep networks we developed have competitive decoding performance
+\item Visualizations show networks learn well-known and surprising features
+\item Decoding performance gap between deep networks and feature-based decoding smaller than in other fields
+\item Cross-dataset, cross-electrode-configuration models may improve decoding performance
+\item Multimodal models can exploit more information and offer EEG → text and text → EEG synthesis
+\item In-context-learning may help decoding and interpretability
+\end{startbox}
+
+
+Finally, I conclude this thesis with my thoughts on the current state of
+EEG deep learning decoding and promising avenues for further work like
+cross-dataset decoding models, models that can process larger timescales
+of EEG signals, multimodal models and in-context learning.
+
+\section{State of EEG Decoding Using Our Deep
+Networks}\label{state-of-eeg-decoding-using-our-deep-networks}
+
+Overall, our deep networks have shown good performance on a wide variety
+and settings of EEG brain-signal-decoding tasks, from classical
+movement-related trial-based decoding recording-based automatic
+pathology diagnosis. They can perform as well or better than
+feature-based baselines both on scalp and intracranial EEG. Here, fairly
+generic architectures like our deep ConvNet show robust performance
+across a wide variety of settings provided they are given enough
+training data.
+
+Visualizations show these deep networks to learn well-known features
+like spectral amplitude, while also being capable of learning more
+complex features. Existing visualizations both reveal more complex
+waveforms than pure sinusoidal filters, as well as hierarchical features
+like a temporal increase in the amplitude of a learned frequency
+feature. Using invertible networks, we were even able to discover
+predictive features in less commonly used parts of the frequency
+spectrum.
+
+On several datasets, the decoding performance gap between deeper
+networks and either smaller networks or even feature-based approaches it
+not as substantial as in other fields of machine learning like computer
+vision. Still, results show one advantage of deep networks, namely the
+possibility to use the same model across many tasks and settings, as the
+more generic network architectures can learn a wide variety of features
+suitable for different EEG decoding problems. Also, the results
+presented in this thesis show some promise to discover different learned
+EEG features through the use of deep learning.
+
+
+\section{Future Work}\label{future-work}
+
+Using neural network architectures that can learn across datasets with
+different electrode configurations may help improve decoding
+performance. Here, transformer-based architectures
+\citep{DBLP:conf/nips/VaswaniSPUJGKP17} are a promising
+option, as they can be fed electrode coordinates as position encodings,
+potentially allowing to train them across datasets with different
+electrode configurations by simply supplying them the electrode
+coordinates of the current input. This could help to further increase
+the training data and thereby increase the EEG decoding performance.
+
+Another architectural innovation for better decoding performance could
+be architectures that process larger time scales. Here, both
+transformed-based
+\citep{bigbird,etc,DBLP:journals/corr/abs-2004-05150,longt5,DBLP:journals/tacl/RoySVG21,block_recurrent_transformers,DBLP:conf/nips/DaoFERR22}
+and novel variants of convolutional architectures
+\citep{DBLP:journals/corr/abs-2302-06646,DBLP:journals/corr/abs-2302-10866}
+may be promising, as recent research has enabled them to process longer
+temporal sequences. This way, these architectures may for example look
+at an entire EEG recording at once to determine whether it is
+pathological. One challenge for this approach is that processing larger
+time windows instead of smaller ones decreases the training data again
+and more regularization may be needed.
+
+Multimodal neural networks that can process the EEG signal as well as a
+textual description or other metadata could also improve decoding
+performance or used as interpretability tools. While models that get
+both text and signal as input could simply be used to improve decoding
+performance, models that go from textual description to EEG signal or
+vice versa \cite{pmlr-v106-biswal19a,de2022learning} may also
+help interpretability by textually summarizing a given EEG signal or
+visualizing a typical EEG signal corresponding to a specific textual
+report.
+
+Finally, in-context learning is a method that might also lead to better
+EEG decoding performance by learning across different datasets and still
+exploiting the distribution of a specific dataset during inference.
+In-context-learning refers to trained networks that can learn to solve a
+novel task simply by being given input/output examples without further
+training
+\citep{DBLP:conf/iclr/XieRL022,DBLP:conf/emnlp/MinLHALHZ22,DBLP:conf/iclr/0005HPGH22}.
+Prominently observed in large language models, such behavior can also be
+explicitly trained for by training a model on entire labeled training
+datasets and unlabeled test datasets as input, optimizing to predict the
+correct test labels \citep{DBLP:conf/iclr/0005HPGH22,tabpfn}.
+Given a sufficiently large EEG dataset, one may train such a model to
+process all the training data of a single subject to predict the test
+data of the same subject. Trained this way, it can learn robust features
+that work across subjects while still being able to exploit
+subject-specific features for prediction. One may also consider training
+on synthetic EEG data to have an unlimited number of datasets during
+training.
+
+Additionally, combining in-context-learning with dataset condensation
+methods may help interpretability. Dataset condensation means to learn a
+smaller synthetic training dataset to replace the original training data
+\citep{DBLP:conf/icml/MaclaurinDA15,DBLP:conf/iclr/ZhaoMB21,DBLP:conf/icml/ZhaoB21,DBLP:journals/corr/abs-1811-10959}.
+After training the in-context-learning model across many datasets, one
+could synthesize a small labeled training dataset that yields good
+performance on a given test dataset. Simply visualizing the examples in
+this synthesized training set may already reveal discriminative
+features, similar in spirit, but potentially more powerful than the
+class prototypes shown in \Cref{understanding-pathology}.
+
+\section{Conclusion}\label{conclusion}
+
+Overall, EEG decoding using deep learning already works well, showing
+competitive decoding performance and revealing interesting learned
+features. Adopting more recent deep learning methods as the ones
+mentioned above may improve both aspects further.
+
+
+\begin{openbox}
+\item Can cross-dataset or long-time-scale learning lead to a substantial performance gain?
+\item Can multimodal or in-context learning help decoding performance and generate new insights into learned features?
+\end{openbox}

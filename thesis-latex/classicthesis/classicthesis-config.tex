@@ -31,14 +31,14 @@
 \PassOptionsToPackage{
   drafting=true,    % print version information on the bottom of the pages
   tocaligned=false, % the left column of the toc will be aligned (no indentation)
-  dottedtoc=false,  % page numbers in ToC flushed right
+  dottedtoc=true,  % page numbers in ToC flushed right
   eulerchapternumbers=true, % use AMS Euler for chapter font (otherwise Palatino)
   linedheaders=false,       % chaper headers will have line above and beneath
   floatperchapter=true,     % numbering per chapter for all floats (i.e., Figure 1.1)
   eulermath=false,  % use awesome Euler fonts for mathematical formulae (only with pdfLaTeX)
   beramono=true,    % toggle a nice monospaced font (w/ bold)
   palatino=true,    % deactivate standard font for loading another one, see the last section at the end of this file for suggestions
-  style=classicthesis % classicthesis, arsclassica
+  style=arsclassica % classicthesis, arsclassica
 }{classicthesis}
 
 
@@ -240,7 +240,37 @@
 \usepackage{cleveref}
 \usepackage{pdflscape}
 \usepackage{longtable}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{xcolor}
 \definecolor{commentcolor}{RGB}{70,130,180}
+
+\definecolor{tboxstartcolor}{RGB}{246,250,252}
+% 69,157,185 without alpha
+\definecolor{tboxstartcolorborder}{RGB}{218,235,241}
+
+\newenvironment{startbox}[1]{
+\begin{tcolorbox}[colback=tboxstartcolor,colframe=tboxstartcolorborder,title=#1,coltitle=black]
+\begin{itemize}[leftmargin=2em]
+\itemsep0em }
+{\end{itemize}
+\end{tcolorbox}
+}
+
+
+\definecolor{tboxendcolor}{RGB}{244,251,246}
+\definecolor{tboxendcolorborder}{RGB}{212,237,218}
+% rgb(40, 167, 69) without alpha
+
+\newenvironment{openbox}[0]{
+\begin{tcolorbox}[colback=tboxendcolor,colframe=tboxendcolorborder,title=Open Questions,coltitle=black]
+\begin{itemize}[leftmargin=2em]
+\itemsep0em }
+{\end{itemize}
+\end{tcolorbox}
+}
+
+
 % \usepackage{amsmath}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
@@ -251,7 +281,7 @@
 
 \usepackage[utf8]{inputenc} % To be able to write ⌀ in the first place
 
-\usepackage{threeparttable}
+\usepackage[margin=1in]{geometry}
 
 % ********************************************************************
 % Development Stuff
