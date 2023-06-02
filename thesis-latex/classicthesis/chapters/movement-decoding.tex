@@ -321,9 +321,9 @@ steps.
 Accuracies}\label{convnets-reached-fbcsp-accuracies}
 
 
-\begin{figure}[htb]
+\begin{figure}[h!tb]
     \myfloatalign
-    \includegraphics[width=1\linewidth]{images/Final_Comparison.ipynb.2.png}
+    \includegraphics[width=0.9\linewidth]{images/Final_Comparison.ipynb.2.png}
     \caption[FBCSP vs. ConvNet decoding accuracies.]{
 \textbf{FBCSP vs. ConvNet decoding accuracies.} Each small marker
 represents accuracy of one subject, the large square markers represent
@@ -332,7 +332,7 @@ the dashed line indicate experiments where ConvNets performed better
 than FBCSP and opposite for markers below the dashed line. Stars
 indicate statistically significant differences between FBCSP and
 ConvNets (Wilcoxon signed-rank test, p\textless0.05: *, p\textless0.01:
-**, p\textless0.001=***). Bottom left of every plot: linear correlation
+**, p\textless0.001:***). Bottom left of every plot: linear correlation
 coefficient between FBCSP and ConvNet decoding accuracies. Mean
 accuracies were very similar for ConvNets and FBCSP, the (small)
 statistically significant differences were in direction of the ConvNets.
@@ -395,9 +395,9 @@ involving ConvNet accuracies.
 ConvNets}\label{confusion-matrices-are-similar-between-fbcsp-and-convnets}
 
 
-\begin{figure}[htb]
+\begin{figure}[h!tb]
     \myfloatalign
-    \includegraphics[width=1\linewidth]{images/Confusion_Mats.jpg}
+    \includegraphics[width=0.9\linewidth]{images/Confusion_Mats.jpg}
     \caption[Confusion matrices for FBCSP- and ConvNet-based decoding]{
 \textbf{Confusion matrices for FBCSP- and ConvNet-based decoding.}
 Results are shown for the High-Gamma Dataset, on $0–f_\textrm{end}$
@@ -405,16 +405,15 @@ Hz. Each entry of row r and column c for upper-left 4×4-square: Number
 of trials of target r predicted as class c (also written in percent of
 all trials). Bold diagonal corresponds to correctly predicted trials of
 the different classes. Percentages and colors indicate fraction of
-trials in this cell from all trials of the corresponding column (i.e.,
-from all trials of the corresponding target class). The lower-right
+trials of corresponding column (i.e.,
+from trials of the corresponding target class). The lower-right
 value corresponds to overall accuracy. Bottom row corresponds to
-sensitivity defined as the number of trials correctly predicted for
-class c/number of trials for class c.~Rightmost column corresponds to
-precision defined as the number of trials correctly predicted for class
-r/number of trials predicted as class r. Stars indicate statistically
-significantly different values of ConvNet decoding from FBCSP, diamonds
-indicate statistically significantly different values between the
-shallow and deep ConvNets. P\textless0.05: $\diamond$/*,
+sensitivity
+: $\frac{\mathrm{number\ of\ trials\ correctly\ predicted\ for\ 
+class\ c}}{\mathrm{number\ of\ trials\ for\ class\ c}}$. Rightmost column corresponds to
+precision: $\frac{\mathrm{number\ of\ trials\ correctly\ predicted\ for\ 
+class\ r}}{\mathrm{number\ of\ trials\ predicted\ as\ class\ r}}$. Stars indicate statistically
+significantly different values between ConvNet decoding and FBCSP, diamonds between the shallow and deep ConvNets. P\textless0.05: $\diamond$/*,
 P\textless0.01: $\diamond\diamond$/**, P\textless0.001:
 $\diamond\diamond\diamond$/***, Wilcoxon signed-rank test. Figure from
 \citet{schirrmeisterdeephbm2017}.
@@ -511,26 +510,27 @@ without highpass.
 
 
 
-\begin{figure}[htb]
+\begin{figure}[h!tb]
     \captionsetup[subfigure]{labelformat=empty}
     \myfloatalign
     \subfloat[]
     {
-        \includegraphics[width=1\linewidth]{images/Final_Comparison.ipynb.9.pdf-1.png} 
+        \includegraphics[width=0.9\linewidth]{images/Final_Comparison.ipynb.9.pdf-1.png} 
     } \\
+    \vspace{-0.5cm}
     \subfloat[]
     {
-    \includegraphics[width=1\linewidth]{images/Final_Comparison.ipynb.10.pdf-1.png}
+    \includegraphics[width=0.9\linewidth]{images/Final_Comparison.ipynb.10.pdf-1.png}
     }
     \caption[Impact of ConvNet design choices on decoding accuracy]{
     \textbf{Impact of ConvNet design choices on decoding accuracy.} 
 Accuracy differences of baseline and design choices on x-axis for the $0-f_\textrm{end}$ Hz and $4-f_\textrm{end}$ Hz datasets. 
 Each small marker represents accuracy difference for one subject, and each larger marker represents mean accuracy difference across all subjects of both datasets. Bars: standard error of the differences across subjects. 
 Stars indicate statistically significant differences to baseline (Wilcoxon signed-rank test, P < 0.05: $\diamond$\*, P < 0.01: $\diamond\diamond$\*\*, P < 0.001=\*\*\*). Top: Impact of design choices applicable to both ConvNets. 
-Shown are the effects from the removal of one aspect from the architecture on decoding accuracies. All statistically significant differences were accuracy decreases.
-Notably, there was a clear negative effect of removing both dropout and batch normalization, seen in both ConvNets' accuracies and for both frequency ranges. Bottom: Impact of different types of nonlinearities, pooling modes and filter sizes. Results are given independently for the deep ConvNet and the shallow ConvNet.
+All statistically significant differences were accuracy decreases from removing an aspect of our architecture.
+Notably, there was a clear negative effect of removing both dropout and batch normalization. Bottom: Impact of different types of nonlinearities, pooling modes and filter sizes. Results are given independently for the deep ConvNet and the shallow ConvNet.
 As before, all statistically significant differences were from accuracy decreases. Notably, replacing ELU by ReLU as nonlinearity led to decreases on both frequency ranges, which were both statistically significant. 
-Figure from \cite{schirrmeisterdeephbm2017}.
+Figure from \citet{schirrmeisterdeephbm2017}.
 }
 \label{design-choices-fig}
 \end{figure}
@@ -660,7 +660,7 @@ Visualizations}\label{amplitude-perturbation-visualizations}
 
 
 
-\begin{figure}[htb]
+\begin{figure}[t!hb]
     \myfloatalign
     \includegraphics[width=1\linewidth]{images/Bandpower_Perturbation.ipynb.0.pdf-1.png}
     
@@ -673,18 +673,6 @@ the amplitude changes in frequency range from 20 to 30 Hz. Figure from
 }
 \label{bandpower-perturbation-per-class-fig}
 \end{figure}
-
-Our amplitude perturbation visualizations show that the network have
-learned to extract commonly used spectral amplitude features.We show
-three visualizations extracted from input-perturbation
-network-prediction correlations, the first two to show the frequency
-profile of the causal effects, the third to show their topography. Thus,
-first, we computed the mean across electrodes for each class separately
-to show correlations between classes and frequency bands. We see
-plausible results, for example, for the rest class, positive
-correlations in the alpha and beta bands and negative correlations in
-the gamma band in
-\Cref{bandpower-perturbation-per-class-fig}.
 
 
 \begin{figure}[htb]
@@ -702,6 +690,20 @@ correlations and CSP accuracies. Figure from
 }
 \label{bandpower-overall-fig}
 \end{figure}
+
+Our amplitude perturbation visualizations show that the network have
+learned to extract commonly used spectral amplitude features.We show
+three visualizations extracted from input-perturbation
+network-prediction correlations, the first two to show the frequency
+profile of the causal effects, the third to show their topography. Thus,
+first, we computed the mean across electrodes for each class separately
+to show correlations between classes and frequency bands. We see
+plausible results, for example, for the rest class, positive
+correlations in the alpha and beta bands and negative correlations in
+the gamma band in
+\Cref{bandpower-perturbation-per-class-fig}.
+
+
 
     Then, second, by taking the mean of the absolute values both over all
 classes and electrodes, we computed a general frequency profile. This
@@ -848,7 +850,7 @@ Units}\label{maximally-activating-units}
 
 
 
-\begin{figure}[htb]
+\begin{figure}[h!tb]
     \captionsetup[subfigure]{labelformat=empty}
     \myfloatalign
     \subfloat[]
@@ -864,12 +866,7 @@ Units}\label{maximally-activating-units}
     {
         \includegraphics[width=.45\linewidth]{images/Inputs4_struct.pdf-1.png}} \\
     \caption[EEG signals in most-activating windows. per-electrode class prototypes]{
-\textbf{EEG signals in most-activating input windows} Taken fromone randomly
-sampled filter from each subject for each layer. Blue points are the
-standard scores of all most-activating input windows for a filter. Their
-median is shown in black and the interquartile range as a gray shaded
-area. Medians with respect to earlier layers often resemble parts of or
-complete sinusoids while medians in later layers resemble more complex
+\textbf{EEG signals in most-activating input windows.} Taken from one randomly sampled filter in each layer for each subject. Blue points are the standard scores of all most-activating input windows for a filter. Their median is shown in black and the interquartile range as a gray shaded area. Medians in earlier layers often resemble parts of or complete sinusoids while medians in later layers resemble more complex
 patterns. Figure from \citet{hartmann2018hierarchical}. 
     }\label{maximally-activating-units-fig}
 \end{figure}
