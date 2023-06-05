@@ -2,7 +2,7 @@
 \chapter{Prior Work}\label{prior-work}
 %**************************************
 
-\begin{startbox}{Prior to our work research on deep-learning-based EEG decoding was limited}
+\begin{startbox}{Research on deep-learning-based EEG decoding was limited prior to our work}
 \item Few studies compared results to published feature-based baselines
 \item Most EEG deep-learning architectures had only 1-3 convolutional layers and included fully-connected layers with many parameters
 \item Most work only considered very restricted frequency ranges
@@ -62,10 +62,10 @@ Ranges}\label{input-domains-and-frequency-ranges}
 \begin{figure}[ht]
     \myfloatalign
     %\includegraphics[width=1\linewidth]{latex_images/PriorWork_files/PriorWork_7_0.png}
-    \includegraphics[width=1\linewidth]{images/input-domain-freq-ranges.png}
-    \caption[Input domains and frequency ranges in prior work.]{\textbf{Input domains and frequency ranges in prior work.} Grey linesrepresent frequency ranges of individual studies. Note that many studies
+    \includegraphics[width=0.9\linewidth,trim={0 0 0 1cm},clip]{images/input-domain-freq-ranges.png}
+    \caption[Input domains and frequency ranges in prior work.]{\textbf{Input domains and frequency ranges in prior work.} Lines represent frequency ranges of individual studies. Note that many studies
 only include frequencies below 50 Hz, some use very restricted ranges
-(alpha/beta band)}\label{input_domain_fig}
+(alpha/beta band).}\label{input_domain_fig}
 \end{figure}
     
 
@@ -88,19 +88,19 @@ specifically to allow extraction of higher-frequency (\textgreater50 Hz)
 information from scalp EEG \citep{schirrmeisterdeephbm2017}.
 
 
-\section{Network Architectures}\label{network-architectures}
+\section{Network Architectures}
 
     
 
 \begin{figure}[ht]
     \myfloatalign
     %\includegraphics[width=0.9\linewidth]{latex_images/PriorWork_files/PriorWork_11_0.png}
-    \includegraphics[width=1\linewidth]{images/number-layers.png}
+    \includegraphics[width=0.9\linewidth,trim={0 0 0 1cm},clip]{images/number-layers.png}
     \caption[Number of layers in prior work.]{
-\textbf{Number of layers in prior work.} Small grey markers represent
+\textbf{Number of layers in prior work.} Small markers represent
 individual architectures. Dashed lines indicate different number of
 layers investigated in a single study (e.g., a single study investigated
-3-7 convolutional layers). Larger grey markers indicate sum of
+3-7 convolutional layers). Larger markers indicate sum of
 occurences of that layer number over all studies (e.g., 9 architectures
 used 2 convolutional layers). Note most architectures use only 1-3
 convolutional layers.}\label{layernum_fig}
@@ -121,7 +121,7 @@ parameters.
 
 \section{Hyperparameter Evaluations}\label{hyperparameter-evaluations}
 
-\begin{table}[ht]
+\begin{table}[h!tb]
     \small
     \myfloatalign
     \begin{tabularx}{\textwidth}{p{0.1\textwidth}p{0.4\textwidth}p{0.4\textwidth}} \toprule
@@ -178,7 +178,7 @@ decoding.
 
 \section{Visualizations}\label{visualizations}
 
-\begin{table}[ht]
+\begin{table}[h!tb]
     \small
     \myfloatalign
     \begin{tabularx}{\textwidth}{p{0.1\textwidth}p{0.25\textwidth}p{0.55\textwidth}} \toprule

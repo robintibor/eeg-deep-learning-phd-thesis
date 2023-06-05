@@ -3,10 +3,10 @@
 %**************************************
 
 \begin{startbox}{ConvNets diagnose pathology with good accuracy even from very short amounts of time} 
-\item ConvNets reach around 85% accuracy
-\item Can reach high accuracies using a single minute per recording during inference
-\item Struggle with recordings where contextual features like age and sleep affect the doctors diagnosis
-\item Seem to learn temporal slowing indicates pathology, strong occipital alpha indicates healthy
+\item ConvNets reach around 85\% accuracy
+\item ConvNets can reach high accuracies using a single minute per recording during inference
+\item ConvNets struggle with recordings where contextual features like age and sleep affect the doctors diagnosis
+\item ConvNets seem to learn temporal slowing indicates pathological recordings, strong occipital alpha indicates healthy recordings
 \end{startbox}
 
 
@@ -78,7 +78,7 @@ report of a certified neurologist and a medical student annotator was
 99\% for the training recordings and 100\% for the evaluation
 recordings, also see \Cref{table-tuh-dataset}.
 
-\subsection{Preprocessing}\label{preprocessing}
+\subsection{Preprocessing}
 
     We minimally preprocessed the data with these steps: 1. Select a subset
 of 21 electrodes present in all recordings. 2. Remove the first minute
@@ -100,7 +100,7 @@ test data, or both. These analyses were carried out to study how long
 EEG recordings need to be for training and for predicting EEG
 pathologies with good accuracies.
 
-\section{Network Architectures}\label{network-architectures}
+\section{Network Architectures}
 
     We used our deep and shallow ConvNets with only minor modifications to
 the architecture. To use larger time windows to make a single
@@ -259,9 +259,9 @@ Models}\label{architecture-optimization-yielded-unexpected-new-models}
 \myfloatalign
 \includegraphics[width=\linewidth]{images/ShallowSmacNet.pdf-1.png}
 \caption[Final shallow ConvNet architecture selected by SMAC]{\textbf{Final shallow ConvNet architecture selected by SMAC.}
-Conventions as in Fig. \ref{fig:shallow-convnet}.
+Conventions as in \Cref{shallow-net-figure}.
 Note that max pooling is the only nonlinearity SMAC decided to use. Figure from \citet{schirrmeisterdeeppathology}.}
-\label{pathology-smac-results}
+\label{shallow-smac-net-fig}
 \end{figure}
 
 
@@ -305,7 +305,7 @@ the modifications to the original network architectures already provided
 interesting insights for further exploration: For example, in the case
 of the shallow ConvNet, the modified architecture did not use any of the
 original nonlinearities, but used max pooling as the only nonlinearity
-(see Fig. \Cref{shallow-smac-net-fig}), a configuration we
+(see \Cref{shallow-smac-net-fig}), a configuration we
 had not considered in our manual search so far.
 
     \hypertarget{visualization}{%
@@ -429,8 +429,7 @@ frequently occurring words in the textual reports of the pathological
 recordings, while never occurring in the textual reports of the normal
 recordings (irrespective of correct or incorrect predictions).
 
-    \hypertarget{discussion}{%
-\section{Discussion}\label{discussion}}
+\section{Discussion}
 
     To the best of our knowledge, the ConvNet architectures used in this
 study achieved the best accuracies published so far on the TUH EEG
@@ -489,7 +488,7 @@ Our perturbation visualizations of the ConvNets' decoding behavior
 showed that they used spectral power changes in the delta (0-4 Hz) and
 theta (4-8 Hz) frequency range, particularly from temporal EEG channels,
 possibly alongside other features
-(\Cref{perturbation-shallow-pathology-fig}). This
+(\Cref{perturbation-network-pathology-fig}). This
 observation is consistent both with the expectations implied by the
 spectral analysis of the EEG data
 (\Cref{bandpower-pathology-fig}) and by the textual reports
