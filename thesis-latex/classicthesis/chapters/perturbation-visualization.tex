@@ -42,7 +42,7 @@ together with me. Text and figures in this chapter are adapted from
 Map}\label{input-perturbation-network-prediction-correlation-map}
 
 
-\begin{figure}[ht]
+\begin{figure}[h!tb]
     \myfloatalign
     \includegraphics[width=1\linewidth]{images/input-perturbation-overview.png}
     \caption[Computation overview amplitude perturbation]{
@@ -121,7 +121,7 @@ better understand the intermediate computations of the network.
 \section{Gradient-Based
 Implementation}\label{gradient-based-implementation}
 
-    An simpler and more computationally efficient way to implement the idea
+    A simpler and more computationally efficient way to implement the idea
 of testing the sensitivity of the network to spectral amplitude features
 is through gradient-based analysis \footnote{This idea was suggested to
   us in personal communication by Klaus-Robert Müller.}. There, we
@@ -136,13 +136,11 @@ is differentiable, one can backpropagate the gradients from the output
 unit through the time domain input back to the amplitudes. The more the
 network behaves locally linear around the input, the closer the results
 of this variant would be to the original perturbation variant. It is
-computationally substantially faster as everything is computed in one
+computationally substantially faster as the gradient is computed in one
 forward-backward pass, without needing to iterate over many
-perturbations. The gradient-based method may result in less insightful
-visualizations if the prediction function of the network is locally very
-nonlinear at a given pint but has an approximately linear relationship
-with the spectral amplitudes in a larger neighbourhood around that
-point. See works on other saliency/gradient-based visualizations for
+perturbations. The gradient-based method may produce less insightful
+visualizations for a given input example if the prediction function of the network is locally very nonlinear but has an approximately linear relationship
+with the spectral amplitudes in a larger neighbourhood around the input example. See works on other saliency/gradient-based visualizations for
 discussions in this topic,
 e.g. ~\citet{sturmfels2020visualizing}.
 
@@ -150,7 +148,7 @@ e.g. ~\citet{sturmfels2020visualizing}.
 \section{Extension to Phase-Based
 Perturbations}\label{extension-to-phase-based-perturbations}
 
-\begin{figure}[ht]
+\begin{figure}[h!tb]
     \centering
     \includegraphics[width=.75\linewidth]{images/phase-perturbation-corr.png}
     \caption[Phase perturbation intuition]{
@@ -172,8 +170,8 @@ nonlinearities and pooling operations.
 \end{figure}
 
 
-    The amplitude-perturbation method can also be extended to investigate in
-how far networks are affected by changes in phase features. The response
+    The amplitude-perturbation method can be extended to investigate in
+the use of phase features by the networks´. The response
 of filters to changes in the phase of certain frequencies was calculated
 similarly to the amplitude perturbation correlations. However, because
 of the cyclic nature of phase features, the change of activations in a
@@ -188,7 +186,7 @@ whose receptive field contains the specific phase in the perturbed
 signal should then activate more. Therefore, the original activations
 and the activations on the perturbed input should have a decreased
 correlation (less than 1). Activation and correlation should remain
-similar for phase-insensitive filters.
+similar for phase-insensitive filters. See also \Cref{phase-perturbation-corr-figure} for an illustration.
 
 Phase perturbations were sampled from $p^{P}_{\xi,i}{\sim}N(0,\pi)$.
 Perturbed phases $P^{P}_\xi$ were calculated by shifting the phase:

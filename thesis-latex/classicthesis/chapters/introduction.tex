@@ -3,10 +3,9 @@
 %************************************************
 
 \begin{startbox}{Deep Learning (DL) is a very promising method to decode brain signals from EEG}
- \item Deep Learning (DL) is a very promising method to decode brain signals from EEG
 \item Deep learning may extract useful information from EEG signals that humans cannot
 \item Deep learning may improve EEG-based diagnosis, enable new assistive technologies and advance scientific understanding of the EEG signal
-\item Our EEG decoding deep learning models perform as good or better than feature-based methods on a wide range of tasks
+\item Our EEG-decoding deep learning models perform as good or better than feature-based methods on a wide range of tasks
 \item Visualizations using convolutional and invertible networks reveal neurophysiologically plausible as well as surprising learned EEG features
 \end{startbox}
 
@@ -99,10 +98,9 @@ specific timecourses of amplitude changes, going beyond using just
 averaged spectral features.
 
 Later, we more deeply investigated features learned for pathology
-decoding. Here, we made use of invertible networks, networks that are
-designed such that you can invert intermediate and final network outputs
-back to a corresponding input, allowing to visualize output changes in
-input space. Further, we also developed a smaller network that is
+decoding. Here, used invertible networks, networks that are
+designed to allow inverting intermediate and final network outputs
+back to a corresponding input, making it possible to visualize output changes in input space. Further, we also developed a smaller network that is
 specifically designed to be interpretable and train it to mimic the
 invertible network. Using these methods we could directly show and
 investigate temporal waveforms with spatial topographies that are
@@ -126,4 +124,7 @@ with my thoughts on the current state of EEG deep learning decoding and
 promising avenues for further work like cross-dataset decoding models as
 well as models that can process larger timescales of EEG signals.
 
-\todotext{textbox}
+\begin{openbox}
+\item What kind of deep architectures work well on different EEG decoding tasks?
+\item What features do they learn to extract from the EEG signal?´
+\end{openbox}

@@ -227,7 +227,7 @@ network \citep{DBLP:journals/corr/TheisOB15}. The reduction
 in the optimal average log likelihood loss through providing the class
 label can be derived from a compression perspective. According to
 Shannon's theorem, more probable inputs need less bits to encode than
-less probable inputs, or more precisely
+less probable inputs, or more precisely: 
 $\textrm{Number of bits needed}(x) = \log_2 p(x)$. How many of these
 bits are needed for the class label in case it is not given? To
 distinguish between n classes, one needs only $\log_2(n)$ bits, so in
@@ -250,7 +250,6 @@ generative classifiers. For example, people have fixed the per-class
 latent gaussian priors so that they retain the same distance throughout
 training \citep{DBLP:conf/icml/IzmailovKFW20} or added a
 classification loss term
-
 \begin{align*}
 L_\textrm{class}(x,c_i)&=-\log p(c_i|x)\\
 &= -\log \frac{p(x|ci)}{\sum_j p(x|cj)}\\
@@ -262,18 +261,22 @@ to the training loss\citep{DBLP:conf/nips/ArdizzoneMRK20}. In
 our work, we experimented with adding a classification loss term to the
 training, and also found using a learned temperature before the softmax
 helps the training, so leading to:
-
-\begin{align}
+\begin{equation}
+\begin{split}
    L_\textrm{class}(x,c_i,t)&= -\log \frac{e^{\frac{\log p(x|ci)}{t}}}{\sum_j e^{\frac{\log p(x|cj)}{t}}}=-\log \left( \mathrm{softmax}\left({\frac{\log p(x|c_i)}{t}}\right) \right) \\
-\end{align}
+\end{split}
+\end{equation}
 
 Our overall training loss is simply a weighted sum of generative loss
 and classification loss:
 
-\begin{align}
+\begin{equation}
+\begin{split}
    L(x,c_i,t)&= L_\textrm{class}(x,c_i,t) + L_\textrm{gen}(x,c_i)\\
    &= -\log \left( \mathrm{softmax}\left({\frac{\log p(x|c_i)}{t}}\right) \right) - \alpha \log p(x|ci)\\
-\end{align}
+\end{split}
+\end{equation}
+
 
 where we choose the hyperparameter $\alpha$ as the inverse of the
 number of dimensions $\alpha=\frac{1}{\textrm{Number of dimensions of x}}$.
@@ -324,7 +327,7 @@ the restricted expressiveness may make them easier to interpret.
 
 \begin{figure}[htb]
     \myfloatalign
-    \includegraphics[width=1\linewidth]{images/EEGInvNetClassPrototypes.png}
+    \includegraphics[width=1\linewidth]{images/EEGInvNetClassPrototypes.test.png}
     \caption[EEG-InvNet class prototypes]{
 \textbf{EEG-InvNet class prototypes.} Class prototypes are synthesized
 by inverting the means $z_\mathrm{healthy}$ and
@@ -335,7 +338,7 @@ $z_\mathrm{pathological}$ of the per-class gaussian distributions.
 
     In our first visualization, we show the inputs resulting from inverting
 the means of the gaussian distributions for each class (see
-\Cref{eeg-prototypes-fig}) . These can be seen as
+\Cref{eeg-prototypes-fig}). These can be seen as
 prototypical examples of each class and may give hint about the
 discriminative features that have been learned. As these are only single
 examples, they need to be interpreted cautiously. For example,
@@ -350,7 +353,7 @@ discriminative features for further investigation.
 \section{Per-Electrode Prototypes}\label{per-electrode-prototypes}
     
 
-\begin{figure}[htb]
+\begin{figure}[h!tb]
     \captionsetup[subfigure]{labelformat=empty}
     \myfloatalign
     \subfloat[]
@@ -367,8 +370,7 @@ discriminative features for further investigation.
         \includegraphics[width=.45\linewidth]{images/marginal-chan-explanation_3.png}} \\
     \caption[EEG-InvNet per-electrode class prototypes]{
     \textbf{EEG-InvNet per-electrode class prototypes.} For getting
-per-electrode prototypes, class-specific signals for one electrode are
-synthesized while signals at other electrodes are sampled from training
+per-electrode prototypes, synthetic class-specific signals for one electrode are optimized to yield high predicted class probabilities for any signals at other electrodes.  Signals at other electrodes are sampled from training
 data. In the example, prototypes for T3 for the healthy and pathological
 class are learned, four samples for remaining electrodes are shown. In
 practice, a much larger number of samples would be used. Class signal
@@ -412,10 +414,10 @@ generative loss $p(x^*_{e_k}|c_i)$.
     \myfloatalign
     \subfloat[]
     {
-    \includegraphics[width=.45\linewidth]{images/cos-net-example-input.png}} \quad
+    \includegraphics[width=.235\linewidth]{images/cos-net-example-input.png}} \quad
     \subfloat[]
     {
-        \includegraphics[width=.45\linewidth]{images/cos-net-example-processing.png}} 
+        \includegraphics[width=.72\linewidth]{images/cos-net-example-processing.png}} 
     \caption[Example processing of the EEG-CosNet.]{
     \textbf{Example processing of the EEG-CosNet.} Example EEG input on the
 left, then processing steps on the right: spatial filtering, absolute
@@ -438,8 +440,8 @@ loss $L_\textrm{class}$. Our EEG-CosNet consists of just three steps
 \begin{align*}
     \intertext{\textbf{Spatial Filtering}}
     h_1 &= W_s^Tx && \codecomment{\text{Apply spatial filter weights } W_s \text{ to  inputs }} \\
-    \intertext{\textbf{Absolute Moving Cosine Similarity with Temporal Filters}}
-    h_2 &= |\mathrm{cos\_sim}(h_1, \mathrm{filters})| && \codecomment{\text{Absolute moving cosine similarity with temporal filters}} \\
+    \intertext{\textbf{Feature construction}}
+    h_2 &= |\mathrm{cos\_sim}(h_1, \mathrm{filters})| && \codecomment{\text{Abs. moving cosine similarity with temporal filters}} \\
     h_3 &=\frac{\sum_t (h_2)}{n_\mathrm{times}} && \codecomment{\text{Average over timepoints in trial}} \\
     \intertext{\textbf{Classification}}
     h_4 &= W_c^Th_3 && \codecomment{\text{Apply classifierweights } W_c \text{ on these features }} \\

@@ -29,7 +29,7 @@
 % (see ClassicThesis.pdf for more information):
 % ****************************************************************************************************
 \PassOptionsToPackage{
-  drafting=true,    % print version information on the bottom of the pages
+  drafting=false,    % print version information on the bottom of the pages
   tocaligned=false, % the left column of the toc will be aligned (no indentation)
   dottedtoc=true,  % page numbers in ToC flushed right
   eulerchapternumbers=true, % use AMS Euler for chapter font (otherwise Palatino)
@@ -250,11 +250,15 @@
 \definecolor{tboxstartcolorborder}{RGB}{218,235,241}
 
 \newenvironment{startbox}[1]{
-\begin{tcolorbox}[colback=tboxstartcolor,colframe=tboxstartcolorborder,title=#1,coltitle=black]
+\vspace{1em} % add space before
+\begin{tcolorbox}[
+before skip=20cm,
+colback=tboxstartcolor,colframe=tboxstartcolorborder,title=#1,coltitle=black]
 \begin{itemize}[leftmargin=2em]
 \itemsep0em }
 {\end{itemize}
 \end{tcolorbox}
+\vspace{1em} % add space before
 }
 
 
@@ -263,12 +267,15 @@
 % rgb(40, 167, 69) without alpha
 
 \newenvironment{openbox}[0]{
-\begin{tcolorbox}[colback=tboxendcolor,colframe=tboxendcolorborder,title=Open Questions,coltitle=black]
+\vspace{1em} % add space before
+\begin{tcolorbox}[ colback=tboxendcolor,colframe=tboxendcolorborder,title=Open Questions,coltitle=black]
 \begin{itemize}[leftmargin=2em]
 \itemsep0em }
 {\end{itemize}
 \end{tcolorbox}
 }
+
+%\tcbsetforeverylayer{beforeafter skip balanced=0.5\baselineskip plus 2pt}
 
 
 % \usepackage{amsmath}
@@ -283,6 +290,7 @@
 
 \usepackage[inner=2.5cm,outer=4.045cm]{geometry}
 %\usepackage[inner=3cm,outer=4.845cm]{geometry}
+
 
 % ********************************************************************
 % Development Stuff

@@ -1,11 +1,13 @@
 %*******************************************************
 % Titlepage
 %*******************************************************
+\newgeometry{inner=3cm,outer=3cm}
 \begin{titlepage}
     %\pdfbookmark[1]{\myTitle}{titlepage}
     % if you want the titlepage to be centered, uncomment and fine-tune the line below (KOMA classes environment)
-    \begin{addmargin}[-1cm]{-3cm}
+    %\begin{addmargin}[-1cm]{-3cm}
     \begin{center}
+  \small \centering{\textsf{Dissertation zur Erlangung des Doktorgrades der Technischen Fakult{\"a}t der Albert-Ludwigs-Universit{\"a}t Freiburg im Breisgau}} 
         \large
 
         \hfill
@@ -18,9 +20,14 @@
 
         \spacedlowsmallcaps{\myName}
 
+  \vspace{5em}
+  
         \vfill
+          \medskip
+          
         \includegraphics[width=6cm]{images/braindecode_logo.png} \\
           \medskip
+          
 
         %\mySubtitle \\ 
         \medskip
@@ -34,5 +41,6 @@
         \vfill
 
     \end{center}
-  \end{addmargin}
+  %\end{addmargin}
 \end{titlepage}
+\restoregeometry

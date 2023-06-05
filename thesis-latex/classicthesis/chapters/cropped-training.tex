@@ -36,13 +36,13 @@ Training}\label{non-croppedtrialwise-training}
     \subfloat[\textbf{Trialwise training.} An entire single trial is fed
 through the network and the network's prediction is compared to the
 trial target to train the network.]
-    {\label{trialwise-figure}
-    \includegraphics[width=.4\linewidth]{images/trialwise_explanation.png}} \quad
+    {\label{trialwise-figure}%#.4
+    \includegraphics[width=.35\linewidth]{images/trialwise_explanation.png}} \quad
     \subfloat[\textbf{Cropped training.} A compute window contains many
 temporal windows (crops) inside that are used as individual examples to
 train the network.]
-    {\label{cropped-figure}%
-        \includegraphics[width=.464\linewidth]{images/cropped_explanation.png}} 
+    {\label{cropped-figure}%#.464
+        \includegraphics[width=.406\linewidth]{images/cropped_explanation.png}} 
     \caption[Trialwise and cropped training]{\textbf{Trialwise and cropped training.}}\label{cropped-and-trialwise-figure}
 \end{figure}
 
@@ -74,39 +74,32 @@ neighbouring crops can be exploited for a more efficient implementation.
 
 
 
-\section{Computationally Faster Cropped
+\section{Computationally Efficient Cropped
 Training}\label{computationally-faster-cropped-training}
 
 
-\begin{figure}[ht]
+
+
+\begin{figure}[h!tb]
     \myfloatalign
-    \includegraphics[width=1\linewidth]{images/Multiple_Prediction_Matplotlib_Graphics.ipynb.2.png}
-    \caption[Naive cropped training toy example]{
-\textbf{Naive cropped training toy example.} Each possible length-5 crop
+    \subfloat[\textbf{Naive cropped training.}]
+    {\label{cropped-naive-computation-figure}
+    \includegraphics[width=.6\linewidth]{images/Multiple_Prediction_Matplotlib_Graphics.ipynb.2.png}} \quad
+    \subfloat[\textbf{Efficient cropped training.} ]
+    {\label{cropped-efficient-computation-figure}%
+        \includegraphics[width=.3\linewidth]{images/Multiple_Prediction_Matplotlib_Graphics.ipynb.3.png}}
+    \caption[Naive and efficient cropped training]{\textbf{Naive and efficient cropped training on toy example.} \textbf{Naive cropped training on left:} Each possible length-5 crop
 is taken from the original length-7 trial and independently processed by
 the Conv-Conv-Linear projection network. All filter values of the
 network are assumed to be ones. Each crop is processed independently.
 The values in red are identical and unnecessarily computed independently
-for each crop. Figure from \cite{schirrmeisterdeephbm2017}.
-}
-\label{cropped-naive-computation-figure}
-\end{figure}
-
-
-\begin{figure}[ht]
-    \myfloatalign
-    \includegraphics[width=0.5\linewidth]{images/Multiple_Prediction_Matplotlib_Graphics.ipynb.3.png}
-    \caption[Efficient cropped training]{
-    \textbf{Efficient cropped training.} Each possible length-5 crop is
+for each crop. \textbf{Efficient cropped training on right:} Each possible length-5 crop is
     taken from the original length-7 trial and processed simultaneously by
     the Conv-Conv-Linear projection network, whilce still yielding the same
-    results as if processed independently
-    (\Cref{cropped-efficient-computation-figure}). All filter
-    values of the network are assumed to be ones. Figure from
-    \cite{schirrmeisterdeephbm2017}.
-}
-\label{cropped-efficient-computation-figure}
+    results as if processed independently.  Figures from
+    \citet{schirrmeisterdeephbm2017}.}\label{cropped-naive-and-efficeint-figure}
 \end{figure}
+
 
 
     Cropped training can be implemented with substantially less computations

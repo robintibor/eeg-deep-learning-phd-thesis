@@ -63,39 +63,36 @@ the training data and thereby increase the EEG decoding performance.
 
 Another architectural innovation for better decoding performance could
 be architectures that process larger time scales. Here, both
-transformed-based
+transformed-based architectures
 \citep{bigbird,etc,DBLP:journals/corr/abs-2004-05150,longt5,DBLP:journals/tacl/RoySVG21,block_recurrent_transformers,DBLP:conf/nips/DaoFERR22}
 and novel variants of convolutional architectures
 \citep{DBLP:journals/corr/abs-2302-06646,DBLP:journals/corr/abs-2302-10866}
 may be promising, as recent research has enabled them to process longer
-temporal sequences. This way, these architectures may for example look
-at an entire EEG recording at once to determine whether it is
+temporal sequences. This way, these architectures may for example process
+an entire EEG recording at once to determine whether it is
 pathological. One challenge for this approach is that processing larger
-time windows instead of smaller ones decreases the training data again
+time windows instead of smaller ones decreases the training data 
 and more regularization may be needed.
 
-Multimodal neural networks that can process the EEG signal as well as a
-textual description or other metadata could also improve decoding
-performance or used as interpretability tools. While models that get
+Using other modalities than the EEG signal, like for example textual medical reports could also improve decoding
+performance or be a basis for novelinterpretability tools. While models that get
 both text and signal as input could simply be used to improve decoding
 performance, models that go from textual description to EEG signal or
 vice versa \cite{pmlr-v106-biswal19a,de2022learning} may also
 help interpretability by textually summarizing a given EEG signal or
-visualizing a typical EEG signal corresponding to a specific textual
+visualizing a representative EEG signal corresponding to a textual
 report.
 
-Finally, in-context learning is a method that might also lead to better
+Finally, in-context learning is a method that might lead to better
 EEG decoding performance by learning across different datasets and still
 exploiting the distribution of a specific dataset during inference.
-In-context-learning refers to trained networks that can learn to solve a
+In-context-learning here refers to trained networks that can learn to solve a
 novel task simply by being given input/output examples without further
 training
 \citep{DBLP:conf/iclr/XieRL022,DBLP:conf/emnlp/MinLHALHZ22,DBLP:conf/iclr/0005HPGH22}.
 Prominently observed in large language models, such behavior can also be
-explicitly trained for by training a model on entire labeled training
-datasets and unlabeled test datasets as input, optimizing to predict the
-correct test labels \citep{DBLP:conf/iclr/0005HPGH22,tabpfn}.
-Given a sufficiently large EEG dataset, one may train such a model to
+explicitly trained for by training a model that processes an entire labeled training dataset at once \citep{DBLP:conf/iclr/0005HPGH22,tabpfn}.
+Given a sufficiently large collection of EEG datasets, one may train such a model to
 process all the training data of a single subject to predict the test
 data of the same subject. Trained this way, it can learn robust features
 that work across subjects while still being able to exploit

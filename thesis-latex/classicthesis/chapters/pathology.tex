@@ -67,7 +67,7 @@ University Hospital (TUH) EEG Abnormal Corpus 1.1.2 is a dataset of
 manually labeled normal and pathological clinical EEG recordings. It is
 taken from the TUH EEG Data Corpus which contains over 16000 clinical
 recordings of more than 10000 subjects from over 12 years
-\citep{obeid\_temple\_2016}. The Abnormal Corpus contains
+\citep{obeid_temple_2016}. The Abnormal Corpus contains
 3017 recordings, 1529 of which were labeled normal and 1488 of which
 were labeled pathological. The Corpus was split into a training and
 evaluation set, see \Cref{table-tuh-dataset}. Recordings
@@ -118,7 +118,7 @@ therefore we decided to keep it.
 
     As in other studies, we optimized the ConvNet parameters using
 stochastic gradient descent with the optimizer Adam
-\cite{kingma\_adam:\_2014}. To make best use of the available
+\cite{kingma_adam:_2014}. To make best use of the available
 data, we trained the ConvNets on maximally overlapping time crops using
 cropped training as described in \Cref{cropped-training}. Code
 to reproduce the results of this study is available under
@@ -130,7 +130,7 @@ Optimization}\label{automatic-architecture-optimization}
     We also carried out a preliminary study of automatic architecture
 optimization to further improve our ConvNet architectures. To that end,
 we used the automatic hyperparameter optimization algorithm SMAC
-\citep{hutter\_sequential\_2011} to optimize architecture
+\citep{hutter_sequential_2011} to optimize architecture
 hyperparameters of the deep and shallow ConvNets, such as filter
 lengths, strides and types of nonlinearities. As the objective function
 to optimize via SMAC, we used 10-fold cross-validation performance

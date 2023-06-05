@@ -39,7 +39,7 @@ Architecture}\label{shallow-convnet-architecture}}
 
 \begin{figure}[ht]
     \myfloatalign
-    \includegraphics[width=0.8\linewidth]{images/3D_Diagram_MatplotLib.ipynb.0.png}
+    \includegraphics[width=0.65\linewidth]{images/3D_Diagram_MatplotLib.ipynb.0.png}
     \caption[Shallow ConvNet architecture]{
     \textbf{Shallow ConvNet architecture} EEG input (at the top) is
 progressively transformed toward the bottom, until the final classifier
@@ -48,7 +48,7 @@ convolution/pooling kernels. The corresponding sizes are indicated in
 black and brown, respectively. Note that the final dense layer operates
 only on a small remaining temporal dimension, making it similar to a
 regular convolutional layer. Figure from
-\cite{schirrmeisterdeephbm2017}.}\label{shallow-net-figure}
+\citet{schirrmeisterdeephbm2017}.}\label{shallow-net-figure}
 \end{figure}
 
 
@@ -80,15 +80,15 @@ further preprocessing.
 \end{enumerate}
 
 
+
 \section{Deep ConvNet Architecture}\label{deep-convnet-architecture}
 
-\begin{figure}[ht]
+\begin{figure}[h!tb]
     \myfloatalign
-    \includegraphics[width=0.9\linewidth]{images/3D_Diagram_MatplotLib.ipynb.1.png}
+    \includegraphics[width=0.8\linewidth]{images/3D_Diagram_MatplotLib.ipynb.1.png}
     \caption[Deep ConvNet architecture]{
-    \textbf{Deep ConvNet architecture.}. Conventions as in \Cref{shallow-net-figure}. Figure from \citep{schirrmeisterdeephbm2017}}\label{deep-net-figure}
+    \textbf{Deep ConvNet architecture.}. Conventions as in \Cref{shallow-net-figure}. Figure from \citet{schirrmeisterdeephbm2017}}\label{deep-net-figure}
 \end{figure}
-
 
     The deep ConvNet is a more generic architecture, closer to network
 architectures used in computer vision, see
@@ -120,7 +120,7 @@ ReLU nonlinearities. Figure from
 \label{residual-net-figure}
 \end{figure}
 
-\begin{table}[ht]
+\begin{table}[h!tb]
     \small
     \myfloatalign
     \begin{tabularx}{\textwidth}{lS[table-format=3.0]ll} 

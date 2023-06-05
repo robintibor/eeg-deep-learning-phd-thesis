@@ -2,7 +2,7 @@
 \chapter{Understanding Pathology Decoding With
 Invertible Networks}\label{understanding-pathology}
 %**************************************
-
+\vspace{2em}
 \begin{startbox}{EEG-InvNet and EEG-CosNet can reveal learned features for EEG pathology decoding}
 \item EEG-InvNet can reach 85.5% accuracy, competitive with regular ConvNets
 \item Visualizations show networks learn well-known features like temporal slowing or occipital alpha
@@ -36,7 +36,7 @@ by me in the context of this thesis.
 \section{Dataset, Training Details and Decoding
 Performance}\label{dataset-training-details-and-decoding-performance}
 
-\begin{table}[htb]
+\begin{table}[h!tb]
     \myfloatalign
     \begin{tabularx}{\textwidth}{p{0.15\textwidth}p{0.15\textwidth}p{0.15\textwidth}p{0.15\textwidth}p{0.15\textwidth}}
     \toprule
@@ -73,9 +73,9 @@ features.
 
 \section{Class Prototypes}\label{class-prototypes}
 
-\begin{figure}[htb]
+\begin{figure}[h!tb]
     \myfloatalign
-    \includegraphics[width=1\linewidth]{images/net-disc-prototypes.png}
+    \includegraphics[width=.9\linewidth]{images/net-disc-prototypes.png}
     \caption[Learned class prototypes from EEG-InvNet]{
 \textbf{Learned class prototypes from EEG-InvNet.} Obtained by inverting
 learned means of class-conditional gaussian distributions from latent
@@ -106,9 +106,9 @@ independently. This is what we tackle in our next visualization.
 
 \section{Per-Electrode Prototypes}\label{per-channel-prototypes}
 
-\begin{figure}[htb]
+\begin{figure}[h!tb]
     \myfloatalign
-    \includegraphics[width=1\linewidth]{images/marginal-chan-6.png}
+    \includegraphics[width=.9\linewidth]{images/marginal-chan-6.png}
     \caption[Learned per-electrode prototypes from EEG-InvNet]{
 \textbf{Learned per-electrode prototypes from EEG-InvNet.} Each electrodes'
 input is optimized independently to increase the invertible networks
@@ -139,7 +139,7 @@ different electrodes.
 \section{EEG-CosNet Visualizations}\label{eeg-cosnet-visualizations}
 
 
-\begin{table}[htb]
+\begin{table}[h!tb]
     \myfloatalign
     \begin{tabularx}{\textwidth}{p{0.2\textwidth}p{0.3\textwidth}p{0.3\textwidth}}
     \toprule
@@ -158,7 +158,7 @@ invertible network predictions and original labels.}
 \end{table}
 
 
-\begin{figure}[htb]
+\begin{figure}[h!tb]
     \myfloatalign
     \includegraphics[width=1\linewidth]{images/cos-sim-net-pattern-with-hspace.png}
     \caption[Visualization of EEG-CosNet on pathology decoding]{
@@ -208,7 +208,7 @@ frequency information is predictive of pathology.
 
 
 
-\begin{table}[htb]
+\begin{table}[h!tb]
     \myfloatalign
     \begin{tabularx}{\textwidth}{p{0.3\textwidth}p{0.3\textwidth}p{0.3\textwidth}}
     \toprule
@@ -245,9 +245,9 @@ retains 75.4\% test accuracy. All results are shown in
 \subsection{EEG-InvNet
 Visualizations}\label{eeg-invnet-visualizations}
 
-\begin{figure}[htb]
+\begin{figure}[h!tb]
     \myfloatalign
-    \includegraphics[width=1\linewidth]{images/net-lowfreq-prototypes.png}
+    \includegraphics[width=.9\linewidth]{images/net-lowfreq-prototypes.png}
     \caption[EEG-InvNet low-frequency class prototypes]{
 \textbf{Class prototypes for the EEG-InvNet trained on data lowpassed to
 be below 0.5 Hz.} Note large differences at A1 and A2.
@@ -256,9 +256,9 @@ be below 0.5 Hz.} Note large differences at A1 and A2.
 \end{figure}
 
 
-\begin{figure}[htb]
+\begin{figure}[h!tb]
     \myfloatalign
-    \includegraphics[width=1\linewidth]{images/marginal-chan-low-freq.png}
+    \includegraphics[width=.9\linewidth]{images/marginal-chan-low-freq.png}
     \caption[EEG-InvNet low-frequency class prototypes]{
 \textbf{Per-electrode prototypes for EEG-InvNet trained on data
 lowpassed below 0.5 Hz.} Note strongly predictive signals at T3,T4,T6.
@@ -278,7 +278,7 @@ information in the T3,T4 and T6 electrodes.
 \subsection{EEG-CosNet
 Visualizations}\label{eeg-cosnet-visualizations}
 
-\begin{figure}[htb]
+\begin{figure}[h!tb]
     \myfloatalign
     \includegraphics[width=1\linewidth]{images/cos-sim-net-low-freq-pattern-with-hspace.png}
     \caption[EEG-CosNet visualizations on lowpassed data]{
@@ -304,7 +304,7 @@ Visualizations}\label{fourier-gmm-visualizations}
 
 
 
-\begin{figure}[htb]
+\begin{figure}[h!tb]
     \captionsetup[subfigure]{labelformat=empty}
     \myfloatalign
     \subfloat[]
@@ -337,7 +337,7 @@ components for the healthy class.
 
 
 
-\begin{figure}[htb]
+\begin{figure}[h!tb]
     \myfloatalign
     \includegraphics[width=1\linewidth]{images/low-freq-gmm-prototypes-scaled-per-freq-with-class-color-and-bar.png}
     \caption[Fourier-GMM means in Fourier space]{
@@ -351,6 +351,17 @@ healthy class.
 \label{fourier-gmm-low-freq-fig}
 \end{figure}
 
+Visualizations of the Fourier-GMM in
+\Cref{low-freq-input-space-prototypes-fig} and \Cref{fourier-gmm-low-freq-fig} again show frontal
+components associated with the healthy class and other components, with
+spatial topographies that include temporal areas, associated with the
+pathological class.
+
+    Overall, the visualizations consistently indicate a frontal component
+predictive for the healthy class and other components, with a spatial
+topography that often includes temporal and nearby areas, predictive for
+the pathological class.
+
 \begin{openbox}
-\item What other methods may in the future help understand discriminative features in the EEG signal?
+\item What other methods may help understand discriminative features in the EEG signal in the future?
 \end{openbox}

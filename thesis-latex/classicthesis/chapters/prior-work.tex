@@ -3,8 +3,8 @@
 %**************************************
 
 \begin{startbox}{Prior to our work research on deep-learning-based EEG decoding was limited}
-\item Few studies compared to published feature-based decoding results
-\item Most EEG DL architectures had only 1-3 convolutional layers and included fully-connected layers with many parameters
+\item Few studies compared results to published feature-based baselines
+\item Most EEG deep-learning architectures had only 1-3 convolutional layers and included fully-connected layers with many parameters
 \item Most work only considered very restricted frequency ranges
 \item Most studies only compared few design choices and training strategies
 \end{startbox}
@@ -61,7 +61,8 @@ Ranges}\label{input-domains-and-frequency-ranges}
 
 \begin{figure}[ht]
     \myfloatalign
-    \includegraphics[width=1\linewidth]{latex_images/PriorWork_files/PriorWork_7_0.png}
+    %\includegraphics[width=1\linewidth]{latex_images/PriorWork_files/PriorWork_7_0.png}
+    \includegraphics[width=1\linewidth]{images/input-domain-freq-ranges.png}
     \caption[Input domains and frequency ranges in prior work.]{\textbf{Input domains and frequency ranges in prior work.} Grey linesrepresent frequency ranges of individual studies. Note that many studies
 only include frequencies below 50 Hz, some use very restricted ranges
 (alpha/beta band)}\label{input_domain_fig}
@@ -93,7 +94,8 @@ information from scalp EEG \citep{schirrmeisterdeephbm2017}.
 
 \begin{figure}[ht]
     \myfloatalign
-    \includegraphics[width=0.9\linewidth]{latex_images/PriorWork_files/PriorWork_11_0.png}
+    %\includegraphics[width=0.9\linewidth]{latex_images/PriorWork_files/PriorWork_11_0.png}
+    \includegraphics[width=1\linewidth]{images/number-layers.png}
     \caption[Number of layers in prior work.]{
 \textbf{Number of layers in prior work.} Small grey markers represent
 individual architectures. Dashed lines indicate different number of

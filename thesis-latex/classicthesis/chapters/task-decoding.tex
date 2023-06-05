@@ -126,10 +126,10 @@ ConvNets.} Error bars show the SEM. A) Eriksen flanker task (mean of 31
 subjects), last 20\% of subject data as test set. Deep ConvNets were
 7.12\% better than rLDA, pval = 6.24 *10-20 (paired t-test). B) Online
 GUI control (mean of 4 subjects), last session of each subject as test
-data. Figure from \cite{volker2018deep}.]
+data. Figure from \citet{volker2018deep}.]
     {\label{within-subject-flanker-gui-fig}
     \includegraphics[width=.45\linewidth]{images/within-subject-flanker-gui.png}} \quad
-    \subfloat[\textbf{Mean normalized decoding accuracy on unknown subjects.} Error bars show the SEM. A) Eriksen flanker task, trained on 30 subjects, tested on 1 subject.  Deep ConvNets were 5.05\% better than rLDA, p = 3.16 *10-4 (paired t-test). B) Online GUI control. Trained on 3 subjects, tested on the  respective remaining subject. Figure from {cite:t}`volker2018deep`.]
+    \subfloat[\textbf{Mean normalized decoding accuracy on unknown subjects.} Error bars show the SEM. A) Eriksen flanker task, trained on 30 subjects, tested on 1 subject.  Deep ConvNets were 5.05\% better than rLDA, p = 3.16 *10-4 (paired t-test). B) Online GUI control. Trained on 3 subjects, tested on the  respective remaining subject. Figure from \citet{volker2018deep}.]
     {\label{cross-subject-flanker-gui-fig}
         \includegraphics[width=.45\linewidth]{images/cross-subject-flanker-gui.png}} 
     \caption[Error decoding accuracy on Eriksen flanker task and online GUI control]{\textbf{Error decoding accuracy on Eriksen flanker task and online GUI control.}}
@@ -156,12 +156,12 @@ online GUI control, where the low number of subjects (4) may prevent the
 ConvNets to learn enough to outperform rLDA.
 
 \section{Proof-of-Concept Assistive
-System}\label{proof-of-concept-assistive-system}
+System}\label{online-bci}
 
 
 \begin{figure}[htb]
     \myfloatalign
-    \includegraphics[width=0.7\linewidth]{images/robot-bci-overview.png}
+    \includegraphics[width=0.5\linewidth]{images/robot-bci-overview.png}
     \caption[Overview of the proof-of-concept assistive system]{
 \textbf{Overview of the proof-of-concept assistive system. The system
 uses the deep ConvNet in the BCI component.} Robotic arm could be given high-level commands via the BCI, high-level commands were extracted from a knowledge base. The commands were then autonomously planned and executed by the robotic arm. Figure
@@ -244,12 +244,12 @@ ResNet & 52.45 ± 0.21 & 95.47 ± 0.14 & 09.43 ± 0.28 \\
 errors during an Eriksen flanker task.} Balanced Accuracy is the mean of
 the accuracies for correct class ground truth labels and error class
 ground truth labels. Results from 
-\citet{intracranial-error-results-table}.
-    }  \label{bci-robot-results}
+\citet{volker2018intracranial}.
+    }  \label{intracranial-error-results-table}
 \end{table}
  
 
-\begin{figure}[htb]
+\begin{figure}[h!tb]
     \myfloatalign
     \includegraphics[width=1\linewidth]{images/IntracranialError.png}
     \caption[Results for all-channel intracranial decoding of errors during
@@ -294,9 +294,9 @@ class-normalized accuracies (average over per-class accuracies)).
 \subsection{Transfer Learning for Intracranial Error
 Decoding}\label{transfer-learning-for-intracranial-error-decoding}
 
-\begin{figure}[htb]
+\begin{figure}[h!tb]
     \myfloatalign
-    \includegraphics[width=1\linewidth]{images/eriksen-flanker-car-driving-tasks.png}
+    \includegraphics[width=0.7\linewidth]{images/eriksen-flanker-car-driving-tasks.png}
     \caption[Visualizations of Eriksen flanker and  car driving task]{
 \textbf{Sketch of the Eriksen flanker task (A) and screenshot of the car
 driving task (B).} Figure from \citet{behncke2018cross}. 
@@ -305,11 +305,10 @@ driving task (B).} Figure from \citet{behncke2018cross}.
 \end{figure}
 
 
-\begin{figure}[htb]
+\begin{figure}[h!tb]
     \myfloatalign
-    \includegraphics[width=1\linewidth]{images/cross-training-eft-cdt-results.png}
+    \includegraphics[width=0.8\linewidth]{images/cross-training-eft-cdt-results.png}
     \caption[Results for transfer learning on the Eriksen flanker task and the car driving task]{
-
 \textbf{Results for transfer learning on the Eriksen flanker task (EFT)
 and the car driving task (CDT).} All results are computed for a varying
 fraction of available data for the target decoding task (bottom row).
@@ -343,33 +342,29 @@ pretraining on CDT helps EFT decoding when few EDT data is available.
 Responses in
 Sheep}\label{microelectrocorticography-decoding-of-auditory-evoked-responses-in-sheep}
 
-\begin{figure}[htb]
+
+
+\begin{figure}[bth]
     \myfloatalign
-    \includegraphics[width=0.65\linewidth]{images/sheep-sounds.jpg}
-    \caption[Overview over decoding tasks for
-auditory evoked responses in a sheep]{
-\textbf{Overview over decoding tasks for
-auditory evoked responses in a sheep.} First task (top) was to
+    \subfloat[\textbf{Decoding tasks overview.}]
+    {\label{sheep-sounds-fig}
+    \includegraphics[width=.39\linewidth]{images/sheep-sounds.jpg}} \quad
+    \subfloat[\textbf{Results.}]
+    {\label{sheep-accuracies-fig}
+        \includegraphics[width=.56\linewidth]{images/sheep-accuracies.png}} 
+    \caption[Auditory evoked responses in sheep]{
+    \textbf{Overview over tasks and results of decoding auditory evoked responses in sheep.} Left: Overview over decoding tasks. First task (top) was to
 distingish 3 seconds when the sound was playing from the second before
 and the second after. Second task (bottom) was to distinguish the first,
 second and third second during theplaying of the sound. Signals are
 averaged responses from one electrode during different days, with black
 and grey being signals while the sheep was awake and red ones while the
-sheep was under general anesthesia. Figure from \citet{wangsheep}.
-}
-\label{sheep-sounds-fig}
-\end{figure}
-
-
-\begin{figure}[htb]
-    \myfloatalign
-    \includegraphics[width=0.65\linewidth]{images/sheep-accuracies.png}
-    \caption[Results of decoding auditory evoked responses]{
-\textbf{Results of decoding auditory evoked responses from sheep.}
+sheep was under general anesthesia.  Right: Results of decoding auditory evoked responses from sheep.
 rlDA, FBSCP and the deep ConvNet were the decoding models. Open circles represent accuracies for individual experiment days and closed circles represent the average
-over these accuracies. Figure from \citet{wangsheep}.
-}
-\label{sheep-accuracies-fig}
+over these accuracies. 
+
+Figures from \citet{wangsheep}.}
+    \label{sheep-fig}
 \end{figure}
 
 
