@@ -1,6 +1,6 @@
 %************************************************
 \chapter{Filter Bank Common Spatial Patterns and
-Filterbank Network}\label{fbscp-and-filterbank-net}
+Filter Bank Network}\label{fbscp-and-filterbank-net}
 %**************************************
 
 \begin{startbox}{Filter Bank Common Spatial Patterns (FBCSP) is a strong feature-based baseline}
@@ -40,19 +40,18 @@ other class and vice versa.
 
 \section{Common Spatial Patterns}\label{common-spatial-patterns}
 
-
 \begin{figure}[ht]
     \myfloatalign
-    \includegraphics[width=1\linewidth]{images/Methods_Common_Spatial_Patterns_18_0.png}
+    \includegraphics[width=1\linewidth]{images/csp_explanation.png}
     \caption[Common Spatial Patterns example.]{
 \textbf{Common Spatial Patterns example.} Top parts show EEG
 signals for three electrodes during a left hand and a right hand
 movement. Bottom parts show spatially filtered signals of two CSP
-filters. Green parts have lower variance and red parts have higher
-variance. Note that this difference is strongly amplified after CSP
-filtering. Figure from prior master thesis
-\citep{schirrmeister_msc_thesis_2015}.}\label{csp-figure}
+filters. Green parts have higher variance and yellow parts have lower
+variance. Note that this variance difference is already visible in C3 and C4, and then further amplified after CSP filtering.}\label{csp-figure}
 \end{figure}
+
+
 
 
     The basic building block of FBCSP is the common spatial patterns (CSP)
@@ -147,20 +146,14 @@ these features to train the final classifier.
 \section{Filter Bank Network
 Architecture}\label{filter-bank-network-architecture}
 
-
 \begin{figure}[ht]
     \myfloatalign
-    \includegraphics[width=1\linewidth]{images/csp_as_a_net_explanation.png}
-    \caption[Filter bank network architecture overview.]{
-\textbf{Filter bank network architecture overview.} Input signals were
-bandpass filtered to different frequency ranges. Signals are first
-transformed by learned spatial filters, then squared, summed and the
-log-transformed. The resulting features are transformed into class
-probabilities by a classification weights followed by the softmax
-function. Figure taken from a master thesis
-\citep{schirrmeister_msc_thesis_2015}.}\label{filterbank-net-figure}
+    \includegraphics[width=1\linewidth,trim={0 0 7.5cm 0},clip]{images/filterbank_net_explanation.png}
+    \caption[Filter bank network computation overview.]{
+\textbf{Filter bank network computation overview.} Input signals were
+bandpass-filtered to different frequency ranges. The bandpass-filtered signals are processed by spatial filters, then squared, summed and finally log-transformed. The resulting features are transformed into class probabilities by applying a linear classifier followed by the softmax function. The spatial filter and linear classifier weights are all the learnable parameters of the network and are jointly end-to-end-trained. }\label{filterbank-net-figure}
 \end{figure}
-
+´
 
     The first neural network architecture was developed by us in a prior
 master thesis \citep{schirrmeister_msc_thesis_2015} to
@@ -191,7 +184,7 @@ frequency ranges. The network then performs the following steps:
 jointly.
 
 \begin{openbox}
-\item How does the filterbank net compare to FBCSP?
+\item How does the filter bank net compare to FBCSP?
 \item What can more generic EEG deep-learning architectures look like?
 \end{openbox}
 
