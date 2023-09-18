@@ -11,7 +11,7 @@ Filter Bank Network}\label{fbscp-and-filterbank-net}
 
 
 
-    Filter bank common spatial patterns (FBCSP, \cite{ang_filter_2008,chin_multi-class_2009}) is a widely-used  feature-based EEG decoding method, that has been very successful at movement-related decoding tasks on EEG. In a prior master thesis
+Filter bank common spatial patterns (FBCSP, \cite{ang_filter_2008,chin_multi-class_2009}) is a widely-used  feature-based EEG decoding method, that has been very successful at movement-related decoding tasks on EEG. In a prior master thesis
 \citep{schirrmeister_msc_thesis_2015}, we had developed a
 neural network architecture closely resembling FBCSP. In this chapter,
 I describe FBCSP as well as the
@@ -153,7 +153,6 @@ Architecture}\label{filter-bank-network-architecture}
 \textbf{Filter bank network computation overview.} Input signals were
 bandpass-filtered to different frequency ranges. The bandpass-filtered signals are processed by spatial filters, then squared, summed and finally log-transformed. The resulting features are transformed into class probabilities by applying a linear classifier followed by the softmax function. The spatial filter and linear classifier weights are all the learnable parameters of the network and are jointly end-to-end-trained. }\label{filterbank-net-figure}
 \end{figure}
-´
 
     The first neural network architecture was developed by us in a prior
 master thesis \citep{schirrmeister_msc_thesis_2015} to

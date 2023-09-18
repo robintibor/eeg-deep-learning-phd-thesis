@@ -9,15 +9,7 @@
 \end{startbox}
 
 
-    What features the EEG-decoding ConvNet learns is a scientifically
-interesting question and not straightforward to answer. Through
-end-to-end training, the networks may learn a variety of features,
-including brain-signal features and non-brain-signal features, e.g., eye
-movements that correlate to a hand movement. The learned features may be
-already known from prior research on brain-signal decoding or represent
-novel features that had not been described in the literature. However,
-there is no straightforward way to find out what the deep networks have
-learned from the brain signals.
+What features the neural networks learn on the EEG data is a scientifically interesting question and not straightforward to answer. Through end-to-end training, the networks may learn a variety of features, including brain-signal features and non-brain-signal features, e.g., eye movements that correlate to a hand movement. The learned features may be already known from prior research on brain-signal decoding or represent novel features that had not been described in the literature. However, there is no straightforward way to find out what the deep networks have learned from the brain signals.
 
     Therefore, we developed an input amplitude perturbation method to
 investigate whether the deep networks learn to extract spectral
@@ -27,13 +19,13 @@ the alpha, beta and gamma bands, provide class-discriminative
 information for motor tasks
 \citep{ball_movement_2008,pfurtscheller_evaluation_1979,pfurtscheller_central_1981}.
 Hence, it seems a priori very likely that the deep networks learn to
-extract such features and worthwhile to check whether they indeed do so.
+extract such features and it is worthwhile to check whether they indeed do so.
 We also extended this method to investigate the use of phase information
 by the networks.
 
 The amplitude perturbation method was developed by me in the context of
 this thesis, the phase perturbation method was developed by Kay Hartmann
-together with me. Text and figures in this chapter are adapted from
+together with me. Some of the text and figures in this chapter are adapted from
 \citep{schirrmeisterdeephbm2017} and \citep{hartmann2018hierarchical}.
 
 
@@ -46,7 +38,6 @@ Map}\label{input-perturbation-network-prediction-correlation-map}
     \myfloatalign
     \includegraphics[width=1\linewidth]{images/input-perturbation-overview.png}
     \caption[Computation overview amplitude perturbation]{
-
 \textbf{Computation overview for input-perturbation network-prediction
 correlation map.} (a) Example spectral amplitude perturbation and
 resulting classification difference. Top: Spectral amplitude
@@ -152,7 +143,6 @@ Perturbations}\label{extension-to-phase-based-perturbations}
     \centering
     \includegraphics[width=.75\linewidth]{images/phase-perturbation-corr.png}
     \caption[Phase perturbation intuition]{
-
 \textbf{Intuition of the phase perturbation
 correlation method.} Top left: two input signals
 where the phase of one frequency has been shifted between the two

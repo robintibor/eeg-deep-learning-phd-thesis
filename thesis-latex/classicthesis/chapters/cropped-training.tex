@@ -4,7 +4,7 @@
 
 \begin{startbox}{Cropped training means training on many temporal windows within one input example}  
 \item Greatly increases the number of training examples
-\item Can be made computationally efficient by avoiding redundant computations
+\item Computationally efficient implementation avoids redundant computations
 \end{startbox}
 
 
@@ -119,7 +119,7 @@ or no padding at all to the input and the intermediate activations. In
 the deep and shallow network described here, we do not use any padding.
 In the residual network, we use padding, hence the training is not
 exactly identical to passing neighbouring crops separately, but we still
-found it to improve over trial-wise training.
+found it to improve over trialwise training.
 
     The more efficient way to do cropped training introduces a new
 hyperparameter, the number of neighbouring crops that are decoded

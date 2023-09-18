@@ -10,9 +10,8 @@ EEG Decoding}
 \end{startbox}
 
 
-We continued developing our neural network architectures with our
-development strategy of progressing from networks that resemble
-feature-based EEG decopding algorithms to more generic network
+We continued developing our neural network architectures by progressing from networks that resemble
+feature-based EEG decoding algorithms to more generic network
 architectures. After the filterbank network from the master thesis, we
 adapted the so-called shallow ConvNet, initally also developed in the
 same master thesis \citep{schirrmeister_msc_thesis_2015}.
@@ -41,7 +40,7 @@ Architecture}\label{shallow-convnet-architecture}}
     \myfloatalign
     \includegraphics[width=0.65\linewidth]{images/3D_Diagram_MatplotLib.ipynb.0.png}
     \caption[Shallow ConvNet architecture]{
-    \textbf{Shallow ConvNet architecture} EEG input (at the top) is
+    \textbf{Shallow ConvNet architecture.} EEG input (at the top) is
 progressively transformed toward the bottom, until the final classifier
 output. Black cuboids: inputs/feature maps; brown cuboids:
 convolution/pooling kernels. The corresponding sizes are indicated in
@@ -57,7 +56,7 @@ regular convolutional layer. Figure from
 architecture than the filterbank network that also learns temporal
 filters on the input signal and on the later representation. Instead of
 bandpass-filtered signals, it is fed the raw signals as input. The steps
-the architecture implements are as follows (also see \Cref{shallow-net-figure}):
+the architecture implements are as follows (see also \Cref{shallow-net-figure}):
 
 \begin{enumerate}
 \item
@@ -87,7 +86,7 @@ further preprocessing.
     \myfloatalign
     \includegraphics[width=0.8\linewidth]{images/3D_Diagram_MatplotLib.ipynb.1.png}
     \caption[Deep ConvNet architecture]{
-    \textbf{Deep ConvNet architecture.}. Conventions as in \Cref{shallow-net-figure}. Figure from \citet{schirrmeisterdeephbm2017}}\label{deep-net-figure}
+    \textbf{Deep ConvNet architecture.} Conventions as in \Cref{shallow-net-figure}. Figure from \citet{schirrmeisterdeephbm2017}}\label{deep-net-figure}
 \end{figure}
 
     The deep ConvNet is a more generic architecture, closer to network

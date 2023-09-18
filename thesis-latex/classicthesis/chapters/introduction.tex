@@ -3,9 +3,9 @@
 %************************************************
 
 \begin{startbox}{Deep Learning (DL) is a very promising method to decode brain signals from EEG}
-\item Deep learning may extract useful information from EEG signals that humans cannot
+\item Deep learning may extract different information from EEG signals than humans
 \item Deep learning may improve EEG-based diagnosis, enable new assistive technologies and advance scientific understanding of EEG signals
-\item Our EEG-decoding deep learning models perform as well or better than feature-based methods on a wide range of tasks
+\item Our EEG-decoding deep-learning models perform as well or better than feature-based methods on a wide range of tasks
 \item Visualizations using convolutional and invertible networks reveal both expected and neurophysiologically plausible as well as surprising learned EEG features
 \end{startbox}
 
@@ -26,7 +26,6 @@ as brain signals are far from being fully understood, machine-learning
 algorithms have the potential to advance scientific understanding by
 discovering novel brain-signal biomarkers for various pathologies
 \citep{raghu2020survey}.
-
 
 
     Electroencephalographic (EEG) brain-signal recordings are well-suited
@@ -50,13 +49,7 @@ typically trained jointly to solve a given task
 \citep{lecun_deep_2015,schmidhuber_deep_2015}.
 Convolutional neural networks (ConvNets) are deep learning models that
 are inspired by computational structures in the visual cortex of the
-brain. ConvNets only have very
-general assumptions about the properties of their training signals
-embedded into them (such as smoothness and local-to-global hierarchical
-structure) and have shown great success on a variety of  decoding tasks 
-on natural signals, including object detection in images, speech recognition from audio or machine translation.
-Therefore, ConvNets are very promising to apply to hard-to-understand
-natural signals like EEG signals.
+brain. ConvNets only have very general assumptions about the properties of their training signals built into them (such as smoothness and local-to-global hierarchical structure) and have shown great success on a variety of  decoding tasks  on natural signals, including object detection in images, speech recognition from audio or machine translation. Therefore, ConvNets are very promising to apply to hard-to-understand natural signals like EEG signals.
 
     Prior to the work presented in this thesis, it was unclear how well
 ConvNet architectures can decode EEG signals compared to
@@ -85,32 +78,23 @@ perceived an error, as well as pathology diagnosis.
 We also developed visualizations to understand the features the ConvNets
 extract from the EEG signal, finding that their predictions are
 sensitive to plausible neurophysiological features. Using perturbations
-of spectral features like amplitude and phase, we show spatial topographies of
-the causal effects of spectral changes on the networks predictions. For
-decoding of executed movements, these topographies are consistent with
-known movement-related spectral brain-signal changes like contralateral
-alpha power decreases (e.g., decrease in alpha power on the right side
-of the head when moving the left hand). They also suggest that networks
-learn to use high-gamma information to predict the performed movement.
-Visualizations of inputs that maximally activate specific units in one
-of our ConvNets further reveals that the ConvNet has also learned
+of spectral features like amplitude and phase, we show spatial topographies of the causal effects of spectral changes on the networks predictions. For decoding of executed movements, these topographies are consistent with known movement-related spectral brain-signal changes like contralateral alpha power decreases (e.g., decrease in alpha power on the right side of the head when moving the left hand). They also suggest that networks learn to use high-gamma information to predict the performed movement. Visualizations of inputs that maximally activate specific units in one of our ConvNets further reveals that the ConvNet has also learned
 specific timecourses of amplitude changes, going beyond using just
 averaged spectral features.
 
 Later, we more deeply investigated features learned for pathology
-decoding. Here, used invertible networks, networks that are
+decoding. Here, we used invertible networks, networks that are
 designed to allow inverting intermediate and final network outputs
-back to a corresponding input, making it possible to visualize output changes in input space. Further, we also developed a smaller network that is
-specifically designed to be interpretable and train it to mimic the
+back to a corresponding input, making it possible to visualize output changes in input space. Further, we also developed a smaller network that is specifically designed to be interpretable and trained it to mimic the
 invertible network. Using these methods we could directly show and
 investigate temporal waveforms with spatial topographies that are
-associated with pathological or healthy recordings. These visualizatiosn
+associated with pathological or healthy recordings. These visualizations
 revealed both neurophysiologically plausible features like temporal
 slowing as a marker for a pathological EEG or occipital alpha as a
 marker for healthy EEG, as well as surprising features like frontal and
-temporal very-low-frequency 0.5 Hz components.
+temporal very-low-frequency components.
 
-    In this thesis, I will first describe the research on deep learning EEG
+In this thesis, I will first describe the research on deep-learning EEG
 decoding prior to our work, then proceed to describe the deep network
 architectures and training methods we developed to rival or surpass
 feature-based EEG decoding approaches on movement- and other
